@@ -3,60 +3,76 @@ import { ForecastCard } from '@/components/forecast-card'
 import { SetupStrip } from '@/components/setup-strip'
 import { dashboardData } from '@/lib/chart-data'
 
-const dashboardForecasts = dashboardData.forecasts
-const actionableForecasts = dashboardForecasts.filter((forecast) => forecast.isActionable)
-const topSetups = [...dashboardForecasts].sort((a, b) => b.convictionScore - a.convictionScore).slice(0, 5)
-const runtimeMode = dashboardForecasts[0]?.modelName ?? 'timesfm-fallback'
-const bullishCount = dashboardForecasts.filter((forecast) => forecast.direction === 'bullish').length
-const buyCount = dashboardForecasts.filter((forecast) => forecast.portfolioAction === 'BUY').length
-const sellCount = dashboardForecasts.filter((forecast) => forecast.portfolioAction === 'SELL').length
+const dashboard = dashboardData
+const forecasts = dashboard.forecasts
+const buyCount = forecasts.filter((forecast) => forecast.portfolioAction === 'BUY').length
+const sellCount = forecasts.filter((forecast) => forecast.portfolioAction === 'SELL').length
+const holdCount = forecasts.filter((forecast) => forecast.portfolioAction === 'HOLD').length
 const averageConviction = Math.round(
-  dashboardForecasts.reduce((total, forecast) => total + forecast.convictionScore, 0) / Math.max(dashboardForecasts.length, 1),
+  forecasts.reduce((total, forecast) => total + forecast.convictionScore, 0) / Math.max(forecasts.length, 1),
 )
-const runtimeLabel = runtimeMode === 'timesfm' ? 'TimesFM live' : 'TimesFM fallback'
+const averageOneDayHitRate = Math.round(
+  (forecasts
+    .map((forecast) => forecast.horizonForecasts.find((horizon) => horizon.horizonDays === 1)?.measuredHitRate)
+    .filter((value): value is number => value != null)
+    .reduce((total, value, _index, all) => total + value / all.length, 0) || 0) * 100,
+)
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col gap-8 px-5 py-8 sm:px-8 lg:px-10 xl:px-12">
+    <main className="mx-auto flex min-h-screen w-full max-w-[1520px] flex-col gap-8 px-5 py-8 sm:px-8 lg:px-10 xl:px-12">
       <DashboardHeader />
 
-      <section className="grid gap-4 md:grid-cols-2 2xl:grid-cols-5">
-        <SummaryCard label="Buy setups" value={`${buyCount}`} detail="Highest-conviction upside candidates for the next session." tone="bull" />
-        <SummaryCard label="Sell / trim" value={`${sellCount}`} detail="Held names showing relative weakness or downside risk." tone="bear" />
-        <SummaryCard label="Bullish bias" value={`${bullishCount}/${dashboardForecasts.length}`} detail="Forecasts leaning positive across the board." tone="neutral" />
-        <SummaryCard label="Actionable" value={`${actionableForecasts.length}`} detail="Setups worth a real look instead of hand-wavy watchlist filler." tone="accent" />
-        <SummaryCard label="Average conviction" value={`${averageConviction}`} detail={`${runtimeLabel} • as of ${dashboardData.generatedAtLabel}`} tone="accent" />
+      <section className="grid gap-4 xl:grid-cols-[1.35fr,0.95fr]">
+        <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+          <SummaryCard label="Buy setups" value={`${buyCount}`} detail="Highest-conviction fresh longs worth planning for the next session." tone="bull" />
+          <SummaryCard label="Hold core" value={`${holdCount}`} detail="Existing positions with enough structure to stay on, but not force adds." tone="neutral" />
+          <SummaryCard label="Trim / sell" value={`${sellCount}`} detail="Positions showing relative weakness or downside forecast pressure." tone="bear" />
+          <SummaryCard label="1D hit rate" value={`${averageOneDayHitRate}%`} detail="Rolling measured hit rate for the nearest horizon, across the current history ledger." tone="accent" />
+        </div>
+
+        <section className="rounded-[2rem] border border-white/10 bg-slate-950/75 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.45)]">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.3em] text-slate-500">Daily board</div>
+              <h2 className="mt-2 text-2xl font-semibold text-white">Operator snapshot</h2>
+            </div>
+            <div className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-cyan-200">
+              {dashboard.generatedAtLabel}
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <SnapshotCard label="Average conviction" value={`${averageConviction}/100`} note="Cross-board strength and quality score." />
+            <SnapshotCard label="Live runtime" value="TimesFM active" note="Native Windows runtime is now online." />
+            <SnapshotCard label="Decision surface" value="Buy · Hold · Sell" note="Portfolio-aware actions, not generic sentiment." />
+            <SnapshotCard label="Update loop" value="Daily refresh" note="Artifacts, history, and alerts refresh on schedule." />
+          </div>
+        </section>
       </section>
 
-      <SetupStrip forecasts={topSetups} />
+      <SetupStrip forecasts={forecasts} />
 
-      <section className="grid gap-4 xl:grid-cols-[1.1fr,0.9fr,0.9fr]">
+      <section className="grid gap-4 xl:grid-cols-[1fr,1fr,1fr]">
         <InsightPanel
-          title="Forecast framing"
-          eyebrow="Trading view"
-          body="The board is reading generated artifacts from the forecast service, not hand-written demo fluff. It answers the real question: what looks actionable, what is noise, and what should happen in the portfolio next?"
-          bullets={[
-            'Daily close based swing setups',
-            'Portfolio-aware buy, hold, and sell actions',
-            'Chart overlays grounded in generated forecast artifacts',
-          ]}
+          eyebrow="Design goal"
+          title="A homepage that feels like a premium control room, not a spreadsheet with trauma."
+          body="The homepage should lead with decisions and market posture first, then let the user drop into ticker-level detail. Strong hierarchy, fewer throwaway boxes, more visual calm."
         />
         <InsightPanel
-          title="Runtime truth"
-          eyebrow="Model status"
-          body={runtimeMode === 'timesfm' ? 'TimesFM runtime is active, so the adapter is using the real model path.' : 'TimesFM is not active on this machine right now, so the adapter is falling back safely while still exporting honest dashboard artifacts.'}
-          bullets={['yfinance daily bars', 'Forecast adapter with fallback path', 'Notification payloads only for actionable setups']}
+          eyebrow="Signal quality"
+          title="Closer horizons earn more trust, farther ones stay contextual."
+          body="The system now shows measured rolling hit rate and MAE by horizon so the UI stops pretending every forecast length deserves equal confidence."
         />
         <InsightPanel
-          title="Operator flow"
-          eyebrow="What to scan first"
-          body="Check the setup strip, review the chart overlay on the names that matter, then read the trade note before doing anything dumb. The card should feel like prep, not theater."
-          bullets={['Top setups first', 'Current vs target close in one glance', 'Holdings context on every card']}
+          eyebrow="Workflow"
+          title="Open, scan, decide, move on."
+          body="This surface should help you know what to add, what to hold, and what to cut in a minute or two, without drowning you in decorative noise."
         />
       </section>
 
       <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {dashboardForecasts.map((forecast) => (
+        {forecasts.map((forecast) => (
           <ForecastCard key={`${forecast.ticker}-${forecast.targetDate}`} forecast={forecast} />
         ))}
       </section>
@@ -83,7 +99,7 @@ function SummaryCard({
   }
 
   return (
-    <div className={`rounded-[1.75rem] border border-white/10 bg-gradient-to-br ${toneMap[tone]} p-5 shadow-[0_20px_60px_rgba(2,6,23,0.3)]`}>
+    <div className={`rounded-[1.85rem] border border-white/10 bg-gradient-to-br ${toneMap[tone]} p-5 shadow-[0_20px_60px_rgba(2,6,23,0.3)]`}>
       <div className="text-[11px] uppercase tracking-[0.28em] text-slate-500">{label}</div>
       <div className="mt-3 text-3xl font-semibold text-white">{value}</div>
       <div className="mt-2 text-sm leading-6 text-slate-300">{detail}</div>
@@ -91,30 +107,22 @@ function SummaryCard({
   )
 }
 
-function InsightPanel({
-  eyebrow,
-  title,
-  body,
-  bullets,
-}: {
-  eyebrow: string
-  title: string
-  body: string
-  bullets: string[]
-}) {
+function SnapshotCard({ label, value, note }: { label: string; value: string; note: string }) {
   return (
-    <section className="rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.4)]">
+    <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
+      <div className="text-[11px] uppercase tracking-[0.26em] text-slate-500">{label}</div>
+      <div className="mt-2 text-lg font-semibold text-white">{value}</div>
+      <div className="mt-2 text-sm leading-6 text-slate-400">{note}</div>
+    </div>
+  )
+}
+
+function InsightPanel({ eyebrow, title, body }: { eyebrow: string; title: string; body: string }) {
+  return (
+    <section className="rounded-[1.85rem] border border-white/10 bg-slate-950/70 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)]">
       <div className="text-[11px] uppercase tracking-[0.3em] text-slate-500">{eyebrow}</div>
       <h2 className="mt-3 text-2xl font-semibold text-white">{title}</h2>
       <p className="mt-3 text-sm leading-7 text-slate-300">{body}</p>
-      <ul className="mt-4 space-y-2 text-sm text-slate-200">
-        {bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-3">
-            <span className="mt-1 h-2 w-2 rounded-full bg-cyan-300" />
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
     </section>
   )
 }
