@@ -79,6 +79,7 @@ export const dashboardData: DashboardData = {
     notes: row.notes,
     currentClose: row.current_close,
     targetClose: row.target_close,
+    entryPriceTarget: Number((row.current_close * (1 - Math.min(Math.abs(row.predicted_return) * 0.35, 0.03))).toFixed(2)),
     currentPositionShares: row.current_position_shares,
     isActionable: row.is_actionable,
     chartSeries: chartMap.get(row.ticker) ?? null,
