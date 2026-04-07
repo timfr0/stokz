@@ -10,6 +10,7 @@
 
 html {
   background: #f5f0e8;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -32,4 +33,52 @@ a {
 ::selection {
   background: rgba(255, 204, 0, 0.4);
   color: #1a1a1a;
+}
+
+.stokz-chart-shell {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.stokz-chart-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+
+.stokz-chart-svg {
+  display: block;
+  width: 100%;
+  min-height: 10rem;
+  border: 2px solid #1a1a1a;
+  background:
+    linear-gradient(
+      to top,
+      transparent 24%,
+      rgba(26, 26, 26, 0.12) 25%,
+      transparent 26%,
+      transparent 49%,
+      rgba(26, 26, 26, 0.12) 50%,
+      transparent 51%,
+      transparent 74%,
+      rgba(26, 26, 26, 0.12) 75%,
+      transparent 76%
+    ),
+    #f5f0e8;
+}
+
+.stokz-empty-chart {
+  border: 2px solid #1a1a1a;
+  background: #f5f0e8;
+  padding: 1rem;
+  font-weight: 600;
 }

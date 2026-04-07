@@ -2,6 +2,7 @@ export type ForecastDirection = 'bullish' | 'bearish' | 'neutral'
 export type ConfidenceLabel = 'low' | 'medium' | 'high'
 export type PortfolioAction = 'BUY' | 'HOLD' | 'SELL'
 export type HorizonConfidence = 'highest' | 'moderate' | 'lower'
+export type TrendState = 'UP' | 'STEADY' | 'DOWN'
 
 export interface ChartPoint {
   tradeDate: string
