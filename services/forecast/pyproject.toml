@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stokz-forecast"
+version = "0.1.0"
+description = "Forecast pipeline scaffold for the Stokz swing lab"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0.0",
+  "pandas>=2.2.0",
+  "pydantic>=2.8.0",
+  "yfinance>=0.2.54"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0"
+]
+# TimesFM stays optional because runtime setup can vary by platform and accelerator.
+timesfm = [
+  "timesfm>=1.2.0"
+]
+
+[project.scripts]
+stokz-forecast = "stokz_forecast.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

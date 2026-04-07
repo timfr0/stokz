@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: stokz-forecast
+Version: 0.1.0
+Summary: Forecast pipeline scaffold for the Stokz swing lab
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=2.0.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: pydantic>=2.8.0
+Requires-Dist: yfinance>=0.2.54
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Provides-Extra: timesfm
+Requires-Dist: timesfm>=1.2.0; extra == "timesfm"
+
+# Stokz Forecast Service
+
+Python service scaffold for the Stokz forecasting lab.
+
+## Responsibilities
+- manage the fixed ticker universe
+- compute daily log returns from close prices
+- provide baseline forecasts
+- wrap TimesFM behind a safe adapter boundary
+- classify rule-based signals
+- shape notification-ready payloads
+- export demo forecasts for the web dashboard
+
+## Commands
+```bash
+pip install -e .[dev]
+python -m stokz_forecast.cli demo
+python -m stokz_forecast.cli export-demo
+pytest -q
+```
+
+## Placeholder Mode
+If `STOKZ_TIMESFM_BACKEND=placeholder`, or if a TimesFM runtime is unavailable, the adapter falls back to a deterministic rolling-mean forecast. That's good enough for scaffolding and UI wiring, not for any claim of validated forecasting performance.
