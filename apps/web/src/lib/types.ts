@@ -47,6 +47,7 @@ export interface TickerForecast {
   notes: string
   currentClose: number
   targetClose: number
+  entryPriceTarget: number
   currentPositionShares: number
   isActionable: boolean
   chartSeries: ForecastChartSeries | null
