@@ -1,6 +1,7 @@
 import portfolioSetups from '../../../../services/forecast/generated/portfolio-setups.json'
 import chartSeries from '../../../../services/forecast/generated/chart-series.json'
-import type { DashboardData, ForecastChartSeries, TickerForecast } from './types'
+import reviewIndex from '../../../../services/forecast/generated/reviews/index.json'
+import type { DailyReviewSummary, DashboardData, ForecastChartSeries, ReviewSetupItem, TickerForecast } from './types'
 
 type RawSetup = {
   ticker: string
@@ -44,6 +45,10 @@ type RawChartRow = {
   forecast: { trade_date: string; close: number }[]
 }
 
+type RawReviewSetup = ReviewSetupItem
+
+type RawReviewSummary = DailyReviewSummary
+
 const chartMap = new Map<string, ForecastChartSeries>(
   (chartSeries as unknown as RawChartRow[]).map((row) => [
     row.ticker,
@@ -59,6 +64,13 @@ const chartMap = new Map<string, ForecastChartSeries>(
     },
   ]),
 )
+
+const reviews = (reviewIndex as unknown as RawReviewSummary[]).map((review) => ({
+  ...review,
+  topLongs: (review.topLongs ?? []) as RawReviewSetup[],
+  riskReductions: (review.riskReductions ?? []) as RawReviewSetup[],
+  watchlist: (review.watchlist ?? []) as RawReviewSetup[],
+}))
 
 export const dashboardData: DashboardData = {
   forecasts: (portfolioSetups as unknown as RawSetup[]).map((row) => ({
@@ -94,4 +106,6 @@ export const dashboardData: DashboardData = {
     })),
   } as TickerForecast)),
   generatedAtLabel: (portfolioSetups as unknown as RawSetup[])[0]?.as_of_date ?? new Date().toISOString().slice(0, 10),
+  reviews,
+  latestReview: reviews[0] ?? null,
 }

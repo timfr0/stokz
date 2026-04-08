@@ -1,0 +1,110 @@
+name: Daily Site Publish
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '35 22 * * 1-5'
+    - cron: '35 23 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stokz-daily-site-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether this schedule matches 5:35 PM Chicago
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          now = datetime.now(ZoneInfo('America/Chicago'))
+          is_manual = os.environ.get('EVENT_NAME') == 'workflow_dispatch'
+          should_run = is_manual or (now.weekday() < 5 and now.hour == 17 and 30 <= now.minute <= 50)
+
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as fh:
+              fh.write(f"should_run={'true' if should_run else 'false'}\n")
+              fh.write(f"local_stamp={now.strftime('%Y-%m-%d %I:%M %p %Z')}\n")
+          PY
+
+      - name: Skip note
+        if: steps.gate.outputs.should_run != 'true'
+        run: echo "Skipping run because local Chicago time is ${{ steps.gate.outputs.local_stamp }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Python
+        if: steps.gate.outputs.should_run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup pnpm
+        if: steps.gate.outputs.should_run == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node
+        if: steps.gate.outputs.should_run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install web dependencies
+        if: steps.gate.outputs.should_run == 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Install forecast service
+        if: steps.gate.outputs.should_run == 'true'
+        run: python -m pip install -e ./services/forecast
+
+      - name: Generate publish-ready artifacts
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -a
+          source .env.example
+          set +a
+          export STOKZ_TIMESFM_BACKEND=placeholder
+          python -m stokz_forecast.cli publish-site-data
+
+      - name: Validate web build
+        if: steps.gate.outputs.should_run == 'true'
+        run: pnpm --filter web build
+
+      - name: Add review to workflow summary
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          if [ -f services/forecast/generated/reviews/latest-report.md ]; then
+            cat services/forecast/generated/reviews/latest-report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit generated data
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add services/forecast/generated
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -m "chore: publish daily site data ($(date -u +%F))"
+          git push

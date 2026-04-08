@@ -49,19 +49,43 @@ def write_json_array(path: Path, rows: list[dict[str, Any]]) -> None:
     path.write_text(json.dumps(rows, indent=2), encoding='utf-8')
 
 
+def _merge_unique(
+    existing: list[dict[str, Any]],
+    incoming: list[dict[str, Any]],
+    key_builder,
+    sort_key,
+) -> list[dict[str, Any]]:
+    merged: dict[tuple[Any, ...], dict[str, Any]] = {}
+    for row in existing:
+        merged[key_builder(row)] = row
+    for row in incoming:
+        merged[key_builder(row)] = row
+    return sorted(merged.values(), key=sort_key)
+
+
 def append_forecast_history(base_dir: Path, rows: list[dict[str, Any]]) -> Path:
     path = _forecast_history_path(base_dir)
     existing = read_json_array(path)
-    existing.extend(rows)
-    write_json_array(path, existing)
+    merged_rows = _merge_unique(
+        existing,
+        rows,
+        key_builder=lambda row: (str(row.get('ticker')), str(row.get('as_of_date')), str(row.get('target_date'))),
+        sort_key=lambda row: (str(row.get('as_of_date')), str(row.get('ticker')), str(row.get('target_date'))),
+    )
+    write_json_array(path, merged_rows)
     return path
 
 
 def append_evaluation_history(base_dir: Path, rows: list[dict[str, Any]]) -> Path:
     path = _evaluation_history_path(base_dir)
     existing = read_json_array(path)
-    existing.extend(rows)
-    write_json_array(path, existing)
+    merged_rows = _merge_unique(
+        existing,
+        rows,
+        key_builder=lambda row: (str(row.get('ticker')), str(row.get('as_of_date')), int(row.get('horizon_days', 0))),
+        sort_key=lambda row: (str(row.get('as_of_date')), str(row.get('ticker')), int(row.get('horizon_days', 0))),
+    )
+    write_json_array(path, merged_rows)
     return path
 
 

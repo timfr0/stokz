@@ -7,6 +7,7 @@ from pathlib import Path
 from .config import load_settings
 from .notifications import build_delivery_summary
 from .pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
+from .reviews import build_daily_review, write_daily_review_artifacts
 from .timesfm_adapter import TimesFMAdapter
 
 
@@ -51,6 +52,33 @@ def daily_refresh(output_dir: Path | None = None) -> int:
     print(f'Daily refresh complete. Setups: {len(artifacts.setups)}, notifications: {len(artifacts.notification_events)}')
     print(build_delivery_summary(artifacts.setups))
     print(f'Artifacts: {paths["setups"]} | {paths["charts"]} | {paths["notifications"]}')
+    return 0
+
+
+def daily_review(output_dir: Path | None = None) -> int:
+    destination = output_dir or _generated_dir()
+    artifacts = build_dashboard_artifacts()
+    write_dashboard_artifacts(artifacts, output_dir=destination)
+    review = build_daily_review(artifacts)
+    paths = write_daily_review_artifacts(review, base_dir=destination)
+    print(f"Daily review complete for {review['reviewDate']}")
+    print(review['analystDecision'])
+    print(f"Review artifacts: {paths['index']} | {paths['summary']} | {paths['report']}")
+    return 0
+
+
+def publish_site_data(output_dir: Path | None = None) -> int:
+    destination = output_dir or _generated_dir()
+    artifacts = build_dashboard_artifacts()
+    dashboard_paths = write_dashboard_artifacts(artifacts, output_dir=destination)
+    review = build_daily_review(artifacts)
+    review_paths = write_daily_review_artifacts(review, base_dir=destination)
+    print(f"Publish-ready refresh complete for {review['reviewDate']}")
+    print(build_delivery_summary(artifacts.setups))
+    print(review['operatorSummary'])
+    print(
+        f"Artifacts: {dashboard_paths['setups']} | {dashboard_paths['charts']} | {dashboard_paths['notifications']} | {review_paths['index']} | {review_paths['report']}"
+    )
     return 0
 
 
@@ -111,6 +139,15 @@ def build_parser() -> argparse.ArgumentParser:
     refresh_parser = subparsers.add_parser('daily-refresh', help='Run the full daily refresh and print a delivery summary')
     refresh_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
 
+    review_parser = subparsers.add_parser('daily-review', help='Refresh artifacts and write the website review archive files')
+    review_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
+
+    publish_parser = subparsers.add_parser('publish-site-data', help='Refresh dashboard artifacts and write review/archive files for GitHub + Vercel')
+    publish_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
+
+    five_parser = subparsers.add_parser('five-pm-report', help='Alias for publish-site-data for after-close publishing')
+    five_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
+
     subparsers.add_parser('runtime-status', help='Print TimesFM runtime status and fallback reason')
 
     return parser
@@ -132,6 +169,12 @@ def main(argv: list[str] | None = None) -> int:
         return export_chart_series(output_path=args.output)
     if args.command == 'daily-refresh':
         return daily_refresh(output_dir=args.output_dir)
+    if args.command == 'daily-review':
+        return daily_review(output_dir=args.output_dir)
+    if args.command == 'publish-site-data':
+        return publish_site_data(output_dir=args.output_dir)
+    if args.command == 'five-pm-report':
+        return publish_site_data(output_dir=args.output_dir)
     if args.command == 'runtime-status':
         return runtime_status()
 

@@ -3,12 +3,12 @@
     "ticker": "AMD",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": 0.00427,
+    "predicted_return": 0.024448,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.00427,
-        "target_close": 221.1222,
+        "predicted_return": 0.024448,
+        "target_close": 227.0127,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -16,8 +16,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.007046,
-        "target_close": 221.7368,
+        "predicted_return": 0.040339,
+        "target_close": 230.649,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -25,26 +25,26 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.009395,
-        "target_close": 222.2582,
+        "predicted_return": 0.053785,
+        "target_close": 233.7713,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
   },
   {
     "ticker": "ANET",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": 0.001077,
+    "predicted_return": 0.028088,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.001077,
-        "target_close": 126.3861,
+        "predicted_return": 0.028088,
+        "target_close": 137.4469,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -52,8 +52,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.001777,
-        "target_close": 126.4746,
+        "predicted_return": 0.046345,
+        "target_close": 139.9793,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -61,134 +61,26 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.00237,
-        "target_close": 126.5495,
+        "predicted_return": 0.061793,
+        "target_close": 142.1585,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
-  },
-  {
-    "ticker": "CLS",
-    "as_of_date": "2026-04-07",
-    "target_date": "2026-04-08",
-    "predicted_return": 0.002369,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.002369,
-        "target_close": 292.9932,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 0.64,
-        "measured_mae": 0.011
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.003908,
-        "target_close": 293.4446,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 0.57,
-        "measured_mae": 0.018
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.005211,
-        "target_close": 293.8272,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 0.52,
-        "measured_mae": 0.024
-      }
-    ],
-    "model_name": "timesfm"
-  },
-  {
-    "ticker": "MRVL",
-    "as_of_date": "2026-04-07",
-    "target_date": "2026-04-08",
-    "predicted_return": 0.004005,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.004005,
-        "target_close": 109.9495,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 0.64,
-        "measured_mae": 0.011
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.006609,
-        "target_close": 110.2361,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 0.57,
-        "measured_mae": 0.018
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.008811,
-        "target_close": 110.4792,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 0.52,
-        "measured_mae": 0.024
-      }
-    ],
-    "model_name": "timesfm"
-  },
-  {
-    "ticker": "VRT",
-    "as_of_date": "2026-04-07",
-    "target_date": "2026-04-08",
-    "predicted_return": 0.002593,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.002593,
-        "target_close": 259.4019,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 0.64,
-        "measured_mae": 0.011
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.004279,
-        "target_close": 259.8395,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 0.57,
-        "measured_mae": 0.018
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.005705,
-        "target_close": 260.2104,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 0.52,
-        "measured_mae": 0.024
-      }
-    ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
   },
   {
     "ticker": "AVGO",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": -0.002087,
+    "predicted_return": 0.025896,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.002087,
-        "target_close": 313.7745,
+        "predicted_return": 0.025896,
+        "target_close": 342.7315,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -196,8 +88,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.003444,
-        "target_close": 313.3491,
+        "predicted_return": 0.042728,
+        "target_close": 348.5493,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -205,26 +97,26 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.004591,
-        "target_close": 312.9896,
+        "predicted_return": 0.056971,
+        "target_close": 353.5491,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
   },
   {
-    "ticker": "ORCL",
+    "ticker": "CLS",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": -0.006775,
+    "predicted_return": 0.02895,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.006775,
-        "target_close": 144.5572,
+        "predicted_return": 0.02895,
+        "target_close": 306.0738,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -232,8 +124,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.011179,
-        "target_close": 143.922,
+        "predicted_return": 0.047768,
+        "target_close": 311.8879,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -241,26 +133,26 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.014906,
-        "target_close": 143.3867,
+        "predicted_return": 0.06369,
+        "target_close": 316.8937,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
   },
   {
     "ticker": "DELL",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": 0.001507,
+    "predicted_return": 0.015232,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.001507,
-        "target_close": 173.4412,
+        "predicted_return": 0.015232,
+        "target_close": 180.4172,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -268,8 +160,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.002487,
-        "target_close": 173.6112,
+        "predicted_return": 0.025132,
+        "target_close": 182.2123,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -277,26 +169,98 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.003316,
-        "target_close": 173.7552,
+        "predicted_return": 0.033509,
+        "target_close": 183.7452,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
+  },
+  {
+    "ticker": "MRVL",
+    "as_of_date": "2026-04-07",
+    "target_date": "2026-04-08",
+    "predicted_return": 0.043931,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.043931,
+        "target_close": 114.2922,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 0.64,
+        "measured_mae": 0.011
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.072485,
+        "target_close": 117.6029,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 0.57,
+        "measured_mae": 0.018
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.096647,
+        "target_close": 120.479,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 0.52,
+        "measured_mae": 0.024
+      }
+    ],
+    "model_name": "timesfm-fallback"
+  },
+  {
+    "ticker": "ORCL",
+    "as_of_date": "2026-04-07",
+    "target_date": "2026-04-08",
+    "predicted_return": 0.0062,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.0062,
+        "target_close": 144.0604,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 0.64,
+        "measured_mae": 0.011
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.01023,
+        "target_close": 144.6421,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 0.57,
+        "measured_mae": 0.018
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.013639,
+        "target_close": 145.1361,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 0.52,
+        "measured_mae": 0.024
+      }
+    ],
+    "model_name": "timesfm-fallback"
   },
   {
     "ticker": "SMCI",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": -0.005126,
+    "predicted_return": 0.014733,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.005126,
-        "target_close": 21.9373,
+        "predicted_return": 0.014733,
+        "target_close": 23.0065,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -304,8 +268,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.008458,
-        "target_close": 21.8643,
+        "predicted_return": 0.02431,
+        "target_close": 23.2279,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -313,26 +277,26 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.011277,
-        "target_close": 21.8027,
+        "predicted_return": 0.032413,
+        "target_close": 23.4169,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
   },
   {
     "ticker": "SYM",
     "as_of_date": "2026-04-07",
     "target_date": "2026-04-08",
-    "predicted_return": -0.000338,
+    "predicted_return": 0.01686,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.000338,
-        "target_close": 53.282,
+        "predicted_return": 0.01686,
+        "target_close": 52.457,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 0.64,
@@ -340,8 +304,8 @@
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.000557,
-        "target_close": 53.2703,
+        "predicted_return": 0.027819,
+        "target_close": 53.0351,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 0.57,
@@ -349,14 +313,50 @@
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.000743,
-        "target_close": 53.2604,
+        "predicted_return": 0.037092,
+        "target_close": 53.5292,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 0.52,
         "measured_mae": 0.024
       }
     ],
-    "model_name": "timesfm"
+    "model_name": "timesfm-fallback"
+  },
+  {
+    "ticker": "VRT",
+    "as_of_date": "2026-04-07",
+    "target_date": "2026-04-08",
+    "predicted_return": 0.022646,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.022646,
+        "target_close": 268.3077,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 0.64,
+        "measured_mae": 0.011
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.037365,
+        "target_close": 272.2863,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 0.57,
+        "measured_mae": 0.018
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.04982,
+        "target_close": 275.6989,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 0.52,
+        "measured_mae": 0.024
+      }
+    ],
+    "model_name": "timesfm-fallback"
   }
 ]
