@@ -71,6 +71,16 @@ export interface ReviewSetupItem {
   notes: string
 }
 
+export interface NewsFeedItem {
+  id: string
+  ticker: string
+  title: string
+  summary: string
+  source: string
+  publishedAt: string | null
+  url: string
+}
+
 export interface DailyReviewSummary {
   reviewDate: string
   generatedAt: string
@@ -92,6 +102,7 @@ export interface DailyReviewSummary {
   topLongs: ReviewSetupItem[]
   riskReductions: ReviewSetupItem[]
   watchlist: ReviewSetupItem[]
+  newsItems: NewsFeedItem[]
 }
 
 export interface DashboardData {

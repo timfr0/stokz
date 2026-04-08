@@ -1,11 +1,18 @@
 from __future__ import annotations
 
+import html
 import json
+import re
 from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
+import yfinance as yf
+
 from .data_models import DashboardArtifacts, SetupRecommendation
+from .evaluation import read_json_array, summarize_horizon_metrics
+
+_TAG_RE = re.compile(r'<[^>]+>')
 
 
 def _reviews_dir(base_dir: Path) -> Path:
@@ -33,7 +40,14 @@ def _first_horizon_metric(setup: SetupRecommendation, field: str) -> float | Non
     return getattr(horizon, field)
 
 
-def _map_setup(setup: SetupRecommendation) -> dict[str, Any]:
+def _metric_from_summary(summary: dict[int, dict[str, float]], horizon_days: int, field: str, fallback: float | None) -> float | None:
+    horizon_summary = summary.get(horizon_days)
+    if horizon_summary and field in horizon_summary:
+        return float(horizon_summary[field])
+    return fallback
+
+
+def _map_setup(setup: SetupRecommendation, metric_summary: dict[int, dict[str, float]]) -> dict[str, Any]:
     return {
         'ticker': setup.ticker,
         'portfolioAction': setup.portfolio_action,
@@ -45,8 +59,8 @@ def _map_setup(setup: SetupRecommendation) -> dict[str, Any]:
         'currentClose': _round(setup.current_close),
         'entryPriceTarget': _entry_price_target(setup),
         'targetClose': _round(setup.target_close if setup.target_close is not None else setup.current_close),
-        'oneDayHitRate': _first_horizon_metric(setup, 'measured_hit_rate'),
-        'oneDayMae': _first_horizon_metric(setup, 'measured_mae'),
+        'oneDayHitRate': _metric_from_summary(metric_summary, 1, 'hit_rate', _first_horizon_metric(setup, 'measured_hit_rate')),
+        'oneDayMae': _metric_from_summary(metric_summary, 1, 'mae', _first_horizon_metric(setup, 'measured_mae')),
         'notes': setup.notes,
     }
 
@@ -93,10 +107,81 @@ def _next_session_plan(top_longs: list[SetupRecommendation], risk_reductions: li
     return f'Open with {buy_names} on the main board, keep {sell_names} marked for risk control, and let weaker holds prove themselves before touching them.'
 
 
-def build_daily_review(artifacts: DashboardArtifacts) -> dict[str, Any]:
+def _strip_html(value: str | None) -> str:
+    if not value:
+        return ''
+    cleaned = _TAG_RE.sub(' ', value)
+    cleaned = html.unescape(cleaned)
+    return ' '.join(cleaned.split())
+
+
+def _candidate_news_tickers(top_longs: list[SetupRecommendation], risk_reductions: list[SetupRecommendation], watchlist: list[SetupRecommendation]) -> list[str]:
+    ordered = [setup.ticker for setup in top_longs[:3]] + [setup.ticker for setup in risk_reductions[:2]] + [setup.ticker for setup in watchlist[:2]]
+    unique: list[str] = []
+    for ticker in ordered:
+        if ticker not in unique:
+            unique.append(ticker)
+    return unique[:5]
+
+
+def _fetch_news_items(tickers: list[str], per_ticker: int = 2, max_items: int = 8) -> list[dict[str, Any]]:
+    feed: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+    recent_cutoff = datetime.now(UTC).timestamp() - (7 * 24 * 60 * 60)
+
+    for ticker in tickers:
+        try:
+            raw_items = yf.Ticker(ticker).get_news(count=per_ticker) or []
+        except Exception:
+            raw_items = []
+
+        for raw in raw_items:
+            content = raw.get('content', raw) if isinstance(raw, dict) else {}
+            title = str(content.get('title') or '').strip()
+            url = (
+                ((content.get('clickThroughUrl') or {}).get('url'))
+                or ((content.get('canonicalUrl') or {}).get('url'))
+                or ''
+            )
+            if not title or not url or url in seen_urls:
+                continue
+
+            summary = _strip_html(str(content.get('summary') or content.get('description') or ''))
+            source = str((content.get('provider') or {}).get('displayName') or 'Yahoo Finance').strip()
+            published_at = content.get('pubDate')
+
+            published_ts: float | None = None
+            if isinstance(published_at, str):
+                try:
+                    published_ts = datetime.fromisoformat(published_at.replace('Z', '+00:00')).timestamp()
+                except Exception:
+                    published_ts = None
+            if published_ts is not None and published_ts < recent_cutoff:
+                continue
+
+            seen_urls.add(url)
+            feed.append(
+                {
+                    'id': str(content.get('id') or f'{ticker}:{len(feed)}'),
+                    'ticker': ticker,
+                    'title': title,
+                    'summary': summary[:280],
+                    'source': source,
+                    'publishedAt': published_at if isinstance(published_at, str) else None,
+                    'url': url,
+                }
+            )
+            if len(feed) >= max_items:
+                return feed
+
+    return feed
+
+
+def build_daily_review(artifacts: DashboardArtifacts, base_dir: Path | None = None) -> dict[str, Any]:
     setups = list(artifacts.setups)
     generated_at = datetime.now(UTC).isoformat()
     review_date = setups[0].as_of_date.isoformat() if setups else date.today().isoformat()
+    metric_summary = summarize_horizon_metrics(read_json_array(base_dir / 'history' / 'evaluation-history.json')) if base_dir else {}
 
     buy_setups = [setup for setup in setups if setup.portfolio_action == 'BUY']
     sell_setups = [setup for setup in setups if setup.portfolio_action == 'SELL']
@@ -105,7 +190,7 @@ def build_daily_review(artifacts: DashboardArtifacts) -> dict[str, Any]:
     bullish_count = sum(1 for setup in setups if setup.predicted_direction == 'bullish')
     bearish_count = sum(1 for setup in setups if setup.predicted_direction == 'bearish')
     one_day_hit_rates = [rate for rate in (_first_horizon_metric(setup, 'measured_hit_rate') for setup in setups) if rate is not None]
-    average_hit_rate = _mean(one_day_hit_rates)
+    average_hit_rate = metric_summary.get(1, {}).get('hit_rate') if metric_summary.get(1) else _mean(one_day_hit_rates)
     average_predicted_return = _mean([setup.predicted_return for setup in setups]) or 0.0
 
     top_longs = sorted(buy_setups, key=lambda setup: (-setup.conviction_score, -setup.predicted_return, setup.ticker))[:3]
@@ -117,6 +202,7 @@ def build_daily_review(artifacts: DashboardArtifacts) -> dict[str, Any]:
     risk_posture = _risk_posture(len(buy_setups), len(sell_setups), len(hold_setups))
     operator_summary = _operator_summary(regime, len(buy_setups), len(sell_setups), average_hit_rate)
     next_session_plan = _next_session_plan(top_longs, risk_reductions)
+    news_items = _fetch_news_items(_candidate_news_tickers(top_longs, risk_reductions, watchlist))
 
     return {
         'reviewDate': review_date,
@@ -136,9 +222,10 @@ def build_daily_review(artifacts: DashboardArtifacts) -> dict[str, Any]:
         'bearishCount': bearish_count,
         'averagePredictedReturn': _round(average_predicted_return, 6),
         'averageOneDayHitRate': _round(average_hit_rate, 4) if average_hit_rate is not None else None,
-        'topLongs': [_map_setup(setup) for setup in top_longs],
-        'riskReductions': [_map_setup(setup) for setup in risk_reductions],
-        'watchlist': [_map_setup(setup) for setup in watchlist],
+        'topLongs': [_map_setup(setup, metric_summary) for setup in top_longs],
+        'riskReductions': [_map_setup(setup, metric_summary) for setup in risk_reductions],
+        'watchlist': [_map_setup(setup, metric_summary) for setup in watchlist],
+        'newsItems': news_items,
     }
 
 
@@ -190,6 +277,16 @@ def build_review_markdown(review: dict[str, Any]) -> str:
     lines.extend(_section('Top longs', review['topLongs']))
     lines.extend(_section('Risk reductions', review['riskReductions']))
     lines.extend(_section('Watchlist holds', review['watchlist']))
+
+    news_items = review.get('newsItems', [])
+    lines.extend(['## Research news feed', ''])
+    if not news_items:
+        lines.extend(['- No linked news items pulled for this run', ''])
+    else:
+        for item in news_items:
+            lines.append(f"- {item['ticker']} | {item['title']} | {item['source']} | {item['url']}")
+        lines.append('')
+
     return '\n'.join(lines).strip() + '\n'
 
 
