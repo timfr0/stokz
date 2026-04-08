@@ -35,7 +35,7 @@ export function WatchlistSignalStack({ forecasts, selectedTicker, onSelectTicker
         <div className="mb-3 text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Priority chart stack</div>
         <div className="grid gap-4">
           {desktopForecasts.map((forecast) => {
-            const trend = getTrendState(forecast.predictedReturn)
+            const trend = getTrendState(forecast.predictedReturn) as keyof typeof trendTone
             const stats = buildMobileStats(forecast)
             const isActive = forecast.ticker === selectedTicker
 
@@ -94,7 +94,7 @@ export function WatchlistSignalStack({ forecasts, selectedTicker, onSelectTicker
 
       <div className="mt-4 grid gap-4 lg:hidden">
         {forecasts.map((forecast) => {
-          const trend = getTrendState(forecast.predictedReturn)
+          const trend = getTrendState(forecast.predictedReturn) as keyof typeof trendTone
           const stats = buildMobileStats(forecast)
           const isActive = forecast.ticker === selectedTicker
 

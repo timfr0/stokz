@@ -7,6 +7,8 @@ from pathlib import Path
 from .config import load_settings
 from .notifications import build_delivery_summary
 from .pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
+from .review_loop import generate_daily_review
+from .summary_writer import build_5pm_report
 from .timesfm_adapter import TimesFMAdapter
 
 
@@ -51,6 +53,27 @@ def daily_refresh(output_dir: Path | None = None) -> int:
     print(f'Daily refresh complete. Setups: {len(artifacts.setups)}, notifications: {len(artifacts.notification_events)}')
     print(build_delivery_summary(artifacts.setups))
     print(f'Artifacts: {paths["setups"]} | {paths["charts"]} | {paths["notifications"]}')
+    return 0
+
+
+def daily_review(output_dir: Path | None = None) -> int:
+    artifacts = build_dashboard_artifacts()
+    generated_dir = output_dir or _generated_dir()
+    write_dashboard_artifacts(artifacts, output_dir=generated_dir)
+    review_paths = generate_daily_review(artifacts=artifacts, base_dir=generated_dir)
+    print('Daily review generated:')
+    for key, value in review_paths.items():
+        print(f'- {key}: {value}')
+    return 0
+
+
+def five_pm_report(output_dir: Path | None = None) -> int:
+    artifacts = build_dashboard_artifacts()
+    generated_dir = output_dir or _generated_dir()
+    write_dashboard_artifacts(artifacts, output_dir=generated_dir)
+    review_paths = generate_daily_review(artifacts=artifacts, base_dir=generated_dir)
+    review_payload = json.loads(review_paths['review_json'].read_text(encoding='utf-8'))
+    print(build_5pm_report(review_payload))
     return 0
 
 
@@ -111,6 +134,12 @@ def build_parser() -> argparse.ArgumentParser:
     refresh_parser = subparsers.add_parser('daily-refresh', help='Run the full daily refresh and print a delivery summary')
     refresh_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
 
+    review_parser = subparsers.add_parser('daily-review', help='Run the full daily review loop and write dated review artifacts')
+    review_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
+
+    report_parser = subparsers.add_parser('five-pm-report', help='Generate the dated review package and print the end-of-day report summary')
+    report_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
+
     subparsers.add_parser('runtime-status', help='Print TimesFM runtime status and fallback reason')
 
     return parser
@@ -132,6 +161,10 @@ def main(argv: list[str] | None = None) -> int:
         return export_chart_series(output_path=args.output)
     if args.command == 'daily-refresh':
         return daily_refresh(output_dir=args.output_dir)
+    if args.command == 'daily-review':
+        return daily_review(output_dir=args.output_dir)
+    if args.command == 'five-pm-report':
+        return five_pm_report(output_dir=args.output_dir)
     if args.command == 'runtime-status':
         return runtime_status()
 

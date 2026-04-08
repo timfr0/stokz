@@ -35,6 +35,25 @@ C:\Users\timfr\AppData\Local\Programs\Python\Python312\python.exe -m pytest -q
 5. Export `services/forecast/generated/portfolio-setups.json`, `chart-series.json`, and notification/history artifacts.
 6. Render the dashboard directly from those artifacts.
 7. Generate notification events only for actionable setups.
+8. Run the dated daily review loop that writes `reviews/YYYY-MM-DD/` artifacts and includes a full desk of roles before tomorrow changes are trusted.
+
+## Daily Desk Roles
+- `market_researcher`: collects market/news/event context, broad market movers, and ticker-specific watch items
+- `forecast_operator`: runs the prediction/artifact pipeline
+- `evaluator`: scores predictions vs outcomes
+- `analyst`: decides whether proposed changes are justified
+- `risk_manager`: constrains changes when error/regime risk is elevated
+- `strategy_tuner`: proposes bounded threshold/weight changes
+- `summary_writer`: produces operator-facing report output
+
+## Automation Direction
+The system is being built so the daily loop can run without manual intervention:
+- midday refresh
+- after-close refresh
+- dated end-of-day review package
+- `five-pm-report` summary generation
+- Discord summary/report delivery
+- tomorrow recommendation block gated by analyst + risk review
 
 ## Honest Status
 This is still a forecasting lab, not an auto-trading system. The dashboard surfaces prep and portfolio context. It does not claim execution, brokerage connectivity, or validated alpha.

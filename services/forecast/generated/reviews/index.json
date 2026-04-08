@@ -1,0 +1,406 @@
+[
+  {
+    "review_date": "2026-04-07",
+    "generated_at": "2026-04-08T00:08:41.347142+00:00",
+    "spy_regime": "mild risk-on",
+    "spy_move": "+0.42%",
+    "news_items": [
+      "No major macro shock flagged in this lightweight pass.",
+      "Upcoming earnings should be treated as override-risk for threshold changes.",
+      "Check whether AMD had company-specific news, guidance, or analyst changes before trusting misses as pure model failure.",
+      "Check whether ANET had company-specific news, guidance, or analyst changes before trusting misses as pure model failure.",
+      "Check whether CLS had company-specific news, guidance, or analyst changes before trusting misses as pure model failure.",
+      "Check whether MRVL had company-specific news, guidance, or analyst changes before trusting misses as pure model failure."
+    ],
+    "analyst_decision": {
+      "decision": "defer",
+      "confidence": "medium",
+      "evidence_quality": "limited",
+      "rationale": "The system should keep collecting evidence before changing thresholds or weights.",
+      "approved_adjustments": [],
+      "deferred_adjustments": [
+        {
+          "parameter": "buy_threshold",
+          "direction": "hold",
+          "reason": "1D hit rate is acceptable, so keep short-horizon BUY logic stable.",
+          "analyst_note": "1D hit rate is not weak enough to justify immediate tightening."
+        }
+      ]
+    },
+    "risk_assessment": {
+      "risk_level": "moderate",
+      "trade_posture": "balanced",
+      "flags": [
+        "No major risk escalation from current review metrics."
+      ],
+      "recommendation": "Normal review posture is acceptable, but still avoid aggressive threshold jumps on a single day of evidence."
+    },
+    "top_hits": [
+      {
+        "ticker": "ORCL",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 143.17,
+        "current_price": 143.17,
+        "target_close": 142.0303,
+        "predicted_return": -0.007992,
+        "baseline_return": 0.0062,
+        "predicted_direction": "bearish",
+        "confidence_label": "medium",
+        "signal_direction": "SHORT",
+        "portfolio_action": "SELL",
+        "setup_label": "Risk reduction",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.050464,
+          0.034479
+        ],
+        "trend_bias": "Range",
+        "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
+        "model_name": "timesfm",
+        "current_position_shares": 22,
+        "is_actionable": true,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": -0.007992,
+            "target_close": 142.0303,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": -0.013187,
+            "target_close": 141.2944,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": -0.017583,
+            "target_close": 140.6746,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": true,
+          "realized_volatility": 0.038611
+        }
+      },
+      {
+        "ticker": "DELL",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 177.69,
+        "current_price": 177.69,
+        "target_close": 178.6264,
+        "predicted_return": 0.005256,
+        "baseline_return": 0.015232,
+        "predicted_direction": "bullish",
+        "confidence_label": "medium",
+        "signal_direction": "LONG",
+        "portfolio_action": "HOLD",
+        "setup_label": "Existing position management",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.030804,
+          0.041316
+        ],
+        "trend_bias": "Uptrend",
+        "notes": "You already own shares here. Keep the position on, manage the risk, and do not force a fresh add.",
+        "model_name": "timesfm",
+        "current_position_shares": 18,
+        "is_actionable": false,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": 0.005256,
+            "target_close": 178.6264,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": 0.008673,
+            "target_close": 179.2378,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": 0.011564,
+            "target_close": 179.7567,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": true,
+          "realized_volatility": 0.032782
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 22.67,
+        "current_price": 22.67,
+        "target_close": 22.5538,
+        "predicted_return": -0.005138,
+        "baseline_return": 0.014733,
+        "predicted_direction": "bearish",
+        "confidence_label": "medium",
+        "signal_direction": "SHORT",
+        "portfolio_action": "HOLD",
+        "setup_label": "Watchlist only",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.061636,
+          0.051361
+        ],
+        "trend_bias": "Range",
+        "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
+        "model_name": "timesfm",
+        "current_position_shares": 0.0,
+        "is_actionable": false,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": -0.005138,
+            "target_close": 22.5538,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": -0.008477,
+            "target_close": 22.4786,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": -0.011303,
+            "target_close": 22.4152,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": false,
+          "realized_volatility": 0.051362
+        }
+      }
+    ],
+    "top_misses": [
+      {
+        "ticker": "AMD",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 221.53,
+        "current_price": 221.53,
+        "target_close": 222.2205,
+        "predicted_return": 0.003112,
+        "baseline_return": 0.024448,
+        "predicted_direction": "bullish",
+        "confidence_label": "medium",
+        "signal_direction": "LONG",
+        "portfolio_action": "BUY",
+        "setup_label": "Fresh long setup",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.039845,
+          0.046069
+        ],
+        "trend_bias": "Range",
+        "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+        "model_name": "timesfm",
+        "current_position_shares": 0.0,
+        "is_actionable": true,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": 0.003112,
+            "target_close": 222.2205,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": 0.005135,
+            "target_close": 222.6704,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": 0.006846,
+            "target_close": 223.0519,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": false,
+          "realized_volatility": 0.039051
+        }
+      },
+      {
+        "ticker": "ANET",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 133.64,
+        "current_price": 133.64,
+        "target_close": 133.8899,
+        "predicted_return": 0.001868,
+        "baseline_return": 0.028088,
+        "predicted_direction": "bullish",
+        "confidence_label": "medium",
+        "signal_direction": "LONG",
+        "portfolio_action": "BUY",
+        "setup_label": "Fresh long setup",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.034149,
+          0.037886
+        ],
+        "trend_bias": "Range",
+        "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+        "model_name": "timesfm",
+        "current_position_shares": 0.0,
+        "is_actionable": true,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": 0.001868,
+            "target_close": 133.8899,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": 0.003083,
+            "target_close": 134.0526,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": 0.00411,
+            "target_close": 134.1904,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": false,
+          "realized_volatility": 0.032743
+        }
+      },
+      {
+        "ticker": "CLS",
+        "as_of_date": "2026-04-07",
+        "target_date": "2026-04-08",
+        "current_close": 297.34,
+        "current_price": 297.34,
+        "target_close": 298.5752,
+        "predicted_return": 0.004145,
+        "baseline_return": 0.02895,
+        "predicted_direction": "bullish",
+        "confidence_label": "medium",
+        "signal_direction": "LONG",
+        "portfolio_action": "BUY",
+        "setup_label": "Fresh long setup",
+        "conviction_score": 35,
+        "expected_move_range": [
+          -0.046656,
+          0.054947
+        ],
+        "trend_bias": "Uptrend",
+        "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+        "model_name": "timesfm",
+        "current_position_shares": 0.0,
+        "is_actionable": true,
+        "horizon_forecasts": [
+          {
+            "horizon_days": 1,
+            "predicted_return": 0.004145,
+            "target_close": 298.5752,
+            "confidence_band": "highest",
+            "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+            "measured_hit_rate": 0.64,
+            "measured_mae": 0.011
+          },
+          {
+            "horizon_days": 3,
+            "predicted_return": 0.00684,
+            "target_close": 299.3808,
+            "confidence_band": "moderate",
+            "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+            "measured_hit_rate": 0.57,
+            "measured_mae": 0.018
+          },
+          {
+            "horizon_days": 5,
+            "predicted_return": 0.00912,
+            "target_close": 300.0641,
+            "confidence_band": "lower",
+            "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+            "measured_hit_rate": 0.52,
+            "measured_mae": 0.024
+          }
+        ],
+        "metadata_json": {
+          "owns_position": false,
+          "realized_volatility": 0.046183
+        }
+      }
+    ],
+    "tomorrow_config": {
+      "generated_at": "2026-04-08T00:08:41.347142+00:00",
+      "adjustments": [
+        {
+          "parameter": "buy_threshold",
+          "direction": "hold",
+          "reason": "1D hit rate is acceptable, so keep short-horizon BUY logic stable."
+        }
+      ],
+      "notes": [
+        "Broad market tone stayed constructive enough that bullish signals had room to work, but not enough to excuse weak setups.",
+        "Do not auto-promote threshold changes without at least a few rolling days of confirming evidence."
+      ]
+    },
+    "operator_summary": "Stokz daily review, 2026-04-07\nSPY regime: mild risk-on\nAnalyst decision: defer (limited)\nTop hits:\n- ORCL SELL target 142.03\n- DELL HOLD target 178.63\n- SMCI HOLD target 22.55\nWatch-outs:\n- AMD needs caution on extended horizon trust\n- ANET needs caution on extended horizon trust\n- CLS needs caution on extended horizon trust"
+  }
+]

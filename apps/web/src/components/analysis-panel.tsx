@@ -36,7 +36,7 @@ const confidenceTone = {
 const horizons = [1, 3, 5]
 
 export function AnalysisPanel({ forecasts, selectedForecast, selectedTicker, onSelectTicker }: AnalysisPanelProps) {
-  const trend = getTrendState(selectedForecast.predictedReturn)
+  const trend = getTrendState(selectedForecast.predictedReturn) as keyof typeof trendTone
 
   return (
     <section data-testid="analysis-panel" className="mt-10 overflow-hidden border-4 border-[#1a1a1a] bg-white shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">

@@ -41,7 +41,7 @@ export function WatchlistTable({ forecasts, selectedTicker, onSelectTicker }: Wa
           </thead>
           <tbody>
             {forecasts.map((forecast) => {
-              const trend = getTrendState(forecast.predictedReturn)
+              const trend = getTrendState(forecast.predictedReturn) as keyof typeof trendTone
               const oneDay = getHorizonForecast(forecast, 1)
               const isActive = forecast.ticker === selectedTicker
 

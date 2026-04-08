@@ -2,7 +2,7 @@ export type ForecastDirection = 'bullish' | 'bearish' | 'neutral'
 export type ConfidenceLabel = 'low' | 'medium' | 'high'
 export type PortfolioAction = 'BUY' | 'HOLD' | 'SELL'
 export type HorizonConfidence = 'highest' | 'moderate' | 'lower'
-export type TrendState = 'UP' | 'STEADY' | 'DOWN'
+export type TrendState = 'UP' | 'DOWN' | 'STEADY'
 
 export interface ChartPoint {
   tradeDate: string
@@ -55,7 +55,55 @@ export interface TickerForecast {
   horizonForecasts: HorizonForecast[]
 }
 
+export interface ReviewAdjustment {
+  parameter: string
+  direction: string
+  reason: string
+}
+
+export interface DailyReviewSummary {
+  reviewDate: string
+  generatedAt: string
+  spyRegime: string
+  spyMove: string
+  newsItems: string[]
+  analystDecision: {
+    decision: string
+    confidence: string
+    evidenceQuality: string
+    rationale: string
+  }
+  riskAssessment: {
+    riskLevel: string
+    tradePosture: string
+    flags: string[]
+    recommendation: string
+  }
+  topHits: {
+    ticker: string
+    portfolioAction: string
+    targetClose: number
+    predictedReturn: number
+    setupLabel?: string
+    notes?: string
+  }[]
+  topMisses: {
+    ticker: string
+    portfolioAction: string
+    targetClose: number
+    predictedReturn: number
+    setupLabel?: string
+    notes?: string
+  }[]
+  tomorrowConfig: {
+    adjustments: ReviewAdjustment[]
+    notes: string[]
+  }
+  operatorSummary: string
+}
+
 export interface DashboardData {
   forecasts: TickerForecast[]
   generatedAtLabel: string
+  reviews: DailyReviewSummary[]
 }
