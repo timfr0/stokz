@@ -4,6 +4,9 @@ import html
 import json
 import math
 import re
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
@@ -28,6 +31,8 @@ _POSITIVE_KEYWORDS = (
     'record',
     'buy',
     'outperform',
+    'bullish',
+    'squeeze',
 )
 _NEGATIVE_KEYWORDS = (
     'miss',
@@ -45,6 +50,7 @@ _NEGATIVE_KEYWORDS = (
     'fall',
     'sell',
     'underperform',
+    'bearish',
 )
 
 
@@ -157,13 +163,129 @@ def _fetch_news_items(ticker: str, limit: int = 4) -> list[dict[str, Any]]:
     return items
 
 
-def _sentiment_score(news_items: list[dict[str, Any]]) -> int:
+def _google_news_social_search(query: str, max_items: int = 4) -> list[dict[str, Any]]:
+    url = (
+        'https://news.google.com/rss/search?q='
+        + urllib.parse.quote(query)
+        + '&hl=en-US&gl=US&ceid=US:en'
+    )
+
+    try:
+        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        payload = urllib.request.urlopen(request, timeout=20).read()
+        root = ET.fromstring(payload)
+    except Exception:
+        return []
+
+    channel = root.find('channel')
+    if channel is None:
+        return []
+
+    items: list[dict[str, Any]] = []
+    seen_links: set[str] = set()
+
+    for index, item in enumerate(channel.findall('item')):
+        title = (item.findtext('title') or '').strip()
+        link = (item.findtext('link') or '').strip()
+        description = _strip_html(item.findtext('description') or '')
+        published_at = item.findtext('pubDate')
+        if not title or not link or link in seen_links:
+            continue
+
+        clean_title = title
+        source = 'Google News'
+        if ' - ' in title:
+            clean_title, source = title.rsplit(' - ', 1)
+        source_lower = source.lower()
+        source_type = 'reddit' if 'reddit' in source_lower else 'twitter' if source_lower in {'x', 'twitter'} or 'x.com' in description.lower() else 'web'
+
+        seen_links.add(link)
+        items.append(
+            {
+                'id': f'community:{index}:{source_type}',
+                'ticker': '',
+                'title': clean_title.strip(),
+                'summary': description[:320],
+                'source': source,
+                'sourceType': source_type,
+                'publishedAt': published_at,
+                'url': link,
+                'query': query,
+            }
+        )
+        if len(items) >= max_items:
+            break
+
+    return items
+
+
+def _fetch_community_items(ticker: str, company_name: str, limit: int = 4) -> list[dict[str, Any]]:
+    company_stub = ' '.join(company_name.split()[:3]).strip()
+    queries = [
+        f'{ticker} stock site:reddit.com OR site:x.com OR site:twitter.com',
+        f'"{company_stub}" stock site:reddit.com OR site:x.com OR site:twitter.com' if company_stub else '',
+    ]
+
+    items: list[dict[str, Any]] = []
+    seen_titles: set[str] = set()
+    relevance_tokens = {ticker.lower(), company_stub.lower()}
+    investor_tokens = {
+        'stock',
+        'stocks',
+        'share',
+        'shares',
+        'buy',
+        'sell',
+        'bull',
+        'bear',
+        'bullish',
+        'bearish',
+        'earnings',
+        'forecast',
+        'outlook',
+        'price',
+        'analyst',
+        'market',
+        'revenue',
+        'valuation',
+        'guidance',
+    }
+
+    for query in queries:
+        if not query:
+            continue
+        for item in _google_news_social_search(query, max_items=limit):
+            haystack = f"{item.get('title', '')} {item.get('summary', '')}".lower()
+            if not any(token and token in haystack for token in relevance_tokens):
+                continue
+            if not any(token in haystack for token in investor_tokens):
+                continue
+            if item['title'] in seen_titles:
+                continue
+            seen_titles.add(item['title'])
+            item['ticker'] = ticker
+            items.append(item)
+            if len(items) >= limit:
+                return items
+
+    return items
+
+
+def _sentiment_score(items: list[dict[str, Any]]) -> int:
     score = 0
-    for item in news_items:
+    for item in items:
         text = f"{item.get('title', '')} {item.get('summary', '')}".lower()
         score += sum(1 for keyword in _POSITIVE_KEYWORDS if keyword in text)
         score -= sum(1 for keyword in _NEGATIVE_KEYWORDS if keyword in text)
-    return max(-6, min(6, score))
+    return max(-8, min(8, score))
+
+
+def _sentiment_label(score: int) -> str:
+    if score >= 2:
+        return 'positive'
+    if score <= -2:
+        return 'negative'
+    return 'mixed'
 
 
 def _resolve_news_bias(direction: str, sentiment_score: int) -> str:
@@ -203,34 +325,34 @@ def _days_to_earnings(earnings_date: date | None, as_of_date: date) -> int | Non
     return (earnings_date - as_of_date).days
 
 
-def _event_risk(days_to_earnings: int | None, news_bias: str, news_items: list[dict[str, Any]]) -> str:
+def _event_risk(days_to_earnings: int | None, news_bias: str, news_items: list[dict[str, Any]], community_items: list[dict[str, Any]]) -> str:
     if days_to_earnings is not None and days_to_earnings <= 7:
         return 'high'
     if news_bias == 'conflicting':
         return 'high'
     if days_to_earnings is not None and days_to_earnings <= 21:
         return 'moderate'
-    if len(news_items) >= 3:
+    if len(news_items) + len(community_items) >= 5:
         return 'moderate'
     return 'low'
 
 
-def _confidence_adjustment(sentiment_score: int, event_risk: str) -> int:
-    adjustment = sentiment_score * 3
+def _confidence_adjustment(news_score: int, community_score: int, event_risk: str) -> int:
+    adjustment = news_score * 2 + community_score * 2
     if event_risk == 'high':
         adjustment -= 6
     elif event_risk == 'moderate':
         adjustment -= 2
-    return max(-15, min(15, adjustment))
+    return max(-18, min(18, adjustment))
 
 
 def _scenario_probabilities(direction: str, confidence_label: str, sentiment_score: int) -> tuple[int, int, int]:
     base_case = {'low': 52, 'medium': 60, 'high': 68}[confidence_label]
     if direction == 'bullish':
-        bull_case = max(12, min(32, 18 + sentiment_score * 2 + (6 if confidence_label == 'high' else 0)))
+        bull_case = max(12, min(34, 18 + sentiment_score * 2 + (6 if confidence_label == 'high' else 0)))
         bear_case = max(10, 100 - base_case - bull_case)
     elif direction == 'bearish':
-        bear_case = max(12, min(32, 18 + abs(sentiment_score) * 2 + (6 if confidence_label == 'high' else 0)))
+        bear_case = max(12, min(34, 18 + abs(sentiment_score) * 2 + (6 if confidence_label == 'high' else 0)))
         bull_case = max(10, 100 - base_case - bear_case)
     else:
         bull_case = 18
@@ -239,12 +361,7 @@ def _scenario_probabilities(direction: str, confidence_label: str, sentiment_sco
     return bear_case, base_case, bull_case
 
 
-def _format_market_cap(value: float | None) -> float | None:
-    return None if value is None else round(float(value), 2)
-
-
 def _build_scenarios(setup: SetupRecommendation, sentiment_score: int, news_bias: str) -> list[dict[str, Any]]:
-    short_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 1), None)
     medium_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 3), None)
     long_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 5), None)
 
@@ -282,7 +399,15 @@ def _build_scenarios(setup: SetupRecommendation, sentiment_score: int, news_bias
     ]
 
 
-def _build_reasons(setup: SetupRecommendation, news_bias: str, event_risk: str, days_to_earnings: int | None) -> list[dict[str, str]]:
+def _build_reasons(
+    setup: SetupRecommendation,
+    news_bias: str,
+    community_label: str,
+    event_risk: str,
+    days_to_earnings: int | None,
+    short_trend: float | None,
+    medium_trend: float | None,
+) -> list[dict[str, str]]:
     short_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 1), None)
     medium_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 3), None)
     long_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 5), None)
@@ -294,6 +419,12 @@ def _build_reasons(setup: SetupRecommendation, news_bias: str, event_risk: str, 
         else 'No near earnings event was pulled, so the setup leans more on price structure than scheduled catalysts.'
     )
 
+    trend_note = 'Trend data is limited.'
+    if short_trend is not None and medium_trend is not None:
+        trend_note = f'Price is {short_trend:+.2%} over 5D and {medium_trend:+.2%} over 20D.'
+    elif short_trend is not None:
+        trend_note = f'Price is {short_trend:+.2%} over the last 5D window.'
+
     return [
         {
             'title': 'Forecast median',
@@ -301,18 +432,18 @@ def _build_reasons(setup: SetupRecommendation, news_bias: str, event_risk: str, 
             'tone': 'forecast',
         },
         {
-            'title': 'Uncertainty width',
-            'body': f'The modeled move envelope spans about {volatility_width:.2f}% top to bottom, so this is tradable but not a zero-risk glide path.',
-            'tone': 'uncertainty',
+            'title': 'Price trend',
+            'body': f'{trend_note} Current structural read is {setup.trend_bias.lower()}, which is why the model is not working in a vacuum.',
+            'tone': 'trend',
         },
         {
-            'title': 'News overlay',
-            'body': f'Current headline read is {news_bias}. That does not retrain the model, but it does change how much conviction we should give the setup.',
+            'title': 'Headline and chatter',
+            'body': f'Current headline read is {news_bias}, while community chatter reads {community_label}. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.',
             'tone': 'news',
         },
         {
-            'title': 'Event risk',
-            'body': f'{earnings_note} Current event-risk state is {event_risk}.',
+            'title': 'Uncertainty and event risk',
+            'body': f'The modeled move envelope spans about {volatility_width:.2f}% top to bottom. {earnings_note} Current event-risk state is {event_risk}.',
             'tone': 'event',
         },
     ]
@@ -335,24 +466,130 @@ def _timeframe_records(setup: SetupRecommendation) -> list[dict[str, Any]]:
     return records
 
 
+def _trend_metrics(series: Any) -> tuple[float | None, float | None, str, int]:
+    history = list(getattr(series, 'history_points', []) or [])
+    if len(history) < 2:
+        return None, None, 'Trend data is limited.', 0
+
+    closes = [float(point.close) for point in history]
+    last = closes[-1]
+    short_term = (last / closes[-6] - 1) if len(closes) >= 6 and closes[-6] else None
+    medium_term = (last / closes[-21] - 1) if len(closes) >= 21 and closes[-21] else None
+
+    trend_score = 0
+    if short_term is not None:
+        trend_score += 1 if short_term > 0.01 else -1 if short_term < -0.01 else 0
+    if medium_term is not None:
+        trend_score += 1 if medium_term > 0.03 else -1 if medium_term < -0.03 else 0
+
+    if short_term is not None and medium_term is not None:
+        if short_term > 0.02 and medium_term > 0.04:
+            summary = 'Price trend is rising cleanly across both short and medium windows.'
+        elif short_term < -0.02 and medium_term < -0.04:
+            summary = 'Price trend is weakening across both short and medium windows.'
+        elif short_term > 0 and medium_term > 0:
+            summary = 'Price trend is constructive, but not euphoric.'
+        elif short_term < 0 and medium_term < 0:
+            summary = 'Price trend is fragile and still leaning lower.'
+        else:
+            summary = 'Short-term tape and medium-term structure are fighting each other.'
+    elif short_term is not None:
+        summary = 'Short-term price action is positive.' if short_term > 0 else 'Short-term price action is negative.'
+    else:
+        summary = 'Trend data is limited.'
+
+    return short_term, medium_term, summary, trend_score
+
+
+def _overall_sentiment(model_direction: str, news_score: int, community_score: int, trend_score: int) -> tuple[int, str]:
+    model_score = 2 if model_direction == 'bullish' else -2 if model_direction == 'bearish' else 0
+    total = max(-10, min(10, model_score + news_score + community_score + trend_score))
+    if total >= 3:
+        label = 'bullish'
+    elif total <= -3:
+        label = 'bearish'
+    else:
+        label = 'mixed'
+    return total, label
+
+
+def _build_ai_summary(
+    setup: SetupRecommendation,
+    company_name: str,
+    news_items: list[dict[str, Any]],
+    community_items: list[dict[str, Any]],
+    news_bias: str,
+    community_label: str,
+    trend_summary: str,
+    event_risk: str,
+    days_to_earnings: int | None,
+    overall_sentiment_label: str,
+) -> dict[str, Any]:
+    short_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 1), None)
+    long_term = next((item for item in setup.horizon_forecasts if item.horizon_days == 5), None)
+    predicted_move = (
+        f"{short_term.predicted_return:+.2%} next day toward ${short_term.target_close:.2f}, and {long_term.predicted_return:+.2%} over {long_term.horizon_days}D toward ${long_term.target_close:.2f}."
+        if short_term and long_term
+        else f"{setup.predicted_return:+.2%} into the next session toward ${(setup.target_close or setup.current_close):.2f}."
+    )
+
+    action_text = 'buy' if setup.portfolio_action == 'BUY' else 'sell' if setup.portfolio_action == 'SELL' else 'hold'
+    earnings_text = (
+        f'Earnings are {days_to_earnings} day(s) away.'
+        if days_to_earnings is not None and days_to_earnings >= 0
+        else 'No near earnings date is on deck.'
+    )
+
+    summary = (
+        f"{company_name} screens as a {action_text} today because the model stays {setup.predicted_direction}, the price trend reads {setup.trend_bias.lower()}, "
+        f"news is {news_bias}, and community chatter is {community_label}. Overall sentiment reads {overall_sentiment_label}."
+    )
+
+    why_today = [
+        f"Prediction model: {predicted_move}",
+        f"Price trend: {trend_summary}",
+        f"News flow: {news_bias} across {len(news_items)} recent headline(s), with current event risk marked {event_risk}.",
+        f"Community tone: {community_label} from {len(community_items)} Reddit/X search hit(s). {earnings_text}",
+    ]
+
+    return {
+        'headline': f"{setup.portfolio_action} {setup.ticker} today",
+        'predictedMove': predicted_move,
+        'actionSummary': summary,
+        'whyToday': why_today,
+    }
+
+
 def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    chart_series_map = {series.ticker.upper(): series for series in artifacts.chart_series}
 
     for setup in artifacts.setups:
         ticker_obj = yf.Ticker(setup.ticker)
         fast_info = _safe_fast_info(ticker_obj)
         info = _safe_info(ticker_obj)
         calendar = _safe_calendar(ticker_obj)
+        company_name = str(info.get('shortName') or info.get('longName') or setup.ticker)
         news_items = _fetch_news_items(setup.ticker)
+        community_items = _fetch_community_items(setup.ticker, company_name)
 
         earnings_date = _earnings_date(calendar)
         days_to_earnings = _days_to_earnings(earnings_date, setup.as_of_date)
-        sentiment_score = _sentiment_score(news_items)
-        news_bias = _resolve_news_bias(setup.predicted_direction, sentiment_score)
-        event_risk = _event_risk(days_to_earnings, news_bias, news_items)
-        confidence_adjustment = _confidence_adjustment(sentiment_score, event_risk)
+        news_score = _sentiment_score(news_items)
+        community_score = _sentiment_score(community_items)
+        news_bias = _resolve_news_bias(setup.predicted_direction, news_score)
+        community_label = _sentiment_label(community_score)
+        short_trend, medium_trend, trend_summary, trend_score = _trend_metrics(chart_series_map.get(setup.ticker.upper()))
+        event_risk = _event_risk(days_to_earnings, news_bias, news_items, community_items)
+        confidence_adjustment = _confidence_adjustment(news_score, community_score, event_risk)
         base_confidence = _confidence_score(setup.confidence_label, setup.conviction_score)
         adjusted_confidence = max(25, min(99, base_confidence + confidence_adjustment))
+        overall_sentiment_score, overall_sentiment_label = _overall_sentiment(
+            setup.predicted_direction,
+            news_score,
+            community_score,
+            trend_score,
+        )
 
         entry_price = _entry_price_target(setup)
         stop_price = round(setup.current_close * math.exp(min(setup.expected_move_range[0], -0.008)), 2)
@@ -363,7 +600,7 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
         rows.append(
             {
                 'ticker': setup.ticker,
-                'companyName': str(info.get('shortName') or info.get('longName') or setup.ticker),
+                'companyName': company_name,
                 'sector': str(info.get('sector') or 'Unknown'),
                 'industry': str(info.get('industry') or 'Unknown'),
                 'asOfDate': setup.as_of_date.isoformat(),
@@ -379,18 +616,25 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
                 'signalDirection': setup.signal_direction,
                 'portfolioAction': setup.portfolio_action,
                 'trendBias': setup.trend_bias,
+                'trendSummary': trend_summary,
+                'shortTermTrend': _round(short_trend, 6),
+                'mediumTermTrend': _round(medium_trend, 6),
                 'modelName': setup.model_name,
                 'setupLabel': setup.setup_label,
                 'convictionScore': int(setup.conviction_score),
                 'adjustedConvictionScore': adjusted_confidence,
                 'newsBias': news_bias,
-                'newsImpactScore': sentiment_score,
+                'newsImpactScore': news_score,
+                'communitySentimentScore': community_score,
+                'communitySentimentLabel': community_label,
+                'overallSentimentScore': overall_sentiment_score,
+                'overallSentimentLabel': overall_sentiment_label,
                 'confidenceAdjustment': confidence_adjustment,
                 'eventRisk': event_risk,
                 'riskRewardRatio': risk_reward_ratio,
                 'expectedMoveLow': round(setup.expected_move_range[0], 6),
                 'expectedMoveHigh': round(setup.expected_move_range[1], 6),
-                'marketCap': _format_market_cap(_round(fast_info.get('marketCap'), 2) or _round(info.get('marketCap'), 2)),
+                'marketCap': _round(fast_info.get('marketCap'), 2) or _round(info.get('marketCap'), 2),
                 'averageVolume': int(fast_info.get('tenDayAverageVolume') or info.get('averageVolume') or 0) or None,
                 'yearHigh': _round(fast_info.get('yearHigh'), 2) or _round(info.get('fiftyTwoWeekHigh'), 2),
                 'yearLow': _round(fast_info.get('yearLow'), 2) or _round(info.get('fiftyTwoWeekLow'), 2),
@@ -398,9 +642,22 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
                 'earningsDate': earnings_date.isoformat() if earnings_date else None,
                 'daysToEarnings': days_to_earnings,
                 'timeframes': _timeframe_records(setup),
-                'scenarios': _build_scenarios(setup, sentiment_score, news_bias),
-                'reasons': _build_reasons(setup, news_bias, event_risk, days_to_earnings),
+                'scenarios': _build_scenarios(setup, news_score + community_score, news_bias),
+                'reasons': _build_reasons(setup, news_bias, community_label, event_risk, days_to_earnings, short_trend, medium_trend),
                 'newsItems': news_items,
+                'communityItems': community_items,
+                'aiSummary': _build_ai_summary(
+                    setup,
+                    company_name,
+                    news_items,
+                    community_items,
+                    news_bias,
+                    community_label,
+                    trend_summary,
+                    event_risk,
+                    days_to_earnings,
+                    overall_sentiment_label,
+                ),
             }
         )
 

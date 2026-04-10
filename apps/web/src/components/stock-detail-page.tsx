@@ -1,6 +1,13 @@
 import Link from 'next/link'
 
-import type { NewsFeedItem, StockDetail, StockReason, StockScenario, StockTimeframeSnapshot } from '@/lib/types'
+import type {
+  CommunityFeedItem,
+  NewsFeedItem,
+  StockDetail,
+  StockReason,
+  StockScenario,
+  StockTimeframeSnapshot,
+} from '@/lib/types'
 
 export function StockDetailPage({ detail }: { detail: StockDetail }) {
   return (
@@ -66,11 +73,13 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
               <div className="text-[11px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Asset: {detail.companyName} / {detail.ticker} / as of {detail.asOfDate}</div>
               <h1 className="mt-2 font-['Space_Grotesk'] text-6xl font-black uppercase tracking-tighter">Detailed Analysis</h1>
               <p className="mt-3 max-w-4xl text-lg text-[#4a4a4a]">
-                Full trade context for {detail.ticker}, including the model path, news overlay, event risk, earnings timing, and short-to-long horizon forecast snapshots.
+                Full trade context for {detail.ticker}, including the prediction model, price trend, headline risk, community chatter, and why the system thinks this should be a {detail.portfolioAction.toLowerCase()} or hold today.
               </p>
             </div>
 
-            <section className="grid gap-4 xl:grid-cols-6">
+            <AiSummaryPanel detail={detail} />
+
+            <section className="mt-8 grid gap-4 xl:grid-cols-6">
               <StatBlock label="Bias" value={detail.bias.toUpperCase()} accent={detail.bias === 'bullish' ? 'yellow' : detail.bias === 'bearish' ? 'red' : 'blue'} />
               <StatBlock label="Confidence" value={`${detail.confidenceScore}%`} accent="white" />
               <StatBlock label="Entry" value={`$${detail.entryPriceTarget.toFixed(2)}`} accent="white" />
@@ -85,7 +94,7 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
                   <div>
                     <h2 className="font-['Space_Grotesk'] text-5xl font-black uppercase tracking-tight">Forecast Path: {detail.ticker}.NAS</h2>
                     <p className="mt-2 text-lg text-[#4a4a4a]">
-                      {detail.modelName} / {detail.sector} / {detail.industry} / Confidence band powered by current horizon metrics.
+                      {detail.modelName} / {detail.sector} / {detail.industry} / confidence band powered by current horizon metrics.
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -101,7 +110,8 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
                   <div className="mb-4 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em]">
                     <LegendSwatch label="Historical" tone="bg-[#1a1a1a]" />
                     <LegendSwatch label="Forecast" tone="bg-[#0055ff]" />
-                    <LegendSwatch label="News overlay" tone={detail.newsBias === 'supportive' ? 'bg-[#ffcc00]' : detail.newsBias === 'conflicting' ? 'bg-[#e63b2e]' : 'bg-[#d6e3ff]'} />
+                    <LegendSwatch label="Trend band" tone="bg-[#ffeb85]" />
+                    <LegendSwatch label="Entry marker" tone="bg-[#e63b2e]" />
                   </div>
                   <ForecastPath detail={detail} />
                 </div>
@@ -125,8 +135,8 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
                 <div className="mt-5 grid gap-4 md:grid-cols-4">
                   <HealthCard label="Rolling MAE" value={formatMae(detail.timeframes[0]?.mae ?? null)} />
                   <HealthCard label="Hit Rate (1D)" value={formatHitRate(detail.timeframes[0]?.hitRate ?? null)} accent="blue" />
-                  <HealthCard label="Current Regime" value={detail.trendBias.toUpperCase()} accent="dark" />
-                  <HealthCard label="News Bias" value={detail.newsBias.toUpperCase()} accent={detail.newsBias === 'supportive' ? 'yellow' : detail.newsBias === 'conflicting' ? 'red' : 'white'} />
+                  <HealthCard label="Trend" value={detail.trendBias.toUpperCase()} accent="dark" />
+                  <HealthCard label="Overall sentiment" value={detail.overallSentimentLabel.toUpperCase()} accent={detail.overallSentimentLabel === 'bullish' ? 'yellow' : detail.overallSentimentLabel === 'bearish' ? 'red' : 'white'} />
                 </div>
 
                 <div className="mt-8 border-4 border-[#1a1a1a] bg-[#f5f0e8]">
@@ -144,7 +154,7 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
                       <div className="mt-5 font-['Space_Grotesk'] text-7xl font-black uppercase">{(detail.adjustedConvictionScore / 10).toFixed(1)}</div>
                       <div className="mt-3 font-['Space_Grotesk'] text-2xl font-black uppercase">{detail.portfolioAction} signal</div>
                       <div className="mt-5 border-2 border-[#1a1a1a] bg-[#1a1a1a] px-4 py-4 text-center font-['Space_Grotesk'] text-lg font-black uppercase text-white">
-                        Finalize parameters
+                        {detail.newsBias === 'conflicting' ? 'Use tighter size' : 'Setup is actionable'}
                       </div>
                     </div>
                   </div>
@@ -176,26 +186,82 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
               </article>
             </section>
 
-            <section className="mt-8 border-4 border-[#1a1a1a] bg-white p-6 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">
-              <div className="flex flex-col gap-3 border-b-4 border-[#1a1a1a] pb-4 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Research feed</div>
-                  <h2 className="mt-2 font-['Space_Grotesk'] text-4xl font-black uppercase">News, catalysts, and stock context</h2>
+            <section className="mt-8 grid gap-6 xl:grid-cols-[1fr,1fr]">
+              <article className="border-4 border-[#1a1a1a] bg-white p-6 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">
+                <div className="flex flex-col gap-3 border-b-4 border-[#1a1a1a] pb-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Community sentiment</div>
+                    <h2 className="mt-2 font-['Space_Grotesk'] text-4xl font-black uppercase">Reddit / X market feedback</h2>
+                  </div>
+                  <div className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4a4a4a]">Search-indexed social chatter</div>
                 </div>
-                <div className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4a4a4a]">Pulled from research overlay</div>
-              </div>
-              <div className="mt-6 grid gap-4">
-                {detail.newsItems.length === 0 ? (
-                  <div className="border-2 border-dashed border-[#1a1a1a] bg-[#f5f0e8] px-5 py-6 text-sm font-semibold text-[#4a4a4a]">No fresh linked stories were available for this ticker in the current run.</div>
-                ) : (
-                  detail.newsItems.map((item) => <NewsCard key={item.id} item={item} />)
-                )}
-              </div>
+                <div className="mt-6 grid gap-4">
+                  {detail.communityItems.length === 0 ? (
+                    <div className="border-2 border-dashed border-[#1a1a1a] bg-[#f5f0e8] px-5 py-6 text-sm font-semibold text-[#4a4a4a]">
+                      No recent Reddit or X search hits were pulled for this ticker in this run.
+                    </div>
+                  ) : (
+                    detail.communityItems.map((item) => <CommunityCard key={item.id} item={item} />)
+                  )}
+                </div>
+              </article>
+
+              <article className="border-4 border-[#1a1a1a] bg-white p-6 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">
+                <div className="flex flex-col gap-3 border-b-4 border-[#1a1a1a] pb-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Research feed</div>
+                    <h2 className="mt-2 font-['Space_Grotesk'] text-4xl font-black uppercase">News, catalysts, and market context</h2>
+                  </div>
+                  <div className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4a4a4a]">Headline overlay</div>
+                </div>
+                <div className="mt-6 grid gap-4">
+                  {detail.newsItems.length === 0 ? (
+                    <div className="border-2 border-dashed border-[#1a1a1a] bg-[#f5f0e8] px-5 py-6 text-sm font-semibold text-[#4a4a4a]">
+                      No fresh linked stories were available for this ticker in the current run.
+                    </div>
+                  ) : (
+                    detail.newsItems.map((item) => <NewsCard key={item.id} item={item} />)
+                  )}
+                </div>
+              </article>
             </section>
           </div>
         </section>
       </div>
     </main>
+  )
+}
+
+function AiSummaryPanel({ detail }: { detail: StockDetail }) {
+  return (
+    <section className="border-4 border-[#1a1a1a] bg-white p-6 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">
+      <div className="grid gap-6 xl:grid-cols-[1.15fr,0.85fr]">
+        <div>
+          <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Daily AI summary</div>
+          <h2 className="mt-3 font-['Space_Grotesk'] text-4xl font-black uppercase">{detail.aiSummary.headline}</h2>
+          <div className="mt-4 border-2 border-[#1a1a1a] bg-[#ffcc00] px-4 py-3 font-['Space_Grotesk'] text-xl font-black uppercase">
+            {detail.aiSummary.predictedMove}
+          </div>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-[#4a4a4a]">{detail.aiSummary.actionSummary}</p>
+          <div className="mt-6 grid gap-3">
+            {detail.aiSummary.whyToday.map((line) => (
+              <div key={line} className="flex gap-3 border-b border-[#1a1a1a] pb-3 last:border-b-0">
+                <div className="mt-1 h-4 w-4 border-2 border-[#1a1a1a] bg-[#1a1a1a]" />
+                <div className="text-sm font-semibold leading-7 text-[#1a1a1a]">{line}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-4">
+          <SummaryChip label="Decision" value={detail.portfolioAction} accent="yellow" />
+          <SummaryChip label="Overall sentiment" value={detail.overallSentimentLabel} accent={detail.overallSentimentLabel === 'bullish' ? 'blue' : detail.overallSentimentLabel === 'bearish' ? 'red' : 'white'} />
+          <SummaryChip label="Community tone" value={`${detail.communitySentimentLabel} (${detail.communitySentimentScore > 0 ? '+' : ''}${detail.communitySentimentScore})`} accent={detail.communitySentimentLabel === 'positive' ? 'yellow' : detail.communitySentimentLabel === 'negative' ? 'red' : 'white'} />
+          <SummaryChip label="Trend check" value={detail.trendSummary} accent="white" multiline />
+          <SummaryChip label="Event risk" value={detail.eventRisk} accent={detail.eventRisk === 'high' ? 'red' : detail.eventRisk === 'moderate' ? 'blue' : 'white'} />
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -205,6 +271,16 @@ function StatBlock({ label, value, accent }: { label: string; value: string; acc
     <div className={`border-4 border-[#1a1a1a] px-5 py-4 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] ${tone}`}>
       <div className="text-[10px] font-black uppercase tracking-[0.22em]">{label}</div>
       <div className="mt-2 font-['Space_Grotesk'] text-4xl font-black uppercase">{value}</div>
+    </div>
+  )
+}
+
+function SummaryChip({ label, value, accent, multiline = false }: { label: string; value: string; accent: 'yellow' | 'red' | 'blue' | 'white'; multiline?: boolean }) {
+  const tone = accent === 'yellow' ? 'bg-[#ffcc00]' : accent === 'red' ? 'bg-[#ffe3df] text-[#b12218]' : accent === 'blue' ? 'bg-[#d6e3ff] text-[#0055ff]' : 'bg-[#f5f0e8]'
+  return (
+    <div className={`border-2 border-[#1a1a1a] p-4 ${tone}`}>
+      <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#4a4a4a]">{label}</div>
+      <div className={`mt-2 font-['Space_Grotesk'] font-black uppercase ${multiline ? 'text-lg leading-7 normal-case' : 'text-2xl'}`}>{value}</div>
     </div>
   )
 }
@@ -234,10 +310,11 @@ function OverlayCard({ detail }: { detail: StockDetail }) {
   const tone = detail.newsBias === 'supportive' ? 'bg-[#ffcc00]' : detail.newsBias === 'conflicting' ? 'bg-[#ffe3df]' : 'bg-[#d6e3ff]'
   return (
     <article className={`border-4 border-[#1a1a1a] p-5 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] ${tone}`}>
-      <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">News overlay</div>
+      <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">News + sentiment overlay</div>
       <div className="mt-3 font-['Space_Grotesk'] text-3xl font-black uppercase">{detail.newsBias}</div>
       <div className="mt-4 grid gap-3">
         <SetupMetric label="News score" value={`${detail.newsImpactScore > 0 ? '+' : ''}${detail.newsImpactScore}`} compact />
+        <SetupMetric label="Community score" value={`${detail.communitySentimentScore > 0 ? '+' : ''}${detail.communitySentimentScore}`} compact />
         <SetupMetric label="Confidence adj." value={`${detail.confidenceAdjustment > 0 ? '+' : ''}${detail.confidenceAdjustment}`} compact />
         <SetupMetric label="Event risk" value={detail.eventRisk.toUpperCase()} compact />
       </div>
@@ -310,6 +387,28 @@ function InfoRow({ label, value, compact = false }: { label: string; value: stri
       <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#4a4a4a]">{label}</div>
       <div className="mt-1 text-sm font-semibold text-[#1a1a1a]">{value}</div>
     </div>
+  )
+}
+
+function CommunityCard({ item }: { item: CommunityFeedItem }) {
+  const sourceTone = item.sourceType === 'reddit' ? 'bg-[#ffcc00]' : item.sourceType === 'twitter' ? 'bg-[#d6e3ff] text-[#0055ff]' : 'bg-white'
+  return (
+    <article className="border-2 border-[#1a1a1a] bg-[#f5f0e8] p-4 transition hover:-translate-y-0.5 hover:bg-[#fff7cc]">
+      <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-[#4a4a4a]">
+        <span className={`border-2 border-[#1a1a1a] px-2 py-1 ${sourceTone}`}>{item.sourceType}</span>
+        <span>{item.source}</span>
+        {item.publishedAt ? (
+          <>
+            <span>•</span>
+            <span>{formatDate(item.publishedAt)}</span>
+          </>
+        ) : null}
+      </div>
+      <a href={item.url} target="_blank" rel="noreferrer" className="mt-3 block font-['Space_Grotesk'] text-2xl font-black uppercase leading-tight hover:underline">
+        {item.title}
+      </a>
+      <p className="mt-3 text-sm leading-7 text-[#4a4a4a]">{item.summary || 'No summary text was available for this community hit.'}</p>
+    </article>
   )
 }
 

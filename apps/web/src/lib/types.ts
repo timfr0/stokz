@@ -5,6 +5,10 @@ export type HorizonConfidence = 'highest' | 'moderate' | 'lower'
 export type TrendBias = 'Uptrend' | 'Downtrend' | 'Range'
 export type NewsBias = 'supportive' | 'mixed' | 'conflicting'
 export type EventRisk = 'low' | 'moderate' | 'high'
+export type Tone = 'bear' | 'base' | 'bull'
+export type SocialSourceType = 'reddit' | 'twitter' | 'web'
+export type CommunitySentimentLabel = 'positive' | 'mixed' | 'negative'
+export type OverallSentimentLabel = 'bullish' | 'mixed' | 'bearish'
 
 export interface ChartPoint {
   tradeDate: string
@@ -83,6 +87,11 @@ export interface NewsFeedItem {
   url: string
 }
 
+export interface CommunityFeedItem extends NewsFeedItem {
+  sourceType: SocialSourceType
+  query: string
+}
+
 export interface DailyReviewSummary {
   reviewDate: string
   generatedAt: string
@@ -123,13 +132,20 @@ export interface StockScenario {
   probability: number
   targetPrice: number
   summary: string
-  tone: 'bear' | 'base' | 'bull'
+  tone: Tone
 }
 
 export interface StockReason {
   title: string
   body: string
-  tone: 'forecast' | 'uncertainty' | 'news' | 'event'
+  tone: 'forecast' | 'trend' | 'news' | 'event'
+}
+
+export interface StockAiSummary {
+  headline: string
+  predictedMove: string
+  actionSummary: string
+  whyToday: string[]
 }
 
 export interface StockDetail {
@@ -150,12 +166,19 @@ export interface StockDetail {
   signalDirection: 'LONG' | 'SHORT' | 'FLAT'
   portfolioAction: PortfolioAction
   trendBias: TrendBias
+  trendSummary: string
+  shortTermTrend: number | null
+  mediumTermTrend: number | null
   modelName: string
   setupLabel: string
   convictionScore: number
   adjustedConvictionScore: number
   newsBias: NewsBias
   newsImpactScore: number
+  communitySentimentScore: number
+  communitySentimentLabel: CommunitySentimentLabel
+  overallSentimentScore: number
+  overallSentimentLabel: OverallSentimentLabel
   confidenceAdjustment: number
   eventRisk: EventRisk
   riskRewardRatio: number
@@ -172,6 +195,8 @@ export interface StockDetail {
   scenarios: StockScenario[]
   reasons: StockReason[]
   newsItems: NewsFeedItem[]
+  communityItems: CommunityFeedItem[]
+  aiSummary: StockAiSummary
   chartSeries: ForecastChartSeries | null
 }
 
