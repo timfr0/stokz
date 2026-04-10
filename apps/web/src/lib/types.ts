@@ -3,6 +3,8 @@ export type ConfidenceLabel = 'low' | 'medium' | 'high'
 export type PortfolioAction = 'BUY' | 'HOLD' | 'SELL'
 export type HorizonConfidence = 'highest' | 'moderate' | 'lower'
 export type TrendBias = 'Uptrend' | 'Downtrend' | 'Range'
+export type NewsBias = 'supportive' | 'mixed' | 'conflicting'
+export type EventRisk = 'low' | 'moderate' | 'high'
 
 export interface ChartPoint {
   tradeDate: string
@@ -103,6 +105,74 @@ export interface DailyReviewSummary {
   riskReductions: ReviewSetupItem[]
   watchlist: ReviewSetupItem[]
   newsItems: NewsFeedItem[]
+}
+
+export interface StockTimeframeSnapshot {
+  label: string
+  horizonDays: number
+  predictedReturn: number
+  targetClose: number
+  confidenceBand: HorizonConfidence
+  hitRate: number | null
+  mae: number | null
+}
+
+export interface StockScenario {
+  id: 'bear' | 'base' | 'bull'
+  label: string
+  probability: number
+  targetPrice: number
+  summary: string
+  tone: 'bear' | 'base' | 'bull'
+}
+
+export interface StockReason {
+  title: string
+  body: string
+  tone: 'forecast' | 'uncertainty' | 'news' | 'event'
+}
+
+export interface StockDetail {
+  ticker: string
+  companyName: string
+  sector: string
+  industry: string
+  asOfDate: string
+  targetDate: string
+  currentPrice: number
+  entryPriceTarget: number
+  stopPrice: number
+  targetPrice: number
+  bias: ForecastDirection
+  confidenceLabel: ConfidenceLabel
+  confidenceScore: number
+  baseConfidenceScore: number
+  signalDirection: 'LONG' | 'SHORT' | 'FLAT'
+  portfolioAction: PortfolioAction
+  trendBias: TrendBias
+  modelName: string
+  setupLabel: string
+  convictionScore: number
+  adjustedConvictionScore: number
+  newsBias: NewsBias
+  newsImpactScore: number
+  confidenceAdjustment: number
+  eventRisk: EventRisk
+  riskRewardRatio: number
+  expectedMoveLow: number
+  expectedMoveHigh: number
+  marketCap: number | null
+  averageVolume: number | null
+  yearHigh: number | null
+  yearLow: number | null
+  analystTarget: number | null
+  earningsDate: string | null
+  daysToEarnings: number | null
+  timeframes: StockTimeframeSnapshot[]
+  scenarios: StockScenario[]
+  reasons: StockReason[]
+  newsItems: NewsFeedItem[]
+  chartSeries: ForecastChartSeries | null
 }
 
 export interface DashboardData {

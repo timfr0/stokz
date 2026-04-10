@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useMemo, useState } from 'react'
 
 import type { DashboardData, DailyReviewSummary, NewsFeedItem, ReviewSetupItem, TickerForecast } from '@/lib/types'
@@ -119,7 +120,7 @@ function MarketsView({
         <div>
           <h2 className="font-['Space_Grotesk'] text-5xl font-black uppercase tracking-tighter sm:text-6xl">MARKET WATCHLIST</h2>
           <p className="mt-3 max-w-2xl text-lg text-[#4a4a4a]">
-            Same core white-board layout, same signal table. The only change is that research updates now live in their own tab instead of hijacking the whole homepage.
+            Same core white-board layout, now with click-through stock detail pages for deeper analysis without wrecking the main board.
           </p>
         </div>
         <div className="border-4 border-[#1a1a1a] bg-white px-6 py-4 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)]">
@@ -159,8 +160,16 @@ function MarketsView({
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center bg-[#1a1a1a] font-black text-white">{forecast.ticker[0]}</div>
                       <div>
-                        <div className="font-['Space_Grotesk'] text-2xl font-black uppercase">{forecast.ticker}</div>
-                        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4a4a4a]">{forecast.portfolioAction}</div>
+                        <Link href={`/stocks/${forecast.ticker.toLowerCase()}`} className="font-['Space_Grotesk'] text-2xl font-black uppercase hover:underline">
+                          {forecast.ticker}
+                        </Link>
+                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#4a4a4a]">
+                          <span>{forecast.portfolioAction}</span>
+                          <span>•</span>
+                          <Link href={`/stocks/${forecast.ticker.toLowerCase()}`} className="hover:text-[#0055ff] hover:underline">
+                            View analysis
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -195,7 +204,9 @@ function MarketsView({
             <article key={`${forecast.ticker}-detail`} className="border-4 border-[#1a1a1a] bg-white p-5 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)]">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <div className="font-['Space_Grotesk'] text-2xl font-black uppercase">{forecast.ticker}</div>
+                  <Link href={`/stocks/${forecast.ticker.toLowerCase()}`} className="font-['Space_Grotesk'] text-2xl font-black uppercase hover:underline">
+                    {forecast.ticker}
+                  </Link>
                   <div className="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-[#4a4a4a]">{forecast.setupLabel}</div>
                 </div>
                 <BiasBadge direction={forecast.direction} />
@@ -209,6 +220,9 @@ function MarketsView({
                 <MetricBox label="1D hit rate" value={formatMetric(forecast.horizonForecasts.find((h) => h.horizonDays === 1)?.measuredHitRate ?? null)} />
                 <MetricBox label="1D MAE" value={formatMae(forecast.horizonForecasts.find((h) => h.horizonDays === 1)?.measuredMae ?? null)} />
               </div>
+              <Link href={`/stocks/${forecast.ticker.toLowerCase()}`} className="mt-4 inline-flex border-2 border-[#1a1a1a] bg-[#ffcc00] px-4 py-2 font-['Space_Grotesk'] text-sm font-black uppercase hover:bg-[#ffd94d]">
+                Open detail page
+              </Link>
             </article>
           ))}
         </div>
@@ -230,7 +244,7 @@ function UpdatesView({ latestReview, archive }: { latestReview: DailyReviewSumma
         <div>
           <h2 className="font-['Space_Grotesk'] text-5xl font-black uppercase tracking-tighter sm:text-6xl">UPDATES & NEWS</h2>
           <p className="mt-3 max-w-2xl text-lg text-[#4a4a4a]">
-            This is the backend feed tab. Operator notes stay compact, and research headlines live here instead of taking over the site.
+            This is the backend feed tab. Operator notes stay compact, research headlines live here, and names still click through to full analysis pages.
           </p>
         </div>
         <div className="border-4 border-[#1a1a1a] bg-white px-6 py-4 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)]">
@@ -363,7 +377,9 @@ function NewsCard({ item }: { item: NewsFeedItem }) {
   return (
     <article className="border-2 border-[#1a1a1a] bg-[#f5f0e8] p-4 transition hover:-translate-y-0.5 hover:bg-[#fff7cc]">
       <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.22em] text-[#4a4a4a]">
-        <span>{item.ticker}</span>
+        <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="hover:text-[#0055ff] hover:underline">
+          {item.ticker}
+        </Link>
         <span>•</span>
         <span>{item.source}</span>
         {item.publishedAt ? (
@@ -377,6 +393,9 @@ function NewsCard({ item }: { item: NewsFeedItem }) {
         {item.title}
       </a>
       <p className="mt-3 text-sm leading-7 text-[#4a4a4a]">{item.summary || 'No summary was returned for this article.'}</p>
+      <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="mt-4 inline-flex border-2 border-[#1a1a1a] bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.18em] hover:bg-[#ffcc00]">
+        Open {item.ticker} analysis
+      </Link>
     </article>
   )
 }
@@ -399,7 +418,9 @@ function FeedSetupCard({ item }: { item: ReviewSetupItem }) {
     <article className="border-2 border-[#1a1a1a] bg-[#f5f0e8] p-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="font-['Space_Grotesk'] text-2xl font-black uppercase">{item.ticker}</div>
+          <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="font-['Space_Grotesk'] text-2xl font-black uppercase hover:underline">
+            {item.ticker}
+          </Link>
           <div className="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-[#4a4a4a]">{item.setupLabel}</div>
         </div>
         <span className="border-2 border-[#1a1a1a] bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">{item.portfolioAction}</span>
@@ -408,6 +429,35 @@ function FeedSetupCard({ item }: { item: ReviewSetupItem }) {
         <MetricBox label="Forecast" value={formatPercent(item.predictedReturn)} />
         <MetricBox label="Target close" value={`$${item.targetClose.toFixed(2)}`} />
       </div>
+      <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="mt-4 inline-flex border-2 border-[#1a1a1a] bg-[#ffcc00] px-4 py-2 font-['Space_Grotesk'] text-sm font-black uppercase hover:bg-[#ffd94d]">
+        View detailed analysis
+      </Link>
+    </article>
+  )
+}
+
+function ActionCard({ item }: { item: ReviewSetupItem }) {
+  return (
+    <article className="rounded-[1.25rem] border border-white/8 bg-white/[0.03] p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="font-['Syne'] text-2xl font-semibold text-white hover:underline">
+            {item.ticker}
+          </Link>
+          <div className="mt-1 text-sm text-slate-400">{item.setupLabel}</div>
+        </div>
+        <ActionPill action={item.portfolioAction} />
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+        <Metric label="Forecast" value={formatPercent(item.predictedReturn)} />
+        <Metric label="Target" value={`$${item.targetClose.toFixed(2)}`} />
+        <Metric label="Entry" value={`$${item.entryPriceTarget.toFixed(2)}`} />
+        <Metric label="Conviction" value={`${item.convictionScore}`} />
+      </div>
+      <div className="mt-4 text-sm leading-7 text-slate-400">{item.notes}</div>
+      <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="mt-4 inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200 hover:bg-cyan-300/20">
+        View analysis
+      </Link>
     </article>
   )
 }
@@ -454,6 +504,20 @@ function MiniChart({ forecast }: { forecast: TickerForecast }) {
     <svg viewBox="0 0 100 100" className="h-32 w-full" fill="none">
       <polyline points={points} stroke="#1a1a1a" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" />
     </svg>
+  )
+}
+
+function ActionPill({ action }: { action: ReviewSetupItem['portfolioAction'] | TickerForecast['portfolioAction'] }) {
+  const tone = action === 'BUY' ? 'border-emerald-300/30 bg-emerald-300/12 text-emerald-200' : action === 'SELL' ? 'border-rose-300/30 bg-rose-300/12 text-rose-200' : 'border-amber-300/30 bg-amber-300/12 text-amber-200'
+  return <span className={`rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] ${tone}`}>{action}</span>
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-[11px] uppercase tracking-[0.22em] text-slate-500">{label}</div>
+      <div className="mt-1 text-base font-medium text-white">{value}</div>
+    </div>
   )
 }
 

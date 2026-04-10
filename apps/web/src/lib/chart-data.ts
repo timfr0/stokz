@@ -1,7 +1,8 @@
 import portfolioSetups from '../../../../services/forecast/generated/portfolio-setups.json'
 import chartSeries from '../../../../services/forecast/generated/chart-series.json'
 import reviewIndex from '../../../../services/forecast/generated/reviews/index.json'
-import type { DailyReviewSummary, DashboardData, ForecastChartSeries, NewsFeedItem, ReviewSetupItem, TickerForecast } from './types'
+import stockDetails from '../../../../services/forecast/generated/stock-details.json'
+import type { DailyReviewSummary, DashboardData, ForecastChartSeries, ReviewSetupItem, StockDetail, TickerForecast } from './types'
 
 type RawSetup = {
   ticker: string
@@ -46,17 +47,18 @@ type RawChartRow = {
 }
 
 type RawReviewSetup = ReviewSetupItem
-type RawNewsFeedItem = NewsFeedItem
+
 type RawReviewSummary = DailyReviewSummary & {
   topLongs?: RawReviewSetup[]
   riskReductions?: RawReviewSetup[]
   watchlist?: RawReviewSetup[]
-  newsItems?: RawNewsFeedItem[]
 }
+
+type RawStockDetail = Omit<StockDetail, 'chartSeries'>
 
 const chartMap = new Map<string, ForecastChartSeries>(
   (chartSeries as unknown as RawChartRow[]).map((row) => [
-    row.ticker,
+    row.ticker.toUpperCase(),
     {
       ticker: row.ticker,
       asOfDate: row.as_of_date,
@@ -77,6 +79,21 @@ const reviews: DailyReviewSummary[] = (reviewIndex as unknown as RawReviewSummar
   watchlist: [...(review.watchlist ?? [])],
   newsItems: [...(review.newsItems ?? [])],
 }))
+
+export const allStockDetails: StockDetail[] = (stockDetails as unknown as RawStockDetail[]).map((detail) => ({
+  ...detail,
+  chartSeries: chartMap.get(detail.ticker.toUpperCase()) ?? null,
+}))
+
+const stockDetailMap = new Map<string, StockDetail>(allStockDetails.map((detail) => [detail.ticker.toUpperCase(), detail]))
+
+export function getStockDetail(ticker: string): StockDetail | null {
+  return stockDetailMap.get(ticker.toUpperCase()) ?? null
+}
+
+export function getStockTickers(): string[] {
+  return allStockDetails.map((detail) => detail.ticker)
+}
 
 export const dashboardData: DashboardData = {
   forecasts: (portfolioSetups as unknown as RawSetup[]).map(
@@ -102,7 +119,7 @@ export const dashboardData: DashboardData = {
         entryPriceTarget: Number((row.current_close * (1 - Math.min(Math.abs(row.predicted_return) * 0.35, 0.03))).toFixed(2)),
         currentPositionShares: row.current_position_shares,
         isActionable: row.is_actionable,
-        chartSeries: chartMap.get(row.ticker) ?? null,
+        chartSeries: chartMap.get(row.ticker.toUpperCase()) ?? null,
         horizonForecasts: (row.horizon_forecasts ?? []).map((forecast) => ({
           horizonDays: forecast.horizon_days,
           predictedReturn: forecast.predicted_return,

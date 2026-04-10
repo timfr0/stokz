@@ -8,6 +8,7 @@ from .config import load_settings
 from .notifications import build_delivery_summary
 from .pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
 from .reviews import build_daily_review, write_daily_review_artifacts
+from .stock_details import write_stock_detail_artifacts
 from .timesfm_adapter import TimesFMAdapter
 
 
@@ -61,9 +62,10 @@ def daily_review(output_dir: Path | None = None) -> int:
     write_dashboard_artifacts(artifacts, output_dir=destination)
     review = build_daily_review(artifacts, base_dir=destination)
     paths = write_daily_review_artifacts(review, base_dir=destination)
+    stock_detail_path = write_stock_detail_artifacts(artifacts, base_dir=destination)
     print(f"Daily review complete for {review['reviewDate']}")
     print(review['analystDecision'])
-    print(f"Review artifacts: {paths['index']} | {paths['summary']} | {paths['report']}")
+    print(f"Review artifacts: {paths['index']} | {paths['summary']} | {paths['report']} | {stock_detail_path}")
     return 0
 
 
@@ -73,11 +75,12 @@ def publish_site_data(output_dir: Path | None = None) -> int:
     dashboard_paths = write_dashboard_artifacts(artifacts, output_dir=destination)
     review = build_daily_review(artifacts, base_dir=destination)
     review_paths = write_daily_review_artifacts(review, base_dir=destination)
+    stock_detail_path = write_stock_detail_artifacts(artifacts, base_dir=destination)
     print(f"Publish-ready refresh complete for {review['reviewDate']}")
     print(build_delivery_summary(artifacts.setups))
     print(review['operatorSummary'])
     print(
-        f"Artifacts: {dashboard_paths['setups']} | {dashboard_paths['charts']} | {dashboard_paths['notifications']} | {review_paths['index']} | {review_paths['report']}"
+        f"Artifacts: {dashboard_paths['setups']} | {dashboard_paths['charts']} | {dashboard_paths['notifications']} | {review_paths['index']} | {review_paths['report']} | {stock_detail_path}"
     )
     return 0
 
