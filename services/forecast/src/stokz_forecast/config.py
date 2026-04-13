@@ -2,12 +2,22 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
 from .universe import TICKER_UNIVERSE
 
 
 DEFAULT_TIMESFM_MODEL_PATH = 'C:/Users/timfr/.openclaw/models/timesfm-2.5'
 DEFAULT_TIMESFM_REPO_ID = 'google/timesfm-2.5-200m-pytorch'
+
+
+def _service_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+DEFAULT_GENERATED_DIR = _service_root() / 'generated'
+DEFAULT_CALIBRATION_MODEL_PATH = DEFAULT_GENERATED_DIR / 'models' / 'calibration-model.json'
+DEFAULT_CALIBRATION_HISTORY_PATH = DEFAULT_GENERATED_DIR / 'history' / 'calibration-history.json'
 
 
 def _parse_universe(raw_value: str | None) -> tuple[str, ...]:
@@ -20,6 +30,15 @@ def _parse_bool(raw_value: str | None, default: bool) -> bool:
     if raw_value is None:
         return default
     return raw_value.strip().lower() in {'1', 'true', 'yes', 'on'}
+
+
+def _resolve_service_path(raw_value: str | None, default: Path) -> Path:
+    if not raw_value:
+        return default
+    candidate = Path(raw_value)
+    if candidate.is_absolute():
+        return candidate
+    return _service_root() / candidate
 
 
 @dataclass(frozen=True)
@@ -37,6 +56,10 @@ class Settings:
     portfolio_holdings_file: str = ''
     notification_channel: str = 'discord'
     notification_target: str = 'channel:1490561040486760469'
+    calibration_enabled: bool = False
+    calibration_model_path: Path = DEFAULT_CALIBRATION_MODEL_PATH
+    calibration_history_path: Path = DEFAULT_CALIBRATION_HISTORY_PATH
+    calibration_min_training_rows: int = 50
 
     @property
     def daily_lookback_days(self) -> int:
@@ -64,4 +87,14 @@ def load_settings() -> Settings:
         portfolio_holdings_file=os.getenv('STOKZ_PORTFOLIO_HOLDINGS_FILE', ''),
         notification_channel=os.getenv('STOKZ_NOTIFICATION_CHANNEL', 'discord'),
         notification_target=os.getenv('STOKZ_NOTIFICATION_TARGET', 'channel:1490561040486760469'),
+        calibration_enabled=_parse_bool(os.getenv('STOKZ_CALIBRATION_ENABLED'), False),
+        calibration_model_path=_resolve_service_path(
+            os.getenv('STOKZ_CALIBRATION_MODEL_PATH'),
+            DEFAULT_CALIBRATION_MODEL_PATH,
+        ),
+        calibration_history_path=_resolve_service_path(
+            os.getenv('STOKZ_CALIBRATION_HISTORY_PATH'),
+            DEFAULT_CALIBRATION_HISTORY_PATH,
+        ),
+        calibration_min_training_rows=int(os.getenv('STOKZ_CALIBRATION_MIN_TRAINING_ROWS', '50')),
     )

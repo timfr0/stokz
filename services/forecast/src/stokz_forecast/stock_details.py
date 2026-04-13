@@ -14,6 +14,7 @@ from typing import Any
 import yfinance as yf
 
 from .data_models import DashboardArtifacts, SetupRecommendation
+from .research import build_research_context
 
 _TAG_RE = re.compile(r'<[^>]+>')
 _POSITIVE_KEYWORDS = (
@@ -568,19 +569,27 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
         ticker_obj = yf.Ticker(setup.ticker)
         fast_info = _safe_fast_info(ticker_obj)
         info = _safe_info(ticker_obj)
-        calendar = _safe_calendar(ticker_obj)
         company_name = str(info.get('shortName') or info.get('longName') or setup.ticker)
-        news_items = _fetch_news_items(setup.ticker)
-        community_items = _fetch_community_items(setup.ticker, company_name)
+        research_context = setup.metadata_json.get('research_context') if isinstance(setup.metadata_json, dict) else None
+        if not isinstance(research_context, dict):
+            research_context = build_research_context(
+                ticker=setup.ticker,
+                company_name=company_name,
+                as_of_date=setup.as_of_date,
+                predicted_direction=setup.predicted_direction,
+                ticker_obj=ticker_obj,
+            )
 
-        earnings_date = _earnings_date(calendar)
-        days_to_earnings = _days_to_earnings(earnings_date, setup.as_of_date)
-        news_score = _sentiment_score(news_items)
-        community_score = _sentiment_score(community_items)
-        news_bias = _resolve_news_bias(setup.predicted_direction, news_score)
-        community_label = _sentiment_label(community_score)
+        news_items = list(research_context.get('news_items', []))
+        community_items = list(research_context.get('community_items', []))
+        earnings_date = research_context.get('earnings_date')
+        days_to_earnings = research_context.get('days_to_earnings')
+        news_score = int(research_context.get('news_score', 0))
+        community_score = int(research_context.get('community_score', 0))
+        news_bias = str(research_context.get('news_bias', 'mixed'))
+        community_label = str(research_context.get('community_label', 'mixed'))
         short_trend, medium_trend, trend_summary, trend_score = _trend_metrics(chart_series_map.get(setup.ticker.upper()))
-        event_risk = _event_risk(days_to_earnings, news_bias, news_items, community_items)
+        event_risk = str(research_context.get('event_risk', 'low'))
         confidence_adjustment = _confidence_adjustment(news_score, community_score, event_risk)
         base_confidence = _confidence_score(setup.confidence_label, setup.conviction_score)
         adjusted_confidence = max(25, min(99, base_confidence + confidence_adjustment))
@@ -639,7 +648,7 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
                 'yearHigh': _round(fast_info.get('yearHigh'), 2) or _round(info.get('fiftyTwoWeekHigh'), 2),
                 'yearLow': _round(fast_info.get('yearLow'), 2) or _round(info.get('fiftyTwoWeekLow'), 2),
                 'analystTarget': _round(info.get('targetMeanPrice'), 2),
-                'earningsDate': earnings_date.isoformat() if earnings_date else None,
+                'earningsDate': earnings_date,
                 'daysToEarnings': days_to_earnings,
                 'timeframes': _timeframe_records(setup),
                 'scenarios': _build_scenarios(setup, news_score + community_score, news_bias),

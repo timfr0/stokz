@@ -128,7 +128,13 @@ def build_setup_recommendation(
         is_actionable=is_actionable,
         target_close=round(current_price * math.exp(prediction.predicted_return), 4),
         horizon_forecasts=_build_horizon_forecasts(prediction.predicted_return, current_price),
+        base_predicted_return=prediction.base_predicted_return,
+        adjusted_predicted_return=prediction.adjusted_predicted_return,
+        calibration_enabled=prediction.calibration_enabled,
+        calibration_status=prediction.calibration_status,
+        calibration_features=prediction.calibration_features,
         metadata_json={
+            **prediction.metadata_json,
             'owns_position': owns_position,
             'realized_volatility': round(realized_volatility, 6),
         },

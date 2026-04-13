@@ -4,22 +4,39 @@ import json
 import math
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
-from typing import Callable
+from typing import Any, Callable
 
 import pandas as pd
 
 from .baselines import predict_rolling_mean
+from .calibration_features import build_feature_snapshot, compute_trend_window_returns
 from .config import Settings, load_settings
 from .data_models import ChartPoint, ChartSeries, DashboardArtifacts, ForecastBatch, ForecastPrediction
 from .data_sources import load_daily_bars
 from .evaluation import append_evaluation_history, append_forecast_history, build_seeded_evaluation_rows, read_json_array, summarize_horizon_metrics
 from .notifications import build_notification_events
 from .portfolio import PortfolioSnapshot, load_portfolio_snapshot
+from .research import build_research_context
 from .signals import build_setup_recommendation, classify_signal
 from .timesfm_adapter import TimesFMAdapter
 from .transforms import compute_log_returns
 
 BarsLoader = Callable[..., pd.DataFrame]
+ResearchContextBuilder = Callable[..., dict[str, Any]]
+
+
+def _empty_research_context(**kwargs) -> dict[str, Any]:
+    return {
+        'news_items': [],
+        'community_items': [],
+        'news_score': 0,
+        'community_score': 0,
+        'news_bias': 'mixed',
+        'community_label': 'mixed',
+        'earnings_date': None,
+        'days_to_earnings': None,
+        'event_risk': 'low',
+    }
 
 
 def _generated_dir() -> Path:
@@ -145,9 +162,11 @@ def build_dashboard_artifacts(
     settings: Settings | None = None,
     bars_loader: BarsLoader | None = None,
     portfolio: PortfolioSnapshot | None = None,
+    research_context_builder: ResearchContextBuilder | None = None,
 ) -> DashboardArtifacts:
     runtime_settings = settings or load_settings()
     snapshot = portfolio or load_portfolio_snapshot(runtime_settings)
+    resolved_research_context_builder = research_context_builder or build_research_context
     bars_frame = _load_bars_frame(runtime_settings, bars_loader, snapshot.as_of_date)
     if bars_frame.empty:
         batch = ForecastBatch(generated_at=datetime.now(UTC), model_name='timesfm-fallback', predictions=[])
@@ -180,20 +199,53 @@ def build_dashboard_artifacts(
 
         baseline_return = predict_rolling_mean(history, window=min(5, len(history)))
         predicted_return = adapter.forecast_next_return(history)
+        predicted_direction = _map_direction(predicted_return)
         signal = classify_signal(predicted_return=predicted_return)
         current_price = float(ticker_frame.iloc[-1]['close'])
         realized_volatility = float(return_frame['log_return'].dropna().std(ddof=0)) if len(history) > 1 else abs(predicted_return)
+        short_trend, medium_trend = compute_trend_window_returns(ticker_frame['close'].astype(float).tolist())
+        research_context = resolved_research_context_builder(
+            ticker=ticker,
+            company_name=ticker,
+            as_of_date=snapshot.as_of_date,
+            predicted_direction=predicted_direction,
+        )
+        calibration_features = build_feature_snapshot(
+            ticker=ticker,
+            as_of_date=snapshot.as_of_date,
+            target_date=snapshot.as_of_date + timedelta(days=runtime_settings.forecast_horizon_days),
+            predicted_return=predicted_return,
+            baseline_return=baseline_return,
+            realized_volatility=realized_volatility,
+            short_trend=short_trend,
+            medium_trend=medium_trend,
+            days_to_earnings=research_context.get('days_to_earnings'),
+            news_score=int(research_context.get('news_score', 0)),
+            community_score=int(research_context.get('community_score', 0)),
+            predicted_direction=predicted_direction,
+            event_risk=str(research_context.get('event_risk', 'low')),
+            news_bias=str(research_context.get('news_bias', 'mixed')),
+            community_label=str(research_context.get('community_label', 'mixed')),
+            news_count=len(research_context.get('news_items', [])),
+            community_count=len(research_context.get('community_items', [])),
+        )
+        calibration_status = 'context_only' if runtime_settings.calibration_enabled else 'disabled'
 
         prediction = ForecastPrediction(
             ticker=ticker,
             as_of_date=snapshot.as_of_date,
             target_date=snapshot.as_of_date + timedelta(days=runtime_settings.forecast_horizon_days),
             predicted_return=predicted_return,
-            predicted_direction=_map_direction(predicted_return),
+            predicted_direction=predicted_direction,
             baseline_return=baseline_return,
             model_name=adapter.model_name,
             confidence_label=signal.confidence_label,
             signal_direction=signal.direction,
+            base_predicted_return=predicted_return,
+            adjusted_predicted_return=predicted_return,
+            calibration_enabled=runtime_settings.calibration_enabled,
+            calibration_status=calibration_status,
+            calibration_features=calibration_features,
             metadata_json={
                 'history_points': len(history),
                 'backend': runtime_settings.timesfm_backend,
@@ -201,6 +253,7 @@ def build_dashboard_artifacts(
                 'runtime_reason': adapter.status.reason,
                 'runtime_class': adapter.status.runtime_class,
                 'current_price': current_price,
+                'research_context': research_context,
             },
         )
         predictions.append(prediction)
@@ -272,5 +325,6 @@ def build_demo_batch(settings: Settings | None = None) -> ForecastBatch:
     demo_artifacts = build_dashboard_artifacts(
         settings=runtime_settings,
         bars_loader=lambda *args, **kwargs: _build_demo_frame(runtime_settings),
+        research_context_builder=_empty_research_context,
     )
     return demo_artifacts.batch

@@ -38,6 +38,20 @@ def _fake_bars() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _fake_research_context(**kwargs):
+    return {
+        'news_items': [{'title': 'SMCI upgrade', 'summary': 'Strong demand'}],
+        'community_items': [{'title': 'SMCI stock thread', 'summary': 'Bullish setup'}],
+        'news_score': 2,
+        'community_score': 1,
+        'news_bias': 'supportive',
+        'community_label': 'positive',
+        'earnings_date': '2026-04-12',
+        'days_to_earnings': 7,
+        'event_risk': 'high',
+    }
+
+
 def test_build_demo_batch_returns_one_prediction_per_ticker():
     batch = build_demo_batch()
     assert len(batch.predictions) == 10
@@ -54,6 +68,7 @@ def test_build_dashboard_artifacts_exports_setups_charts_and_notifications():
         forecast_horizon_days=2,
         ticker_universe=('SMCI', 'DELL'),
         chart_history_days=30,
+        calibration_enabled=True,
     )
     portfolio = PortfolioSnapshot(
         as_of_date=date(2026, 4, 5),
@@ -65,6 +80,7 @@ def test_build_dashboard_artifacts_exports_setups_charts_and_notifications():
         settings=settings,
         bars_loader=lambda *args, **kwargs: _fake_bars(),
         portfolio=portfolio,
+        research_context_builder=_fake_research_context,
     )
 
     assert len(artifacts.batch.predictions) == 2
@@ -73,3 +89,7 @@ def test_build_dashboard_artifacts_exports_setups_charts_and_notifications():
     assert {setup.portfolio_action for setup in artifacts.setups} == {'BUY', 'SELL'}
     assert {event['ticker'] for event in artifacts.notification_events} == {'SMCI', 'DELL'}
     assert all(series.forecast_points for series in artifacts.chart_series)
+    assert all(prediction.base_predicted_return == prediction.predicted_return for prediction in artifacts.batch.predictions)
+    assert all(prediction.adjusted_predicted_return == prediction.predicted_return for prediction in artifacts.batch.predictions)
+    assert all(prediction.calibration_status == 'context_only' for prediction in artifacts.batch.predictions)
+    assert all(prediction.calibration_features for prediction in artifacts.batch.predictions)

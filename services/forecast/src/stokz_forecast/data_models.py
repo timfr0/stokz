@@ -63,12 +63,25 @@ class ForecastPrediction:
     model_name: str
     confidence_label: ConfidenceLabel
     signal_direction: SignalDirection = 'FLAT'
+    base_predicted_return: float | None = None
+    adjusted_predicted_return: float | None = None
+    calibration_enabled: bool = False
+    calibration_status: str = 'disabled'
+    calibration_features: dict[str, Any] = field(default_factory=dict)
     metadata_json: dict[str, Any] = field(default_factory=dict)
 
     def to_record(self) -> dict[str, Any]:
         payload = asdict(self)
         payload['as_of_date'] = self.as_of_date.isoformat()
         payload['target_date'] = self.target_date.isoformat()
+        payload['base_predicted_return'] = round(
+            self.base_predicted_return if self.base_predicted_return is not None else self.predicted_return,
+            6,
+        )
+        payload['adjusted_predicted_return'] = round(
+            self.adjusted_predicted_return if self.adjusted_predicted_return is not None else self.predicted_return,
+            6,
+        )
         return payload
 
 
@@ -137,6 +150,11 @@ class SetupRecommendation:
     is_actionable: bool = False
     target_close: float | None = None
     horizon_forecasts: tuple[HorizonForecast, ...] = ()
+    base_predicted_return: float | None = None
+    adjusted_predicted_return: float | None = None
+    calibration_enabled: bool = False
+    calibration_status: str = 'disabled'
+    calibration_features: dict[str, Any] = field(default_factory=dict)
     metadata_json: dict[str, Any] = field(default_factory=dict)
 
     def to_record(self) -> dict[str, Any]:
@@ -163,6 +181,17 @@ class SetupRecommendation:
             'current_position_shares': self.current_position_shares,
             'is_actionable': self.is_actionable,
             'horizon_forecasts': [forecast.to_record() for forecast in self.horizon_forecasts],
+            'base_predicted_return': round(
+                self.base_predicted_return if self.base_predicted_return is not None else self.predicted_return,
+                6,
+            ),
+            'adjusted_predicted_return': round(
+                self.adjusted_predicted_return if self.adjusted_predicted_return is not None else self.predicted_return,
+                6,
+            ),
+            'calibration_enabled': self.calibration_enabled,
+            'calibration_status': self.calibration_status,
+            'calibration_features': self.calibration_features,
             'metadata_json': self.metadata_json,
         }
 
