@@ -9,6 +9,7 @@ from typing import Any, Callable
 import pandas as pd
 
 from .baselines import predict_rolling_mean
+from .calibration_history import append_feature_rows, build_feature_rows
 from .calibration_features import build_feature_snapshot, compute_trend_window_returns
 from .config import Settings, load_settings
 from .data_models import ChartPoint, ChartSeries, DashboardArtifacts, ForecastBatch, ForecastPrediction
@@ -297,6 +298,7 @@ def write_dashboard_artifacts(artifacts: DashboardArtifacts, output_dir: Path | 
         for setup in setup_records
     ]
     append_forecast_history(destination, forecast_history_rows)
+    calibration_history_path = append_feature_rows(destination / 'history' / 'calibration-history.json', build_feature_rows(artifacts.batch.predictions))
 
     evaluation_rows = build_seeded_evaluation_rows(setup_records)
     append_evaluation_history(destination, evaluation_rows)
@@ -317,7 +319,12 @@ def write_dashboard_artifacts(artifacts: DashboardArtifacts, output_dir: Path | 
     chart_path.write_text(json.dumps(chart_records, indent=2), encoding='utf-8')
     notification_path.write_text(json.dumps(notification_records, indent=2), encoding='utf-8')
 
-    return {'setups': setup_path, 'charts': chart_path, 'notifications': notification_path}
+    return {
+        'setups': setup_path,
+        'charts': chart_path,
+        'notifications': notification_path,
+        'calibration_history': calibration_history_path,
+    }
 
 
 def build_demo_batch(settings: Settings | None = None) -> ForecastBatch:

@@ -1,9 +1,10 @@
+import json
 from datetime import date
 
 import pandas as pd
 
 from stokz_forecast.config import Settings
-from stokz_forecast.pipeline import build_dashboard_artifacts, build_demo_batch
+from stokz_forecast.pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
 from stokz_forecast.portfolio import Holding, PortfolioSnapshot
 
 
@@ -93,3 +94,36 @@ def test_build_dashboard_artifacts_exports_setups_charts_and_notifications():
     assert all(prediction.adjusted_predicted_return == prediction.predicted_return for prediction in artifacts.batch.predictions)
     assert all(prediction.calibration_status == 'context_only' for prediction in artifacts.batch.predictions)
     assert all(prediction.calibration_features for prediction in artifacts.batch.predictions)
+
+
+def test_write_dashboard_artifacts_appends_calibration_history(tmp_path):
+    settings = Settings(
+        data_provider='yfinance',
+        data_lookback_days=120,
+        data_auto_adjust=True,
+        timesfm_backend='placeholder',
+        timesfm_model_path=None,
+        timesfm_repo_id=None,
+        forecast_horizon_days=2,
+        ticker_universe=('SMCI', 'DELL'),
+        chart_history_days=30,
+        calibration_enabled=True,
+    )
+    portfolio = PortfolioSnapshot(
+        as_of_date=date(2026, 4, 5),
+        holdings=[Holding(ticker='DELL', shares=16)],
+        watchlist=('SMCI', 'DELL'),
+    )
+
+    artifacts = build_dashboard_artifacts(
+        settings=settings,
+        bars_loader=lambda *args, **kwargs: _fake_bars(),
+        portfolio=portfolio,
+        research_context_builder=_fake_research_context,
+    )
+    paths = write_dashboard_artifacts(artifacts, output_dir=tmp_path)
+    calibration_rows = json.loads(paths['calibration_history'].read_text(encoding='utf-8'))
+
+    assert len(calibration_rows) == 2
+    assert {row['ticker'] for row in calibration_rows} == {'SMCI', 'DELL'}
+    assert all('calibration_features' in row for row in calibration_rows)

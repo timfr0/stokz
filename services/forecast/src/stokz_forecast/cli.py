@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from pathlib import Path
 
+from .calibration_history import attach_realized_outcomes, read_feature_rows, summarize_feature_history, write_labeled_rows
 from .config import load_settings
+from .data_sources import load_daily_bars
 from .notifications import build_delivery_summary
 from .pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
 from .reviews import build_daily_review, write_daily_review_artifacts
@@ -103,6 +106,52 @@ def runtime_status() -> int:
     return 0
 
 
+def calibration_status() -> int:
+    settings = load_settings()
+    rows = read_feature_rows(settings.calibration_history_path)
+    summary = summarize_feature_history(rows)
+    print(f'calibration_history={settings.calibration_history_path}')
+    print(f'feature_row_count={summary["feature_row_count"]}')
+    print(f'labeled_row_count={summary["labeled_row_count"]}')
+    print(f'latest_as_of_date={summary["latest_as_of_date"] or "n/a"}')
+    print(f'model_artifact_exists={settings.calibration_model_path.exists()}')
+    return 0
+
+
+def calibration_backfill(end_date: date | None = None) -> int:
+    settings = load_settings()
+    rows = read_feature_rows(settings.calibration_history_path)
+    if not rows:
+        print(f'No calibration history rows found at {settings.calibration_history_path}')
+        return 0
+
+    unresolved_rows = [row for row in rows if row.get('actual_return_1d') is None]
+    if not unresolved_rows:
+        print(f'No unresolved calibration rows found at {settings.calibration_history_path}')
+        return 0
+
+    effective_end = end_date or date.today()
+    tickers = sorted({str(row.get('ticker', '')).upper() for row in unresolved_rows if row.get('ticker')})
+    earliest_as_of = min(date.fromisoformat(str(row['as_of_date'])) for row in unresolved_rows if row.get('as_of_date'))
+    lookback_days = max(10, (effective_end - earliest_as_of).days + 10)
+    price_frame = load_daily_bars(
+        tickers=tickers,
+        lookback_days=lookback_days,
+        end_date=effective_end,
+        auto_adjust=settings.data_auto_adjust,
+    )
+
+    before_summary = summarize_feature_history(rows)
+    updated_rows = attach_realized_outcomes(rows, price_frame)
+    write_labeled_rows(settings.calibration_history_path, updated_rows)
+    after_summary = summarize_feature_history(updated_rows)
+    resolved_count = after_summary['labeled_row_count'] - before_summary['labeled_row_count']
+    print(f'Calibration backfill complete through {effective_end.isoformat()}')
+    print(f'resolved_rows={resolved_count}')
+    print(f'calibration_history={settings.calibration_history_path}')
+    return 0
+
+
 def export_setups(output_path: Path | None = None) -> int:
     artifacts = build_dashboard_artifacts()
     destination = output_path or (_generated_dir() / 'portfolio-setups.json')
@@ -152,6 +201,10 @@ def build_parser() -> argparse.ArgumentParser:
     five_parser.add_argument('--output-dir', type=Path, default=None, help='Optional artifact directory override')
 
     subparsers.add_parser('runtime-status', help='Print TimesFM runtime status and fallback reason')
+    subparsers.add_parser('calibration-status', help='Print calibration history and model-artifact status')
+
+    backfill_parser = subparsers.add_parser('calibration-backfill', help='Resolve realized outcomes for unresolved calibration rows')
+    backfill_parser.add_argument('--end-date', type=date.fromisoformat, default=None, help='Optional end date override (YYYY-MM-DD)')
 
     return parser
 
@@ -180,6 +233,10 @@ def main(argv: list[str] | None = None) -> int:
         return publish_site_data(output_dir=args.output_dir)
     if args.command == 'runtime-status':
         return runtime_status()
+    if args.command == 'calibration-status':
+        return calibration_status()
+    if args.command == 'calibration-backfill':
+        return calibration_backfill(end_date=args.end_date)
 
     parser.error(f'Unknown command: {args.command}')
     return 1
