@@ -91,6 +91,13 @@ def _sample_rows() -> list[dict[str, object]]:
     ]
 
 
+def _partially_trainable_rows() -> list[dict[str, object]]:
+    rows = _sample_rows()
+    rows[2].pop('hit_label', None)
+    rows[3].pop('event_risk_target', None)
+    return rows
+
+
 def test_train_overlay_model_writes_json_artifact(tmp_path: Path):
     output_path = tmp_path / 'models' / 'calibration-model.json'
 
@@ -117,6 +124,17 @@ def test_load_overlay_model_handles_missing_and_invalid_json(tmp_path: Path):
     assert load_overlay_model(invalid_path) is None
 
 
+def test_load_overlay_model_reads_valid_artifact(tmp_path: Path):
+    output_path = tmp_path / 'models' / 'calibration-model.json'
+    expected = train_overlay_model(_sample_rows(), output_path)
+
+    loaded = load_overlay_model(output_path)
+
+    assert loaded == expected
+    assert loaded is not None
+    assert loaded['row_count'] == 4
+
+
 def test_calibration_train_refuses_when_below_minimum_rows(monkeypatch, tmp_path: Path, capsys):
     history_path = tmp_path / 'history' / 'calibration-history.json'
     history_path.parent.mkdir(parents=True, exist_ok=True)
@@ -135,7 +153,30 @@ def test_calibration_train_refuses_when_below_minimum_rows(monkeypatch, tmp_path
     assert exit_code == 1
     assert not model_path.exists()
     output = capsys.readouterr().out
-    assert 'Insufficient labeled rows' in output
+    assert 'Insufficient trainable rows' in output
+    assert 'required=3' in output
+
+
+def test_calibration_train_refuses_when_labeled_rows_include_non_trainable_rows(monkeypatch, tmp_path: Path, capsys):
+    history_path = tmp_path / 'history' / 'calibration-history.json'
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    history_path.write_text(json.dumps(_partially_trainable_rows(), indent=2), encoding='utf-8')
+
+    model_path = tmp_path / 'models' / 'calibration-model.json'
+    settings = Settings(
+        calibration_history_path=history_path,
+        calibration_model_path=model_path,
+        calibration_min_training_rows=3,
+    )
+    monkeypatch.setattr(cli, 'load_settings', lambda: settings)
+
+    exit_code = cli.main(['calibration-train'])
+
+    assert exit_code == 1
+    assert not model_path.exists()
+    output = capsys.readouterr().out
+    assert 'Insufficient trainable rows' in output
+    assert 'available=2' in output
     assert 'required=3' in output
 
 

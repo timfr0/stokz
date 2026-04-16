@@ -67,24 +67,40 @@ def _is_labeled_event_risk(value: Any) -> bool:
     return isinstance(value, str) and value.lower() in _EVENT_RISK_TO_INDEX
 
 
+def _confidence_target(hit_label: Any) -> float | None:
+    try:
+        return 1.0 if int(hit_label) > 0 else -1.0
+    except (TypeError, ValueError):
+        return None
+
+
+def _iter_training_targets(rows: list[dict[str, Any]]):
+    for row in rows:
+        delta_target = _delta_return_target(row)
+        confidence_target = _confidence_target(row.get('hit_label'))
+        event_risk_label = row.get('event_risk_target') or row.get('event_risk')
+
+        if delta_target is None or confidence_target is None or not _is_labeled_event_risk(event_risk_label):
+            continue
+
+        yield row, float(delta_target), confidence_target, _EVENT_RISK_TO_INDEX[str(event_risk_label).lower()]
+
+
+def count_trainable_rows(rows: list[dict[str, Any]]) -> int:
+    return sum(1 for _ in _iter_training_targets(rows))
+
+
 def _extract_training_arrays(rows: list[dict[str, Any]]) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     feature_rows: list[list[float]] = []
     delta_return_targets: list[float] = []
     confidence_targets: list[float] = []
     risk_targets: list[int] = []
 
-    for row in rows:
-        delta_target = _delta_return_target(row)
-        hit_label = row.get('hit_label')
-        event_risk_label = row.get('event_risk_target') or row.get('event_risk')
-
-        if delta_target is None or hit_label is None or not _is_labeled_event_risk(event_risk_label):
-            continue
-
+    for row, delta_target, confidence_target, risk_target in _iter_training_targets(rows):
         feature_rows.append([_get_feature_value(row, feature_name) for feature_name in _FEATURE_NAMES])
-        delta_return_targets.append(float(delta_target))
-        confidence_targets.append(1.0 if int(hit_label) > 0 else -1.0)
-        risk_targets.append(_EVENT_RISK_TO_INDEX[str(event_risk_label).lower()])
+        delta_return_targets.append(delta_target)
+        confidence_targets.append(confidence_target)
+        risk_targets.append(risk_target)
 
     if not feature_rows:
         raise ValueError('No labeled calibration rows available for model training')

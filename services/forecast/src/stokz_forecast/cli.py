@@ -6,7 +6,7 @@ from datetime import date
 from pathlib import Path
 
 from .calibration_history import attach_realized_outcomes, read_feature_rows, summarize_feature_history, write_labeled_rows
-from .calibration_model import train_overlay_model
+from .calibration_model import count_trainable_rows, train_overlay_model
 from .config import load_settings
 from .data_sources import load_daily_bars
 from .notifications import build_delivery_summary
@@ -156,18 +156,17 @@ def calibration_backfill(end_date: date | None = None) -> int:
 def calibration_train() -> int:
     settings = load_settings()
     rows = read_feature_rows(settings.calibration_history_path)
-    labeled_rows = [row for row in rows if row.get('actual_return_1d') is not None]
-    labeled_count = len(labeled_rows)
+    trainable_count = count_trainable_rows(rows)
 
-    if labeled_count < settings.calibration_min_training_rows:
+    if trainable_count < settings.calibration_min_training_rows:
         print(
-            f'Insufficient labeled rows for calibration training: available={labeled_count}, required={settings.calibration_min_training_rows}'
+            f'Insufficient trainable rows for calibration training: available={trainable_count}, required={settings.calibration_min_training_rows}'
         )
         print(f'calibration_history={settings.calibration_history_path}')
         return 1
 
     try:
-        artifact = train_overlay_model(labeled_rows, settings.calibration_model_path)
+        artifact = train_overlay_model(rows, settings.calibration_model_path)
     except ValueError as exc:
         print(f'Calibration training failed: {exc}')
         return 1
