@@ -101,7 +101,11 @@ def _iter_training_targets(rows: list[dict[str, Any]]):
         if delta_target is None or confidence_target is None or not _is_labeled_event_risk(event_risk_label):
             continue
 
-        yield row, float(delta_target), confidence_target, _EVENT_RISK_TO_INDEX[str(event_risk_label).lower()]
+        feature_values = [_get_feature_value(row, feature_name) for feature_name in _FEATURE_NAMES]
+        if any(not np.isfinite(value) for value in feature_values):
+            continue
+
+        yield feature_values, float(delta_target), confidence_target, _EVENT_RISK_TO_INDEX[str(event_risk_label).lower()]
 
 
 def count_trainable_rows(rows: list[dict[str, Any]]) -> int:
@@ -114,8 +118,8 @@ def _extract_training_arrays(rows: list[dict[str, Any]]) -> tuple[np.ndarray, np
     confidence_targets: list[float] = []
     risk_targets: list[int] = []
 
-    for row, delta_target, confidence_target, risk_target in _iter_training_targets(rows):
-        feature_rows.append([_get_feature_value(row, feature_name) for feature_name in _FEATURE_NAMES])
+    for feature_values, delta_target, confidence_target, risk_target in _iter_training_targets(rows):
+        feature_rows.append(feature_values)
         delta_return_targets.append(delta_target)
         confidence_targets.append(confidence_target)
         risk_targets.append(risk_target)

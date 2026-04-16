@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import numpy as np
+
 from stokz_forecast import cli
 from stokz_forecast.calibration_model import count_trainable_rows, load_overlay_model, train_overlay_model
 from stokz_forecast.config import Settings
@@ -124,6 +126,14 @@ def test_count_trainable_rows_excludes_invalid_derived_delta_return_inputs():
     assert count_trainable_rows(rows) == 1
 
 
+def test_count_trainable_rows_excludes_non_finite_feature_values():
+    rows = _sample_rows()
+    rows[0]['predicted_return'] = 'nan'
+    rows[1]['realized_volatility'] = float('inf')
+
+    assert count_trainable_rows(rows) == 2
+
+
 def test_train_overlay_model_writes_json_artifact(tmp_path: Path):
     output_path = tmp_path / 'models' / 'calibration-model.json'
 
@@ -228,3 +238,30 @@ def test_calibration_train_writes_model_when_threshold_is_met(monkeypatch, tmp_p
     assert payload['version'] == 1
     output = capsys.readouterr().out
     assert 'Calibration model trained' in output
+
+
+def test_calibration_train_handles_model_fit_failure_cleanly(monkeypatch, tmp_path: Path, capsys):
+    history_path = tmp_path / 'history' / 'calibration-history.json'
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    history_path.write_text(json.dumps(_sample_rows(), indent=2), encoding='utf-8')
+
+    model_path = tmp_path / 'models' / 'calibration-model.json'
+    settings = Settings(
+        calibration_history_path=history_path,
+        calibration_model_path=model_path,
+        calibration_min_training_rows=3,
+    )
+    monkeypatch.setattr(cli, 'load_settings', lambda: settings)
+
+    def _raise_linalg_error(*_args, **_kwargs):
+        raise np.linalg.LinAlgError('SVD did not converge')
+
+    monkeypatch.setattr(cli, 'train_overlay_model', _raise_linalg_error)
+
+    exit_code = cli.main(['calibration-train'])
+
+    assert exit_code == 1
+    assert not model_path.exists()
+    output = capsys.readouterr().out
+    assert 'Calibration training failed:' in output
+    assert 'SVD did not converge' in output

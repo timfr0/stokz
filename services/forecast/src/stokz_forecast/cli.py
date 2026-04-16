@@ -167,7 +167,7 @@ def calibration_train() -> int:
 
     try:
         artifact = train_overlay_model(rows, settings.calibration_model_path)
-    except ValueError as exc:
+    except Exception as exc:
         print(f'Calibration training failed: {exc}')
         return 1
 
