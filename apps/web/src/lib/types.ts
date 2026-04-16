@@ -160,6 +160,12 @@ export interface StockDetail {
   stopPrice: number
   targetPrice: number
   bias: ForecastDirection
+  basePredictedReturn: number
+  adjustedPredictedReturn: number
+  calibrationEnabled: boolean
+  calibrationModelVersion: number | null
+  calibrationStatus: string
+  calibrationReasons: string[]
   confidenceLabel: ConfidenceLabel
   confidenceScore: number
   baseConfidenceScore: number

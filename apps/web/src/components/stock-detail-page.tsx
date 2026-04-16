@@ -78,6 +78,7 @@ export function StockDetailPage({ detail }: { detail: StockDetail }) {
             </div>
 
             <AiSummaryPanel detail={detail} />
+            <CalibrationPanel detail={detail} />
 
             <section className="mt-8 grid gap-4 xl:grid-cols-6">
               <StatBlock label="Bias" value={detail.bias.toUpperCase()} accent={detail.bias === 'bullish' ? 'yellow' : detail.bias === 'bearish' ? 'red' : 'blue'} />
@@ -259,6 +260,52 @@ function AiSummaryPanel({ detail }: { detail: StockDetail }) {
           <SummaryChip label="Community tone" value={`${detail.communitySentimentLabel} (${detail.communitySentimentScore > 0 ? '+' : ''}${detail.communitySentimentScore})`} accent={detail.communitySentimentLabel === 'positive' ? 'yellow' : detail.communitySentimentLabel === 'negative' ? 'red' : 'white'} />
           <SummaryChip label="Trend check" value={detail.trendSummary} accent="white" multiline />
           <SummaryChip label="Event risk" value={detail.eventRisk} accent={detail.eventRisk === 'high' ? 'red' : detail.eventRisk === 'moderate' ? 'blue' : 'white'} />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CalibrationPanel({ detail }: { detail: StockDetail }) {
+  const calibrationDelta = detail.adjustedPredictedReturn - detail.basePredictedReturn
+  const hasCalibrationImpact = Math.abs(calibrationDelta) > 0.000001
+  const topReasons = detail.calibrationReasons.slice(0, 3)
+
+  return (
+    <section className="mt-6 border-4 border-[#1a1a1a] bg-[#f5f0e8] p-5 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)]">
+      <div className="grid gap-5 xl:grid-cols-[1.15fr,0.85fr]">
+        <div>
+          <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[#4a4a4a]">Calibration overlay</div>
+          <h2 className="mt-2 font-['Space_Grotesk'] text-3xl font-black uppercase">Base vs adjusted 1D move</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <InfoRow label="Base (TimesFM)" value={formatPercent(detail.basePredictedReturn)} compact />
+            <InfoRow label="Adjusted (overlay)" value={formatPercent(detail.adjustedPredictedReturn)} compact />
+            <InfoRow label="Overlay delta" value={formatPercent(calibrationDelta)} compact />
+          </div>
+          <p className="mt-5 text-sm leading-7 text-[#4a4a4a]">
+            TimesFM stayed frozen as the forecaster. This calibration layer only adjusts trust and positioning, it does not retrain or replace the core model.
+          </p>
+        </div>
+
+        <div className="grid gap-3">
+          <InfoRow label="Calibration status" value={formatCalibrationStatus(detail.calibrationStatus)} compact />
+          <InfoRow label="Model version" value={detail.calibrationModelVersion == null ? 'N/A' : `v${detail.calibrationModelVersion}`} compact />
+          <InfoRow label="Event risk" value={detail.eventRisk.toUpperCase()} compact />
+          <InfoRow label="Overlay impact" value={hasCalibrationImpact ? 'Adjusted' : 'No change'} compact />
+          <div className="border-2 border-[#1a1a1a] bg-white px-3 py-3">
+            <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#4a4a4a]">Top calibration reasons</div>
+            {topReasons.length === 0 ? (
+              <p className="mt-2 text-sm font-semibold text-[#4a4a4a]">No reason codes were emitted for this setup.</p>
+            ) : (
+              <ul className="mt-2 grid gap-2">
+                {topReasons.map((reason) => (
+                  <li key={reason} className="text-sm font-semibold text-[#1a1a1a]">
+                    • {formatCalibrationReason(reason)}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -518,6 +565,14 @@ function SetupMetric({ label, value, compact = false }: { label: string; value: 
       <div className={`mt-1 font-['Space_Grotesk'] font-black uppercase ${compact ? 'text-2xl' : 'text-5xl'}`}>{value}</div>
     </div>
   )
+}
+
+function formatCalibrationStatus(status: string) {
+  return status.replaceAll('_', ' ').toUpperCase()
+}
+
+function formatCalibrationReason(reason: string) {
+  return reason.replaceAll('_', ' ')
 }
 
 function formatPercent(value: number) {
