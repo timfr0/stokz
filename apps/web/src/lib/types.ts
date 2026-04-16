@@ -66,6 +66,13 @@ export interface ReviewSetupItem {
   portfolioAction: PortfolioAction
   setupLabel: string
   predictedReturn: number
+  basePredictedReturn: number
+  adjustedPredictedReturn: number
+  calibrationEnabled: boolean
+  calibrationModelVersion: number | null
+  calibrationStatus: string
+  calibrationReasons: string[]
+  eventRisk: EventRisk
   confidenceLabel: ConfidenceLabel
   trendBias: TrendBias
   convictionScore: number

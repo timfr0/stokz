@@ -436,32 +436,6 @@ function FeedSetupCard({ item }: { item: ReviewSetupItem }) {
   )
 }
 
-function ActionCard({ item }: { item: ReviewSetupItem }) {
-  return (
-    <article className="rounded-[1.25rem] border border-white/8 bg-white/[0.03] p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="font-['Syne'] text-2xl font-semibold text-white hover:underline">
-            {item.ticker}
-          </Link>
-          <div className="mt-1 text-sm text-slate-400">{item.setupLabel}</div>
-        </div>
-        <ActionPill action={item.portfolioAction} />
-      </div>
-      <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-        <Metric label="Forecast" value={formatPercent(item.predictedReturn)} />
-        <Metric label="Target" value={`$${item.targetClose.toFixed(2)}`} />
-        <Metric label="Entry" value={`$${item.entryPriceTarget.toFixed(2)}`} />
-        <Metric label="Conviction" value={`${item.convictionScore}`} />
-      </div>
-      <div className="mt-4 text-sm leading-7 text-slate-400">{item.notes}</div>
-      <Link href={`/stocks/${item.ticker.toLowerCase()}`} className="mt-4 inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200 hover:bg-cyan-300/20">
-        View analysis
-      </Link>
-    </article>
-  )
-}
-
 function MiniTrend({ forecast }: { forecast: TickerForecast }) {
   const points = forecast.chartSeries?.forecastPoints ?? []
   if (points.length === 0) return <div className="text-xs font-bold uppercase text-[#4a4a4a]">No chart</div>
