@@ -65,6 +65,9 @@ class ForecastPrediction:
     signal_direction: SignalDirection = 'FLAT'
     base_predicted_return: float | None = None
     adjusted_predicted_return: float | None = None
+    adjusted_confidence_score: float | None = None
+    event_risk: str = 'low'
+    calibration_reason_codes: list[str] = field(default_factory=list)
     calibration_enabled: bool = False
     calibration_status: str = 'disabled'
     calibration_features: dict[str, Any] = field(default_factory=dict)
@@ -81,6 +84,9 @@ class ForecastPrediction:
         payload['adjusted_predicted_return'] = round(
             self.adjusted_predicted_return if self.adjusted_predicted_return is not None else self.predicted_return,
             6,
+        )
+        payload['adjusted_confidence_score'] = (
+            round(self.adjusted_confidence_score, 6) if self.adjusted_confidence_score is not None else None
         )
         return payload
 
@@ -152,6 +158,9 @@ class SetupRecommendation:
     horizon_forecasts: tuple[HorizonForecast, ...] = ()
     base_predicted_return: float | None = None
     adjusted_predicted_return: float | None = None
+    adjusted_confidence_score: float | None = None
+    event_risk: str = 'low'
+    calibration_reason_codes: list[str] = field(default_factory=list)
     calibration_enabled: bool = False
     calibration_status: str = 'disabled'
     calibration_features: dict[str, Any] = field(default_factory=dict)
@@ -189,6 +198,9 @@ class SetupRecommendation:
                 self.adjusted_predicted_return if self.adjusted_predicted_return is not None else self.predicted_return,
                 6,
             ),
+            'adjusted_confidence_score': round(self.adjusted_confidence_score, 6) if self.adjusted_confidence_score is not None else None,
+            'event_risk': self.event_risk,
+            'calibration_reason_codes': self.calibration_reason_codes,
             'calibration_enabled': self.calibration_enabled,
             'calibration_status': self.calibration_status,
             'calibration_features': self.calibration_features,

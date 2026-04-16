@@ -14,13 +14,47 @@ class SignalClassification:
     is_actionable: bool
 
 
+def confidence_score_from_return(
+    predicted_return: float,
+    threshold: float = 0.001,
+    high_confidence_threshold: float = 0.01,
+) -> float:
+    absolute_value = abs(predicted_return)
+    if absolute_value < threshold:
+        return min(0.33, (absolute_value / max(threshold, 1e-9)) * 0.33)
+    if absolute_value < high_confidence_threshold:
+        progress = (absolute_value - threshold) / max(high_confidence_threshold - threshold, 1e-9)
+        return 0.34 + (progress * 0.32)
+
+    overflow = min(1.0, (absolute_value - high_confidence_threshold) / max(high_confidence_threshold, 1e-9))
+    return min(1.0, 0.67 + (overflow * 0.33))
+
+
+def _confidence_label_from_score(confidence_score: float) -> str:
+    bounded_score = max(0.0, min(1.0, confidence_score))
+    if bounded_score >= 0.67:
+        return 'high'
+    if bounded_score >= 0.34:
+        return 'medium'
+    return 'low'
+
+
 def classify_signal(
     predicted_return: float,
     threshold: float = 0.001,
     high_confidence_threshold: float = 0.01,
+    confidence_score: float | None = None,
 ) -> SignalClassification:
-    absolute_value = abs(predicted_return)
-    confidence_label = 'high' if absolute_value >= high_confidence_threshold else 'medium' if absolute_value >= threshold else 'low'
+    resolved_confidence_score = (
+        confidence_score_from_return(
+            predicted_return=predicted_return,
+            threshold=threshold,
+            high_confidence_threshold=high_confidence_threshold,
+        )
+        if confidence_score is None
+        else max(0.0, min(1.0, float(confidence_score)))
+    )
+    confidence_label = _confidence_label_from_score(resolved_confidence_score)
 
     if predicted_return > threshold:
         return SignalClassification(direction='LONG', confidence_label=confidence_label, is_actionable=True)
@@ -130,6 +164,9 @@ def build_setup_recommendation(
         horizon_forecasts=_build_horizon_forecasts(prediction.predicted_return, current_price),
         base_predicted_return=prediction.base_predicted_return,
         adjusted_predicted_return=prediction.adjusted_predicted_return,
+        adjusted_confidence_score=prediction.adjusted_confidence_score,
+        event_risk=prediction.event_risk,
+        calibration_reason_codes=prediction.calibration_reason_codes,
         calibration_enabled=prediction.calibration_enabled,
         calibration_status=prediction.calibration_status,
         calibration_features=prediction.calibration_features,

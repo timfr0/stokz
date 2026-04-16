@@ -4,7 +4,8 @@ from pathlib import Path
 import numpy as np
 
 from stokz_forecast import cli
-from stokz_forecast.calibration_model import count_trainable_rows, load_overlay_model, train_overlay_model
+from stokz_forecast.calibration_features import build_feature_snapshot
+from stokz_forecast.calibration_model import apply_overlay_model, count_trainable_rows, load_overlay_model, train_overlay_model
 from stokz_forecast.config import Settings
 
 
@@ -149,6 +150,40 @@ def test_train_overlay_model_writes_json_artifact(tmp_path: Path):
     assert set(payload['coefficients']) >= {'delta_return', 'delta_confidence'}
     assert set(payload['metrics']) >= {'delta_return_mae', 'delta_confidence_mae'}
     assert set(payload['thresholds']) >= {'confidence_delta', 'event_risk'}
+
+
+def test_apply_overlay_model_returns_adjusted_outputs_and_reason_codes(tmp_path: Path):
+    artifact = train_overlay_model(_sample_rows(), tmp_path / 'models' / 'calibration-model.json')
+    feature_snapshot = build_feature_snapshot(
+        ticker='AMD',
+        as_of_date='2026-04-10',
+        target_date='2026-04-11',
+        predicted_return=0.010,
+        baseline_return=0.008,
+        realized_volatility=0.020,
+        short_trend=0.015,
+        medium_trend=0.045,
+        days_to_earnings=5,
+        news_score=2,
+        community_score=1,
+        predicted_direction='bullish',
+        event_risk='moderate',
+        news_count=3,
+        community_count=2,
+    )
+
+    overlay = apply_overlay_model(artifact, feature_snapshot, base_predicted_return=0.010)
+
+    assert set(overlay) == {
+        'adjusted_predicted_return',
+        'adjusted_confidence_score',
+        'event_risk',
+        'calibration_reason_codes',
+    }
+    assert np.isfinite(overlay['adjusted_predicted_return'])
+    assert 0.0 <= overlay['adjusted_confidence_score'] <= 1.0
+    assert overlay['event_risk'] in {'low', 'moderate', 'high'}
+    assert overlay['calibration_reason_codes']
 
 
 def test_load_overlay_model_handles_missing_and_invalid_json(tmp_path: Path):

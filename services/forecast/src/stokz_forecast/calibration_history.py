@@ -28,13 +28,19 @@ def build_feature_rows(predictions: list[ForecastPrediction]) -> list[dict[str, 
                 prediction.adjusted_predicted_return if prediction.adjusted_predicted_return is not None else prediction.predicted_return,
                 6,
             ),
+            'adjusted_confidence_score': round(prediction.adjusted_confidence_score, 6)
+            if prediction.adjusted_confidence_score is not None
+            else None,
+            'event_risk': prediction.event_risk,
+            'calibration_reason_codes': prediction.calibration_reason_codes,
             'baseline_return': round(prediction.baseline_return, 6),
             'calibration_enabled': prediction.calibration_enabled,
             'calibration_status': prediction.calibration_status,
             'calibration_features': prediction.calibration_features,
             'recorded_at': recorded_at,
         }
-        row.update(prediction.calibration_features)
+        for key, value in prediction.calibration_features.items():
+            row.setdefault(key, value)
         rows.append(row)
     return rows
 

@@ -11,6 +11,7 @@ import pandas as pd
 from .baselines import predict_rolling_mean
 from .calibration_history import append_feature_rows, build_feature_rows
 from .calibration_features import build_feature_snapshot, compute_trend_window_returns
+from .calibration_model import apply_overlay_model, load_overlay_model
 from .config import Settings, load_settings
 from .data_models import ChartPoint, ChartSeries, DashboardArtifacts, ForecastBatch, ForecastPrediction
 from .data_sources import load_daily_bars
@@ -18,7 +19,7 @@ from .evaluation import append_evaluation_history, append_forecast_history, buil
 from .notifications import build_notification_events
 from .portfolio import PortfolioSnapshot, load_portfolio_snapshot
 from .research import build_research_context
-from .signals import build_setup_recommendation, classify_signal
+from .signals import build_setup_recommendation, classify_signal, confidence_score_from_return
 from .timesfm_adapter import TimesFMAdapter
 from .transforms import compute_log_returns
 
@@ -135,6 +136,18 @@ def _load_bars_frame(settings: Settings, bars_loader: BarsLoader | None, as_of_d
     )
 
 
+def _resolve_calibration_model(settings: Settings) -> tuple[dict[str, Any] | None, str]:
+    if not settings.calibration_enabled:
+        return None, 'disabled'
+    if not settings.calibration_model_path.exists():
+        return None, 'model_unavailable'
+
+    model_artifact = load_overlay_model(settings.calibration_model_path)
+    if model_artifact is None:
+        return None, 'model_invalid'
+    return model_artifact, 'available'
+
+
 def _apply_horizon_metrics(setups) -> None:
     evaluation_history = read_json_array(_history_dir() / 'evaluation-history.json')
     summary = summarize_horizon_metrics(evaluation_history)
@@ -187,6 +200,7 @@ def build_dashboard_artifacts(
     predictions: list[ForecastPrediction] = []
     setups = []
     chart_series = []
+    calibration_model_artifact, calibration_model_status = _resolve_calibration_model(runtime_settings)
 
     for ticker in runtime_settings.ticker_universe:
         ticker_frame = bars_frame.loc[bars_frame['ticker'].str.upper() == ticker].copy()
@@ -199,23 +213,22 @@ def build_dashboard_artifacts(
             continue
 
         baseline_return = predict_rolling_mean(history, window=min(5, len(history)))
-        predicted_return = adapter.forecast_next_return(history)
-        predicted_direction = _map_direction(predicted_return)
-        signal = classify_signal(predicted_return=predicted_return)
+        base_predicted_return = adapter.forecast_next_return(history)
+        base_predicted_direction = _map_direction(base_predicted_return)
         current_price = float(ticker_frame.iloc[-1]['close'])
-        realized_volatility = float(return_frame['log_return'].dropna().std(ddof=0)) if len(history) > 1 else abs(predicted_return)
+        realized_volatility = float(return_frame['log_return'].dropna().std(ddof=0)) if len(history) > 1 else abs(base_predicted_return)
         short_trend, medium_trend = compute_trend_window_returns(ticker_frame['close'].astype(float).tolist())
         research_context = resolved_research_context_builder(
             ticker=ticker,
             company_name=ticker,
             as_of_date=snapshot.as_of_date,
-            predicted_direction=predicted_direction,
+            predicted_direction=base_predicted_direction,
         )
         calibration_features = build_feature_snapshot(
             ticker=ticker,
             as_of_date=snapshot.as_of_date,
             target_date=snapshot.as_of_date + timedelta(days=runtime_settings.forecast_horizon_days),
-            predicted_return=predicted_return,
+            predicted_return=base_predicted_return,
             baseline_return=baseline_return,
             realized_volatility=realized_volatility,
             short_trend=short_trend,
@@ -223,14 +236,38 @@ def build_dashboard_artifacts(
             days_to_earnings=research_context.get('days_to_earnings'),
             news_score=int(research_context.get('news_score', 0)),
             community_score=int(research_context.get('community_score', 0)),
-            predicted_direction=predicted_direction,
+            predicted_direction=base_predicted_direction,
             event_risk=str(research_context.get('event_risk', 'low')),
             news_bias=str(research_context.get('news_bias', 'mixed')),
             community_label=str(research_context.get('community_label', 'mixed')),
             news_count=len(research_context.get('news_items', [])),
             community_count=len(research_context.get('community_items', [])),
         )
-        calibration_status = 'context_only' if runtime_settings.calibration_enabled else 'disabled'
+        adjusted_predicted_return = base_predicted_return
+        adjusted_confidence_score = confidence_score_from_return(base_predicted_return)
+        event_risk = str(research_context.get('event_risk', 'low'))
+        calibration_reason_codes: list[str] = []
+        calibration_status = calibration_model_status
+
+        if calibration_model_artifact is not None:
+            try:
+                overlay_outputs = apply_overlay_model(
+                    calibration_model_artifact,
+                    calibration_features,
+                    base_predicted_return=base_predicted_return,
+                )
+            except Exception:
+                calibration_status = 'model_invalid'
+            else:
+                adjusted_predicted_return = float(overlay_outputs['adjusted_predicted_return'])
+                adjusted_confidence_score = float(overlay_outputs['adjusted_confidence_score'])
+                event_risk = str(overlay_outputs['event_risk'])
+                calibration_reason_codes = [str(code) for code in overlay_outputs.get('calibration_reason_codes', [])]
+                calibration_status = 'applied'
+
+        predicted_return = adjusted_predicted_return if calibration_status == 'applied' else base_predicted_return
+        predicted_direction = _map_direction(predicted_return)
+        signal = classify_signal(predicted_return=predicted_return, confidence_score=adjusted_confidence_score)
 
         prediction = ForecastPrediction(
             ticker=ticker,
@@ -242,8 +279,11 @@ def build_dashboard_artifacts(
             model_name=adapter.model_name,
             confidence_label=signal.confidence_label,
             signal_direction=signal.direction,
-            base_predicted_return=predicted_return,
-            adjusted_predicted_return=predicted_return,
+            base_predicted_return=base_predicted_return,
+            adjusted_predicted_return=adjusted_predicted_return,
+            adjusted_confidence_score=adjusted_confidence_score,
+            event_risk=event_risk,
+            calibration_reason_codes=calibration_reason_codes,
             calibration_enabled=runtime_settings.calibration_enabled,
             calibration_status=calibration_status,
             calibration_features=calibration_features,

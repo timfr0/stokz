@@ -7,6 +7,8 @@ from typing import Any
 
 import numpy as np
 
+from .signals import confidence_score_from_return
+
 
 MODEL_VERSION = 1
 _FEATURE_NAMES = [
@@ -243,6 +245,50 @@ def train_overlay_model(rows: list[dict[str, Any]], output_path: Path) -> dict[s
     return artifact
 
 
+def _validate_linear_block(block: Any, feature_names: list[str]) -> bool:
+    if not isinstance(block, dict):
+        return False
+    if _to_finite_float(block.get('intercept')) is None:
+        return False
+    weights = block.get('weights')
+    if not isinstance(weights, dict):
+        return False
+    return set(weights) == set(feature_names) and all(_to_finite_float(weights.get(name)) is not None for name in feature_names)
+
+
+def _validate_overlay_model(payload: dict[str, Any]) -> bool:
+    feature_names = payload.get('feature_names')
+    coefficients = payload.get('coefficients')
+    metrics = payload.get('metrics')
+    thresholds = payload.get('thresholds')
+
+    if payload.get('version') != MODEL_VERSION:
+        return False
+    if not isinstance(feature_names, list) or feature_names != list(_FEATURE_NAMES):
+        return False
+    if _to_finite_float(payload.get('row_count')) is None:
+        return False
+    if not isinstance(coefficients, dict) or not isinstance(metrics, dict) or not isinstance(thresholds, dict):
+        return False
+    if not _validate_linear_block(coefficients.get('delta_return'), feature_names):
+        return False
+    if not _validate_linear_block(coefficients.get('delta_confidence'), feature_names):
+        return False
+
+    confidence_thresholds = thresholds.get('confidence_delta')
+    event_risk_thresholds = thresholds.get('event_risk')
+    event_risk_labels = thresholds.get('event_risk_labels')
+    if not isinstance(confidence_thresholds, dict) or not isinstance(event_risk_thresholds, dict):
+        return False
+    if _to_finite_float(confidence_thresholds.get('min')) is None or _to_finite_float(confidence_thresholds.get('max')) is None:
+        return False
+    if _to_finite_float(event_risk_thresholds.get('moderate')) is None or _to_finite_float(event_risk_thresholds.get('high')) is None:
+        return False
+    if list(event_risk_labels or []) != _INDEX_TO_EVENT_RISK:
+        return False
+    return True
+
+
 def load_overlay_model(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
@@ -254,18 +300,92 @@ def load_overlay_model(path: Path) -> dict[str, Any] | None:
 
     if not isinstance(payload, dict):
         return None
-
-    required = {'version', 'trained_at', 'row_count', 'feature_names', 'coefficients', 'metrics', 'thresholds'}
-    if not required.issubset(payload):
+    if not _validate_overlay_model(payload):
         return None
-
-    if not isinstance(payload.get('feature_names'), list):
-        return None
-    if not isinstance(payload.get('coefficients'), dict):
-        return None
-    if not isinstance(payload.get('metrics'), dict):
-        return None
-    if not isinstance(payload.get('thresholds'), dict):
-        return None
-
     return payload
+
+
+def _build_feature_vector(feature_snapshot: dict[str, Any], feature_names: list[str]) -> np.ndarray:
+    return np.asarray([_get_feature_value(feature_snapshot, feature_name) for feature_name in feature_names], dtype=float)
+
+
+def _predict_from_artifact_block(block: dict[str, Any], feature_names: list[str], feature_vector: np.ndarray) -> float:
+    intercept = float(block['intercept'])
+    weights = np.asarray([float(block['weights'][feature_name]) for feature_name in feature_names], dtype=float)
+    return float(intercept + np.dot(weights, feature_vector))
+
+
+def _clip(value: float, lower: float, upper: float) -> float:
+    return max(lower, min(upper, value))
+
+
+def _top_reason_codes(
+    feature_vector: np.ndarray,
+    feature_names: list[str],
+    return_weights: dict[str, float],
+    confidence_weights: dict[str, float],
+    limit: int = 3,
+) -> list[str]:
+    contributions: list[tuple[float, str]] = []
+    for index, feature_name in enumerate(feature_names):
+        feature_value = float(feature_vector[index])
+        contribution = abs(float(return_weights[feature_name]) * feature_value) + abs(float(confidence_weights[feature_name]) * feature_value)
+        if contribution > 0:
+            contributions.append((contribution, feature_name))
+
+    if not contributions:
+        return ['predicted_return']
+
+    ordered = sorted(contributions, key=lambda item: (-item[0], item[1]))
+    return [feature_name for _, feature_name in ordered[:limit]]
+
+
+def apply_overlay_model(
+    model_artifact: dict[str, Any],
+    feature_snapshot: dict[str, Any],
+    *,
+    base_predicted_return: float,
+) -> dict[str, Any]:
+    if not _validate_overlay_model(model_artifact):
+        raise ValueError('Invalid calibration model artifact')
+
+    feature_names = list(model_artifact['feature_names'])
+    feature_vector = _build_feature_vector(feature_snapshot, feature_names)
+    if feature_vector.shape[0] != len(feature_names) or not np.all(np.isfinite(feature_vector)):
+        raise ValueError('Invalid calibration feature snapshot')
+
+    coefficients = model_artifact['coefficients']
+    thresholds = model_artifact['thresholds']
+    delta_return = _predict_from_artifact_block(coefficients['delta_return'], feature_names, feature_vector)
+    confidence_delta = _predict_from_artifact_block(coefficients['delta_confidence'], feature_names, feature_vector)
+
+    confidence_bounds = thresholds['confidence_delta']
+    bounded_confidence_delta = _clip(
+        confidence_delta,
+        float(confidence_bounds['min']),
+        float(confidence_bounds['max']),
+    )
+    base_confidence = confidence_score_from_return(base_predicted_return)
+    adjusted_predicted_return = float(base_predicted_return + delta_return)
+    adjusted_confidence_score = _clip(base_confidence + bounded_confidence_delta, 0.0, 1.0)
+
+    risk_thresholds = thresholds['event_risk']
+    risk_score = float(_event_risk_score(feature_vector.reshape(1, -1))[0])
+    if risk_score >= float(risk_thresholds['high']):
+        event_risk = 'high'
+    elif risk_score >= float(risk_thresholds['moderate']):
+        event_risk = 'moderate'
+    else:
+        event_risk = 'low'
+
+    return {
+        'adjusted_predicted_return': adjusted_predicted_return,
+        'adjusted_confidence_score': adjusted_confidence_score,
+        'event_risk': event_risk,
+        'calibration_reason_codes': _top_reason_codes(
+            feature_vector,
+            feature_names,
+            coefficients['delta_return']['weights'],
+            coefficients['delta_confidence']['weights'],
+        ),
+    }
