@@ -6,6 +6,7 @@ from datetime import date
 from pathlib import Path
 
 from .calibration_history import attach_realized_outcomes, read_feature_rows, summarize_feature_history, write_labeled_rows
+from .calibration_model import train_overlay_model
 from .config import load_settings
 from .data_sources import load_daily_bars
 from .notifications import build_delivery_summary
@@ -152,6 +153,31 @@ def calibration_backfill(end_date: date | None = None) -> int:
     return 0
 
 
+def calibration_train() -> int:
+    settings = load_settings()
+    rows = read_feature_rows(settings.calibration_history_path)
+    labeled_rows = [row for row in rows if row.get('actual_return_1d') is not None]
+    labeled_count = len(labeled_rows)
+
+    if labeled_count < settings.calibration_min_training_rows:
+        print(
+            f'Insufficient labeled rows for calibration training: available={labeled_count}, required={settings.calibration_min_training_rows}'
+        )
+        print(f'calibration_history={settings.calibration_history_path}')
+        return 1
+
+    try:
+        artifact = train_overlay_model(labeled_rows, settings.calibration_model_path)
+    except ValueError as exc:
+        print(f'Calibration training failed: {exc}')
+        return 1
+
+    print('Calibration model trained')
+    print(f'row_count={artifact["row_count"]}')
+    print(f'calibration_model={settings.calibration_model_path}')
+    return 0
+
+
 def export_setups(output_path: Path | None = None) -> int:
     artifacts = build_dashboard_artifacts()
     destination = output_path or (_generated_dir() / 'portfolio-setups.json')
@@ -205,6 +231,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     backfill_parser = subparsers.add_parser('calibration-backfill', help='Resolve realized outcomes for unresolved calibration rows')
     backfill_parser.add_argument('--end-date', type=date.fromisoformat, default=None, help='Optional end date override (YYYY-MM-DD)')
+    subparsers.add_parser('calibration-train', help='Train and write the calibration overlay model artifact')
 
     return parser
 
@@ -237,6 +264,8 @@ def main(argv: list[str] | None = None) -> int:
         return calibration_status()
     if args.command == 'calibration-backfill':
         return calibration_backfill(end_date=args.end_date)
+    if args.command == 'calibration-train':
+        return calibration_train()
 
     parser.error(f'Unknown command: {args.command}')
     return 1
