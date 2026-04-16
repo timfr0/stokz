@@ -256,7 +256,7 @@ def build_dashboard_artifacts(
                     calibration_features,
                     base_predicted_return=base_predicted_return,
                 )
-            except Exception:
+            except ValueError:
                 calibration_status = 'model_invalid'
             else:
                 adjusted_predicted_return = float(overlay_outputs['adjusted_predicted_return'])

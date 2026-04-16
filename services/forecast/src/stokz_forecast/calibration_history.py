@@ -111,32 +111,47 @@ def attach_realized_outcomes(rows: list[dict[str, Any]], price_frame: pd.DataFra
 
         ticker = str(row.get('ticker', '')).upper()
         as_of_raw = row.get('as_of_date')
+        target_raw = row.get('target_date')
         if not ticker or not as_of_raw or ticker not in by_ticker:
             updated_rows.append(row)
             continue
 
         ticker_prices = by_ticker[ticker]
-        as_of_date = date.fromisoformat(str(as_of_raw))
+        try:
+            as_of_date = date.fromisoformat(str(as_of_raw))
+            target_date = date.fromisoformat(str(target_raw)) if target_raw else as_of_date
+        except ValueError:
+            updated_rows.append(row)
+            continue
+
         current_match = ticker_prices.loc[ticker_prices['trade_date'] == as_of_date]
         if current_match.empty:
             updated_rows.append(row)
             continue
 
-        next_match = ticker_prices.loc[ticker_prices['trade_date'] > as_of_date].head(1)
-        if next_match.empty:
+        target_match = ticker_prices.loc[ticker_prices['trade_date'] >= target_date].head(1)
+        if target_match.empty:
+            updated_rows.append(row)
+            continue
+
+        resolved_target_date = target_match.iloc[0]['trade_date']
+        if resolved_target_date <= as_of_date:
             updated_rows.append(row)
             continue
 
         current_close = float(current_match.iloc[-1]['close'])
-        next_close = float(next_match.iloc[0]['close'])
-        realized_return = math.log(next_close / current_close)
-        predicted_return = float(row.get('base_predicted_return') or row.get('predicted_return') or 0.0)
+        target_close = float(target_match.iloc[0]['close'])
+        realized_return = math.log(target_close / current_close)
+        base_predicted_return = row.get('base_predicted_return')
+        if base_predicted_return is None:
+            base_predicted_return = row.get('predicted_return')
+        predicted_return = float(base_predicted_return if base_predicted_return is not None else 0.0)
         realized_volatility = row.get('realized_volatility')
         if realized_volatility is None and isinstance(row.get('calibration_features'), dict):
             realized_volatility = row['calibration_features'].get('realized_volatility')
 
         updated = dict(row)
-        updated['resolved_target_date'] = next_match.iloc[0]['trade_date'].isoformat()
+        updated['resolved_target_date'] = resolved_target_date.isoformat()
         updated['actual_return_1d'] = round(realized_return, 6)
         updated['delta_return_target'] = round(realized_return - predicted_return, 6)
         updated['hit_label'] = _direction_hit(predicted_return, realized_return)

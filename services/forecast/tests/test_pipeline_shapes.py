@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from stokz_forecast.config import Settings
 from stokz_forecast.pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
@@ -222,6 +223,58 @@ def test_build_dashboard_artifacts_falls_back_to_base_values_when_model_load_fai
         assert prediction.calibration_status == 'model_invalid'
 
     assert {setup.portfolio_action for setup in artifacts.setups} == {'BUY', 'SELL'}
+
+
+def test_build_dashboard_artifacts_falls_back_when_overlay_validation_fails(monkeypatch, tmp_path):
+    from stokz_forecast import pipeline
+
+    _patch_base_forecasts(monkeypatch, 0.006, -0.006)
+    model_path = tmp_path / 'models' / 'calibration-model.json'
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    model_path.write_text(json.dumps({'stub': True}), encoding='utf-8')
+
+    monkeypatch.setattr(pipeline, 'load_overlay_model', lambda path: {'stub': True}, raising=False)
+
+    def _raise_value_error(*args, **kwargs):
+        raise ValueError('invalid model')
+
+    monkeypatch.setattr(pipeline, 'apply_overlay_model', _raise_value_error, raising=False)
+
+    artifacts = build_dashboard_artifacts(
+        settings=_settings(calibration_enabled=True, calibration_model_path=model_path),
+        bars_loader=lambda *args, **kwargs: _fake_bars(),
+        portfolio=_portfolio(),
+        research_context_builder=_fake_research_context,
+    )
+
+    assert len(artifacts.batch.predictions) == 2
+    for prediction in artifacts.batch.predictions:
+        assert prediction.predicted_return == prediction.base_predicted_return
+        assert prediction.calibration_status == 'model_invalid'
+
+
+def test_build_dashboard_artifacts_does_not_swallow_unexpected_overlay_errors(monkeypatch, tmp_path):
+    from stokz_forecast import pipeline
+
+    _patch_base_forecasts(monkeypatch, 0.006, -0.006)
+    model_path = tmp_path / 'models' / 'calibration-model.json'
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    model_path.write_text(json.dumps({'stub': True}), encoding='utf-8')
+
+    monkeypatch.setattr(pipeline, 'load_overlay_model', lambda path: {'stub': True}, raising=False)
+
+    def _raise_runtime_error(*args, **kwargs):
+        raise RuntimeError('unexpected overlay bug')
+
+    monkeypatch.setattr(pipeline, 'apply_overlay_model', _raise_runtime_error, raising=False)
+
+    with pytest.raises(RuntimeError, match='unexpected overlay bug'):
+        build_dashboard_artifacts(
+            settings=_settings(calibration_enabled=True, calibration_model_path=model_path),
+            bars_loader=lambda *args, **kwargs: _fake_bars(),
+            portfolio=_portfolio(),
+            research_context_builder=_fake_research_context,
+        )
 
 
 def test_write_dashboard_artifacts_appends_calibration_history(tmp_path):
