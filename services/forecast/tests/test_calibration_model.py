@@ -109,6 +109,21 @@ def test_count_trainable_rows_requires_valid_explicit_delta_return_target():
     assert count_trainable_rows(rows) == 3
 
 
+def test_count_trainable_rows_excludes_invalid_derived_delta_return_inputs():
+    rows = _sample_rows()
+
+    rows[0].pop('delta_return_target', None)
+    rows[0]['actual_return_1d'] = 'bad'
+
+    rows[1].pop('delta_return_target', None)
+    rows[1]['base_predicted_return'] = 'bad'
+
+    rows[2].pop('delta_return_target', None)
+    rows[2]['actual_return_1d'] = 'nan'
+
+    assert count_trainable_rows(rows) == 1
+
+
 def test_train_overlay_model_writes_json_artifact(tmp_path: Path):
     output_path = tmp_path / 'models' / 'calibration-model.json'
 

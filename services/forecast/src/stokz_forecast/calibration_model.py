@@ -36,6 +36,16 @@ def _to_float(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def _to_finite_float(value: Any) -> float | None:
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return None
+    if not np.isfinite(parsed):
+        return None
+    return parsed
+
+
 def _get_feature_value(row: dict[str, Any], feature: str) -> float:
     if feature in row:
         return _to_float(row.get(feature))
@@ -48,13 +58,7 @@ def _get_feature_value(row: dict[str, Any], feature: str) -> float:
 def _delta_return_target(row: dict[str, Any]) -> float | None:
     explicit_target = row.get('delta_return_target')
     if explicit_target is not None:
-        try:
-            target = float(explicit_target)
-        except (TypeError, ValueError):
-            return None
-        if not np.isfinite(target):
-            return None
-        return target
+        return _to_finite_float(explicit_target)
 
     realized = row.get('actual_return_1d')
     if realized is None:
@@ -66,7 +70,15 @@ def _delta_return_target(row: dict[str, Any]) -> float | None:
     if base_prediction is None:
         return None
 
-    return _to_float(realized) - _to_float(base_prediction)
+    realized_value = _to_finite_float(realized)
+    base_prediction_value = _to_finite_float(base_prediction)
+    if realized_value is None or base_prediction_value is None:
+        return None
+
+    delta_target = realized_value - base_prediction_value
+    if not np.isfinite(delta_target):
+        return None
+    return delta_target
 
 
 def _is_labeled_event_risk(value: Any) -> bool:
