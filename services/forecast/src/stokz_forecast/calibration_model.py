@@ -48,7 +48,13 @@ def _get_feature_value(row: dict[str, Any], feature: str) -> float:
 def _delta_return_target(row: dict[str, Any]) -> float | None:
     explicit_target = row.get('delta_return_target')
     if explicit_target is not None:
-        return _to_float(explicit_target)
+        try:
+            target = float(explicit_target)
+        except (TypeError, ValueError):
+            return None
+        if not np.isfinite(target):
+            return None
+        return target
 
     realized = row.get('actual_return_1d')
     if realized is None:
@@ -78,7 +84,7 @@ def _iter_training_targets(rows: list[dict[str, Any]]):
     for row in rows:
         delta_target = _delta_return_target(row)
         confidence_target = _confidence_target(row.get('hit_label'))
-        event_risk_label = row.get('event_risk_target') or row.get('event_risk')
+        event_risk_label = row.get('event_risk_target')
 
         if delta_target is None or confidence_target is None or not _is_labeled_event_risk(event_risk_label):
             continue

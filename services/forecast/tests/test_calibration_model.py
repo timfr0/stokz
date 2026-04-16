@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from stokz_forecast import cli
-from stokz_forecast.calibration_model import load_overlay_model, train_overlay_model
+from stokz_forecast.calibration_model import count_trainable_rows, load_overlay_model, train_overlay_model
 from stokz_forecast.config import Settings
 
 
@@ -21,6 +21,7 @@ def _sample_rows() -> list[dict[str, object]]:
             'days_to_earnings': 5,
             'news_score': 2,
             'community_score': 1,
+            'event_risk': 'moderate',
             'event_risk_score': 1,
             'direction_score': 1,
             'actual_return_1d': 0.020,
@@ -41,6 +42,7 @@ def _sample_rows() -> list[dict[str, object]]:
             'days_to_earnings': 12,
             'news_score': -1,
             'community_score': -2,
+            'event_risk': 'high',
             'event_risk_score': 2,
             'direction_score': -1,
             'actual_return_1d': -0.018,
@@ -61,6 +63,7 @@ def _sample_rows() -> list[dict[str, object]]:
             'days_to_earnings': 18,
             'news_score': 0,
             'community_score': 1,
+            'event_risk': 'low',
             'event_risk_score': 0,
             'direction_score': 1,
             'actual_return_1d': 0.001,
@@ -81,6 +84,7 @@ def _sample_rows() -> list[dict[str, object]]:
             'days_to_earnings': 9,
             'news_score': -1,
             'community_score': 0,
+            'event_risk': 'moderate',
             'event_risk_score': 1,
             'direction_score': -1,
             'actual_return_1d': -0.002,
@@ -96,6 +100,13 @@ def _partially_trainable_rows() -> list[dict[str, object]]:
     rows[2].pop('hit_label', None)
     rows[3].pop('event_risk_target', None)
     return rows
+
+
+def test_count_trainable_rows_requires_valid_explicit_delta_return_target():
+    rows = _sample_rows()
+    rows[0]['delta_return_target'] = 'invalid-target'
+
+    assert count_trainable_rows(rows) == 3
 
 
 def test_train_overlay_model_writes_json_artifact(tmp_path: Path):
