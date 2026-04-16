@@ -13,6 +13,7 @@ from typing import Any
 
 import yfinance as yf
 
+from .calibration_model import MODEL_VERSION
 from .data_models import DashboardArtifacts, SetupRecommendation
 from .research import build_research_context
 
@@ -589,7 +590,12 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
         news_bias = str(research_context.get('news_bias', 'mixed'))
         community_label = str(research_context.get('community_label', 'mixed'))
         short_trend, medium_trend, trend_summary, trend_score = _trend_metrics(chart_series_map.get(setup.ticker.upper()))
-        event_risk = str(research_context.get('event_risk', 'low'))
+        event_risk = str(setup.event_risk or research_context.get('event_risk', 'low'))
+        calibration_status = str(setup.calibration_status)
+        calibration_model_version = MODEL_VERSION if calibration_status == 'applied' else None
+        base_predicted_return = setup.base_predicted_return if setup.base_predicted_return is not None else setup.predicted_return
+        adjusted_predicted_return = setup.adjusted_predicted_return if setup.adjusted_predicted_return is not None else setup.predicted_return
+        calibration_reasons = [str(reason) for reason in setup.calibration_reason_codes[:3]]
         confidence_adjustment = _confidence_adjustment(news_score, community_score, event_risk)
         base_confidence = _confidence_score(setup.confidence_label, setup.conviction_score)
         adjusted_confidence = max(25, min(99, base_confidence + confidence_adjustment))
@@ -619,6 +625,12 @@ def build_stock_detail_records(artifacts: DashboardArtifacts) -> list[dict[str, 
                 'stopPrice': stop_price,
                 'targetPrice': round((setup.target_close or setup.current_close), 2),
                 'bias': setup.predicted_direction,
+                'basePredictedReturn': round(base_predicted_return, 6),
+                'adjustedPredictedReturn': round(adjusted_predicted_return, 6),
+                'calibrationEnabled': bool(setup.calibration_enabled),
+                'calibrationModelVersion': calibration_model_version,
+                'calibrationStatus': calibration_status,
+                'calibrationReasons': calibration_reasons,
                 'confidenceLabel': setup.confidence_label,
                 'confidenceScore': adjusted_confidence,
                 'baseConfidenceScore': base_confidence,

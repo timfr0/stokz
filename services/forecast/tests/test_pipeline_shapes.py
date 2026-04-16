@@ -8,7 +8,9 @@ import pytest
 from stokz_forecast.config import Settings
 from stokz_forecast.pipeline import build_dashboard_artifacts, build_demo_batch, write_dashboard_artifacts
 from stokz_forecast.portfolio import Holding, PortfolioSnapshot
+from stokz_forecast.reviews import build_daily_review
 from stokz_forecast.signals import classify_signal
+from stokz_forecast.stock_details import build_stock_detail_records
 from stokz_forecast.timesfm_adapter import TimesFMAdapter
 
 
@@ -290,3 +292,73 @@ def test_write_dashboard_artifacts_appends_calibration_history(tmp_path):
     assert len(calibration_rows) == 2
     assert {row['ticker'] for row in calibration_rows} == {'SMCI', 'DELL'}
     assert all('calibration_features' in row for row in calibration_rows)
+
+
+def test_review_and_stock_detail_artifacts_include_calibration_fields(monkeypatch, tmp_path):
+    from stokz_forecast import pipeline, reviews, stock_details
+
+    _patch_base_forecasts(monkeypatch, 0.006, -0.006)
+    model_path = tmp_path / 'models' / 'calibration-model.json'
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    model_path.write_text(json.dumps({'stub': True}), encoding='utf-8')
+
+    monkeypatch.setattr(pipeline, 'load_overlay_model', lambda path: {'stub': True}, raising=False)
+
+    def _fake_apply_overlay_model(model_artifact, feature_snapshot, base_predicted_return):
+        if feature_snapshot['ticker'] == 'SMCI':
+            return {
+                'adjusted_predicted_return': 0.009,
+                'adjusted_confidence_score': 0.91,
+                'event_risk': 'moderate',
+                'calibration_reason_codes': ['predicted_return', 'news_score'],
+            }
+        return {
+            'adjusted_predicted_return': -0.004,
+            'adjusted_confidence_score': 0.19,
+            'event_risk': 'high',
+            'calibration_reason_codes': ['community_score', 'days_to_earnings'],
+        }
+
+    monkeypatch.setattr(pipeline, 'apply_overlay_model', _fake_apply_overlay_model, raising=False)
+    monkeypatch.setattr(reviews, '_fetch_news_items', lambda tickers, per_ticker=2, max_items=8: [])
+
+    class _FakeTicker:
+        def __init__(self, ticker: str):
+            self.ticker = ticker
+            self.fast_info = {}
+            self.info = {
+                'shortName': f'{ticker} Corp',
+                'sector': 'Technology',
+                'industry': 'Software',
+            }
+            self.calendar = {}
+
+    monkeypatch.setattr(stock_details.yf, 'Ticker', lambda ticker: _FakeTicker(ticker))
+
+    artifacts = build_dashboard_artifacts(
+        settings=_settings(calibration_enabled=True, calibration_model_path=model_path),
+        bars_loader=lambda *args, **kwargs: _fake_bars(),
+        portfolio=_portfolio(),
+        research_context_builder=_fake_research_context,
+    )
+
+    review = build_daily_review(artifacts)
+    review_rows = review['topLongs'] + review['riskReductions'] + review['watchlist']
+    review_by_ticker = {row['ticker']: row for row in review_rows}
+    assert review_by_ticker['SMCI']['basePredictedReturn'] == pytest.approx(0.006)
+    assert review_by_ticker['SMCI']['adjustedPredictedReturn'] == pytest.approx(0.009)
+    assert review_by_ticker['SMCI']['calibrationEnabled'] is True
+    assert review_by_ticker['SMCI']['calibrationModelVersion'] == 1
+    assert review_by_ticker['SMCI']['calibrationStatus'] == 'applied'
+    assert review_by_ticker['SMCI']['eventRisk'] == 'moderate'
+    assert review_by_ticker['SMCI']['calibrationReasons'] == ['predicted_return', 'news_score']
+
+    stock_rows = build_stock_detail_records(artifacts)
+    stock_by_ticker = {row['ticker']: row for row in stock_rows}
+    assert stock_by_ticker['SMCI']['basePredictedReturn'] == pytest.approx(0.006)
+    assert stock_by_ticker['SMCI']['adjustedPredictedReturn'] == pytest.approx(0.009)
+    assert stock_by_ticker['SMCI']['calibrationEnabled'] is True
+    assert stock_by_ticker['SMCI']['calibrationModelVersion'] == 1
+    assert stock_by_ticker['SMCI']['calibrationStatus'] == 'applied'
+    assert stock_by_ticker['SMCI']['eventRisk'] == 'moderate'
+    assert stock_by_ticker['SMCI']['calibrationReasons'] == ['predicted_return', 'news_score']

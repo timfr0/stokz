@@ -9,6 +9,7 @@ from typing import Any
 
 import yfinance as yf
 
+from .calibration_model import MODEL_VERSION
 from .data_models import DashboardArtifacts, SetupRecommendation
 from .evaluation import read_json_array, summarize_horizon_metrics
 
@@ -48,11 +49,22 @@ def _metric_from_summary(summary: dict[int, dict[str, float]], horizon_days: int
 
 
 def _map_setup(setup: SetupRecommendation, metric_summary: dict[int, dict[str, float]]) -> dict[str, Any]:
+    calibration_model_version = None
+    if setup.calibration_status == 'applied':
+        calibration_model_version = MODEL_VERSION
+
     return {
         'ticker': setup.ticker,
         'portfolioAction': setup.portfolio_action,
         'setupLabel': setup.setup_label,
         'predictedReturn': _round(setup.predicted_return, 6),
+        'basePredictedReturn': _round(setup.base_predicted_return if setup.base_predicted_return is not None else setup.predicted_return, 6),
+        'adjustedPredictedReturn': _round(setup.adjusted_predicted_return if setup.adjusted_predicted_return is not None else setup.predicted_return, 6),
+        'calibrationEnabled': bool(setup.calibration_enabled),
+        'calibrationModelVersion': calibration_model_version,
+        'calibrationStatus': setup.calibration_status,
+        'calibrationReasons': [str(reason) for reason in setup.calibration_reason_codes[:3]],
+        'eventRisk': setup.event_risk,
         'confidenceLabel': setup.confidence_label,
         'trendBias': setup.trend_bias,
         'convictionScore': int(setup.conviction_score),
