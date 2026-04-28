@@ -1,13 +1,13 @@
 [
   {
     "ticker": "AMD",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 334.63,
-    "current_price": 334.63,
-    "target_close": 336.7013,
-    "predicted_return": 0.006171,
-    "baseline_return": 0.039287,
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 323.21,
+    "current_price": 323.21,
+    "target_close": 323.6838,
+    "predicted_return": 0.001465,
+    "baseline_return": 0.025521,
     "predicted_direction": "bullish",
     "confidence_label": "medium",
     "signal_direction": "LONG",
@@ -15,10 +15,10 @@
     "setup_label": "Fresh long setup",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.038247,
-      0.050588
+      -0.043061,
+      0.045991
     ],
-    "trend_bias": "Uptrend",
+    "trend_bias": "Range",
     "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
     "model_name": "timesfm",
     "current_position_shares": 0.0,
@@ -26,195 +26,54 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.006171,
-        "target_close": 336.7013,
+        "predicted_return": 0.001465,
+        "target_close": 323.6838,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.010182,
-        "target_close": 338.0545,
+        "predicted_return": 0.002417,
+        "target_close": 323.9921,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.013575,
-        "target_close": 339.2037,
+        "predicted_return": 0.003223,
+        "target_close": 324.2533,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.006171,
-    "adjusted_predicted_return": 0.006171,
-    "adjusted_confidence_score": 0.523845,
-    "event_risk": "moderate",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "AMD",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.006171,
-      "baseline_return": 0.039287,
-      "realized_volatility": 0.04038,
-      "short_trend": 0.217058,
-      "medium_trend": 0.656666,
-      "days_to_earnings": 8,
-      "news_score": 4,
-      "community_score": 0,
-      "news_count": 4,
-      "community_count": 0,
-      "event_risk": "moderate",
-      "event_risk_score": 1,
-      "predicted_direction": "bullish",
-      "direction_score": 1,
-      "news_bias": "supportive",
-      "community_label": "mixed"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 334.6300048828125,
-      "research_context": {
-        "news_items": [
-          {
-            "id": "34b3bb9f-7955-4922-a12f-8166cb5a45f4",
-            "ticker": "AMD",
-            "title": "Google, Meta, Microsoft, Amazon, Apple earnings: What to expect",
-            "summary": "Alphabet (GOOG, GOOGL), Meta (META), Microsoft (MSFT), Amazon (AMZN), and Apple (AAPL) are all reporting quarterly earnings results this week. D.A. Davidson head of technology research Gil Luria joins Yahoo Finance to discuss his outlook for the results and the questions to which he'll be looking for answers.",
-            "source": "Yahoo Finance Video",
-            "publishedAt": "2026-04-27T15:12:48Z",
-            "url": "https://finance.yahoo.com/video/google-meta-microsoft-amazon-apple-earnings-what-to-expect-151248213.html"
-          },
-          {
-            "id": "95203eec-dd1b-45ca-8461-2b10895ad8a1",
-            "ticker": "AMD",
-            "title": "Will Nvidia's explosive rally end soon?",
-            "summary": "JPMorgan has a warning for Nvidia fans.",
-            "source": "Yahoo Finance",
-            "publishedAt": "2026-04-27T13:34:29Z",
-            "url": "https://finance.yahoo.com/news/will-nvidias-explosive-rally-end-soon-133429771.html"
-          },
-          {
-            "id": "654cbbba-5813-3bfb-945d-df541e75e33d",
-            "ticker": "AMD",
-            "title": "Rambus Q1 Earnings Call Highlights",
-            "summary": "Rambus (NASDAQ:RMBS) outlined its second-quarter outlook and provided updates on product transitions, supply chain conditions, and longer-term platform-driven opportunities during its latest earnings call. Guidance calls for sequential revenue growth in Q2 Management guided to second-quarter revenu",
-            "source": "MarketBeat",
-            "publishedAt": "2026-04-27T22:22:42Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/rambus-q1-earnings-call-highlights-222242328.html"
-          },
-          {
-            "id": "093dd76c-5951-3940-9854-0f0a34aca380",
-            "ticker": "AMD",
-            "title": "AMD Supplier Up 40% This Month Soars On Earnings Beat",
-            "summary": "Data center stock Sanmina trounced analyst expectations when it reported earnings on Monday, as demand for its AI hardware soars.",
-            "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T20:19:43Z",
-            "url": "https://www.investors.com/news/data-center-stocks-sanmina-amd-servers-ai-artificial-intelligence/?src=A00220&yptr=yahoo"
-          }
-        ],
-        "community_items": [],
-        "news_score": 4,
-        "community_score": 0,
-        "news_bias": "supportive",
-        "community_label": "mixed",
-        "earnings_date": "2026-05-05",
-        "days_to_earnings": 8,
-        "event_risk": "moderate"
-      },
-      "owns_position": false,
-      "realized_volatility": 0.04038
-    }
-  },
-  {
-    "ticker": "CLS",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 422.21,
-    "current_price": 422.21,
-    "target_close": 427.0582,
-    "predicted_return": 0.011417,
-    "baseline_return": 0.010248,
-    "predicted_direction": "bullish",
-    "confidence_label": "high",
-    "signal_direction": "LONG",
-    "portfolio_action": "BUY",
-    "setup_label": "Fresh long setup",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.049499,
-      0.072334
-    ],
-    "trend_bias": "Uptrend",
-    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
-    "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": true,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.011417,
-        "target_close": 427.0582,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.018839,
-        "target_close": 430.2393,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.025118,
-        "target_close": 432.9495,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
-      }
-    ],
-    "base_predicted_return": 0.011417,
-    "adjusted_predicted_return": 0.011417,
-    "adjusted_confidence_score": 0.716776,
+    "base_predicted_return": 0.001465,
+    "adjusted_predicted_return": 0.001465,
+    "adjusted_confidence_score": 0.356528,
     "event_risk": "high",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
     "calibration_status": "disabled",
     "calibration_features": {
       "feature_version": 1,
-      "ticker": "CLS",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.011417,
-      "baseline_return": 0.010248,
-      "realized_volatility": 0.045123,
-      "short_trend": 0.052578,
-      "medium_trend": 0.506709,
-      "days_to_earnings": 0,
-      "news_score": 6,
-      "community_score": 0,
+      "ticker": "AMD",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.001465,
+      "baseline_return": 0.025521,
+      "realized_volatility": 0.040478,
+      "short_trend": 0.136103,
+      "medium_trend": 0.648694,
+      "days_to_earnings": 7,
+      "news_score": 2,
+      "community_score": -1,
       "news_count": 4,
-      "community_count": 0,
+      "community_count": 1,
       "event_risk": "high",
       "event_risk_score": 2,
       "predicted_direction": "bullish",
@@ -228,221 +87,80 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 422.2099914550781,
+      "current_price": 323.2099914550781,
       "research_context": {
         "news_items": [
           {
-            "id": "f6e0b4f9-986d-3d4f-b519-77fba628d442",
-            "ticker": "CLS",
-            "title": "Celestica Earnings, Guidance Strong. But The AI Play Dives Late.",
-            "summary": "Celestica reported better-than-expected first-quarter earnings while revenue just edged above consensus. The AI data center play guided higher, but Celestica stock fell solidly in after-hours action. Celestica earnings surged 80% to $2.",
-            "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T21:48:14Z",
-            "url": "https://www.investors.com/news/technology/celestica-stock-celestica-earnings-ai-play/?src=A00220&yptr=yahoo"
+            "id": "9a805edc-7359-4ebb-aff5-ccc90bcd4ddc",
+            "ticker": "AMD",
+            "title": "Tech stocks today: Oracle, AMD, and other AI-driven names sink, with Big Tech earnings on deck",
+            "summary": "Tech stocks are in focus amid an earnings bonanza, layoffs, and AI spending plans.",
+            "source": "Yahoo Finance",
+            "publishedAt": "2026-04-27T11:35:35Z",
+            "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-magnificent-seven-113535737.html"
           },
           {
-            "id": "ba676ed4-8db8-36b4-90ef-e9d2c2ec979c",
-            "ticker": "CLS",
-            "title": "Dow Jones Futures: Nasdaq, S&P 500 Set More Record Highs; Micron, Nvidia, Sandisk, Alphabet Are Big Winners",
-            "summary": "Dow Jones Futures: The Nasdaq and S&P 500 set more record highs Monday. Micron, Sandisk, Nvidia and Alphabet were big winners.",
-            "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T21:02:51Z",
-            "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-iran-news-nvidia-alphabet/?src=A00220&yptr=yahoo"
+            "id": "19316443-e5fb-3961-9968-e518fb65c073",
+            "ticker": "AMD",
+            "title": "Nasdaq, S&P 500 end lower on renewed AI growth worries",
+            "summary": "STORY: U.S. stocks ended lower on Tuesday, with the Dow ticking down marginally, the S&P 500 shedding about half a percent and the tech-heavy Nasdaq losing nine-tenths of a percent. AI-related fears spooked the market after the Wall Street Journal reported that OpenAI missed internal targets for weekly users and revenu",
+            "source": "Reuters Videos",
+            "publishedAt": "2026-04-28T22:11:16Z",
+            "url": "https://finance.yahoo.com/video/nasdaq-p-500-end-lower-221116038.html"
           },
           {
-            "id": "20f5e076-4df9-3441-b692-9a149fc00081",
-            "ticker": "CLS",
-            "title": "Celestica Down 8.6% After Hours as Its Q1 Profit Rises; 2026 Outlook Raised and Q2 Guidance Issued",
-            "summary": "Celestica (CLS.TO, CLS) shares were last seen down 8.6% in after-hours New York trading after the co",
+            "id": "5dfe0a48-5825-39d8-96a6-4c19c536ef92",
+            "ticker": "AMD",
+            "title": "Nasdaq, S&P 500 Retreat From Record Highs as Tech Stocks Fall",
+            "summary": "The Nasdaq Composite and the S&P 500 retreated from record highs as technology stocks fell following",
             "source": "MT Newswires",
-            "publishedAt": "2026-04-27T20:58:03Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-down-8-6-hours-205803923.html"
+            "publishedAt": "2026-04-28T21:09:36Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-retreat-record-210936839.html"
           },
           {
-            "id": "a9813b1e-6095-3060-8f89-75143b58abe5",
-            "ticker": "CLS",
-            "title": "Should Bell\u2013Celestica Canadian Sovereign AI Infrastructure Deal Require Action From Celestica (TSX:CLS) Investors?",
-            "summary": "In April 2026, Bell and Celestica Inc. announced a collaboration to build a Canadian sovereign AI infrastructure stack, combining Bell\u2019s full-stack AI capabilities with Celestica\u2019s traceable, lifecycle-managed hardware and domestic manufacturing for sensitive government and regulated-industry workloads. This partnershi",
-            "source": "Simply Wall St.",
-            "publishedAt": "2026-04-27T19:05:43Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/bell-celestica-canadian-sovereign-ai-190543906.html"
-          }
-        ],
-        "community_items": [],
-        "news_score": 6,
-        "community_score": 0,
-        "news_bias": "supportive",
-        "community_label": "mixed",
-        "earnings_date": "2026-04-27",
-        "days_to_earnings": 0,
-        "event_risk": "high"
-      },
-      "owns_position": false,
-      "realized_volatility": 0.045123
-    }
-  },
-  {
-    "ticker": "MRVL",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 158.21,
-    "current_price": 158.21,
-    "target_close": 159.9562,
-    "predicted_return": 0.010977,
-    "baseline_return": 0.013559,
-    "predicted_direction": "bullish",
-    "confidence_label": "high",
-    "signal_direction": "LONG",
-    "portfolio_action": "BUY",
-    "setup_label": "Fresh long setup",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.040023,
-      0.061977
-    ],
-    "trend_bias": "Uptrend",
-    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
-    "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": true,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.010977,
-        "target_close": 159.9562,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.018112,
-        "target_close": 161.1016,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.024149,
-        "target_close": 162.0772,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
-      }
-    ],
-    "base_predicted_return": 0.010977,
-    "adjusted_predicted_return": 0.010977,
-    "adjusted_confidence_score": 0.702237,
-    "event_risk": "moderate",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "MRVL",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.010977,
-      "baseline_return": 0.013559,
-      "realized_volatility": 0.037778,
-      "short_trend": 0.070143,
-      "medium_trend": 0.66831,
-      "days_to_earnings": 31,
-      "news_score": 5,
-      "community_score": 1,
-      "news_count": 4,
-      "community_count": 1,
-      "event_risk": "moderate",
-      "event_risk_score": 1,
-      "predicted_direction": "bullish",
-      "direction_score": 1,
-      "news_bias": "supportive",
-      "community_label": "mixed"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 158.2100067138672,
-      "research_context": {
-        "news_items": [
-          {
-            "id": "5a1f7290-93e2-3c12-8c4f-cc440c9628c0",
-            "ticker": "MRVL",
-            "title": "Poet Technologies Stock Crashed After Marvell Canceled Orders: What Comes Next?",
-            "summary": "Poet Technologies stock just saw an incredibly rapid rise and fall.",
-            "source": "Motley Fool",
-            "publishedAt": "2026-04-27T21:24:32Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/poet-technologies-stock-crashed-marvell-212432764.html"
-          },
-          {
-            "id": "12eec82e-f4f0-3de2-a473-af1d56a193d2",
-            "ticker": "MRVL",
-            "title": "Stock Market Today, April 27: S&P 500 Inches to New Record on Further AI Optimism",
-            "summary": "On April 27, 2026, chip leaders surged to fresh highs as AI-fueled data-center demand overrode geopolitical uncertainty.",
-            "source": "Motley Fool",
-            "publishedAt": "2026-04-27T21:16:08Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-april-27-211608019.html"
-          },
-          {
-            "id": "4f9d50c0-92a2-3bfa-adbf-64fbdd9ba28b",
-            "ticker": "MRVL",
-            "title": "Chip Stocks Wipe Out as Iran War Fears and Big Tech Earnings Loom",
-            "summary": "Arm and Marvell Tumble While Nvidia Bucks the Rout",
-            "source": "GuruFocus.com",
-            "publishedAt": "2026-04-27T18:54:47Z",
-            "url": "https://finance.yahoo.com/sectors/technology/articles/chip-stocks-wipe-iran-war-185447579.html"
-          },
-          {
-            "id": "c1b3df99-39d5-326d-8e6f-a4a4f57cac65",
-            "ticker": "MRVL",
-            "title": "NVIDIA Rises 4% to Record Highs on AI Buildout Momentum: Has the Catch-Up Trade Arrived?",
-            "summary": "Shares of NVIDIA (NASDAQ:NVDA) are surging 4% this Monday afternoon, breaking out to a fresh all-time high as the broader semiconductor rally finally pulls the AI bellwether higher. NVDA stock trades near $216, clearing the prior 52-week peak of $212.17. The move caps a sharp run for chip stocks. NVIDIA shares are up 2",
-            "source": "24/7 Wall St.",
-            "publishedAt": "2026-04-27T18:40:05Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-rises-4-record-highs-184005756.html"
+            "id": "a11885be-8e08-3a4b-8e81-bf882249a821",
+            "ticker": "AMD",
+            "title": "Nvidia, AI Chip Stocks Fall On OpenAI Funding Concerns",
+            "summary": "Chip stocks tied to the buildout of data centers for artificial intelligence fell Tuesday on a negative report about OpenAI.",
+            "source": "Investor's Business Daily",
+            "publishedAt": "2026-04-28T21:07:31Z",
+            "url": "https://www.investors.com/news/technology/chip-stocks-falls-openai-funding-concerns/?src=A00220&yptr=yahoo"
           }
         ],
         "community_items": [
           {
             "id": "community:2:twitter",
-            "ticker": "MRVL",
-            "title": "All these stocks hit new 52 WEEK HIGHS at some point today Amazon $AMZN Taiwan Semiconductor $TSM $AMD Intel $INTC Micron $MU Sandisk $SNDK Marvell $MRVL Arm Holdings $ARM Texas Instruments $TXN Corning $GLW Vertiv Holdings $VRT A",
-            "summary": "All these stocks hit new 52 WEEK HIGHS at some point today Amazon $AMZN Taiwan Semiconductor $TSM $AMD Intel $INTC Micron $MU Sandisk $SNDK Marvell $MRVL Arm Holdings $ARM Texas Instruments $TXN Corning $GLW Vertiv Holdings $VRT A x.com",
+            "ticker": "AMD",
+            "title": "I'm not selling a single $AMD share I held last year when it was at $75 I'm now up 80X And I'm positioned to ride $AMD up all the way to $2,000 and beyond",
+            "summary": "I'm not selling a single $AMD share I held last year when it was at $75 I'm now up 80X And I'm positioned to ride $AMD up all the way to $2,000 and beyond x.com",
             "source": "x.com",
             "sourceType": "twitter",
-            "publishedAt": "Fri, 24 Apr 2026 19:09:38 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBlcGUtNlRBQkYxc3V5eWRpNjdiN0ExLVJ3Q2JncWNFR0NLTTJKd2QzSDI2Q29vSXkxZFdGYk1MaTF5M3lCTUEwLWxxOHB0ZnFLWHRHVldHcTl6cWpJQ2ZoXzhtNA?oc=5",
-            "query": "\"MRVL\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+            "publishedAt": "Tue, 28 Apr 2026 15:02:17 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9uU0Zkc3l1MTZlcFJfVW5rS29uUnVCNGs3UnM0bDIxWDJuRWd3QWtvSGF0R1RTWFl1bzlieVNWLW5OZ0xjNVhIa19jRzZSOWxRM25CYllvbm13Y2FH?oc=5",
+            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
-        "news_score": 5,
-        "community_score": 1,
+        "news_score": 2,
+        "community_score": -1,
         "news_bias": "supportive",
         "community_label": "mixed",
-        "earnings_date": "2026-05-28",
-        "days_to_earnings": 31,
-        "event_risk": "moderate"
+        "earnings_date": "2026-05-05",
+        "days_to_earnings": 7,
+        "event_risk": "high"
       },
       "owns_position": false,
-      "realized_volatility": 0.037778
+      "realized_volatility": 0.040478
     }
   },
   {
-    "ticker": "SMCI",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 27.85,
-    "current_price": 27.85,
-    "target_close": 27.9362,
-    "predicted_return": 0.00309,
-    "baseline_return": -0.006778,
+    "ticker": "ANET",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 165.29,
+    "current_price": 165.29,
+    "target_close": 165.5789,
+    "predicted_return": 0.001746,
+    "baseline_return": -0.008956,
     "predicted_direction": "bullish",
     "confidence_label": "medium",
     "signal_direction": "LONG",
@@ -450,8 +168,8 @@
     "setup_label": "Fresh long setup",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.051637,
-      0.057818
+      -0.032762,
+      0.036255
     ],
     "trend_bias": "Range",
     "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
@@ -461,54 +179,348 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.00309,
-        "target_close": 27.9362,
+        "predicted_return": 0.001746,
+        "target_close": 165.5789,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.005099,
-        "target_close": 27.9924,
+        "predicted_return": 0.002882,
+        "target_close": 165.767,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.006798,
-        "target_close": 28.04,
+        "predicted_return": 0.003842,
+        "target_close": 165.9263,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.00309,
-    "adjusted_predicted_return": 0.00309,
-    "adjusted_confidence_score": 0.414318,
+    "base_predicted_return": 0.001746,
+    "adjusted_predicted_return": 0.001746,
+    "adjusted_confidence_score": 0.366542,
+    "event_risk": "high",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "ANET",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.001746,
+      "baseline_return": -0.008956,
+      "realized_volatility": 0.031371,
+      "short_trend": -0.043793,
+      "medium_trend": 0.423319,
+      "days_to_earnings": 7,
+      "news_score": 2,
+      "community_score": 0,
+      "news_count": 4,
+      "community_count": 1,
+      "event_risk": "high",
+      "event_risk_score": 2,
+      "predicted_direction": "bullish",
+      "direction_score": 1,
+      "news_bias": "supportive",
+      "community_label": "mixed"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 165.2899932861328,
+      "research_context": {
+        "news_items": [
+          {
+            "id": "252ab967-ca06-335c-a854-6534f550e0ba",
+            "ticker": "ANET",
+            "title": "US Equity Indexes Retreat as Sell-Off in Semiconductors Coincides With Surge in Crude Oil",
+            "summary": "US equity indexes declined on Tuesday as a slide in semiconductors hit technology, while worsening M",
+            "source": "MT Newswires",
+            "publishedAt": "2026-04-28T20:49:10Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-retreat-sell-204910382.html"
+          },
+          {
+            "id": "853a5b83-1592-3a2c-9ea1-e0ab5a30b808",
+            "ticker": "ANET",
+            "title": "US Equity Markets End Lower as Chipmakers Slide, Middle East Tensions Lift Oil",
+            "summary": "US equity indexes closed lower on Tuesday as semiconductor shares fell and Middle East tensions lift",
+            "source": "MT Newswires",
+            "publishedAt": "2026-04-28T20:10:37Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-markets-end-lower-201037663.html"
+          },
+          {
+            "id": "35d139ee-7457-3c97-b7b2-7159afc3999e",
+            "ticker": "ANET",
+            "title": "US Equity Indexes Decline Amid Sharp Sell-Off in Semiconductors, Rising Crude Oil",
+            "summary": "US equity indexes traded lower ahead of Tuesday's close as a decline in semiconductor shares crushed",
+            "source": "MT Newswires",
+            "publishedAt": "2026-04-28T19:53:13Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-decline-amid-195313379.html"
+          },
+          {
+            "id": "ecc04201-a5f6-31ac-a6b2-151ca796d633",
+            "ticker": "ANET",
+            "title": "5 Women-Run Company Stocks to Buy for Strong Market Returns",
+            "summary": "OXY, PSX, ANET, CASY and AMD show how women-led companies are redefining growth with discipline, agility and results.",
+            "source": "Zacks",
+            "publishedAt": "2026-04-28T17:06:00Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/5-women-run-company-stocks-170600175.html"
+          }
+        ],
+        "community_items": [
+          {
+            "id": "community:2:reddit",
+            "ticker": "ANET",
+            "title": "Should I convert a stock Anet A8 to Switchwire?",
+            "summary": "Should I convert a stock Anet A8 to Switchwire? Reddit",
+            "source": "Reddit",
+            "sourceType": "reddit",
+            "publishedAt": "Tue, 11 Apr 2023 07:00:00 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPM1JuUC1RUzlMM3JBdU5xNkEtd29IQ1RneldxcFU0RU44Q1J1eWRQV01PdnpJNzRqUFpQanJsWEx3ZDZFeHpCalJPcHg1QlVSLWN0Tnd3UFU5cG9fY3NwTTY4c3hGVXY3dHNtSHB6VFJYbHlITkNpeHZZUUtleGpPMnYxcmg2bGFXTkNMXy1FNU4zRmdUT25vSllELTRJNzRpeTlR?oc=5",
+            "query": "\"ANET\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+          }
+        ],
+        "news_score": 2,
+        "community_score": 0,
+        "news_bias": "supportive",
+        "community_label": "mixed",
+        "earnings_date": "2026-05-05",
+        "days_to_earnings": 7,
+        "event_risk": "high"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.031371
+    }
+  },
+  {
+    "ticker": "CLS",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 361.54,
+    "current_price": 361.54,
+    "target_close": 363.1854,
+    "predicted_return": 0.004541,
+    "baseline_return": -0.021728,
+    "predicted_direction": "bullish",
+    "confidence_label": "medium",
+    "signal_direction": "LONG",
+    "portfolio_action": "BUY",
+    "setup_label": "Fresh long setup",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.046759,
+      0.055841
+    ],
+    "trend_bias": "Range",
+    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": true,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.004541,
+        "target_close": 363.1854,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000757
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.007492,
+        "target_close": 364.2589,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001873
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.009989,
+        "target_close": 365.1697,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.003955
+      }
+    ],
+    "base_predicted_return": 0.004541,
+    "adjusted_predicted_return": 0.004541,
+    "adjusted_confidence_score": 0.46589,
+    "event_risk": "low",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "CLS",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.004541,
+      "baseline_return": -0.021728,
+      "realized_volatility": 0.046636,
+      "short_trend": -0.102945,
+      "medium_trend": 0.405294,
+      "days_to_earnings": 90,
+      "news_score": 5,
+      "community_score": 0,
+      "news_count": 4,
+      "community_count": 0,
+      "event_risk": "low",
+      "event_risk_score": 0,
+      "predicted_direction": "bullish",
+      "direction_score": 1,
+      "news_bias": "supportive",
+      "community_label": "mixed"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 361.5400085449219,
+      "research_context": {
+        "news_items": [
+          {
+            "id": "31f5845b-80c3-32a9-870e-bf72af66dadc",
+            "ticker": "CLS",
+            "title": "Dow Jones Futures: Seagate, Bloom Energy, Teradyne Lead Earnings Movers After OpenAI Hits Techs; Titans On Tap",
+            "summary": "The stock market fell on OpenAI fears and rising oil prices, but pared losses. AI stocks Seagate, Bloom Energy led earnings movers late.",
+            "source": "Investor's Business Daily",
+            "publishedAt": "2026-04-28T22:22:58Z",
+            "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-openai-ai-stocks-seagate-bloom-energy-teradyne-earnings/?src=A00220&yptr=yahoo"
+          },
+          {
+            "id": "210216ba-f50c-300d-8b38-70d0e52edd57",
+            "ticker": "CLS",
+            "title": "Stock Market Today: Nasdaq Beat Up After OpenAI Report; Nvidia, Palantir Drop (Live Coverage)",
+            "summary": "Stock Market Today: The Dow Jones index dipped, as the Nasdaq sold off. Tesla stock pulled back while Nucor rallied.",
+            "source": "Investor's Business Daily",
+            "publishedAt": "2026-04-28T20:46:23Z",
+            "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-openai-nvidia-nvda-stock/?src=A00220&yptr=yahoo"
+          },
+          {
+            "id": "f6e0b4f9-986d-3d4f-b519-77fba628d442",
+            "ticker": "CLS",
+            "title": "Celestica Earnings, Guidance Strong. But The AI Stock Dives.",
+            "summary": "Celestica reported better-than-expected first-quarter earnings late Monday while revenue just edged above consensus. The AI data center play guided higher, but Celestica stock dived Tuesday, round-tripping a breakout.",
+            "source": "Investor's Business Daily",
+            "publishedAt": "2026-04-28T20:44:12Z",
+            "url": "https://www.investors.com/news/technology/celestica-stock-celestica-earnings-ai-play/?src=A00220&yptr=yahoo"
+          },
+          {
+            "id": "6a20b2da-3162-3628-8bd7-ae0a824e92ae",
+            "ticker": "CLS",
+            "title": "Celestica Q1 Earnings Call Highlights",
+            "summary": "Celestica (NYSE:CLS) reported a strong start to fiscal 2026, posting first-quarter revenue above $4 billion and delivering what management described as record profitability metrics for the company. On the company\u2019s Q1 2026 earnings call, executives pointed to accelerating demand from hyperscaler cus",
+            "source": "MarketBeat",
+            "publishedAt": "2026-04-28T20:31:37Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-q1-earnings-call-highlights-203137718.html"
+          }
+        ],
+        "community_items": [],
+        "news_score": 5,
+        "community_score": 0,
+        "news_bias": "supportive",
+        "community_label": "mixed",
+        "earnings_date": "2026-07-27",
+        "days_to_earnings": 90,
+        "event_risk": "low"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.046636
+    }
+  },
+  {
+    "ticker": "MRVL",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 153.23,
+    "current_price": 153.23,
+    "target_close": 153.7478,
+    "predicted_return": 0.003373,
+    "baseline_return": 0.002522,
+    "predicted_direction": "bullish",
+    "confidence_label": "medium",
+    "signal_direction": "LONG",
+    "portfolio_action": "BUY",
+    "setup_label": "Fresh long setup",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.038285,
+      0.045032
+    ],
+    "trend_bias": "Range",
+    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": true,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.003373,
+        "target_close": 153.7478,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000757
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.005566,
+        "target_close": 154.0853,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001873
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.007421,
+        "target_close": 154.3714,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.003955
+      }
+    ],
+    "base_predicted_return": 0.003373,
+    "adjusted_predicted_return": 0.003373,
+    "adjusted_confidence_score": 0.424386,
     "event_risk": "moderate",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
     "calibration_status": "disabled",
     "calibration_features": {
       "feature_version": 1,
-      "ticker": "SMCI",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.00309,
-      "baseline_return": -0.006778,
-      "realized_volatility": 0.049752,
-      "short_trend": -0.033322,
-      "medium_trend": 0.267638,
-      "days_to_earnings": 8,
-      "news_score": 4,
-      "community_score": 0,
+      "ticker": "MRVL",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.003373,
+      "baseline_return": 0.002522,
+      "realized_volatility": 0.037872,
+      "short_trend": 0.012689,
+      "medium_trend": 0.745891,
+      "days_to_earnings": 30,
+      "news_score": 6,
+      "community_score": 1,
       "news_count": 4,
-      "community_count": 1,
+      "community_count": 2,
       "event_risk": "moderate",
       "event_risk_score": 1,
       "predicted_direction": "bullish",
@@ -522,80 +534,91 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 27.850000381469727,
+      "current_price": 153.22999572753906,
       "research_context": {
         "news_items": [
           {
-            "id": "2592ba3f-6cf4-3b15-abc8-ac3454e2f2b5",
-            "ticker": "SMCI",
-            "title": "Super Micro Expands Silicon Valley Campus",
-            "summary": "New San Jose site supports AI data center production and delivery.",
-            "source": "GuruFocus.com",
-            "publishedAt": "2026-04-27T18:06:19Z",
-            "url": "https://finance.yahoo.com/sectors/technology/articles/super-micro-expands-silicon-valley-180619007.html"
+            "id": "a11885be-8e08-3a4b-8e81-bf882249a821",
+            "ticker": "MRVL",
+            "title": "Nvidia, AI Chip Stocks Fall On OpenAI Funding Concerns",
+            "summary": "Chip stocks tied to the buildout of data centers for artificial intelligence fell Tuesday on a negative report about OpenAI.",
+            "source": "Investor's Business Daily",
+            "publishedAt": "2026-04-28T21:07:31Z",
+            "url": "https://www.investors.com/news/technology/chip-stocks-falls-openai-funding-concerns/?src=A00220&yptr=yahoo"
           },
           {
-            "id": "9d12087d-21f9-3b35-9008-f9b9a3ee0e84",
-            "ticker": "SMCI",
-            "title": "How Oracle\u2019s Canceled Nvidia Server Order At Supermicro (SMCI) Has Changed Its AI Infrastructure Investment Story",
-            "summary": "In mid-April 2026, Super Micro Computer disclosed new compact, energy\u2011efficient edge AI systems built on AMD\u2019s EPYC 4005 \u201cZen 5\u201d processors, targeting constrained retail, manufacturing, healthcare, and branch environments with enhanced security, remote management, and optional GPU acceleration. Around the same time, re",
-            "source": "Simply Wall St.",
-            "publishedAt": "2026-04-25T18:05:57Z",
-            "url": "https://finance.yahoo.com/sectors/technology/articles/oracle-canceled-nvidia-server-order-180557762.html"
+            "id": "23cdbcd0-d6ef-33e0-8701-ba9f9881399f",
+            "ticker": "MRVL",
+            "title": "As Broadcom Deepens Its Google Cloud Ties, Should You Buy AVGO Stock?",
+            "summary": "Broadcom's expanded Google Cloud collaboration, combined with the Meta MTIA deal and Anthropic's TPU commitment, reinforces the thesis that AVGO stock has quietly become one of the most deeply embedded infrastructure plays across the entire hyperscaler AI buildout.",
+            "source": "Barchart",
+            "publishedAt": "2026-04-28T13:30:02Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-deepens-google-cloud-ties-133002290.html"
           },
           {
-            "id": "7bc6f50b-ab6e-39d1-8dd8-ea3baa12283f",
-            "ticker": "SMCI",
-            "title": "Nvidia, Palantir, Super Micro Computer: High-flying stocks could stall soon",
-            "summary": "Pinpointing which stocks are due for a slide isn't easy, but evidence is mounting that a few companies whose shares have soared will go into reverse soon",
-            "source": "Quartz",
-            "publishedAt": "2026-04-25T17:30:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/3-high-performing-stocks-could-090000259.html"
+            "id": "f5dea306-642f-3e06-9424-1e3215c92de5",
+            "ticker": "MRVL",
+            "title": "Here's How Much You'd Have If You Invested $1000 in Marvell Technology a Decade Ago",
+            "summary": "Why investing for the long run, especially if you buy certain popular stocks, could reap huge rewards.",
+            "source": "Zacks",
+            "publishedAt": "2026-04-28T12:30:02Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/heres-much-youd-invested-1000-123002057.html"
           },
           {
-            "id": "9fef5f9f-02b6-3c1c-83ee-ca3f1a4cebbd",
-            "ticker": "SMCI",
-            "title": "Super Micro Computer Stock Jumps 9% Despite Oracle Canceling $1.4B Contract: What\u2019s Really Driving the Move?",
-            "summary": "Shares of Super Micro Computer (NASDAQ:SMCI) are up 9% in midday trading Friday, climbing to $29.06 from Thursday\u2019s close of $26.75. The rally is striking given a challenging news cycle. SMCI stock is bouncing hard even after Oracle (NYSE:ORCL) reportedly canceled a contract estimated between $1.1 billion and $1.4 bill",
-            "source": "24/7 Wall St.",
-            "publishedAt": "2026-04-24T18:46:58Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-stock-jumps-184658125.html"
+            "id": "7049823f-25ea-374c-9e90-da6ab61dc172",
+            "ticker": "MRVL",
+            "title": "POET Technologies Shares Plunge On Marvell Order Cancellation: What Investors Need To Know",
+            "summary": "Shares of POET Technologies Inc are trading sharply lower Monday morning following news that Marvell Semiconductor has canceled all outstanding purchase orders from Celestial AI, a company Marvell recently acquired. The cancellation notice, received on April 23, effectively terminates a partnership that included initia",
+            "source": "Benzinga",
+            "publishedAt": "2026-04-28T10:01:10Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/poet-technologies-shares-plunge-marvell-100110982.html"
           }
         ],
         "community_items": [
           {
-            "id": "community:2:twitter",
-            "ticker": "SMCI",
-            "title": "Super Micro Computer ( $SMCI): Stock Price Decline Analysis (April 23, 2026) \ud83d\udcc9 \ud83d\udd38Super Micro Computer ( $SMCI) shares tumbled approximately 9.5% in pre-market and early trading on Thursday. \ud83d\udd38The sharp decline follows reports from Bluefin Research tha",
-            "summary": "Super Micro Computer ( $SMCI): Stock Price Decline Analysis (April 23, 2026) \ud83d\udcc9 \ud83d\udd38Super Micro Computer ( $SMCI) shares tumbled approximately 9.5% in pre-market and early trading on Thursday. \ud83d\udd38The sharp decline follows reports from Bluefin Research tha x.com",
+            "id": "community:0:twitter",
+            "ticker": "MRVL",
+            "title": "this $POET story is just incredible - only photonics stock to do nothing all year - short report 2 weeks ago takes it down to $6.80 - CFO confirms a $MRVL order on a podcast a few days later - stock jumps from $6.80 to $17 - Marvell comes out and says that was",
+            "summary": "this $POET story is just incredible - only photonics stock to do nothing all year - short report 2 weeks ago takes it down to $6.80 - CFO confirms a $MRVL order on a podcast a few days later - stock jumps from $6.80 to $17 - Marvell comes out and says that was x.com",
             "source": "x.com",
             "sourceType": "twitter",
-            "publishedAt": "Thu, 23 Apr 2026 13:41:14 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5VUUpwWFM5QU45UE1lRU45d2F3OF9PaUlWS05lVU5xY1FrWWxmcXNLRjFQUU43V2o1NTVKNHp1VloyTmpGd08tRnJISWliRGpoY09Qc0QwSEZBelkzWWU2aQ?oc=5",
-            "query": "SMCI stock site:reddit.com OR site:x.com OR site:twitter.com"
+            "publishedAt": "Mon, 27 Apr 2026 15:58:47 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1pSzlMeXZ0Z2R6ejdEUE1QWWtFQnR1clJBWldQRlpCWV9CU0UwOHF4QkJVWDZnYkdKdXFVNC01c3kxanVaRWFBaXdxLTM0Y2ZkcDktOFJjQnBZbzVPSUtxRV9aZkM2TVU?oc=5",
+            "query": "\"MRVL\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:2:twitter",
+            "ticker": "MRVL",
+            "title": "Why $MRVL Stock Is Surging.",
+            "summary": "Why $MRVL Stock Is Surging. x.com",
+            "source": "x.com",
+            "sourceType": "twitter",
+            "publishedAt": "Mon, 20 Apr 2026 15:30:00 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1ObE5TdkFjU2dpX0RraTJCZkpCWmE5RkVZcVN0Y0lZTzdPTmw4TlBxemNEZVFET244X0JsM20zWUNvbnl5ZVpoUFluZXZMeDJzejdxeFVuYUJjUFN6NFE?oc=5",
+            "query": "\"MRVL\" stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
-        "news_score": 4,
-        "community_score": 0,
+        "news_score": 6,
+        "community_score": 1,
         "news_bias": "supportive",
         "community_label": "mixed",
-        "earnings_date": "2026-05-05",
-        "days_to_earnings": 8,
+        "earnings_date": "2026-05-28",
+        "days_to_earnings": 30,
         "event_risk": "moderate"
       },
       "owns_position": false,
-      "realized_volatility": 0.049752
+      "realized_volatility": 0.037872
     }
   },
   {
-    "ticker": "VRT",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 322.43,
-    "current_price": 322.43,
-    "target_close": 324.7993,
-    "predicted_return": 0.007322,
-    "baseline_return": 0.005038,
+    "ticker": "SMCI",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 27.25,
+    "current_price": 27.25,
+    "target_close": 27.2907,
+    "predicted_return": 0.001492,
+    "baseline_return": -0.008478,
     "predicted_direction": "bullish",
     "confidence_label": "medium",
     "signal_direction": "LONG",
@@ -603,10 +626,10 @@
     "setup_label": "Fresh long setup",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.033918,
-      0.048561
+      -0.053241,
+      0.056226
     ],
-    "trend_bias": "Uptrend",
+    "trend_bias": "Range",
     "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
     "model_name": "timesfm",
     "current_position_shares": 0.0,
@@ -614,35 +637,188 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.007322,
-        "target_close": 324.7993,
+        "predicted_return": 0.001492,
+        "target_close": 27.2907,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.012081,
-        "target_close": 326.3488,
+        "predicted_return": 0.002463,
+        "target_close": 27.3172,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.016107,
-        "target_close": 327.6656,
+        "predicted_return": 0.003283,
+        "target_close": 27.3396,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.007322,
-    "adjusted_predicted_return": 0.007322,
-    "adjusted_confidence_score": 0.564767,
+    "base_predicted_return": 0.001492,
+    "adjusted_predicted_return": 0.001492,
+    "adjusted_confidence_score": 0.35751,
+    "event_risk": "high",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "SMCI",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.001492,
+      "baseline_return": -0.008478,
+      "realized_volatility": 0.049758,
+      "short_trend": -0.041505,
+      "medium_trend": 0.293922,
+      "days_to_earnings": 7,
+      "news_score": 7,
+      "community_score": 0,
+      "news_count": 4,
+      "community_count": 1,
+      "event_risk": "high",
+      "event_risk_score": 2,
+      "predicted_direction": "bullish",
+      "direction_score": 1,
+      "news_bias": "supportive",
+      "community_label": "mixed"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 27.25,
+      "research_context": {
+        "news_items": [
+          {
+            "id": "37c8cae1-bb3f-3441-bc75-6786dff413d9",
+            "ticker": "SMCI",
+            "title": "Super Micro Computer Expands Silicon Valley AI Campus As Valuation Draws Attention",
+            "summary": "Super Micro Computer (NasdaqGS:SMCI) is expanding its Silicon Valley presence with its largest advanced data center campus near its San Jose headquarters. The new facility is designed around Supermicro's Data Center Building Block Solutions to support AI infrastructure for enterprises and cloud providers. The expansion",
+            "source": "Simply Wall St.",
+            "publishedAt": "2026-04-28T19:02:33Z",
+            "url": "https://finance.yahoo.com/sectors/technology/articles/super-micro-computer-expands-silicon-190233661.html"
+          },
+          {
+            "id": "34e478d8-05ce-3ad2-a63b-7ae73d1f8c50",
+            "ticker": "SMCI",
+            "title": "Super Micro Stock Falls. Arm Servers Take Aim at Cloud and AI Workloads",
+            "summary": "New Systems Focus on Power-Efficient AI Growth.",
+            "source": "GuruFocus.com",
+            "publishedAt": "2026-04-28T18:18:19Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-stock-falls-arm-181819732.html"
+          },
+          {
+            "id": "528fb405-b665-3eee-86a4-2037195ccb2b",
+            "ticker": "SMCI",
+            "title": "SMCX Could Go Parabolic Again if the AI Server Boom Still Has Another Leg",
+            "summary": "The math of a 2x daily reset leveraged ETF is unforgiving in a way that takes most investors a few painful months to fully appreciate. Defiance Daily Target 2X Long SMCI ETF (NASDAQ:SMCX) trades around $12 today after falling 8% in a single session, a reminder that this thing can move violently in either direction. ...",
+            "source": "24/7 Wall St.",
+            "publishedAt": "2026-04-28T16:04:17Z",
+            "url": "https://finance.yahoo.com/markets/options/articles/smcx-could-parabolic-again-ai-160417376.html"
+          },
+          {
+            "id": "fc086e99-670a-3628-8f85-bb972bcc72d7",
+            "ticker": "SMCI",
+            "title": "Dear Super Micro Computer Stock Fans, Mark Your Calendars for May 26",
+            "summary": "Super Micro is still posting explosive top\u2011line growth and big EPS gains, but the DOJ export\u2011scheme indictment, a lost Oracle order, and excess Nvidia GPU inventory for xAI have turned it from a pure AI winner into an overhang\u2011heavy story trading at a discount multiple.",
+            "source": "Barchart",
+            "publishedAt": "2026-04-28T14:00:02Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/dear-super-micro-computer-stock-140002575.html"
+          }
+        ],
+        "community_items": [
+          {
+            "id": "community:3:twitter",
+            "ticker": "SMCI",
+            "title": "Super Micro Computer ( $SMCI): Stock Price Decline Analysis (April 23, 2026) \ud83d\udcc9 \ud83d\udd38Super Micro Computer ( $SMCI) shares tumbled approximately 9.5% in pre-market and early trading on Thursday. \ud83d\udd38The sharp decline follows reports from Bluefin Research tha",
+            "summary": "Super Micro Computer ( $SMCI): Stock Price Decline Analysis (April 23, 2026) \ud83d\udcc9 \ud83d\udd38Super Micro Computer ( $SMCI) shares tumbled approximately 9.5% in pre-market and early trading on Thursday. \ud83d\udd38The sharp decline follows reports from Bluefin Research tha x.com",
+            "source": "x.com",
+            "sourceType": "twitter",
+            "publishedAt": "Thu, 23 Apr 2026 13:41:14 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5VUUpwWFM5QU45UE1lRU45d2F3OF9PaUlWS05lVU5xY1FrWWxmcXNLRjFQUU43V2o1NTVKNHp1VloyTmpGd08tRnJISWliRGpoY09Qc0QwSEZBelkzWWU2aQ?oc=5",
+            "query": "\"SMCI\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+          }
+        ],
+        "news_score": 7,
+        "community_score": 0,
+        "news_bias": "supportive",
+        "community_label": "mixed",
+        "earnings_date": "2026-05-05",
+        "days_to_earnings": 7,
+        "event_risk": "high"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.049758
+    }
+  },
+  {
+    "ticker": "VRT",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 305.03,
+    "current_price": 305.03,
+    "target_close": 306.6675,
+    "predicted_return": 0.005354,
+    "baseline_return": -0.0048,
+    "predicted_direction": "bullish",
+    "confidence_label": "medium",
+    "signal_direction": "LONG",
+    "portfolio_action": "BUY",
+    "setup_label": "Fresh long setup",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.036177,
+      0.046885
+    ],
+    "trend_bias": "Range",
+    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": true,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": 0.005354,
+        "target_close": 306.6675,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000757
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": 0.008834,
+        "target_close": 307.7366,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001873
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": 0.011779,
+        "target_close": 308.6442,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.003955
+      }
+    ],
+    "base_predicted_return": 0.005354,
+    "adjusted_predicted_return": 0.005354,
+    "adjusted_confidence_score": 0.494812,
     "event_risk": "high",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -650,14 +826,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "VRT",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.007322,
-      "baseline_return": 0.005038,
-      "realized_volatility": 0.03749,
-      "short_trend": 0.025508,
-      "medium_trend": 0.284223,
-      "days_to_earnings": -5,
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.005354,
+      "baseline_return": -0.0048,
+      "realized_volatility": 0.037756,
+      "short_trend": -0.023717,
+      "medium_trend": 0.302323,
+      "days_to_earnings": -6,
       "news_score": 8,
       "community_score": 0,
       "news_count": 4,
@@ -675,9 +851,36 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 322.42999267578125,
+      "current_price": 305.0299987792969,
       "research_context": {
         "news_items": [
+          {
+            "id": "a990e45a-6f77-3567-bc5b-0a06427c7c93",
+            "ticker": "VRT",
+            "title": "FPS Rides on Strength in Data Center Vertical: Will it Drive Revenues?",
+            "summary": "FPS rides the AI-driven data center boom, with surging demand for power infrastructure fueling rapid revenue growth and positioning it for long-term gains.",
+            "source": "Zacks",
+            "publishedAt": "2026-04-28T15:21:00Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/fps-rides-strength-data-center-152100328.html"
+          },
+          {
+            "id": "f5198f7a-290b-380e-b30d-ba8d3cd5cca3",
+            "ticker": "VRT",
+            "title": "Vertiv Holdings Co. (VRT) Is a Trending Stock: Facts to Know Before Betting on It",
+            "summary": "Vertiv (VRT) has been one of the stocks most watched by Zacks.com users lately. So, it is worth exploring what lies ahead for the stock.",
+            "source": "Zacks",
+            "publishedAt": "2026-04-28T13:00:06Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/vertiv-holdings-co-vrt-trending-130006805.html"
+          },
+          {
+            "id": "00c76c93-d4a5-3816-a269-b4e6d5de43df",
+            "ticker": "VRT",
+            "title": "2 AI Data Center Infra Giants Looking More Promising After Q1 Results",
+            "summary": "VRT and FIX's strong guidance and AI-driven demand highlight rising upside as data center spending surges.",
+            "source": "Zacks",
+            "publishedAt": "2026-04-28T12:24:00Z",
+            "url": "https://finance.yahoo.com/sectors/technology/articles/2-ai-data-center-infra-122400083.html"
+          },
           {
             "id": "c1b3df99-39d5-326d-8e6f-a4a4f57cac65",
             "ticker": "VRT",
@@ -686,33 +889,6 @@
             "source": "24/7 Wall St.",
             "publishedAt": "2026-04-27T18:40:05Z",
             "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-rises-4-record-highs-184005756.html"
-          },
-          {
-            "id": "90685514-bed9-3ef8-95d6-060cce9f0c8d",
-            "ticker": "VRT",
-            "title": "3 Reasons Why Growth Investors Shouldn't Overlook Vertiv (VRT)",
-            "summary": "Vertiv (VRT) possesses solid growth attributes, which could help it handily outperform the market.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T16:45:03Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-why-growth-investors-164503821.html"
-          },
-          {
-            "id": "895b410c-e6be-3d34-8823-c1587505af27",
-            "ticker": "VRT",
-            "title": "All You Need to Know About Vertiv (VRT) Rating Upgrade to Buy",
-            "summary": "Vertiv (VRT) has been upgraded to a Zacks Rank #2 (Buy), reflecting growing optimism about the company's earnings prospects. This might drive the stock higher in the near term.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T16:00:04Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/know-vertiv-vrt-rating-upgrade-160004840.html"
-          },
-          {
-            "id": "92780917-3017-3000-baf9-85bedf153e6f",
-            "ticker": "VRT",
-            "title": "ACN vs. VRT: Which IT Services Stock Is Better Placed at Present?",
-            "summary": "Vertiv looks ahead of Accenture as AI data-center demand helps lift outlook amid NVIDIA-backed power/cooling modules speed deployments.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T14:16:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/acn-vs-vrt-services-stock-141600830.html"
           }
         ],
         "community_items": [],
@@ -721,22 +897,22 @@
         "news_bias": "supportive",
         "community_label": "mixed",
         "earnings_date": "2026-04-22",
-        "days_to_earnings": -5,
+        "days_to_earnings": -6,
         "event_risk": "high"
       },
       "owns_position": false,
-      "realized_volatility": 0.03749
+      "realized_volatility": 0.037756
     }
   },
   {
-    "ticker": "ORCL",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 172.96,
-    "current_price": 172.96,
-    "target_close": 172.2441,
-    "predicted_return": -0.004148,
-    "baseline_return": -0.005272,
+    "ticker": "AVGO",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 399.83,
+    "current_price": 399.83,
+    "target_close": 397.19,
+    "predicted_return": -0.006625,
+    "baseline_return": -0.001167,
     "predicted_direction": "bearish",
     "confidence_label": "medium",
     "signal_direction": "SHORT",
@@ -744,65 +920,65 @@
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.048516,
-      0.04022
+      -0.038234,
+      0.024985
     ],
     "trend_bias": "Downtrend",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
     "model_name": "timesfm",
-    "current_position_shares": 22,
+    "current_position_shares": 12,
     "is_actionable": true,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.004148,
-        "target_close": 172.2441,
+        "predicted_return": -0.006625,
+        "target_close": 397.19,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.006844,
-        "target_close": 171.7803,
+        "predicted_return": -0.010931,
+        "target_close": 395.4833,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.009125,
-        "target_close": 171.3889,
+        "predicted_return": -0.014574,
+        "target_close": 394.045,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": -0.004148,
-    "adjusted_predicted_return": -0.004148,
-    "adjusted_confidence_score": 0.451922,
+    "base_predicted_return": -0.006625,
+    "adjusted_predicted_return": -0.006625,
+    "adjusted_confidence_score": 0.53999,
     "event_risk": "high",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
     "calibration_status": "disabled",
     "calibration_features": {
       "feature_version": 1,
-      "ticker": "ORCL",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": -0.004148,
-      "baseline_return": -0.005272,
-      "realized_volatility": 0.040335,
-      "short_trend": -0.026016,
-      "medium_trend": 0.242762,
-      "days_to_earnings": 44,
-      "news_score": 6,
-      "community_score": 1,
+      "ticker": "AVGO",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": -0.006625,
+      "baseline_return": -0.001167,
+      "realized_volatility": 0.028736,
+      "short_trend": -0.005819,
+      "medium_trend": 0.362701,
+      "days_to_earnings": 36,
+      "news_score": 3,
+      "community_score": 0,
       "news_count": 4,
-      "community_count": 1,
+      "community_count": 0,
       "event_risk": "high",
       "event_risk_score": 2,
       "predicted_direction": "bearish",
@@ -816,150 +992,138 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 172.9600067138672,
+      "current_price": 399.8299865722656,
       "research_context": {
         "news_items": [
           {
-            "id": "c8143f06-da6b-443b-acba-4fa964c9d228",
-            "ticker": "ORCL",
-            "title": "Elon Musk vs. Sam Altman: What to know about the OpenAI case",
-            "summary": "Tesla (TSLA) and SpaceX (SPAX.PVT) CEO Elon Musk is meeting OpenAI (OPAI.PVT) CEO Sam Altman in court this week over an alleged breach of the private artificial intelligence (AI) developer's nonprofit mission. Musk is also a co-founder of OpenAI. Yahoo Finance Technology Editor Dan Howley explains what investors should",
-            "source": "Yahoo Finance Video",
-            "publishedAt": "2026-04-27T20:20:34Z",
-            "url": "https://finance.yahoo.com/video/elon-musk-vs-sam-altman-what-to-know-about-the-openai-case-202034798.html"
+            "id": "19316443-e5fb-3961-9968-e518fb65c073",
+            "ticker": "AVGO",
+            "title": "Nasdaq, S&P 500 end lower on renewed AI growth worries",
+            "summary": "STORY: U.S. stocks ended lower on Tuesday, with the Dow ticking down marginally, the S&P 500 shedding about half a percent and the tech-heavy Nasdaq losing nine-tenths of a percent. AI-related fears spooked the market after the Wall Street Journal reported that OpenAI missed internal targets for weekly users and revenu",
+            "source": "Reuters Videos",
+            "publishedAt": "2026-04-28T22:11:16Z",
+            "url": "https://finance.yahoo.com/video/nasdaq-p-500-end-lower-221116038.html"
           },
           {
-            "id": "22819b3d-377b-31ea-90b7-5bec00fcd7ba",
-            "ticker": "ORCL",
-            "title": "Arista Stock Rebounds After Losing Meta, Oracle Deals To Nvidia",
-            "summary": "With on earnings on deck for next week, AI networking powerhouse Arista stock shakes off a bad Nvidia headline and teases top of buy range.",
+            "id": "e587a152-8d3d-3239-9071-7e9234ccf3fb",
+            "ticker": "AVGO",
+            "title": "Investors Should Buy Broadcom's Stock Before Everything Changes",
+            "summary": "Broadcom management expects $100 billion in custom AI chip revenue next year.",
+            "source": "Motley Fool",
+            "publishedAt": "2026-04-28T21:34:00Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/investors-buy-broadcoms-stock-everything-213400044.html"
+          },
+          {
+            "id": "5dfe0a48-5825-39d8-96a6-4c19c536ef92",
+            "ticker": "AVGO",
+            "title": "Nasdaq, S&P 500 Retreat From Record Highs as Tech Stocks Fall",
+            "summary": "The Nasdaq Composite and the S&P 500 retreated from record highs as technology stocks fell following",
+            "source": "MT Newswires",
+            "publishedAt": "2026-04-28T21:09:36Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-retreat-record-210936839.html"
+          },
+          {
+            "id": "a11885be-8e08-3a4b-8e81-bf882249a821",
+            "ticker": "AVGO",
+            "title": "Nvidia, AI Chip Stocks Fall On OpenAI Funding Concerns",
+            "summary": "Chip stocks tied to the buildout of data centers for artificial intelligence fell Tuesday on a negative report about OpenAI.",
             "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T20:00:24Z",
-            "url": "https://www.investors.com/research/how-to-find-the-best-stocks-to-buy/arista-stock-anet-nvidia-meta-oracle-leaderboard/?src=A00220&yptr=yahoo"
-          },
-          {
-            "id": "d9f17054-7274-3d41-8bc2-5f6f6b3cb978",
-            "ticker": "ORCL",
-            "title": "Is Bloom Energy (BE) Ready for the Next Wave of AI Data Center Infrastructure Buildout?",
-            "summary": "Bloom Energy Corp. (NYSE:BE) is one of the 10 Best Under-the-Radar Data Center Stocks to Buy. Bloom Energy\u2019s stock has skyrocketed 1,231.11% over the past year and an equally impressive 132.8% year-to-date. On April 21, UBS raised its price target on Bloom Energy to $251 from $171 while retaining a Buy rating, driven b",
-            "source": "Insider Monkey",
-            "publishedAt": "2026-04-27T18:40:12Z",
-            "url": "https://finance.yahoo.com/sectors/technology/articles/bloom-energy-ready-next-wave-184012338.html"
-          },
-          {
-            "id": "7a981fa2-ebbc-3e9b-95f9-29d7f14fc4b4",
-            "ticker": "ORCL",
-            "title": "AMD Jumps as AI Demand Lifts Outlook",
-            "summary": "Analysts raise targets as CPU demand tied to AI workloads accelerates.",
-            "source": "GuruFocus.com",
-            "publishedAt": "2026-04-27T18:05:03Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/amd-jumps-ai-demand-lifts-180503458.html"
+            "publishedAt": "2026-04-28T21:07:31Z",
+            "url": "https://www.investors.com/news/technology/chip-stocks-falls-openai-funding-concerns/?src=A00220&yptr=yahoo"
           }
         ],
-        "community_items": [
-          {
-            "id": "community:3:reddit",
-            "ticker": "ORCL",
-            "title": "$ORCL down 34% from September highs - Is this the dip to buy or a value trap?",
-            "summary": "$ORCL down 34% from September highs - Is this the dip to buy or a value trap? Reddit",
-            "source": "Reddit",
-            "sourceType": "reddit",
-            "publishedAt": "Thu, 13 Nov 2025 08:00:00 GMT",
-            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUHA1aGF0emxldTVFU0lYalBQbHpnVzFWN0tKWkNROTc1WFNNZkFKRHF6c2std0NsTUU4bXlyczBrR016eUQ1RWd1dEFVMjB5M0V5alNQeHNHbGhsUF9HaHM0SlNTd0NuZmJhdjNCNjhJNW5WNlJZSG5wbmZYNFpjZTc2UktOUzZiZXQwMWhhWmpCQUZUdmNrYUV6SUhSQnFr?oc=5",
-            "query": "\"ORCL\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-          }
-        ],
-        "news_score": 6,
-        "community_score": 1,
+        "community_items": [],
+        "news_score": 3,
+        "community_score": 0,
         "news_bias": "conflicting",
         "community_label": "mixed",
-        "earnings_date": "2026-06-10",
-        "days_to_earnings": 44,
+        "earnings_date": "2026-06-03",
+        "days_to_earnings": 36,
         "event_risk": "high"
       },
       "owns_position": true,
-      "realized_volatility": 0.040335
+      "realized_volatility": 0.028736
     }
   },
   {
-    "ticker": "ANET",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 172.47,
-    "current_price": 172.47,
-    "target_close": 172.6149,
-    "predicted_return": 0.00084,
-    "baseline_return": 0.006626,
-    "predicted_direction": "neutral",
-    "confidence_label": "low",
-    "signal_direction": "FLAT",
-    "portfolio_action": "HOLD",
-    "setup_label": "Watchlist only",
+    "ticker": "ORCL",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 165.96,
+    "current_price": 165.96,
+    "target_close": 164.6875,
+    "predicted_return": -0.007697,
+    "baseline_return": -0.017538,
+    "predicted_direction": "bearish",
+    "confidence_label": "medium",
+    "signal_direction": "SHORT",
+    "portfolio_action": "SELL",
+    "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.027253,
-      0.028933
+      -0.05217,
+      0.036776
     ],
-    "trend_bias": "Range",
-    "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
+    "trend_bias": "Downtrend",
+    "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
     "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": false,
+    "current_position_shares": 22,
+    "is_actionable": true,
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.00084,
-        "target_close": 172.6149,
+        "predicted_return": -0.007697,
+        "target_close": 164.6875,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.001386,
-        "target_close": 172.7092,
+        "predicted_return": -0.0127,
+        "target_close": 163.8656,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.001848,
-        "target_close": 172.789,
+        "predicted_return": -0.016934,
+        "target_close": 163.1733,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.00084,
-    "adjusted_predicted_return": 0.00084,
-    "adjusted_confidence_score": 0.277146,
-    "event_risk": "moderate",
+    "base_predicted_return": -0.007697,
+    "adjusted_predicted_return": -0.007697,
+    "adjusted_confidence_score": 0.578123,
+    "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
     "calibration_status": "disabled",
     "calibration_features": {
       "feature_version": 1,
-      "ticker": "ANET",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.00084,
-      "baseline_return": 0.006626,
-      "realized_volatility": 0.031214,
-      "short_trend": 0.033683,
-      "medium_trend": 0.428086,
-      "days_to_earnings": 8,
-      "news_score": 8,
+      "ticker": "ORCL",
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": -0.007697,
+      "baseline_return": -0.017538,
+      "realized_volatility": 0.04043,
+      "short_trend": -0.083954,
+      "medium_trend": 0.199853,
+      "days_to_earnings": 43,
+      "news_score": 1,
       "community_score": 0,
       "news_count": 4,
-      "community_count": 1,
-      "event_risk": "moderate",
-      "event_risk_score": 1,
-      "predicted_direction": "neutral",
-      "direction_score": 0,
+      "community_count": 0,
+      "event_risk": "low",
+      "event_risk_score": 0,
+      "predicted_direction": "bearish",
+      "direction_score": -1,
       "news_bias": "mixed",
       "community_label": "mixed"
     },
@@ -969,80 +1133,68 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 172.47000122070312,
+      "current_price": 165.9600067138672,
       "research_context": {
         "news_items": [
           {
-            "id": "22819b3d-377b-31ea-90b7-5bec00fcd7ba",
-            "ticker": "ANET",
-            "title": "Arista Stock Rebounds After Losing Meta, Oracle Deals To Nvidia",
-            "summary": "With on earnings on deck for next week, AI networking powerhouse Arista stock shakes off a bad Nvidia headline and teases top of buy range.",
-            "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T20:00:24Z",
-            "url": "https://www.investors.com/research/how-to-find-the-best-stocks-to-buy/arista-stock-anet-nvidia-meta-oracle-leaderboard/?src=A00220&yptr=yahoo"
+            "id": "9a805edc-7359-4ebb-aff5-ccc90bcd4ddc",
+            "ticker": "ORCL",
+            "title": "Tech stocks today: Oracle, AMD, and other AI-driven names sink, with Big Tech earnings on deck",
+            "summary": "Tech stocks are in focus amid an earnings bonanza, layoffs, and AI spending plans.",
+            "source": "Yahoo Finance",
+            "publishedAt": "2026-04-27T11:35:35Z",
+            "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-magnificent-seven-113535737.html"
           },
           {
-            "id": "42854be4-8099-3d44-8de9-9c8bd4529402",
-            "ticker": "ANET",
-            "title": "CGNX Gears Up to Report Q1 Earnings: What's in Store for the Stock?",
-            "summary": "CGNX heads into Q1 earnings with AI-driven momentum, strong demand carryover and growth forecasts, yet macro uncertainty clouds visibility.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T16:10:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/cgnx-gears-report-q1-earnings-161000537.html"
+            "id": "e36de52b-6149-469a-9629-0d2a2de067d0",
+            "ticker": "ORCL",
+            "title": "OpenAI miss sparks sell-off for Oracle, Nvidia, CoreWeave stocks",
+            "summary": "Yahoo Finance Senior Producer John Hyland takes a look at why tech names tied to OpenAI (OPAI.PVT) are under pressure. That list includes Oracle (ORCL), Nvidia (NVDA), and CoreWeave (CRWV). The pullback follows a Wall Street Journal report that OpenAI is expected to miss internal goals for both revenue and new users.",
+            "source": "Yahoo Finance Video",
+            "publishedAt": "2026-04-28T17:24:14Z",
+            "url": "https://finance.yahoo.com/video/openai-miss-sparks-sell-off-for-oracle-nvidia-coreweave-stocks-172414721.html"
           },
           {
-            "id": "d69d9cab-fd9e-3be6-a164-5bebe4c6215b",
-            "ticker": "ANET",
-            "title": "FORM to Report Q1 Earnings: What's in Store for the Stock?",
-            "summary": "FormFactor heads into Q1 earnings with strong DRAM demand, rising test complexity and margin gains-but macro risks may temper momentum.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T15:54:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/form-report-q1-earnings-whats-155400570.html"
+            "id": "ab21ab2d-360d-4574-9e12-3e618dbbbb68",
+            "ticker": "ORCL",
+            "title": "UAE is leaving OPEC on May 1, oil prices push above $100",
+            "summary": "The United Arab Emirates (UAE) will be leaving both OPEC and OPEC+ on May 1. Yahoo Finance Senior Markets Reporter Ines Ferr\u00e9 breaks down this headline that's pushing oil prices (CL=F, BZ=F) back above $100 per barrel.",
+            "source": "Yahoo Finance Video",
+            "publishedAt": "2026-04-28T13:49:57Z",
+            "url": "https://finance.yahoo.com/video/uae-is-leaving-opec-on-may-1-oil-prices-push-above-100-134957374.html"
           },
           {
-            "id": "e741bb49-9c06-3098-8029-299936e1d0c3",
-            "ticker": "ANET",
-            "title": "TTMI Stock Before Q1 Earnings: What's in the Cards for the Stock?",
-            "summary": "TTM Technologies heads into Q1 earnings with strong AI and defense demand, but weak automotive sales may weigh on results.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-27T15:37:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/ttmi-stock-q1-earnings-whats-153700115.html"
+            "id": "19316443-e5fb-3961-9968-e518fb65c073",
+            "ticker": "ORCL",
+            "title": "Nasdaq, S&P 500 end lower on renewed AI growth worries",
+            "summary": "STORY: U.S. stocks ended lower on Tuesday, with the Dow ticking down marginally, the S&P 500 shedding about half a percent and the tech-heavy Nasdaq losing nine-tenths of a percent. AI-related fears spooked the market after the Wall Street Journal reported that OpenAI missed internal targets for weekly users and revenu",
+            "source": "Reuters Videos",
+            "publishedAt": "2026-04-28T22:11:16Z",
+            "url": "https://finance.yahoo.com/video/nasdaq-p-500-end-lower-221116038.html"
           }
         ],
-        "community_items": [
-          {
-            "id": "community:3:reddit",
-            "ticker": "ANET",
-            "title": "Should I convert a stock Anet A8 to Switchwire?",
-            "summary": "Should I convert a stock Anet A8 to Switchwire? Reddit",
-            "source": "Reddit",
-            "sourceType": "reddit",
-            "publishedAt": "Tue, 11 Apr 2023 07:00:00 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPM1JuUC1RUzlMM3JBdU5xNkEtd29IQ1RneldxcFU0RU44Q1J1eWRQV01PdnpJNzRqUFpQanJsWEx3ZDZFeHpCalJPcHg1QlVSLWN0Tnd3UFU5cG9fY3NwTTY4c3hGVXY3dHNtSHB6VFJYbHlITkNpeHZZUUtleGpPMnYxcmg2bGFXTkNMXy1FNU4zRmdUT25vSllELTRJNzRpeTlR?oc=5",
-            "query": "\"ANET\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-          }
-        ],
-        "news_score": 8,
+        "community_items": [],
+        "news_score": 1,
         "community_score": 0,
         "news_bias": "mixed",
         "community_label": "mixed",
-        "earnings_date": "2026-05-05",
-        "days_to_earnings": 8,
-        "event_risk": "moderate"
+        "earnings_date": "2026-06-10",
+        "days_to_earnings": 43,
+        "event_risk": "low"
       },
-      "owns_position": false,
-      "realized_volatility": 0.031214
+      "owns_position": true,
+      "realized_volatility": 0.04043
     }
   },
   {
-    "ticker": "AVGO",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 418.2,
-    "current_price": 418.2,
-    "target_close": 418.6788,
-    "predicted_return": 0.001144,
-    "baseline_return": 0.009084,
+    "ticker": "DELL",
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 205.93,
+    "current_price": 205.93,
+    "target_close": 207.285,
+    "predicted_return": 0.006558,
+    "baseline_return": -0.006149,
     "predicted_direction": "bullish",
     "confidence_label": "medium",
     "signal_direction": "LONG",
@@ -1050,151 +1202,10 @@
     "setup_label": "Existing position management",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.030235,
-      0.032523
+      -0.030874,
+      0.043991
     ],
     "trend_bias": "Range",
-    "notes": "You already own shares here. Keep the position on, manage the risk, and do not force a fresh add.",
-    "model_name": "timesfm",
-    "current_position_shares": 12,
-    "is_actionable": false,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.001144,
-        "target_close": 418.6788,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.001888,
-        "target_close": 418.9903,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.002517,
-        "target_close": 419.254,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
-      }
-    ],
-    "base_predicted_return": 0.001144,
-    "adjusted_predicted_return": 0.001144,
-    "adjusted_confidence_score": 0.345126,
-    "event_risk": "low",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "AVGO",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.001144,
-      "baseline_return": 0.009084,
-      "realized_volatility": 0.028526,
-      "short_trend": 0.046468,
-      "medium_trend": 0.390847,
-      "days_to_earnings": 37,
-      "news_score": 2,
-      "community_score": 0,
-      "news_count": 4,
-      "community_count": 0,
-      "event_risk": "low",
-      "event_risk_score": 0,
-      "predicted_direction": "bullish",
-      "direction_score": 1,
-      "news_bias": "supportive",
-      "community_label": "mixed"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 418.20001220703125,
-      "research_context": {
-        "news_items": [
-          {
-            "id": "34b3bb9f-7955-4922-a12f-8166cb5a45f4",
-            "ticker": "AVGO",
-            "title": "Google, Meta, Microsoft, Amazon, Apple earnings: What to expect",
-            "summary": "Alphabet (GOOG, GOOGL), Meta (META), Microsoft (MSFT), Amazon (AMZN), and Apple (AAPL) are all reporting quarterly earnings results this week. D.A. Davidson head of technology research Gil Luria joins Yahoo Finance to discuss his outlook for the results and the questions to which he'll be looking for answers.",
-            "source": "Yahoo Finance Video",
-            "publishedAt": "2026-04-27T15:12:48Z",
-            "url": "https://finance.yahoo.com/video/google-meta-microsoft-amazon-apple-earnings-what-to-expect-151248213.html"
-          },
-          {
-            "id": "95203eec-dd1b-45ca-8461-2b10895ad8a1",
-            "ticker": "AVGO",
-            "title": "Will Nvidia's explosive rally end soon?",
-            "summary": "JPMorgan has a warning for Nvidia fans.",
-            "source": "Yahoo Finance",
-            "publishedAt": "2026-04-27T13:34:29Z",
-            "url": "https://finance.yahoo.com/news/will-nvidias-explosive-rally-end-soon-133429771.html"
-          },
-          {
-            "id": "f0b08ae5-70e8-3f88-8d16-61ed5c7d63f6",
-            "ticker": "AVGO",
-            "title": "Meet the Growth Stock That Isn't Even in the \"Magnificent Seven,\" but Just Joined the $2 Trillion Club and Hit an All-Time High",
-            "summary": "Broadcom's latest news with Alphabet catapulted the stock to a new all-time high.",
-            "source": "Motley Fool",
-            "publishedAt": "2026-04-27T21:50:00Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/meet-growth-stock-isnt-even-215000981.html"
-          },
-          {
-            "id": "bf33a7cb-bfec-3b22-a616-ceca549945e4",
-            "ticker": "AVGO",
-            "title": "Broadcom, IBD Stock Of The Day, Hovers Near Buy Zone",
-            "summary": "Broadcom is the IBD Stock Of The Day as the fabless chipmaker and infrastructure software provider holds near a buy zone after its recent breakout.",
-            "source": "Investor's Business Daily",
-            "publishedAt": "2026-04-27T21:46:51Z",
-            "url": "https://www.investors.com/research/ibd-stock-of-the-day/broadcom-stock-avgo-hovers-near-buy-zone/?src=A00220&yptr=yahoo"
-          }
-        ],
-        "community_items": [],
-        "news_score": 2,
-        "community_score": 0,
-        "news_bias": "supportive",
-        "community_label": "mixed",
-        "earnings_date": "2026-06-03",
-        "days_to_earnings": 37,
-        "event_risk": "low"
-      },
-      "owns_position": true,
-      "realized_volatility": 0.028526
-    }
-  },
-  {
-    "ticker": "DELL",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 215.97,
-    "current_price": 215.97,
-    "target_close": 218.5292,
-    "predicted_return": 0.01178,
-    "baseline_return": 0.011787,
-    "predicted_direction": "bullish",
-    "confidence_label": "high",
-    "signal_direction": "LONG",
-    "portfolio_action": "HOLD",
-    "setup_label": "Existing position management",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.033883,
-      0.057443
-    ],
-    "trend_bias": "Uptrend",
     "notes": "You already own shares here. Keep the position on, manage the risk, and do not force a fresh add.",
     "model_name": "timesfm",
     "current_position_shares": 18,
@@ -1202,35 +1213,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.01178,
-        "target_close": 218.5292,
+        "predicted_return": 0.006558,
+        "target_close": 207.285,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.019437,
-        "target_close": 220.2089,
+        "predicted_return": 0.010821,
+        "target_close": 208.1705,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.025916,
-        "target_close": 221.6403,
+        "predicted_return": 0.014428,
+        "target_close": 208.9228,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.01178,
-    "adjusted_predicted_return": 0.01178,
-    "adjusted_confidence_score": 0.728744,
+    "base_predicted_return": 0.006558,
+    "adjusted_predicted_return": 0.006558,
+    "adjusted_confidence_score": 0.537631,
     "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -1238,14 +1249,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "DELL",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.01178,
-      "baseline_return": 0.011787,
-      "realized_volatility": 0.033824,
-      "short_trend": 0.060704,
-      "medium_trend": 0.260918,
-      "days_to_earnings": 31,
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.006558,
+      "baseline_return": -0.006149,
+      "realized_volatility": 0.03403,
+      "short_trend": -0.030279,
+      "medium_trend": 0.254507,
+      "days_to_earnings": 30,
       "news_score": 6,
       "community_score": 0,
       "news_count": 4,
@@ -1263,9 +1274,18 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 215.97000122070312,
+      "current_price": 205.92999267578125,
       "research_context": {
         "news_items": [
+          {
+            "id": "bc6fd8a1-6ce3-3ebb-994b-976177e21634",
+            "ticker": "DELL",
+            "title": "Dell\u2019s Breakout is the Real Deal. And the AI Server Cycle is Just Starting",
+            "summary": "Shares of Dell Technologies (NYSE:DELL) are having a massive year, now up just shy of 69% year to date. Undoubtedly, it was just a matter of time before the AI value play experienced a big multiple re-rating. After the latest spike higher, the name might seem more appropriately priced. That said, when we consider the .",
+            "source": "24/7 Wall St.",
+            "publishedAt": "2026-04-28T15:12:33Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/dell-breakout-real-deal-ai-151233411.html"
+          },
           {
             "id": "c801a846-0659-38c0-b441-3348828792b7",
             "ticker": "DELL",
@@ -1292,15 +1312,6 @@
             "source": "MT Newswires",
             "publishedAt": "2026-04-27T15:20:20Z",
             "url": "https://finance.yahoo.com/sectors/technology/articles/dell-hewlett-packard-enterprise-positioned-152020585.html"
-          },
-          {
-            "id": "724fbf96-b6f3-3f2d-8c25-91588f2526e9",
-            "ticker": "DELL",
-            "title": "These 2 stocks are set to benefit as Agentic AI lifts CPU intensity",
-            "summary": "Investing.com -- Bank of America raised its price targets for two computing names in a note on Monday, arguing that the rise of agentic AI will drive a new wave of demand for CPU-intensive hardware that both companies are well positioned to capture.",
-            "source": "Investing.com",
-            "publishedAt": "2026-04-27T14:27:35Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/2-stocks-set-benefit-agentic-142735532.html"
           }
         ],
         "community_items": [],
@@ -1309,22 +1320,22 @@
         "news_bias": "supportive",
         "community_label": "mixed",
         "earnings_date": "2026-05-28",
-        "days_to_earnings": 31,
+        "days_to_earnings": 30,
         "event_risk": "low"
       },
       "owns_position": true,
-      "realized_volatility": 0.033824
+      "realized_volatility": 0.03403
     }
   },
   {
     "ticker": "SYM",
-    "as_of_date": "2026-04-27",
-    "target_date": "2026-04-28",
-    "current_close": 59.52,
-    "current_price": 59.52,
-    "target_close": 59.6646,
-    "predicted_return": 0.002426,
-    "baseline_return": -0.018015,
+    "as_of_date": "2026-04-28",
+    "target_date": "2026-04-29",
+    "current_close": 57.08,
+    "current_price": 57.08,
+    "target_close": 57.2105,
+    "predicted_return": 0.002283,
+    "baseline_return": -0.019609,
     "predicted_direction": "bullish",
     "confidence_label": "medium",
     "signal_direction": "LONG",
@@ -1332,8 +1343,8 @@
     "setup_label": "Existing position management",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.059247,
-      0.064098
+      -0.059115,
+      0.063682
     ],
     "trend_bias": "Range",
     "notes": "You already own shares here. Keep the position on, manage the risk, and do not force a fresh add.",
@@ -1343,35 +1354,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": 0.002426,
-        "target_close": 59.6646,
+        "predicted_return": 0.002283,
+        "target_close": 57.2105,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000804
+        "measured_mae": 0.000757
       },
       {
         "horizon_days": 3,
-        "predicted_return": 0.004002,
-        "target_close": 59.7587,
+        "predicted_return": 0.003768,
+        "target_close": 57.2955,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001991
+        "measured_mae": 0.001873
       },
       {
         "horizon_days": 5,
-        "predicted_return": 0.005336,
-        "target_close": 59.8385,
+        "predicted_return": 0.005024,
+        "target_close": 57.3675,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.004203
+        "measured_mae": 0.003955
       }
     ],
-    "base_predicted_return": 0.002426,
-    "adjusted_predicted_return": 0.002426,
-    "adjusted_confidence_score": 0.390691,
+    "base_predicted_return": 0.002283,
+    "adjusted_predicted_return": 0.002283,
+    "adjusted_confidence_score": 0.385634,
     "event_risk": "moderate",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -1379,23 +1390,23 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "SYM",
-      "as_of_date": "2026-04-27",
-      "target_date": "2026-04-28",
-      "predicted_return": 0.002426,
-      "baseline_return": -0.018015,
-      "realized_volatility": 0.056066,
-      "short_trend": -0.086135,
-      "medium_trend": 0.180484,
-      "days_to_earnings": 9,
-      "news_score": -1,
-      "community_score": -1,
-      "news_count": 3,
-      "community_count": 2,
+      "as_of_date": "2026-04-28",
+      "target_date": "2026-04-29",
+      "predicted_return": 0.002283,
+      "baseline_return": -0.019609,
+      "realized_volatility": 0.055817,
+      "short_trend": -0.093393,
+      "medium_trend": 0.203965,
+      "days_to_earnings": 8,
+      "news_score": 4,
+      "community_score": 1,
+      "news_count": 4,
+      "community_count": 1,
       "event_risk": "moderate",
       "event_risk_score": 1,
       "predicted_direction": "bullish",
       "direction_score": 1,
-      "news_bias": "mixed",
+      "news_bias": "supportive",
       "community_label": "mixed"
     },
     "metadata_json": {
@@ -1404,9 +1415,36 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 59.52000045776367,
+      "current_price": 57.08000183105469,
       "research_context": {
         "news_items": [
+          {
+            "id": "68c026b9-c843-342a-8f4c-9e53692e1eca",
+            "ticker": "SYM",
+            "title": "Jim Cramer on Symbotic: \u201cYou Are Going Up Against Elon Musk, But There\u2019s Room for Both\u201d",
+            "summary": "Symbotic Inc. (NASDAQ:SYM) was among Jim Cramer\u2019s latest stock calls, as he advised investors on how to manage data center-related stock positions. When a caller asked about the stock during the lightning round, Cramer replied: Well, you know, you\u2019re a high schooler and I would tell you that this is a company that is a",
+            "source": "Insider Monkey",
+            "publishedAt": "2026-04-28T17:15:15Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-symbotic-going-against-171515944.html"
+          },
+          {
+            "id": "b763dbda-9660-3ef4-88dd-e55d75a84f43",
+            "ticker": "SYM",
+            "title": "Symbotic Medline Deal Tests AI Warehouse Platform In Healthcare Distribution",
+            "summary": "Symbotic (NasdaqGM:SYM) has signed an agreement with Medline to bring its AI powered warehouse automation system to the healthcare supply chain. This marks the first use of Symbotic's robotics and software platform in healthcare distribution, extending beyond its retail and consumer goods customers. Symbotic enters thi",
+            "source": "Simply Wall St.",
+            "publishedAt": "2026-04-28T15:05:52Z",
+            "url": "https://finance.yahoo.com/sectors/healthcare/articles/symbotic-medline-deal-tests-ai-150552466.html"
+          },
+          {
+            "id": "f9d26919-cf97-3067-9908-55701cde8b6f",
+            "ticker": "SYM",
+            "title": "Jim Cramer Says No To This Industrial Stock: It Is Up 'Way Too Much'",
+            "summary": "On CNBC's \u201cMad Money Lightning Round,\u201d Jim Cramer said Planet Labs PBC is up \u201cway too much\u201d and is just going higher. \u201cWe're gonna say, no,\u201d Cramer adds. \u201cWe're not going to pay these prices.\u201d Goldman Sachs analyst Anthony Valentini, on April 20, maintained Planet Labs with a Neutral and raised the price target from $1",
+            "source": "Benzinga",
+            "publishedAt": "2026-04-28T10:46:04Z",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-no-industrial-104604720.html"
+          },
           {
             "id": "7f4f81fe-3f73-3b61-8b00-0e4cec766d0a",
             "ticker": "SYM",
@@ -1415,29 +1453,11 @@
             "source": "Zacks",
             "publishedAt": "2026-04-24T15:40:03Z",
             "url": "https://finance.yahoo.com/markets/stocks/articles/amady-sym-better-value-stock-154003232.html"
-          },
-          {
-            "id": "9007df7a-c581-3d7c-8eb5-044ca9f73a17",
-            "ticker": "SYM",
-            "title": "Investors Heavily Search Symbotic Inc. (SYM): Here is What You Need to Know",
-            "summary": "Recently, Zacks.com users have been paying close attention to SYMBOTIC INC (SYM). This makes it worthwhile to examine what the stock has in store.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-23T13:00:03Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-symbotic-inc-130003133.html"
-          },
-          {
-            "id": "0ba43838-0f0b-37f0-a790-29cb7679196f",
-            "ticker": "SYM",
-            "title": "Symbotic Inc. (SYM) Suffers a Larger Drop Than the General Market: Key Insights",
-            "summary": "In the most recent trading session, Symbotic Inc. (SYM) closed at $62.96, indicating a -3.33% shift from the previous trading day.",
-            "source": "Zacks",
-            "publishedAt": "2026-04-21T22:00:05Z",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/symbotic-inc-sym-suffers-larger-220005491.html"
           }
         ],
         "community_items": [
           {
-            "id": "community:0:twitter",
+            "id": "community:1:twitter",
             "ticker": "SYM",
             "title": "$SYM - Prediction This AI Stock Will Join the SP 500 Before YearEnd News & Disclaimer",
             "summary": "$SYM - Prediction This AI Stock Will Join the SP 500 Before YearEnd News & Disclaimer x.com",
@@ -1446,29 +1466,18 @@
             "publishedAt": "Thu, 09 Apr 2026 07:00:00 GMT",
             "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAwdlJ0QnMxYU5mS0dhdkhpWFNPbVZ0LWExOGg1bVpjbjFvX0N2blZ1LTRDcjRoT1pXOTVsOF83MUZEd3ZkdmdYMEhUeFF3Q0dKUG0xOFJQbUpOZ1FzTnR2c2dyWHVwZw?oc=5",
             "query": "\"SYM\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:3:twitter",
-            "ticker": "SYM",
-            "title": "$SYM is down over 20% after Goldman Sachs downgraded the stock to Sell with a $47 price target",
-            "summary": "$SYM is down over 20% after Goldman Sachs downgraded the stock to Sell with a $47 price target x.com",
-            "source": "x.com",
-            "sourceType": "twitter",
-            "publishedAt": "Tue, 02 Dec 2025 08:00:00 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBnckRjemszTlZnUVd0SUtTT0dUa28tLU05WmFqOW9wWGNSVVBWYnlKZUlvdGxWZHBMWW5UeGthVFJEZVVXVXhNUDRxY2ZkY3A1Nks4RjVIYnBkYjk4cHNMcg?oc=5",
-            "query": "\"SYM\" stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
-        "news_score": -1,
-        "community_score": -1,
-        "news_bias": "mixed",
+        "news_score": 4,
+        "community_score": 1,
+        "news_bias": "supportive",
         "community_label": "mixed",
         "earnings_date": "2026-05-06",
-        "days_to_earnings": 9,
+        "days_to_earnings": 8,
         "event_risk": "moderate"
       },
       "owns_position": true,
-      "realized_volatility": 0.056066
+      "realized_volatility": 0.055817
     }
   }
 ]
