@@ -9,6 +9,7 @@ TICKER_UNIVERSE = [
     "AMD",
     "SYM",
     "AVGO",
+    "SPCX",
 ]
 
 DEFAULT_HISTORY_LENGTH = 30

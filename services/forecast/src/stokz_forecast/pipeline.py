@@ -13,7 +13,7 @@ from .calibration_history import append_feature_rows, build_feature_rows
 from .calibration_features import build_feature_snapshot, compute_trend_window_returns
 from .calibration_model import apply_overlay_model, load_overlay_model
 from .config import Settings, load_settings
-from .data_models import ChartPoint, ChartSeries, DashboardArtifacts, ForecastBatch, ForecastPrediction
+from .data_models import ChartPoint, ChartSeries, DashboardArtifacts, ForecastBatch, ForecastPrediction, SetupRecommendation
 from .data_sources import load_daily_bars
 from .evaluation import append_evaluation_history, append_forecast_history, build_seeded_evaluation_rows, read_json_array, summarize_horizon_metrics
 from .notifications import build_notification_events
@@ -205,6 +205,67 @@ def build_dashboard_artifacts(
     for ticker in runtime_settings.ticker_universe:
         ticker_frame = bars_frame.loc[bars_frame['ticker'].str.upper() == ticker].copy()
         if len(ticker_frame) < 3:
+            if not ticker_frame.empty and snapshot.owns(ticker):
+                current_price = float(ticker_frame.iloc[-1]['close'])
+                current_day = pd.Timestamp(ticker_frame.iloc[-1]['trade_date']).date()
+                prediction = ForecastPrediction(
+                    ticker=ticker,
+                    as_of_date=current_day,
+                    target_date=current_day + timedelta(days=runtime_settings.forecast_horizon_days),
+                    predicted_return=0.0,
+                    predicted_direction='neutral',
+                    baseline_return=0.0,
+                    model_name='insufficient-history',
+                    confidence_label='low',
+                    signal_direction='FLAT',
+                    metadata_json={
+                        'history_points': int(max(len(ticker_frame) - 1, 0)),
+                        'backend': runtime_settings.timesfm_backend,
+                        'runtime_mode': 'insufficient-history',
+                        'runtime_reason': 'ticker has fewer than 3 public daily bars; visible as owned position only',
+                        'current_price': current_price,
+                    },
+                )
+                predictions.append(prediction)
+                setup = SetupRecommendation(
+                    ticker=ticker,
+                    as_of_date=current_day,
+                    target_date=current_day + timedelta(days=runtime_settings.forecast_horizon_days),
+                    current_close=current_price,
+                    predicted_return=0.0,
+                    baseline_return=0.0,
+                    predicted_direction='neutral',
+                    confidence_label='low',
+                    signal_direction='FLAT',
+                    portfolio_action='HOLD',
+                    setup_label='Owned newly public ticker',
+                    conviction_score=0,
+                    expected_move_range=(0.0, 0.0),
+                    trend_bias='Range',
+                    notes='Owned position is visible, but the public trading history is too short for a real TimesFM forecast. Track price action/news and wait for more bars before treating model direction as meaningful.',
+                    model_name='insufficient-history',
+                    current_position_shares=snapshot.shares_for(ticker),
+                    is_actionable=False,
+                    target_close=current_price,
+                    metadata_json=prediction.metadata_json,
+                )
+                setups.append(setup)
+                history_points = [
+                    ChartPoint(trade_date=pd.Timestamp(row['trade_date']).date(), close=float(row['close']))
+                    for row in ticker_frame.tail(runtime_settings.chart_history_days).to_dict(orient='records')
+                ]
+                chart_series.append(
+                    ChartSeries(
+                        ticker=ticker,
+                        as_of_date=current_day,
+                        current_close=current_price,
+                        predicted_return=0.0,
+                        predicted_direction='neutral',
+                        model_name='insufficient-history',
+                        history_points=history_points,
+                        forecast_points=[ChartPoint(trade_date=current_day + timedelta(days=runtime_settings.forecast_horizon_days), close=current_price)],
+                    )
+                )
             continue
 
         return_frame = compute_log_returns(ticker_frame)

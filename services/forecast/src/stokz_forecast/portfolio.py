@@ -47,6 +47,7 @@ DEFAULT_HOLDINGS: tuple[Holding, ...] = (
     Holding(ticker='ORCL', shares=22),
     Holding(ticker='AVGO', shares=12),
     Holding(ticker='SYM', shares=15),
+    Holding(ticker='SPCX', shares=10, average_cost=148.50),
 )
 
 
