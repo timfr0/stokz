@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic Trading Daily Monitoring Dashboard — 2026-06-17</title>
+  <style>
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --ink: #122033;
+  --muted: #667085;
+  --line: #d9e2ef;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --danger: #b42318;
+  --danger-soft: #fee4e2;
+  --ok: #027a48;
+  --ok-soft: #dcfae6;
+  --warn: #b54708;
+  --warn-soft: #fef0c7;
+  --code: #0f172a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #e0ecff 0, #f4f7fb 34rem);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+.page {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 32px 22px 56px;
+}
+.hero {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: white;
+  border-radius: 26px;
+  padding: 28px 30px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.22);
+  margin-bottom: 24px;
+}
+.hero h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.04em; }
+.hero .sub { color: #dbeafe; font-size: 15px; }
+.card {
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+  margin: 18px 0;
+  overflow: hidden;
+}
+h2 { margin: 0 0 14px; font-size: 23px; letter-spacing: -0.025em; }
+h3 { margin: 18px 0 10px; }
+p { margin: 8px 0 12px; color: var(--muted); }
+ul { margin: 8px 0 0; padding-left: 22px; }
+li { margin: 7px 0; }
+code {
+  background: #eef2ff;
+  color: #1e3a8a;
+  border: 1px solid #dbeafe;
+  padding: 2px 6px;
+  border-radius: 7px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: .92em;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 4px;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 11px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #f8fafc;
+  color: #344054;
+  font-weight: 750;
+  white-space: nowrap;
+}
+tr:hover td { background: #f9fbff; }
+.status-line {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.kpi {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 16px;
+  padding: 13px 14px;
+}
+.kpi .label { color: #bfdbfe; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.kpi .value { font-size: 18px; font-weight: 800; margin-top: 4px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.badge.ok { color: var(--ok); background: var(--ok-soft); }
+.badge.warn { color: var(--warn); background: var(--warn-soft); }
+.badge.danger { color: var(--danger); background: var(--danger-soft); }
+.badge.info { color: #175cd3; background: var(--accent-soft); }
+.section-note {
+  color: var(--muted);
+  margin-top: -4px;
+}
+.footer {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 28px;
+  font-size: 13px;
+}
+@media (max-width: 720px) {
+  .page { padding: 18px 12px 36px; }
+  .hero { border-radius: 20px; padding: 22px; }
+  .card { padding: 16px; border-radius: 16px; }
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>Agentic Trading Daily Monitoring Dashboard — 2026-06-17</h1>
+      <div class="sub">Readable daily review of market regime, watchlist profiles, gates, evidence freshness, and trade decisions.</div>
+      <div class="status-line"><div class="kpi"><div class="label">Current regime</div><div class="value"><code><span class="badge danger">RISK-OFF / DO NOT FORCE LONGS</span></code> — score <code>-5</code></div></div><div class="kpi"><div class="label">Live-order posture</div><div class="value"><code><span class="badge warn">READY ONLY IF TAPE + SETUP + BROKER FRESHNESS PASS</span></code></div></div><div class="kpi"><div class="label">Portfolio gate</div><div class="value"><span class="badge ok">✅ pass</span> <code>PASS_FOR_BROKER_VERIFIED_REVIEW</code></div></div><div class="kpi"><div class="label">Reconciliation</div><div class="value"><span class="badge ok">✅ pass</span> unresolved <code>0</code></div></div><div class="kpi"><div class="label">Goal status</div><div class="value"><code>behind</code> — equity <code>$100.00</code> vs on-track <code>$108.19</code></div></div><div class="kpi"><div class="label">Risk policy</div><div class="value">max order <code>$25</code>, max risk <code>$3</code>, max open positions <code>1</code>, options live <code>False</code></div></div></div>
+    </header>
+    <p>Generated: <code>2026-06-17T19:12:26-05:00</code></p><p>Latest market heartbeat: <code>2026-06-17T19:12:13-05:00</code></p><section class="card"><h2>Executive Decision State</h2><ul><li><strong>Current regime:</strong> <code><span class="badge danger">RISK-OFF / DO NOT FORCE LONGS</span></code> — score <code>-5</code></li><li><strong>Live-order posture:</strong> <code><span class="badge warn">READY ONLY IF TAPE + SETUP + BROKER FRESHNESS PASS</span></code></li><li><strong>Portfolio gate:</strong> <span class="badge ok">✅ pass</span> <code>PASS_FOR_BROKER_VERIFIED_REVIEW</code></li><li><strong>Reconciliation:</strong> <span class="badge ok">✅ pass</span> unresolved <code>0</code></li><li><strong>Goal status:</strong> <code>behind</code> — equity <code>$100.00</code> vs on-track <code>$108.19</code></li><li><strong>Risk policy:</strong> max order <code>$25</code>, max risk <code>$3</code>, max open positions <code>1</code>, options live <code>False</code></li><li><strong>Why:</strong> SPY below VWAP, QQQ below VWAP, IWM below VWAP, VIX spike/risk-off</li></ul></section><section class="card"><h2>Tape Filters</h2><div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Last</th><th>From Open</th><th>From VWAP</th><th>Range Pos</th><th>Signal</th></tr></thead><tbody><tr><td><code>SPY</code></td><td>744.69</td><td>-1.01%</td><td>-0.17%</td><td>39.74%</td><td>spy_risk_off_for_longs</td></tr><tr><td><code>QQQ</code></td><td>729.96</td><td>-0.83%</td><td>-0.06%</td><td>57.55%</td><td>qqq_risk_off_for_longs</td></tr><tr><td><code>IWM</code></td><td>292.33</td><td>-0.05%</td><td>-0.16%</td><td>49.33%</td><td>neutral</td></tr><tr><td><code>VOO</code></td><td>685.55</td><td>-0.86%</td><td>-0.13%</td><td>46.77%</td><td>voo_risk_off_for_longs</td></tr><tr><td><code>^VIX</code></td><td>18.43</td><td>14.61%</td><td>—</td><td>85.46%</td><td>vix_spike_risk_off</td></tr></tbody></table></div></section><section class="card"><h2>Top Relative Strength Candidates</h2><p>These are candidates, not orders. They still need strategy fit, clean tape, broker review, and freshness gates.</p><div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Profile</th><th>Strategy</th><th>Allowed</th><th>From Open</th><th>From VWAP</th><th>Range Pos</th><th>Current read</th></tr></thead><tbody><tr><td><code>CART</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td><span class="badge ok">✅ pass</span></td><td>-1.27%</td><td>1.05%</td><td>60.74%</td><td>candidate_weakness_below_open</td></tr><tr><td><code>AMD</code></td><td><code>WATCH_PRIMARY</code></td><td><code>NEWS_GAP_03</code></td><td><span class="badge ok">✅ pass</span></td><td>0.48%</td><td>0.48%</td><td>40.69%</td><td>watch</td></tr><tr><td><code>PINS</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td><span class="badge ok">✅ pass</span></td><td>-2.38%</td><td>0.36%</td><td>30.77%</td><td>candidate_weakness_below_open</td></tr><tr><td><code>CVX</code></td><td><code>LOW_PRIORITY</code></td><td><code>ORB_VWAP_01</code></td><td><span class="badge ok">✅ pass</span></td><td>-0.52%</td><td>0.01%</td><td>82.29%</td><td>near_intraday_high_above_vwap</td></tr><tr><td><code>NVDA</code></td><td><code>WATCH_SECONDARY</code></td><td><code>ORB_VWAP_01</code></td><td><span class="badge ok">✅ pass</span></td><td>-1.13%</td><td>-0.07%</td><td>60.01%</td><td>candidate_weakness_below_open</td></tr><tr><td><code>AMZN</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td><span class="badge ok">✅ pass</span></td><td>-2.95%</td><td>-0.13%</td><td>36.06%</td><td>candidate_weakness_below_open</td></tr><tr><td><code>AAPL</code></td><td><code>WATCH_PRIMARY</code></td><td><code>VWAP_PULL_02</code></td><td><span class="badge ok">✅ pass</span></td><td>-0.79%</td><td>-0.15%</td><td>16.07%</td><td>candidate_weakness_below_open, near_intraday_low_weak</td></tr><tr><td><code>F</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td><span class="badge ok">✅ pass</span></td><td>-2.56%</td><td>-0.18%</td><td>17.31%</td><td>candidate_weakness_below_open, near_intraday_low_weak</td></tr></tbody></table></div></section><section class="card"><h2>Weak / Avoid / Short-Fuse Names</h2><div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Profile</th><th>From Open</th><th>From VWAP</th><th>Range Pos</th><th>Why it matters</th></tr></thead><tbody><tr><td><code>DKNG</code></td><td><code>WATCH_SECONDARY</code></td><td>-8.92%</td><td>-2.52%</td><td>13.29%</td><td>candidate_weakness_below_open, near_intraday_low_weak</td></tr><tr><td><code>SHOP</code></td><td><code>WATCH_SECONDARY</code></td><td>-5.35%</td><td>-2.12%</td><td>18.00%</td><td>candidate_weakness_below_open, near_intraday_low_weak</td></tr><tr><td><code>DASH</code></td><td><code>WATCH_PRIMARY</code></td><td>1.69%</td><td>-1.86%</td><td>29.77%</td><td>weak relative read</td></tr><tr><td><code>SOFI</code></td><td><code>WATCH_PRIMARY</code></td><td>-1.06%</td><td>-1.76%</td><td>55.50%</td><td>candidate_weakness_below_open</td></tr><tr><td><code>COIN</code></td><td><code>LOW_PRIORITY</code></td><td>-1.60%</td><td>-1.42%</td><td>24.73%</td><td>candidate_weakness_below_open</td></tr></tbody></table></div></section><section class="card"><h2>Watchlist Trading Profiles</h2><div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Role</th><th>Strategy</th><th>Catalyst / thesis</th><th>Risk note</th></tr></thead><tbody><tr><td><code>DASH</code></td><td><code>WATCH_PRIMARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #8; TimesFM +0.20%; overlay CONFIRMED_LONG; current premarket strength &gt; open</td><td>If it fades back through open, skip</td></tr><tr><td><code>LUV</code></td><td><code>WATCH_PRIMARY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #1; TimesFM +0.76%; overlay CONFIRMED_LONG; gap follow-through leader</td><td>No blind chase; airline/news sensitivity; only with clean tape</td></tr><tr><td><code>AAPL</code></td><td><code>WATCH_PRIMARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #4; TimesFM +0.21%; overlay CONFIRMED_LONG</td><td>Slow mover; needs tight structure and no sloppy fade</td></tr><tr><td><code>AMD</code></td><td><code>WATCH_PRIMARY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #7; TimesFM +0.60%; overlay CONFIRMED_LONG; premarket near open</td><td>Fractional only; use QQQ/SPY confirmation</td></tr><tr><td><code>SOFI</code></td><td><code>WATCH_PRIMARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #3; TimesFM +0.15%; overlay CONFIRMED_LONG</td><td>High beta; no averaging down; needs a real reclaim</td></tr><tr><td><code>CART</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #2; TimesFM -0.34%; overlay MIXED/WAIT</td><td>Spread check required; only if price tightens</td></tr><tr><td><code>SHOP</code></td><td><code>WATCH_SECONDARY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #6; TimesFM +0.03%; overlay CONFIRMED_LONG</td><td>Avoid chasing an extended no-base move</td></tr><tr><td><code>DKNG</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #10; TimesFM +0.16%; overlay CONFIRMED_LONG</td><td>Gambling/news sensitivity; no volume, no trade</td></tr><tr><td><code>LYFT</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #11; TimesFM +0.18%; overlay CONFIRMED_LONG</td><td>Only if the move is unusually clean</td></tr><tr><td><code>NVDA</code></td><td><code>WATCH_SECONDARY</code></td><td><code>ORB_VWAP_01</code></td><td>Backtest rank #16; TimesFM +0.18%; overlay CONFIRMED_LONG</td><td>Fractional only; high beta; use for confirmation</td></tr><tr><td><code>TSLA</code></td><td><code>WATCH_SECONDARY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #5; TimesFM -0.04%; overlay MIXED/WAIT</td><td>Only if broad tape flips risk-on hard</td></tr><tr><td><code>AMZN</code></td><td><code>WATCH_SECONDARY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest rank #9; TimesFM flat_to_down; overlay MIXED/WAIT</td><td>Reclaim only; don’t invent edge</td></tr><tr><td><code>COIN</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #12; TimesFM -0.34%; overlay MIXED/WAIT</td><td>Only on a real risk-on impulse</td></tr><tr><td><code>F</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #14; TimesFM -0.93%; overlay MIXED/WAIT</td><td>Needs catalyst or skip</td></tr><tr><td><code>PINS</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank #15; TimesFM flat; overlay MIXED/WAIT</td><td>Only a clean breakout/reclaim matters</td></tr><tr><td><code>CVX</code></td><td><code>LOW_PRIORITY</code></td><td><code>ORB_VWAP_01</code></td><td>Lower-beta popular overlay; TimesFM flat; defensive posture</td><td>Useful as a hedge/rotation check, not a moonshot</td></tr><tr><td><code>RIVN</code></td><td><code>LOW_PRIORITY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest rank secondary; TimesFM flat to neutral</td><td>Speculative; no forced trade</td></tr><tr><td><code>RSI</code></td><td><code>LOW_PRIORITY</code></td><td><code>VWAP_PULL_02</code></td><td>Backtest secondary; TimesFM +0.11%; overlay CONFIRMED_LONG</td><td>Spread/liquidity caution</td></tr><tr><td><code>SPY</code></td><td><code>WATCH_TAPE_CONFIRMATION</code></td><td><code>ORB_VWAP_01</code></td><td>Tape filter benchmark; premarket below open and flat-to-soft</td><td>If SPY loses VWAP, long appetite shrinks</td></tr><tr><td><code>QQQ</code></td><td><code>WATCH_TAPE_CONFIRMATION</code></td><td><code>ORB_VWAP_01</code></td><td>Tape filter benchmark; premarket below open and soft</td><td>If QQQ stays weak, avoid forcing tech longs</td></tr><tr><td><code>IWM</code></td><td><code>WATCH_TAPE_CONFIRMATION</code></td><td><code>ORB_VWAP_01</code></td><td>Tape filter benchmark; premarket slightly below open</td><td>Weak breadth = smaller size and fewer impulses</td></tr><tr><td><code>VOO</code></td><td><code>WATCH_TAPE_CONFIRMATION</code></td><td><code>ORB_VWAP_01</code></td><td>Tape filter benchmark; premarket below open</td><td>Use as confirmation only</td></tr><tr><td><code>^VIX</code></td><td><code>WATCH_RISK_FILTER</code></td><td><code>ORB_VWAP_01</code></td><td>Risk filter; premarket up about 2.4% from open</td><td>VIX up means marginal longs get cut first</td></tr><tr><td><code>TLRY</code></td><td><code>WATCH_ONLY</code></td><td><code>NEWS_GAP_03</code></td><td>Backtest low rank; TimesFM bearish; overlay weak</td><td>Only on surprise news and real volume</td></tr></tbody></table></div></section><section class="card"><h2>Broker / Evidence Freshness Lane</h2><div class="table-wrap"><table><thead><tr><th>Artifact</th><th>Timestamp</th><th>OK</th></tr></thead><tbody><tr><td><code>2026-06-17-amd-codex-mcp-review-evidence-fresh.json</code></td><td><code>2026-06-17T10:00:27-05:00</code></td><td><span class="badge ok">✅ pass</span></td></tr><tr><td><code>2026-06-17-amd-codex-mcp-review-evidence.json</code></td><td><code>2026-06-17T09:38:34.8135581-05:00</code></td><td><span class="badge ok">✅ pass</span></td></tr><tr><td><code>2026-06-17-amd-vwap-reclaim-test-buy.quote.json</code></td><td><code>2026-06-17T09:38:34.8135581-05:00</code></td><td><span class="badge ok">✅ pass</span></td></tr><tr><td><code>2026-06-17-amd-vwap-reclaim-test-buy.tradability.json</code></td><td><code>2026-06-17T09:38:34.8135581-05:00</code></td><td><span class="badge ok">✅ pass</span></td></tr><tr><td><code>2026-06-17-subagent-mcp-readonly-smoke.json</code></td><td><code>2026-06-17T08:24:42.3117575-05:00</code></td><td><span class="badge info">⚪ unknown</span></td></tr><tr><td><code>cron-codex-mcp-routing-update-2026-06-17.json</code></td><td><code>—</code></td><td><span class="badge info">⚪ unknown</span></td></tr><tr><td><code>robinhood-attended-get-accounts-smoke-2026-06-17.json</code></td><td><code>—</code></td><td><span class="badge info">⚪ unknown</span></td></tr><tr><td><code>robinhood-auth-route-diagnosis-2026-06-17.json</code></td><td><code>2026-06-17T09:05:00-05:00</code></td><td><span class="badge info">⚪ unknown</span></td></tr><tr><td><code>robinhood-get-accounts-singlecall-2026-06-17-retry.json</code></td><td><code>2026-06-17T10:21:08-05:00</code></td><td><span class="badge ok">✅ pass</span></td></tr><tr><td><code>robinhood-trade-access-verify-2026-06-17.json</code></td><td><code>2026-06-17T09:15:00-05:00</code></td><td><span class="badge info">⚪ unknown</span></td></tr></tbody></table></div></section><section class="card"><h2>Model Advisory Layer</h2><p>Model output is advisory only; it cannot authorize or veto a trade by itself.</p><div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Prob Up</th><th>Pred Return</th><th>Confidence</th><th>Action</th><th>Status</th></tr></thead><tbody><tr><td><code>AMD</code></td><td>52.88%</td><td>7.3 bps</td><td>5.76%</td><td><code>NO_MODEL_EDGE</code></td><td><code>DEGRADED_DATA_COVERAGE</code></td></tr><tr><td><code>SPY</code></td><td>48.66%</td><td>7.2 bps</td><td>2.68%</td><td><code>NO_MODEL_EDGE</code></td><td><code>DEGRADED_DATA_COVERAGE</code></td></tr><tr><td><code>QQQ</code></td><td>50.88%</td><td>9.3 bps</td><td>1.76%</td><td><code>NO_MODEL_EDGE</code></td><td><code>DEGRADED_DATA_COVERAGE</code></td></tr></tbody></table></div></section><section class="card"><h2>Ticket / Decision Ledger</h2><div class="table-wrap"><table><thead><tr><th>Ticket</th><th>Symbol</th><th>Side</th><th>Strategy</th><th>Status</th><th>Notional</th><th>Risk</th></tr></thead><tbody><tr><td><code>2026-06-17-amd-vwap-reclaim-test-buy</code></td><td><code>AMD</code></td><td><code>buy</code></td><td><code>VWAP_PULL_02</code></td><td><code>EXPIRED_NO_PLACE_1450_REDUCE_REVIEW</code></td><td>—</td><td>0.2467</td></tr></tbody></table></div></section><section class="card"><h2>Recent Monitoring Reports</h2><ul><li><code>2026-06-17-1330-power-hour-scan.md</code> — <strong><span class="badge warn">NO_TRADE</span>.</strong></li><li><code>2026-06-17-1415-late-day-risk-check.md</code> — <strong><span class="badge warn">NO_TRADE</span>.</strong></li><li><code>2026-06-17-daily-strategy.md</code> — <strong>—</strong></li><li><code>2026-06-17-expanded-watchlist-plan.md</code> — <strong>—</strong></li><li><code>2026-06-17-model-overlay-decision-report.md</code> — <strong>—</strong></li><li><code>2026-06-17-open-close-forecast-summary.md</code> — <strong>—</strong></li><li><code>2026-06-17-postmarket.md</code> — <strong>—</strong></li><li><code>2026-06-17-premarket.md</code> — <strong>—</strong></li><li><code>2026-06-17-pretrade.md</code> — <strong><span class="badge warn">NO_TRADE</span>.</strong></li><li><code>2026-06-17-progress-update.md</code> — <strong><span class="badge warn">NO_TRADE</span> / STAY FLAT</strong></li><li><code>2026-06-17-reduce-review.md</code> — <strong><span class="badge warn">NO_TRADE</span> / STAY FLAT.</strong></li><li><code>2026-06-17-robinhood-agentic-oauth-doc-review.md</code> — <strong>—</strong></li></ul></section><section class="card"><h2>What Would Change Our Mind</h2><ul><li>SPY + QQQ back above VWAP, with VIX not spiking.</li><li>Candidate holds above open/VWAP and is not extended into a chase.</li><li>Policy-valid ticket has reward/risk &gt;= 2.0 and risk &lt;= configured cap.</li><li>Fresh broker account, quote, tradability, and review artifacts are captured immediately before any live gate.</li><li>No pending/unknown orders and reconciliation stays clean.</li></ul></section><section class="card"><h2>Hard Rules</h2><ul><li>No market orders.</li><li>No live options.</li><li>No blind retries.</li><li>Human approval does not override tape, policy, freshness, or reconciliation gates.</li></ul></section>
+    <div class="footer">Generated from C:/Users/timfr/.openclaw/workspace/agentic-trading/dashboards/2026-06-17-monitoring-dashboard.md. This dashboard is informational and does not place trades.</div>
+  </main>
+</body>
+</html>
