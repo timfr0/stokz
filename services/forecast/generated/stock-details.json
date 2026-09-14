@@ -1,270 +1,59 @@
 [
   {
-    "ticker": "AMD",
-    "companyName": "Advanced Micro Devices, Inc.",
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 516.13,
-    "entryPriceTarget": 515.51,
-    "stopPrice": 492.95,
-    "targetPrice": 517.9,
-    "bias": "bullish",
-    "basePredictedReturn": 0.003421,
-    "adjustedPredictedReturn": 0.003421,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "medium",
-    "confidenceScore": 70,
-    "baseConfidenceScore": 58,
-    "signalDirection": "LONG",
-    "portfolioAction": "BUY",
-    "trendBias": "Range",
-    "trendSummary": "Price trend is rising cleanly across both short and medium windows.",
-    "shortTermTrend": 0.131467,
-    "mediumTermTrend": 0.06857,
-    "modelName": "timesfm",
-    "setupLabel": "Fresh long setup",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 70,
-    "newsBias": "supportive",
-    "newsImpactScore": 3,
-    "communitySentimentScore": 4,
-    "communitySentimentLabel": "positive",
-    "overallSentimentScore": 10,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 12,
-    "eventRisk": "moderate",
-    "riskRewardRatio": 0.11,
-    "expectedMoveLow": -0.045956,
-    "expectedMoveHigh": 0.052797,
-    "marketCap": 842569351398.53,
-    "averageVolume": 17330150,
-    "yearHigh": 584.73,
-    "yearLow": 149.85,
-    "analystTarget": 615.38,
-    "earningsDate": "2026-11-03",
-    "daysToEarnings": 53,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.003421,
-        "targetClose": 517.9,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.005644,
-        "targetClose": 519.05,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.007525,
-        "targetClose": 520.03,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 10,
-        "targetPrice": 490.69,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 58,
-        "targetPrice": 519.05,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 32,
-        "targetPrice": 544.11,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 517.90, 3D points toward 519.05, and 5D stretches toward 520.03.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +13.15% over 5D and +6.86% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is supportive, while community chatter reads positive. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 9.88% top to bottom. Earnings are roughly 53 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "385ba468-0403-3057-960b-026d6e02984c",
-        "ticker": "AMD",
-        "title": "Marvell CEO reveals decade-long gem behind its explosive 239% surge",
-        "summary": "Marvell has outperformed every major chip stock, from NVDA and AMD to Broadcom, over the past year.",
-        "source": "TheStreet",
-        "publishedAt": "2026-09-11T22:07:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/marvell-ceo-reveals-decade-long-220700564.html"
-      },
-      {
-        "id": "d1e737a4-67e5-32a6-afb0-bc3a76073511",
-        "ticker": "AMD",
-        "title": "Sell the Nvidia Shares That Made Your Retirement or Ride Them Into It? These 3 ETFs Are the Middle Path",
-        "summary": "A position that started as a small allocation now controls your retirement, and selling everything creates its own disaster. Three ETFs offer a way to stay in the trade without betting the nest egg on a single design team.",
-        "source": "24/7 Wall St.",
-        "publishedAt": "2026-09-11T21:55:31Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/sell-nvidia-shares-made-retirement-215531809.html"
-      },
-      {
-        "id": "face570d-8cd3-310c-8bf6-8a40250a0a86",
-        "ticker": "AMD",
-        "title": "How Much JEPQ Do You Need to Collect $2,400 a Month?",
-        "summary": "JEPQ's near-14% distribution rate makes a $2,400 monthly paycheck sound almost effortless, but the fund hides concentrated megacap tech bets, bank credit exposure, and a payout that swings sharply with market volatility in ways most income investors never see coming.",
-        "source": "24/7 Wall St.",
-        "publishedAt": "2026-09-11T21:02:15Z",
-        "url": "https://finance.yahoo.com/markets/options/articles/much-jepq-collect-2-400-210215566.html"
-      },
-      {
-        "id": "3e062290-b30e-3a7c-8b4a-cefcc36c3661",
-        "ticker": "AMD",
-        "title": "Former OpenAI Researcher Bets on AI Stocks After $35 Billion Wipeout",
-        "summary": "Former OpenAI researcher Leopold Aschenbrenner is betting on AI stocks again just weeks after his fund\u2019s $35 billion collapse.",
-        "source": "BeInCrypto",
-        "publishedAt": "2026-09-11T20:16:41Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/former-openai-researcher-bets-ai-201641481.html"
-      }
-    ],
-    "communityItems": [
-      {
-        "id": "community:1:reddit",
-        "ticker": "AMD",
-        "title": "r/AMD_Stock",
-        "summary": "r/AMD_Stock Reddit",
-        "source": "Reddit",
-        "sourceType": "reddit",
-        "publishedAt": "Fri, 05 Aug 2016 07:00:00 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5tNFR5VjZtTHBwNVEzaHFuOHktM2g4ZnhudGhNbHR1UEt5R1R6SUVoTnBndTJfalNfQ0Fudi1wU0pkalNLaEE4bm5kcw?oc=5",
-        "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-      },
-      {
-        "id": "community:2:twitter",
-        "ticker": "AMD",
-        "title": "LEOPOLD MIGHT BE BACK. Situational Awareness is active in the options market again and Leopold has reportedly been buying hundreds of millions of dollars worth of options in $CRWV, $AMD, $BE, $SNDK, and others, according to CNBC. Pretty incredibl",
-        "summary": "LEOPOLD MIGHT BE BACK. Situational Awareness is active in the options market again and Leopold has reportedly been buying hundreds of millions of dollars worth of options in $CRWV, $AMD, $BE, $SNDK, and others, according to CNBC. Pretty incredibl x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Fri, 11 Sep 2026 16:20:53 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB1eG9FYWVXWExsNWZQWUpYSFNoUTJFVXFOdmVnNG44S2RqLWZrMVRBaVhnem1qNWc0Wl9nNUNXQmw3MzlJTTA3SC1CcXhQSnZtMDYzMDZQSl8yQm1DN1l4allIdGdGQmM?oc=5",
-        "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-      },
-      {
-        "id": "community:3:twitter",
-        "ticker": "AMD",
-        "title": "JUST IN: Leopold Aschenbrenner's Situation Awareness has reportedly been active in the options market and has been buying \"significant\" stakes in names like CoreWeave $CRWV Sandisk $SNDK Bloom Energy $BE $AMD",
-        "summary": "JUST IN: Leopold Aschenbrenner's Situation Awareness has reportedly been active in the options market and has been buying \"significant\" stakes in names like CoreWeave $CRWV Sandisk $SNDK Bloom Energy $BE $AMD x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Fri, 11 Sep 2026 13:36:16 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1sT0FNUGs2bUstT05hWS05bE94VG9weWpfdU03cTdFTEpOMFJfWUpCYjktQmczNXVCSnlfckhWNnBnc2dDMzZINlFZWGwyUkNyN3J1SENwNTJpZUN6dWVTcWszTQ?oc=5",
-        "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-      }
-    ],
-    "aiSummary": {
-      "headline": "BUY AMD today",
-      "predictedMove": "+0.34% next day toward $517.90, and +0.75% over 5D toward $520.03.",
-      "actionSummary": "Advanced Micro Devices, Inc. screens as a buy today because the model stays bullish, the price trend reads range, news is supportive, and community chatter is positive. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.34% next day toward $517.90, and +0.75% over 5D toward $520.03.",
-        "Price trend: Price trend is rising cleanly across both short and medium windows.",
-        "News flow: supportive across 4 recent headline(s), with current event risk marked moderate.",
-        "Community tone: positive from 3 Reddit/X search hit(s). Earnings are 53 day(s) away."
-      ]
-    }
-  },
-  {
     "ticker": "ANET",
     "companyName": "Arista Networks, Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 199.59,
-    "entryPriceTarget": 199.08,
-    "stopPrice": 193.22,
-    "targetPrice": 201.04,
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 187.81,
+    "entryPriceTarget": 187.67,
+    "stopPrice": 180.82,
+    "targetPrice": 188.2,
     "bias": "bullish",
-    "basePredictedReturn": 0.007234,
-    "adjustedPredictedReturn": 0.007234,
+    "basePredictedReturn": 0.002088,
+    "adjustedPredictedReturn": 0.002088,
     "calibrationEnabled": false,
     "calibrationModelVersion": null,
     "calibrationStatus": "disabled",
     "calibrationReasons": [],
     "confidenceLabel": "medium",
-    "confidenceScore": 70,
+    "confidenceScore": 68,
     "baseConfidenceScore": 58,
     "signalDirection": "LONG",
     "portfolioAction": "BUY",
-    "trendBias": "Uptrend",
-    "trendSummary": "Short-term tape and medium-term structure are fighting each other.",
-    "shortTermTrend": 0.042572,
-    "mediumTermTrend": -0.019792,
+    "trendBias": "Range",
+    "trendSummary": "Price trend is weakening across both short and medium windows.",
+    "shortTermTrend": -0.030808,
+    "mediumTermTrend": -0.055377,
     "modelName": "timesfm",
     "setupLabel": "Fresh long setup",
     "convictionScore": 35,
-    "adjustedConvictionScore": 70,
+    "adjustedConvictionScore": 68,
     "newsBias": "supportive",
-    "newsImpactScore": 7,
+    "newsImpactScore": 6,
     "communitySentimentScore": 0,
     "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 10,
+    "overallSentimentScore": 6,
     "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 12,
+    "confidenceAdjustment": 10,
     "eventRisk": "moderate",
-    "riskRewardRatio": 0.33,
-    "expectedMoveLow": -0.032436,
-    "expectedMoveHigh": 0.046905,
-    "marketCap": 251727822875.58,
-    "averageVolume": 4104940,
+    "riskRewardRatio": 0.08,
+    "expectedMoveLow": -0.037916,
+    "expectedMoveHigh": 0.042092,
+    "marketCap": 236870598061.72,
+    "averageVolume": 4099470,
     "yearHigh": 214.89,
     "yearLow": 114.52,
     "analystTarget": 241.04,
     "earningsDate": "2026-11-03",
-    "daysToEarnings": 53,
+    "daysToEarnings": 50,
     "timeframes": [
       {
         "label": "1D",
         "horizonDays": 1,
-        "predictedReturn": 0.007234,
-        "targetClose": 201.04,
+        "predictedReturn": 0.002088,
+        "targetClose": 188.2,
         "confidenceBand": "highest",
         "hitRate": 0.64,
         "mae": 0.011
@@ -272,8 +61,8 @@
       {
         "label": "3D",
         "horizonDays": 3,
-        "predictedReturn": 0.011936,
-        "targetClose": 201.99,
+        "predictedReturn": 0.003446,
+        "targetClose": 188.46,
         "confidenceBand": "moderate",
         "hitRate": 0.57,
         "mae": 0.018
@@ -281,8 +70,8 @@
       {
         "label": "5D",
         "horizonDays": 5,
-        "predictedReturn": 0.015915,
-        "targetClose": 202.79,
+        "predictedReturn": 0.004594,
+        "targetClose": 188.67,
         "confidenceBand": "lower",
         "hitRate": 0.52,
         "mae": 0.024
@@ -293,23 +82,23 @@
         "id": "bear",
         "label": "Bear case",
         "probability": 10,
-        "targetPrice": 192.59,
+        "targetPrice": 180.14,
         "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
         "tone": "bear"
       },
       {
         "id": "base",
         "label": "Base case",
-        "probability": 58,
-        "targetPrice": 201.99,
+        "probability": 60,
+        "targetPrice": 188.46,
         "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
         "tone": "base"
       },
       {
         "id": "bull",
         "label": "Bull case",
-        "probability": 32,
-        "targetPrice": 209.17,
+        "probability": 30,
+        "targetPrice": 195.88,
         "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
         "tone": "bull"
       }
@@ -317,12 +106,12 @@
     "reasons": [
       {
         "title": "Forecast median",
-        "body": "1D projects 201.04, 3D points toward 201.99, and 5D stretches toward 202.79.",
+        "body": "1D projects 188.20, 3D points toward 188.46, and 5D stretches toward 188.67.",
         "tone": "forecast"
       },
       {
         "title": "Price trend",
-        "body": "Price is +4.26% over 5D and -1.98% over 20D. Current structural read is uptrend, which is why the model is not working in a vacuum.",
+        "body": "Price is -3.08% over 5D and -5.54% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
         "tone": "trend"
       },
       {
@@ -332,58 +121,58 @@
       },
       {
         "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 7.93% top to bottom. Earnings are roughly 53 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
+        "body": "The modeled move envelope spans about 8.00% top to bottom. Earnings are roughly 50 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
         "tone": "event"
       }
     ],
     "newsItems": [
       {
-        "id": "ff3ebbcf-fe39-3ccd-b655-37522db9df46",
+        "id": "707fb76f-7f46-38fa-bca8-ec7f23ca53d7",
         "ticker": "ANET",
-        "title": "Dow Jones Futures: $100 Oil, Surging Yields Pressure Stocks With Fed Rate Hike Seen. Apple, Moderna Are New Buys.",
-        "summary": "Dow Jones futures: Despite Friday's bounce, the stock market had a tough week amid $100 oil prices and surging Treasury yields. Apple, Moderna are buys.",
-        "source": "Investor's Business Daily",
-        "publishedAt": "2026-09-11T22:09:33Z",
-        "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-100-oil-surging-yields-pressure-stocks-with-fed-rate-hike-seen-apple-leads-new-buys/?src=A00220&yptr=yahoo"
+        "title": "5 Top AI Stocks to Buy on the Dip as Slowdown Fears Hit Markets",
+        "summary": "The operating momentum of these top-rated AI stocks makes them worth considering if the selloff gets overdone.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T20:37:00Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/5-top-ai-stocks-buy-203700535.html"
       },
       {
-        "id": "2fcf0e5e-e1b2-3412-9cab-ce5994a3af54",
+        "id": "23271255-7ad9-3096-aecf-c0990c6031f5",
         "ticker": "ANET",
-        "title": "Stock Market Today, Sept. 11: HPE Surges on AI Infrastructure Demand and Recently Raised Guidance",
-        "summary": "Today, Sept. 11, 2026, enterprise server demand from AI spending drove the stock up over 12%, with record quarterly revenue and networking strength fueling investor confidence.",
-        "source": "Motley Fool",
-        "publishedAt": "2026-09-11T21:05:43Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-11-210543572.html"
+        "title": "Should You Invest in Arista Networks (ANET) Based on Bullish Wall Street Views?",
+        "summary": "The average brokerage recommendation (ABR) for Arista Networks (ANET) is equivalent to a Buy. The overly optimistic recommendations of Wall Street analysts make the effectiveness of this highly sought-after metric questionable. So, is it worth buying the stock?",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T13:30:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/invest-arista-networks-anet-based-133003357.html"
       },
       {
-        "id": "fbdbea9e-9898-333e-aa41-49bb22794e75",
+        "id": "ecd34c84-f339-3200-b686-8ed9c57b6a36",
         "ticker": "ANET",
-        "title": "How Far Could Cisco Stock Swing On You As AI Networking Orders Grow?",
-        "summary": "Cisco Systems (CSCO) stock trades at $107.44, and its options price a range over the next twelve months from near $74 to near $156. The market gives the shares about a two-in-three chance of finishing inside that band, and the band carries no view on direction. It measures size, and for Cisco that is about as much move",
-        "source": "Trefis",
-        "publishedAt": "2026-09-11T20:49:23Z",
-        "url": "https://finance.yahoo.com/markets/options/articles/far-could-cisco-stock-swing-204923429.html"
+        "title": "Investors Heavily Search Arista Networks, Inc. (ANET): Here is What You Need to Know",
+        "summary": "Arista Networks (ANET) has received quite a bit of attention from Zacks.com users lately. Therefore, it is wise to be aware of the facts that can impact the stock's prospects.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T13:00:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-arista-networks-130004550.html"
       },
       {
-        "id": "4f77f65f-6629-338f-a593-445eedeb7383",
+        "id": "2da7c5ec-5ec4-3e8a-970f-e9fda0a98837",
         "ticker": "ANET",
-        "title": "Arista Networks Stock Rallied, But Is It Now A Bet On Its Suppliers?",
-        "summary": "Arista Networks (ANET) stock has gained about 51% since mid-December, against about 12% for the S&P 500. Peers Dell Technologies (DELL) rose 293% and Hewlett Packard Enterprise (HPE) 135%, while Cisco Systems (CSCO) gained about 40%. AI demand is the obvious explanation, and it is real. But management linked its latest",
-        "source": "Trefis",
-        "publishedAt": "2026-09-11T19:49:03Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-stock-rallied-now-194903483.html"
+        "title": "Arista's Cash Flow Momentum Builds: How Sustainable is it?",
+        "summary": "ANET's cash flow is surging on strong growth and upfront customer payments, but deferred revenue and inventory swings could add volatility.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T12:40:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/aristas-cash-flow-momentum-builds-124000207.html"
       }
     ],
     "communityItems": [
       {
-        "id": "community:1:twitter",
+        "id": "community:2:twitter",
         "ticker": "ANET",
         "title": "Friday\u2019s stock movers included Arista Networks $ANET up 5.6%, HPE $HPE up 11% and Frequency Electronics $FEIM up 31.6%, while SanDisk $SNDK fell 2.9%, according to the roundup. https://t.co/fXzx8hvnWe",
         "summary": "Friday\u2019s stock movers included Arista Networks $ANET up 5.6%, HPE $HPE up 11% and Frequency Electronics $FEIM up 31.6%, while SanDisk $SNDK fell 2.9%, according to the roundup. https://t.co/fXzx8hvnWe x.com",
         "source": "x.com",
         "sourceType": "twitter",
         "publishedAt": "Fri, 11 Sep 2026 14:42:18 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBDRzQ4MW91eEVkMHRDaV9uU0dyUFFZemt2MjlUclR4UlBBcnIyUnNxZEpiMFBRSi01cnlHd1NrcnFfclJVOE9UVGx4MDBKVHZGR2dUOA?oc=5",
+        "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9YRkJlcGV4cEZNZ3RSakhMVDVjUWJieUFLVGZncjJTWHNoc3NIb0s4S1NRcUs4N25QYWYwbXJ4RVp5RTZDQ3RwVWhtU0Q0UTQzY0ljRlpNelJSRkVuZXRHSm5jR2Q?oc=5",
         "query": "ANET stock site:reddit.com OR site:x.com OR site:twitter.com"
       },
       {
@@ -411,384 +200,30 @@
     ],
     "aiSummary": {
       "headline": "BUY ANET today",
-      "predictedMove": "+0.72% next day toward $201.04, and +1.59% over 5D toward $202.79.",
-      "actionSummary": "Arista Networks, Inc. screens as a buy today because the model stays bullish, the price trend reads uptrend, news is supportive, and community chatter is mixed. Overall sentiment reads bullish.",
+      "predictedMove": "+0.21% next day toward $188.20, and +0.46% over 5D toward $188.67.",
+      "actionSummary": "Arista Networks, Inc. screens as a buy today because the model stays bullish, the price trend reads range, news is supportive, and community chatter is mixed. Overall sentiment reads bullish.",
       "whyToday": [
-        "Prediction model: +0.72% next day toward $201.04, and +1.59% over 5D toward $202.79.",
-        "Price trend: Short-term tape and medium-term structure are fighting each other.",
+        "Prediction model: +0.21% next day toward $188.20, and +0.46% over 5D toward $188.67.",
+        "Price trend: Price trend is weakening across both short and medium windows.",
         "News flow: supportive across 4 recent headline(s), with current event risk marked moderate.",
-        "Community tone: mixed from 3 Reddit/X search hit(s). Earnings are 53 day(s) away."
+        "Community tone: mixed from 3 Reddit/X search hit(s). Earnings are 50 day(s) away."
       ]
     }
   },
   {
-    "ticker": "MRVL",
-    "companyName": "Marvell Technology, Inc.",
+    "ticker": "AVGO",
+    "companyName": "Broadcom Inc.",
     "sector": "Technology",
     "industry": "Semiconductors",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 236.1,
-    "entryPriceTarget": 235.45,
-    "stopPrice": 224.45,
-    "targetPrice": 237.97,
-    "bias": "bullish",
-    "basePredictedReturn": 0.007883,
-    "adjustedPredictedReturn": 0.007883,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "medium",
-    "confidenceScore": 74,
-    "baseConfidenceScore": 58,
-    "signalDirection": "LONG",
-    "portfolioAction": "BUY",
-    "trendBias": "Uptrend",
-    "trendSummary": "Price trend is rising cleanly across both short and medium windows.",
-    "shortTermTrend": 0.130585,
-    "mediumTermTrend": 0.062652,
-    "modelName": "timesfm",
-    "setupLabel": "Fresh long setup",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 74,
-    "newsBias": "supportive",
-    "newsImpactScore": 8,
-    "communitySentimentScore": 0,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 10,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 16,
-    "eventRisk": "low",
-    "riskRewardRatio": 0.23,
-    "expectedMoveLow": -0.050616,
-    "expectedMoveHigh": 0.066381,
-    "marketCap": 212184164614.56,
-    "averageVolume": 24870510,
-    "yearHigh": 329.88,
-    "yearLow": 66.14,
-    "analystTarget": 284.64,
-    "earningsDate": "2026-12-01",
-    "daysToEarnings": 81,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.007883,
-        "targetClose": 237.97,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.013007,
-        "targetClose": 239.19,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.017342,
-        "targetClose": 240.23,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 10,
-        "targetPrice": 223.31,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 56,
-        "targetPrice": 239.19,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 34,
-        "targetPrice": 252.3,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 237.97, 3D points toward 239.19, and 5D stretches toward 240.23.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +13.06% over 5D and +6.27% over 20D. Current structural read is uptrend, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is supportive, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 11.70% top to bottom. Earnings are roughly 81 day(s) out, so event risk stays on the board. Current event-risk state is low.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "385ba468-0403-3057-960b-026d6e02984c",
-        "ticker": "MRVL",
-        "title": "Marvell CEO reveals decade-long gem behind its explosive 239% surge",
-        "summary": "Marvell has outperformed every major chip stock, from NVDA and AMD to Broadcom, over the past year.",
-        "source": "TheStreet",
-        "publishedAt": "2026-09-11T22:07:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/marvell-ceo-reveals-decade-long-220700564.html"
-      },
-      {
-        "id": "508ffc88-2e3e-3326-8171-5f336a92c4e6",
-        "ticker": "MRVL",
-        "title": "Top Stock Reports for Meta Platforms, Marvell & Amphenol",
-        "summary": "Marvell's AI infrastructure gains, custom silicon growth and networking momentum point to a higher multi-year outlook.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-11T21:23:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-meta-platforms-212300174.html"
-      },
-      {
-        "id": "bedaabaa-d7e6-3478-8123-8455c8311665",
-        "ticker": "MRVL",
-        "title": "Astera Labs vs. Marvell Technology: Which AI-Driven Tech Stock Is a Better Buy in 2026?",
-        "summary": "One company is growing revenue at triple-digit rates but depends on a single customer for 70% of sales; the other has scale and a decade-long Google partnership but trades at a premium valuation.",
-        "source": "Motley Fool",
-        "publishedAt": "2026-09-11T19:19:01Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/astera-labs-vs-marvell-technology-191901349.html"
-      },
-      {
-        "id": "6f5ccdf5-b268-33dc-b65e-17b55d279657",
-        "ticker": "MRVL",
-        "title": "Marvell Rises 5% as Piper Sandler Starts Coverage With $270 Target; Broadcom Edges Higher, NVIDIA Holds Steady",
-        "summary": "Piper Sandler just put a fresh bullish stamp on Marvell with a new price target, and CEO Matt Murphy is calling the company the Switzerland of AI silicon. Whether that neutrality is a strength or a liability ahead of a high-stakes October roadmap event is the real question.",
-        "source": "24/7 Wall St.",
-        "publishedAt": "2026-09-11T16:54:59Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-rises-5-piper-sandler-165459575.html"
-      }
-    ],
-    "communityItems": [],
-    "aiSummary": {
-      "headline": "BUY MRVL today",
-      "predictedMove": "+0.79% next day toward $237.97, and +1.73% over 5D toward $240.23.",
-      "actionSummary": "Marvell Technology, Inc. screens as a buy today because the model stays bullish, the price trend reads uptrend, news is supportive, and community chatter is mixed. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.79% next day toward $237.97, and +1.73% over 5D toward $240.23.",
-        "Price trend: Price trend is rising cleanly across both short and medium windows.",
-        "News flow: supportive across 4 recent headline(s), with current event risk marked low.",
-        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 81 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "VRT",
-    "companyName": "Vertiv Holdings, LLC",
-    "sector": "Industrials",
-    "industry": "Electrical Equipment & Parts",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 257.06,
-    "entryPriceTarget": 256.45,
-    "stopPrice": 246.7,
-    "targetPrice": 258.81,
-    "bias": "bullish",
-    "basePredictedReturn": 0.006768,
-    "adjustedPredictedReturn": 0.006768,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "medium",
-    "confidenceScore": 66,
-    "baseConfidenceScore": 58,
-    "signalDirection": "LONG",
-    "portfolioAction": "BUY",
-    "trendBias": "Range",
-    "trendSummary": "Price trend is weakening across both short and medium windows.",
-    "shortTermTrend": -0.043782,
-    "mediumTermTrend": -0.104539,
-    "modelName": "timesfm",
-    "setupLabel": "Fresh long setup",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 66,
-    "newsBias": "supportive",
-    "newsImpactScore": 4,
-    "communitySentimentScore": 0,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 4,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 8,
-    "eventRisk": "low",
-    "riskRewardRatio": 0.24,
-    "expectedMoveLow": -0.041118,
-    "expectedMoveHigh": 0.054653,
-    "marketCap": 98965058811.47,
-    "averageVolume": 5198290,
-    "yearHigh": 379.93,
-    "yearLow": 132.68,
-    "analystTarget": 338.15,
-    "earningsDate": "2026-10-21",
-    "daysToEarnings": 40,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.006768,
-        "targetClose": 258.81,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.011167,
-        "targetClose": 259.95,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.014889,
-        "targetClose": 260.92,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 14,
-        "targetPrice": 245.69,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 60,
-        "targetPrice": 259.95,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 26,
-        "targetPrice": 271.5,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 258.81, 3D points toward 259.95, and 5D stretches toward 260.92.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is -4.38% over 5D and -10.45% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is supportive, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 9.58% top to bottom. Earnings are roughly 40 day(s) out, so event risk stays on the board. Current event-risk state is low.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "355f3d47-916e-3e70-82ee-0fc402f27c4d",
-        "ticker": "VRT",
-        "title": "AI Capex Creates New Investment Cycle: NVIDIA & 2 Other Stocks to Buy",
-        "summary": "AI capex is fueling a new infrastructure cycle, with NVIDIA, Arista Networks and Vertiv well-positioned across computing, networking and power.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-11T15:21:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/ai-capex-creates-investment-cycle-152100533.html"
-      },
-      {
-        "id": "c94fcf75-7109-38f0-9dfe-3c0235693d23",
-        "ticker": "VRT",
-        "title": "Prediction: This Underrated AI Infrastructure Stock Will Continue Soaring Despite Doubling in a Year",
-        "summary": "Vertiv is a key AI infrastructure provider, which explains why the company is projected to clock healthy earnings growth over the long run.",
-        "source": "Motley Fool",
-        "publishedAt": "2026-09-11T09:47:02Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/prediction-underrated-ai-infrastructure-stock-094702819.html"
-      },
-      {
-        "id": "2bf1a19a-647f-35c6-a06f-6bbcb2b0c31f",
-        "ticker": "VRT",
-        "title": "1 Big Reason Vertiv's New Acquisition Could Supercharge Its AI Dominance",
-        "summary": "Vertiv recently announced a major acquisition that could help it capture a larger share of hyperscalers' growing capital expenditures.",
-        "source": "Motley Fool",
-        "publishedAt": "2026-09-11T06:25:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/1-big-reason-vertivs-acquisition-062500023.html"
-      },
-      {
-        "id": "1b3a75a7-9ba6-321f-bb43-77f045446518",
-        "ticker": "VRT",
-        "title": "What Does Buying A Vertiv Dip Cost You Before It Pays?",
-        "summary": "Vertiv (VRT) has fallen about 11% from its mid-August high, and the reflex is to ask whether that is the discount worth taking. Its history after sharp falls says most of them were. What that history does not advertise is the months of discomfort it charged first, or that Vertiv's own execution is now the thing in ques",
-        "source": "Trefis",
-        "publishedAt": "2026-09-10T22:44:06Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/does-buying-vertiv-dip-cost-224406496.html"
-      }
-    ],
-    "communityItems": [],
-    "aiSummary": {
-      "headline": "BUY VRT today",
-      "predictedMove": "+0.68% next day toward $258.81, and +1.49% over 5D toward $260.92.",
-      "actionSummary": "Vertiv Holdings, LLC screens as a buy today because the model stays bullish, the price trend reads range, news is supportive, and community chatter is mixed. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.68% next day toward $258.81, and +1.49% over 5D toward $260.92.",
-        "Price trend: Price trend is weakening across both short and medium windows.",
-        "News flow: supportive across 4 recent headline(s), with current event risk marked low.",
-        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 40 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "ORCL",
-    "companyName": "Oracle Corporation",
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 150.28,
-    "entryPriceTarget": 150.06,
-    "stopPrice": 143.77,
-    "targetPrice": 149.66,
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 344.72,
+    "entryPriceTarget": 344.31,
+    "stopPrice": 332.91,
+    "targetPrice": 343.56,
     "bias": "bearish",
-    "basePredictedReturn": -0.004107,
-    "adjustedPredictedReturn": -0.004107,
+    "basePredictedReturn": -0.003363,
+    "adjustedPredictedReturn": -0.003363,
     "calibrationEnabled": false,
     "calibrationModelVersion": null,
     "calibrationStatus": "disabled",
@@ -798,38 +233,38 @@
     "baseConfidenceScore": 58,
     "signalDirection": "SHORT",
     "portfolioAction": "SELL",
-    "trendBias": "Downtrend",
-    "trendSummary": "Price trend is fragile and still leaning lower.",
-    "shortTermTrend": -0.024409,
-    "mediumTermTrend": -0.038023,
+    "trendBias": "Range",
+    "trendSummary": "Price trend is weakening across both short and medium windows.",
+    "shortTermTrend": -0.036826,
+    "mediumTermTrend": -0.122828,
     "modelName": "timesfm",
     "setupLabel": "Risk reduction",
     "convictionScore": 35,
     "adjustedConvictionScore": 60,
     "newsBias": "conflicting",
-    "newsImpactScore": 2,
-    "communitySentimentScore": 2,
-    "communitySentimentLabel": "positive",
+    "newsImpactScore": 3,
+    "communitySentimentScore": 1,
+    "communitySentimentLabel": "mixed",
     "overallSentimentScore": 0,
     "overallSentimentLabel": "mixed",
     "confidenceAdjustment": 2,
     "eventRisk": "high",
-    "riskRewardRatio": 0.06,
-    "expectedMoveLow": -0.044271,
-    "expectedMoveHigh": 0.036057,
-    "marketCap": 432877178363.8,
-    "averageVolume": 28508540,
-    "yearHigh": 329.5,
-    "yearLow": 114.5,
-    "analystTarget": 241.41,
-    "earningsDate": "2026-12-10",
-    "daysToEarnings": 90,
+    "riskRewardRatio": 0.07,
+    "expectedMoveLow": -0.034867,
+    "expectedMoveHigh": 0.028141,
+    "marketCap": 1645565692889.98,
+    "averageVolume": 29133380,
+    "yearHigh": 495.0,
+    "yearLow": 289.96,
+    "analystTarget": 531.85,
+    "earningsDate": "2026-12-09",
+    "daysToEarnings": 86,
     "timeframes": [
       {
         "label": "1D",
         "horizonDays": 1,
-        "predictedReturn": -0.004107,
-        "targetClose": 149.66,
+        "predictedReturn": -0.003363,
+        "targetClose": 343.56,
         "confidenceBand": "highest",
         "hitRate": 0.64,
         "mae": 0.011
@@ -837,8 +272,8 @@
       {
         "label": "3D",
         "horizonDays": 3,
-        "predictedReturn": -0.006776,
-        "targetClose": 149.27,
+        "predictedReturn": -0.005549,
+        "targetClose": 342.81,
         "confidenceBand": "moderate",
         "hitRate": 0.57,
         "mae": 0.018
@@ -846,8 +281,8 @@
       {
         "label": "5D",
         "horizonDays": 5,
-        "predictedReturn": -0.009035,
-        "targetClose": 148.93,
+        "predictedReturn": -0.007398,
+        "targetClose": 342.18,
         "confidenceBand": "lower",
         "hitRate": 0.52,
         "mae": 0.024
@@ -858,7 +293,7 @@
         "id": "bear",
         "label": "Bear case",
         "probability": 26,
-        "targetPrice": 143.14,
+        "targetPrice": 331.75,
         "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
         "tone": "bear"
       },
@@ -866,7 +301,7 @@
         "id": "base",
         "label": "Base case",
         "probability": 60,
-        "targetPrice": 149.27,
+        "targetPrice": 342.81,
         "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
         "tone": "base"
       },
@@ -874,7 +309,7 @@
         "id": "bull",
         "label": "Bull case",
         "probability": 14,
-        "targetPrice": 155.8,
+        "targetPrice": 354.56,
         "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
         "tone": "bull"
       }
@@ -882,66 +317,454 @@
     "reasons": [
       {
         "title": "Forecast median",
-        "body": "1D projects 149.66, 3D points toward 149.27, and 5D stretches toward 148.93.",
+        "body": "1D projects 343.56, 3D points toward 342.81, and 5D stretches toward 342.18.",
         "tone": "forecast"
       },
       {
         "title": "Price trend",
-        "body": "Price is -2.44% over 5D and -3.80% over 20D. Current structural read is downtrend, which is why the model is not working in a vacuum.",
+        "body": "Price is -3.68% over 5D and -12.28% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
         "tone": "trend"
       },
       {
         "title": "Headline and chatter",
-        "body": "Current headline read is conflicting, while community chatter reads positive. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "body": "Current headline read is conflicting, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
         "tone": "news"
       },
       {
         "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 8.03% top to bottom. Earnings are roughly 90 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "body": "The modeled move envelope spans about 6.30% top to bottom. Earnings are roughly 86 day(s) out, so event risk stays on the board. Current event-risk state is high.",
         "tone": "event"
       }
     ],
     "newsItems": [
       {
-        "id": "6b270ca2-bca2-4c44-a2a9-1147c7f56dfa",
-        "ticker": "ORCL",
-        "title": "Oracle stock trims gains as AI cloud demand outpaces supply",
-        "summary": "Oracle stock jumped after cloud revenue sales grew by 121% last quarter",
-        "source": "Yahoo Finance",
-        "publishedAt": "2026-09-11T12:21:03Z",
-        "url": "https://finance.yahoo.com/markets/article/oracle-stock-trims-gains-as-ai-cloud-demand-outpaces-supply-122103986.html"
-      },
-      {
-        "id": "c682c4e8-b694-44b2-a6b4-96265f11f119",
-        "ticker": "ORCL",
-        "title": "Why this strategist says Oracle should ramp up AI spending",
-        "summary": "Morning Brief Host Julie Hyman and Breaking Business News Reporter Jake Conley are joined by Hardika Singh, Fundstrat Economic Strategist, to discuss Oracle's (ORCL) latest earnings and why Singh believes the company should ramp up capital spending to capitalize on surging AI demand.",
+        "id": "0971f3b5-4999-49f5-a3fb-0a11c0097db9",
+        "ticker": "AVGO",
+        "title": "Tech pulls back on AI concerns, cybersecurity takes a step up",
+        "summary": "Yahoo Finance Senior Markets Reporter Ines Ferre and DA Davidson Head of Technology Research Gil Luria break down the tech stock (XLK) pullback following calls to slow AI development, while highlighting the renewed strength in the cybersecurity sector.",
         "source": "Yahoo Finance Video",
-        "publishedAt": "2026-09-11T14:28:00Z",
-        "url": "https://finance.yahoo.com/video/why-strategist-says-oracle-ramp-142800289.html"
+        "publishedAt": "2026-09-14T14:39:00Z",
+        "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html"
       },
       {
-        "id": "738a0b52-1ff0-4c55-8fb2-3fdf6fc08582",
+        "id": "d5b9e255-1bbf-36dc-ac16-67c0b598a24e",
+        "ticker": "AVGO",
+        "title": "Broadcom Drops Over 4% as $21.7 Billion AI Forecast Meets Slowdown Fears",
+        "summary": "Broadcom expects another surge in AI-chip sales, making Monday's selloff a direct test of infrastructure-spending confidence.",
+        "source": "GuruFocus.com",
+        "publishedAt": "2026-09-14T21:00:15Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/broadcom-drops-over-4-21-210015158.html"
+      },
+      {
+        "id": "d0dbee46-6c9e-35d6-a262-3fe1c86332ff",
+        "ticker": "AVGO",
+        "title": "Wall Street ends down, calls for AI slowdown pummel chipmakers",
+        "summary": "By Noel Randewich Sept 14 (Reuters) - Wall Street ended down on Monday, weighed down by losses in Nvidia and other chipmakers after top executives in U.S. artificial intelligence companies raised",
+        "source": "Reuters",
+        "publishedAt": "2026-09-14T20:15:55Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/ai-warnings-knock-nasdaq-futures-092329455.html"
+      },
+      {
+        "id": "24fe7e51-ac33-31d2-af2d-4ee5bc9595c9",
+        "ticker": "AVGO",
+        "title": "Broadcom buys its Irvine office building",
+        "summary": "Broadcom paid its former landlord, PRP Real Assets, $325 million for the 660,000-square-foot research campus in one of the largest office sales in Southern California in recent years.",
+        "source": "LA Times",
+        "publishedAt": "2026-09-14T19:49:45Z",
+        "url": "https://finance.yahoo.com/real-estate/articles/broadcom-buys-irvine-office-building-194945873.html"
+      }
+    ],
+    "communityItems": [
+      {
+        "id": "community:2:twitter",
+        "ticker": "AVGO",
+        "title": "Broadcom $AVGO reported Q3 AI semiconductor revenue of $16.7 billion, up 221% YoY and 54% QoQ. Q4 AI semiconductor revenue was guided to be $21.7 billion, up 236% YoY and roughly 30% QoQ. $NVDA $AMD",
+        "summary": "Broadcom $AVGO reported Q3 AI semiconductor revenue of $16.7 billion, up 221% YoY and 54% QoQ. Q4 AI semiconductor revenue was guided to be $21.7 billion, up 236% YoY and roughly 30% QoQ. $NVDA $AMD x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Wed, 02 Sep 2026 21:51:38 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5LQWZJWWlVWmFhaHgxVWpXZnRodE0xelk4UjN6eWFCM2NNTnlDNW1pMzhmTEJmUjY3Ykg4aXkzSHNOSFplZE5UTC1HMkE3aFptZFY3UXRXWmtTaVpZcmFycXJn?oc=5",
+        "query": "\"AVGO\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+      },
+      {
+        "id": "community:3:twitter",
+        "ticker": "AVGO",
+        "title": "Does Broadcom $AVGO make Mag 7 the Mag 8? Well active large cap managers tend to think so with 84 funds holding more than 5% of the stock, more than next 8 non-Mag 7 stocks combined. AVGO even has more than $META & $TSLA #stocks @BBGIntelli",
+        "summary": "Does Broadcom $AVGO make Mag 7 the Mag 8? Well active large cap managers tend to think so with 84 funds holding more than 5% of the stock, more than next 8 non-Mag 7 stocks combined. AVGO even has more than $META & $TSLA #stocks @BBGIntelli x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Thu, 13 Aug 2026 07:00:00 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9hVlN1YmUxTTdYOVEyZFJzcEJmel94ZzZKUmZkN2M3NGY2UUVTc2xQcjAtcDdnRmtkX3o5MGQyOHo1X3B2RlZfak1jUDNnekNrcHBtWTRVTEktWjA0RDRMVQ?oc=5",
+        "query": "\"AVGO\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+      }
+    ],
+    "aiSummary": {
+      "headline": "SELL AVGO today",
+      "predictedMove": "-0.34% next day toward $343.56, and -0.74% over 5D toward $342.18.",
+      "actionSummary": "Broadcom Inc. screens as a sell today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is mixed. Overall sentiment reads mixed.",
+      "whyToday": [
+        "Prediction model: -0.34% next day toward $343.56, and -0.74% over 5D toward $342.18.",
+        "Price trend: Price trend is weakening across both short and medium windows.",
+        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
+        "Community tone: mixed from 2 Reddit/X search hit(s). Earnings are 86 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "DELL",
+    "companyName": "Dell Technologies Inc.",
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 534.28,
+    "entryPriceTarget": 534.0,
+    "stopPrice": 505.03,
+    "targetPrice": 533.49,
+    "bias": "bearish",
+    "basePredictedReturn": -0.001482,
+    "adjustedPredictedReturn": -0.001482,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "medium",
+    "confidenceScore": 58,
+    "baseConfidenceScore": 58,
+    "signalDirection": "SHORT",
+    "portfolioAction": "SELL",
+    "trendBias": "Range",
+    "trendSummary": "Price trend is constructive, but not euphoric.",
+    "shortTermTrend": 0.019346,
+    "mediumTermTrend": 0.088568,
+    "modelName": "timesfm",
+    "setupLabel": "Risk reduction",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 58,
+    "newsBias": "mixed",
+    "newsImpactScore": 0,
+    "communitySentimentScore": 0,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": 0,
+    "overallSentimentLabel": "mixed",
+    "confidenceAdjustment": 0,
+    "eventRisk": "low",
+    "riskRewardRatio": 0.02,
+    "expectedMoveLow": -0.056295,
+    "expectedMoveHigh": 0.05333,
+    "marketCap": 339702054697.33,
+    "averageVolume": 13000400,
+    "yearHigh": 567.75,
+    "yearLow": 110.22,
+    "analystTarget": 570.48,
+    "earningsDate": "2026-11-27",
+    "daysToEarnings": 74,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.001482,
+        "targetClose": 533.49,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.002446,
+        "targetClose": 532.97,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.003261,
+        "targetClose": 532.54,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 18,
+        "targetPrice": 502.2,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 60,
+        "targetPrice": 532.97,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 22,
+        "targetPrice": 563.55,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 533.49, 3D points toward 532.97, and 5D stretches toward 532.54.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is +1.93% over 5D and +8.86% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 10.96% top to bottom. Earnings are roughly 74 day(s) out, so event risk stays on the board. Current event-risk state is low.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "b4ef8b18-9650-3d18-8f87-584b47727065",
+        "ticker": "DELL",
+        "title": "Which Tech Stocks Are Getting Hit Hardest Today",
+        "summary": "The technology sector was the S&P 500's worst performer today, down 1.7%. Here are some of the tech names getting hit hardest: Corning, down 14% (worst performer in the S&P 500) Teradyne, down 13% Coherent, down 13%.",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T20:49:25Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/which-tech-stocks-are-getting-hit-hardest-today-NXMZGdwdwqjvnj32Ghbc?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "id": "707fb76f-7f46-38fa-bca8-ec7f23ca53d7",
+        "ticker": "DELL",
+        "title": "5 Top AI Stocks to Buy on the Dip as Slowdown Fears Hit Markets",
+        "summary": "The operating momentum of these top-rated AI stocks makes them worth considering if the selloff gets overdone.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T20:37:00Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/5-top-ai-stocks-buy-203700535.html"
+      },
+      {
+        "id": "b5c1fdaf-093c-35e2-8010-02520f149dc8",
+        "ticker": "DELL",
+        "title": "Dell Stock Tumbles 5% as Fresh AI Warning Sparks Tech Selloff",
+        "summary": "Dell Shares Fall As Wall Street Weighs Risk Of Slower AI Capital Spending",
+        "source": "GuruFocus.com",
+        "publishedAt": "2026-09-14T18:59:58Z",
+        "url": "https://finance.yahoo.com/news/dell-stock-tumbles-5-fresh-185958280.html"
+      },
+      {
+        "id": "6edc78ee-b274-348e-a177-10e10fc62070",
+        "ticker": "DELL",
+        "title": "Is HPE Stock Now A Bet On Memory Prices?",
+        "summary": "Hewlett Packard Enterprise (HPE) trades near $62, at the top of its 52-week range and up about 160% over the past year. The company just reported record revenue of $12.2 billion for fiscal Q3 2026 and a raised outlook for fiscal 2027. The easy read is that you are early in an AI cycle. The harder question is what paid ",
+        "source": "Trefis",
+        "publishedAt": "2026-09-14T17:49:16Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/hpe-stock-now-bet-memory-174916864.html"
+      }
+    ],
+    "communityItems": [],
+    "aiSummary": {
+      "headline": "SELL DELL today",
+      "predictedMove": "-0.15% next day toward $533.49, and -0.33% over 5D toward $532.54.",
+      "actionSummary": "Dell Technologies Inc. screens as a sell today because the model stays bearish, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads mixed.",
+      "whyToday": [
+        "Prediction model: -0.15% next day toward $533.49, and -0.33% over 5D toward $532.54.",
+        "Price trend: Price trend is constructive, but not euphoric.",
+        "News flow: mixed across 4 recent headline(s), with current event risk marked low.",
+        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 74 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "ORCL",
+    "companyName": "Oracle Corporation",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 144.79,
+    "entryPriceTarget": 144.43,
+    "stopPrice": 138.09,
+    "targetPrice": 143.77,
+    "bias": "bearish",
+    "basePredictedReturn": -0.007094,
+    "adjustedPredictedReturn": -0.007094,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "medium",
+    "confidenceScore": 56,
+    "baseConfidenceScore": 58,
+    "signalDirection": "SHORT",
+    "portfolioAction": "SELL",
+    "trendBias": "Downtrend",
+    "trendSummary": "Price trend is fragile and still leaning lower.",
+    "shortTermTrend": -0.088109,
+    "mediumTermTrend": -0.038068,
+    "modelName": "timesfm",
+    "setupLabel": "Risk reduction",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 56,
+    "newsBias": "mixed",
+    "newsImpactScore": -1,
+    "communitySentimentScore": 1,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": -4,
+    "overallSentimentLabel": "bearish",
+    "confidenceAdjustment": -2,
+    "eventRisk": "moderate",
+    "riskRewardRatio": 0.1,
+    "expectedMoveLow": -0.047352,
+    "expectedMoveHigh": 0.033164,
+    "marketCap": 417063376750.9,
+    "averageVolume": 33435690,
+    "yearHigh": 329.5,
+    "yearLow": 114.5,
+    "analystTarget": 239.1,
+    "earningsDate": "2026-12-10",
+    "daysToEarnings": 87,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.007094,
+        "targetClose": 143.77,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.011705,
+        "targetClose": 143.11,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.015607,
+        "targetClose": 142.55,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 18,
+        "targetPrice": 137.44,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 60,
+        "targetPrice": 143.11,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 22,
+        "targetPrice": 149.67,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 143.77, 3D points toward 143.11, and 5D stretches toward 142.55.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is -8.81% over 5D and -3.81% over 20D. Current structural read is downtrend, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 8.05% top to bottom. Earnings are roughly 87 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "b2e4850e-d0b6-4c50-a0c5-12b0be5f2b34",
         "ticker": "ORCL",
-        "title": "Oracle earnings impress, but can investors ignore its debt?",
-        "summary": "Lee Munson, Portfolio Wealth Advisors president and CIO, joins Yahoo Finance Executive Editor Brian Sozzi to discuss Oracle (ORCL) stock rising after sharing its first quarter earnings report and why investors should be wary.",
+        "title": "What to expect ahead of the Fed's September interest rate decision",
+        "summary": "The Federal Reserve will announce its policy decision on Sept. 16, with expectations of a rate hike amid elevated inflation and CPI prices. Kevin Gordon, Head of Macro Research and Strategy at the Schwab Center for Financial Research, and Yahoo Finance Senior Business Reporter Ines Ferr\u00e9 join Yahoo Finance Executive Ed",
         "source": "Yahoo Finance Video",
-        "publishedAt": "2026-09-11T14:08:57Z",
-        "url": "https://finance.yahoo.com/video/oracle-earnings-impress-investors-ignore-140857026.html"
+        "publishedAt": "2026-09-14T14:41:40Z",
+        "url": "https://finance.yahoo.com/video/expect-ahead-feds-september-interest-144140180.html"
       },
       {
-        "id": "0e373459-27c9-34b1-b32b-06125f2374fc",
+        "id": "c4224625-0736-4e99-9165-96f14df671b2",
         "ticker": "ORCL",
-        "title": "Oracle to Spend an Additional $700 Million on More Job Cuts",
-        "summary": "Oracle Corp. increased the scale of its planned job cuts while the company grapples with a cash crunch tied to development of large-scale data centers for artificial intelligence work.",
-        "source": "Bloomberg",
-        "publishedAt": "2026-09-11T21:13:29Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/oracle-spend-additional-700-million-211329828.html"
+        "title": "Anthropic, OpenAI now want to tame the rapid pace of AI development",
+        "summary": "Anthropic (ANTH.PVT) CEO Dario Amodei and OpenAI (OPAI.PVT) CEO Sam Altman are in agreement that the AI industry needs to pace its development. Yahoo Finance's Jake Conley and Pras Subramanian are joined by Business Insider Today executive editor Dan DeFrancesco to discuss the two business leaders' latest statements an",
+        "source": "Yahoo Finance Video",
+        "publishedAt": "2026-09-14T13:35:45Z",
+        "url": "https://finance.yahoo.com/video/anthropic-openai-now-want-to-tame-the-rapid-pace-of-ai-development-133545450.html"
+      },
+      {
+        "id": "c03e7abf-3f31-3de5-9594-2b699d67d8e9",
+        "ticker": "ORCL",
+        "title": "S&P 500, Nasdaq, Dow Drop On Chipmaker Weakness, Treasury Yield Pressure \u2014 MSFT, NFLX, ORCL, CRWD, RBLX In Focus",
+        "summary": "Anthropic CEO Dario Amodei called for a slowdown of the development of AI capabilities.",
+        "source": "Stocktwits",
+        "publishedAt": "2026-09-14T21:53:54Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-dow-drop-215354993.html"
+      },
+      {
+        "id": "aeedc027-5655-301d-946c-7f586d8357ff",
+        "ticker": "ORCL",
+        "title": "Stocks to Watch Monday Recap: Nvidia, Oracle, SoftBank",
+        "summary": "\u2198\ufe0f Nvidia (NVDA), Intel (INTC), Marvell Technology (MRVL): Chip stocks slid after leaders of the biggest AI companies called to slow development of the technology, raising questions over chip demand. Overseas chip stocks sold off, including SK Hynix (KR:000660) and Samsung Electronics (KR: 005930) in South Korea and AS",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T21:37:24Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/stocks-to-watch-monday-nvidia-oracle-softbank-z8oHxWLCC1rwQAwr0oUs?siteid=yhoof2&yptr=yahoo"
       }
     ],
     "communityItems": [
       {
         "id": "community:0:twitter",
+        "ticker": "ORCL",
+        "title": "\ud83d\udea8 UPDATE: Oracle founder Larry Ellison canceled plans to sell up to 50 million $ORCL shares worth roughly $7.5 billion.",
+        "summary": "\ud83d\udea8 UPDATE: Oracle founder Larry Ellison canceled plans to sell up to 50 million $ORCL shares worth roughly $7.5 billion. x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Sun, 13 Sep 2026 01:30:24 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbTFMYlBRMXZjQzJReWF4YjNVZGR2UTBfMzRNVU1HQ0c3SGhoMzBMNmpZU0tnZUdHTjhnZ1lWdFFFeF96cWVYc2V2WjA1aWE3aXFrc3htS19qWkt2Z1ZiWW4wR2Q?oc=5",
+        "query": "ORCL stock site:reddit.com OR site:x.com OR site:twitter.com"
+      },
+      {
+        "id": "community:1:twitter",
         "ticker": "ORCL",
         "title": "BREAKING: Oracle stock, $ORCL, rises over +8% after the company posts stronger than expected earnings due to AI demand.",
         "summary": "BREAKING: Oracle stock, $ORCL, rises over +8% after the company posts stronger than expected earnings due to AI demand. x.com",
@@ -952,7 +775,7 @@
         "query": "ORCL stock site:reddit.com OR site:x.com OR site:twitter.com"
       },
       {
-        "id": "community:2:twitter",
+        "id": "community:3:twitter",
         "ticker": "ORCL",
         "title": "ORACLE $ORCL Q1\u201927 EARNINGS HIGHLIGHTS \ud83d\udd39 Revenue: $19.3B (Est. $19.14B) \ud83d\udfe2; +30% YoY \ud83d\udd39 Adj. EPS: $1.92 (Est. $1.74) \ud83d\udfe2; +30% YoY \ud83d\udd39 RPO: $664B; +$209B YoY FY Guide: \ud83d\udd39 Revenue: At least $90B (Est. $89.79B) \ud83d\udfe2 \ud83d\udd39 Adj. EPS: $8.10 (Est. $8.07)",
         "summary": "ORACLE $ORCL Q1\u201927 EARNINGS HIGHLIGHTS \ud83d\udd39 Revenue: $19.3B (Est. $19.14B) \ud83d\udfe2; +30% YoY \ud83d\udd39 Adj. EPS: $1.92 (Est. $1.74) \ud83d\udfe2; +30% YoY \ud83d\udd39 RPO: $664B; +$209B YoY FY Guide: \ud83d\udd39 Revenue: At least $90B (Est. $89.79B) \ud83d\udfe2 \ud83d\udd39 Adj. EPS: $8.10 (Est. $8.07) x.com",
@@ -965,71 +788,71 @@
     ],
     "aiSummary": {
       "headline": "SELL ORCL today",
-      "predictedMove": "-0.41% next day toward $149.66, and -0.90% over 5D toward $148.93.",
-      "actionSummary": "Oracle Corporation screens as a sell today because the model stays bearish, the price trend reads downtrend, news is conflicting, and community chatter is positive. Overall sentiment reads mixed.",
+      "predictedMove": "-0.71% next day toward $143.77, and -1.56% over 5D toward $142.55.",
+      "actionSummary": "Oracle Corporation screens as a sell today because the model stays bearish, the price trend reads downtrend, news is mixed, and community chatter is mixed. Overall sentiment reads bearish.",
       "whyToday": [
-        "Prediction model: -0.41% next day toward $149.66, and -0.90% over 5D toward $148.93.",
+        "Prediction model: -0.71% next day toward $143.77, and -1.56% over 5D toward $142.55.",
         "Price trend: Price trend is fragile and still leaning lower.",
-        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
-        "Community tone: positive from 2 Reddit/X search hit(s). Earnings are 90 day(s) away."
+        "News flow: mixed across 4 recent headline(s), with current event risk marked moderate.",
+        "Community tone: mixed from 3 Reddit/X search hit(s). Earnings are 87 day(s) away."
       ]
     }
   },
   {
-    "ticker": "SYM",
-    "companyName": "Symbotic Inc.",
+    "ticker": "SPCX",
+    "companyName": "Space Exploration Technologies ",
     "sector": "Industrials",
-    "industry": "Specialty Industrial Machinery",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 42.13,
-    "entryPriceTarget": 42.1,
-    "stopPrice": 40.3,
-    "targetPrice": 42.03,
+    "industry": "Aerospace & Defense",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 148.15,
+    "entryPriceTarget": 148.08,
+    "stopPrice": 138.88,
+    "targetPrice": 147.96,
     "bias": "bearish",
-    "basePredictedReturn": -0.002264,
-    "adjustedPredictedReturn": -0.002264,
+    "basePredictedReturn": -0.001309,
+    "adjustedPredictedReturn": -0.001309,
     "calibrationEnabled": false,
     "calibrationModelVersion": null,
     "calibrationStatus": "disabled",
     "calibrationReasons": [],
     "confidenceLabel": "medium",
-    "confidenceScore": 56,
+    "confidenceScore": 60,
     "baseConfidenceScore": 58,
     "signalDirection": "SHORT",
     "portfolioAction": "SELL",
     "trendBias": "Range",
     "trendSummary": "Price trend is constructive, but not euphoric.",
-    "shortTermTrend": 0.01274,
-    "mediumTermTrend": 0.007895,
+    "shortTermTrend": 0.001352,
+    "mediumTermTrend": 0.058214,
     "modelName": "timesfm",
     "setupLabel": "Risk reduction",
     "convictionScore": 35,
-    "adjustedConvictionScore": 56,
+    "adjustedConvictionScore": 60,
     "newsBias": "conflicting",
     "newsImpactScore": 2,
-    "communitySentimentScore": 0,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 1,
-    "overallSentimentLabel": "mixed",
-    "confidenceAdjustment": -2,
+    "communitySentimentScore": 2,
+    "communitySentimentLabel": "positive",
+    "overallSentimentScore": 3,
+    "overallSentimentLabel": "bullish",
+    "confidenceAdjustment": 2,
     "eventRisk": "high",
-    "riskRewardRatio": 0.04,
-    "expectedMoveLow": -0.044528,
-    "expectedMoveHigh": 0.04,
-    "marketCap": 5471565680.25,
-    "averageVolume": 1549560,
-    "yearHigh": 87.88,
-    "yearLow": 37.68,
-    "analystTarget": 63.92,
-    "earningsDate": "2026-11-16",
-    "daysToEarnings": 66,
+    "riskRewardRatio": 0.01,
+    "expectedMoveLow": -0.064612,
+    "expectedMoveHigh": 0.061995,
+    "marketCap": 1952880618396.55,
+    "averageVolume": 79633390,
+    "yearHigh": 225.64,
+    "yearLow": 104.83,
+    "analystTarget": 220.68,
+    "earningsDate": "2026-11-03",
+    "daysToEarnings": 50,
     "timeframes": [
       {
         "label": "1D",
         "horizonDays": 1,
-        "predictedReturn": -0.002264,
-        "targetClose": 42.03,
+        "predictedReturn": -0.001309,
+        "targetClose": 147.96,
         "confidenceBand": "highest",
         "hitRate": 0.64,
         "mae": 0.011
@@ -1037,8 +860,8 @@
       {
         "label": "3D",
         "horizonDays": 3,
-        "predictedReturn": -0.003736,
-        "targetClose": 41.97,
+        "predictedReturn": -0.002159,
+        "targetClose": 147.83,
         "confidenceBand": "moderate",
         "hitRate": 0.57,
         "mae": 0.018
@@ -1046,8 +869,8 @@
       {
         "label": "5D",
         "horizonDays": 5,
-        "predictedReturn": -0.004981,
-        "targetClose": 41.92,
+        "predictedReturn": -0.002879,
+        "targetClose": 147.72,
         "confidenceBand": "lower",
         "hitRate": 0.52,
         "mae": 0.024
@@ -1057,8 +880,8 @@
       {
         "id": "bear",
         "label": "Bear case",
-        "probability": 22,
-        "targetPrice": 40.12,
+        "probability": 26,
+        "targetPrice": 137.99,
         "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
         "tone": "bear"
       },
@@ -1066,15 +889,15 @@
         "id": "base",
         "label": "Base case",
         "probability": 60,
-        "targetPrice": 41.97,
+        "targetPrice": 147.83,
         "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
         "tone": "base"
       },
       {
         "id": "bull",
         "label": "Bull case",
-        "probability": 18,
-        "targetPrice": 43.85,
+        "probability": 14,
+        "targetPrice": 157.63,
         "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
         "tone": "bull"
       }
@@ -1082,12 +905,589 @@
     "reasons": [
       {
         "title": "Forecast median",
-        "body": "1D projects 42.03, 3D points toward 41.97, and 5D stretches toward 41.92.",
+        "body": "1D projects 147.96, 3D points toward 147.83, and 5D stretches toward 147.72.",
         "tone": "forecast"
       },
       {
         "title": "Price trend",
-        "body": "Price is +1.27% over 5D and +0.79% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "body": "Price is +0.14% over 5D and +5.82% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is conflicting, while community chatter reads positive. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 12.66% top to bottom. Earnings are roughly 50 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "37a78d6a-1541-4adc-a230-6d840f627687",
+        "ticker": "SPCX",
+        "title": "Trump dismisses calls to slow AI development, blames 'conspiracy' against AI and data centers",
+        "summary": "President Trump says there is no need to put guardrails on AI.",
+        "source": "Yahoo Finance",
+        "publishedAt": "2026-09-14T15:30:21Z",
+        "url": "https://finance.yahoo.com/technology/article/trump-dismisses-calls-to-slow-ai-development-blames-conspiracy-against-ai-and-data-centers-153021111.html"
+      },
+      {
+        "id": "4b8c9312-9947-447b-850b-268ea65c3025",
+        "ticker": "SPCX",
+        "title": "Elon Musk: I've been 'sounding the alarm' on AI for a while",
+        "summary": "Leave it to Elon Musk to say, essentially, I've been right all along.",
+        "source": "Yahoo Finance",
+        "publishedAt": "2026-09-14T14:18:18Z",
+        "url": "https://finance.yahoo.com/markets/stocks/article/elon-musk-ive-been-sounding-the-alarm-on-ai-for-a-while-141818917.html"
+      },
+      {
+        "id": "a45afe3a-314c-3530-80ab-a66893dc223f",
+        "ticker": "SPCX",
+        "title": "AI-linked stocks slide after tech bosses call for slowdown in \u2018reckless\u2019 development",
+        "summary": "Donald Trump dismisses attempts to increase controls on artificial intelligence as \u2018sick conspiracy\u2019",
+        "source": "The Guardian",
+        "publishedAt": "2026-09-14T22:10:52Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/ai-linked-stocks-slide-tech-181747255.html"
+      },
+      {
+        "id": "9d3a4c05-a01a-33cf-ad08-8e447c44cbf9",
+        "ticker": "SPCX",
+        "title": "Here's Why SpaceX Stock Could Finish 2026 Above $200",
+        "summary": "SpaceX stock hasn't been at $200 since shortly after it went public in mid-June.",
+        "source": "Motley Fool",
+        "publishedAt": "2026-09-14T21:56:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-spacex-stock-could-215602385.html"
+      }
+    ],
+    "communityItems": [
+      {
+        "id": "community:2:twitter",
+        "ticker": "SPCX",
+        "title": "$SPCX posted record revenue last quarter $7.8B That is set to explode in Q3 and beyond \ud83d\ude80 SpaceX's Price/Sales ratio was 107X at the time of IPO In Q3, I'm projecting $12B of revenue, which would reduce it to 41X By the end of Q4 it will be just 20X @grok ch",
+        "summary": "$SPCX posted record revenue last quarter $7.8B That is set to explode in Q3 and beyond \ud83d\ude80 SpaceX's Price/Sales ratio was 107X at the time of IPO In Q3, I'm projecting $12B of revenue, which would reduce it to 41X By the end of Q4 it will be just 20X @grok ch x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Mon, 14 Sep 2026 00:05:12 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBUUWxqN0lpNVZmWWtHQ1pZNTNyZXo0cTY0NkxoMnAxSU5MNXJZZktMRi00WkdrMzBxQ3FEMURBT2E5bFdmalk0dlR6VEIzeHl2cTRuNzZYbnRHTm5N?oc=5",
+        "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
+      },
+      {
+        "id": "community:2:twitter",
+        "ticker": "SPCX",
+        "title": "Vy Capital now holds about $40bn of SpaceX stock \u2014 roughly 3.4% \u2014 making it $SPCX's 5th largest disclosed shareholder. The Dubai Venture Capital firm, run by John Hering and Alexander Tamas with a tiny investment team, shareholding in SpaceX is ahe",
+        "summary": "Vy Capital now holds about $40bn of SpaceX stock \u2014 roughly 3.4% \u2014 making it $SPCX's 5th largest disclosed shareholder. The Dubai Venture Capital firm, run by John Hering and Alexander Tamas with a tiny investment team, shareholding in SpaceX is ahe x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Sun, 13 Sep 2026 05:55:25 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5lRmpWTFhDRENWb2hsejgtRXRTMUo4WFpEWVNGdW85NW9FQi1UeWhjSHh4empmZGFWRVJxamw1aXRyeFlJZkd1TEdsU1JfREx0djFkZndUa0l3d281ZkNpR3Bn?oc=5",
+        "query": "\"SPCX\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+      }
+    ],
+    "aiSummary": {
+      "headline": "SELL SPCX today",
+      "predictedMove": "-0.13% next day toward $147.96, and -0.29% over 5D toward $147.72.",
+      "actionSummary": "Space Exploration Technologies  screens as a sell today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is positive. Overall sentiment reads bullish.",
+      "whyToday": [
+        "Prediction model: -0.13% next day toward $147.96, and -0.29% over 5D toward $147.72.",
+        "Price trend: Price trend is constructive, but not euphoric.",
+        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
+        "Community tone: positive from 2 Reddit/X search hit(s). Earnings are 50 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "AMD",
+    "companyName": "Advanced Micro Devices, Inc.",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 493.41,
+    "entryPriceTarget": 493.27,
+    "stopPrice": 474.21,
+    "targetPrice": 493.82,
+    "bias": "neutral",
+    "basePredictedReturn": 0.000836,
+    "adjustedPredictedReturn": 0.000836,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "low",
+    "confidenceScore": 52,
+    "baseConfidenceScore": 48,
+    "signalDirection": "FLAT",
+    "portfolioAction": "HOLD",
+    "trendBias": "Range",
+    "trendSummary": "Short-term tape and medium-term structure are fighting each other.",
+    "shortTermTrend": 0.033168,
+    "mediumTermTrend": -0.040786,
+    "modelName": "timesfm",
+    "setupLabel": "Watchlist only",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 52,
+    "newsBias": "mixed",
+    "newsImpactScore": 3,
+    "communitySentimentScore": 0,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": 3,
+    "overallSentimentLabel": "bullish",
+    "confidenceAdjustment": 4,
+    "eventRisk": "moderate",
+    "riskRewardRatio": 0.03,
+    "expectedMoveLow": -0.0397,
+    "expectedMoveHigh": 0.041373,
+    "marketCap": 805479516451.52,
+    "averageVolume": 17586070,
+    "yearHigh": 584.73,
+    "yearLow": 149.85,
+    "analystTarget": 615.07,
+    "earningsDate": "2026-11-03",
+    "daysToEarnings": 50,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": 0.000836,
+        "targetClose": 493.82,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": 0.00138,
+        "targetClose": 494.09,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": 0.00184,
+        "targetClose": 494.32,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 18,
+        "targetPrice": 472.33,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 64,
+        "targetPrice": 494.09,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 18,
+        "targetPrice": 514.25,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 493.82, 3D points toward 494.09, and 5D stretches toward 494.32.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is +3.32% over 5D and -4.08% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 8.11% top to bottom. Earnings are roughly 50 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "0971f3b5-4999-49f5-a3fb-0a11c0097db9",
+        "ticker": "AMD",
+        "title": "Tech pulls back on AI concerns, cybersecurity takes a step up",
+        "summary": "Yahoo Finance Senior Markets Reporter Ines Ferre and DA Davidson Head of Technology Research Gil Luria break down the tech stock (XLK) pullback following calls to slow AI development, while highlighting the renewed strength in the cybersecurity sector.",
+        "source": "Yahoo Finance Video",
+        "publishedAt": "2026-09-14T14:39:00Z",
+        "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html"
+      },
+      {
+        "id": "6a8c3224-91de-4fe6-ae46-7ef1c8381058",
+        "ticker": "AMD",
+        "title": "Chip stocks fall as oil prices gain, Treasury yields stay elevated: AlphaCheck",
+        "summary": "Here's a check of the markets in the first few minutes of trading.",
+        "source": "Yahoo Finance",
+        "publishedAt": "2026-09-14T13:45:19Z",
+        "url": "https://finance.yahoo.com/markets/article/chip-stocks-fall-as-oil-prices-gain-treasury-yields-stay-elevated-alphacheck-134519544.html"
+      },
+      {
+        "id": "a45afe3a-314c-3530-80ab-a66893dc223f",
+        "ticker": "AMD",
+        "title": "AI-linked stocks slide after tech bosses call for slowdown in \u2018reckless\u2019 development",
+        "summary": "Donald Trump dismisses attempts to increase controls on artificial intelligence as \u2018sick conspiracy\u2019",
+        "source": "The Guardian",
+        "publishedAt": "2026-09-14T22:10:52Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/ai-linked-stocks-slide-tech-181747255.html"
+      },
+      {
+        "id": "9e90cf0e-3f0a-34fe-9d98-7ad30548549e",
+        "ticker": "AMD",
+        "title": "Talk of AI pause slams Nvidia, AMD and Intel as fears of doomsday scenarios spread",
+        "summary": "Artificial intelligence stocks tumbled on Monday after American leaders of the AI revolution called for a coordinated slowdown in building more powerful AI systems.",
+        "source": "LA Times",
+        "publishedAt": "2026-09-14T21:47:16Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/talk-ai-pause-slams-nvidia-214716918.html"
+      }
+    ],
+    "communityItems": [
+      {
+        "id": "community:0:twitter",
+        "ticker": "AMD",
+        "title": "BREAKING: AI-related stocks are falling in overnight trading. $NVDA -1.5% $MU -3% $SNDK -4% $NBIS -4% $IREN -4% $ARM -3% $WDC -2.5% $INTC -3.5% $AMD -2.5%",
+        "summary": "BREAKING: AI-related stocks are falling in overnight trading. $NVDA -1.5% $MU -3% $SNDK -4% $NBIS -4% $IREN -4% $ARM -3% $WDC -2.5% $INTC -3.5% $AMD -2.5% x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Mon, 14 Sep 2026 00:15:21 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5QYW45bExwNlI2RU5TaUF3MlhRb0lHNlgxampDTHRyMk5nemd0OTczLUpaNHhkeGtaekZsQ2taTVN4anpSbmZyRzJYVlR0VHhFQlJ6SzdqMnVaMjZZZ2JKUHVn?oc=5",
+        "query": "\"AMD\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+      },
+      {
+        "id": "community:1:twitter",
+        "ticker": "AMD",
+        "title": "Looks like Situational Awareness is back: Sources say Leopold bought options in $AMD, $BE, $CRWV, and $DRAM. And was active in other stocks such as $SKHY, and $SNDK. Little surprising since option IV across the board is quite high.",
+        "summary": "Looks like Situational Awareness is back: Sources say Leopold bought options in $AMD, $BE, $CRWV, and $DRAM. And was active in other stocks such as $SKHY, and $SNDK. Little surprising since option IV across the board is quite high. x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Fri, 11 Sep 2026 15:16:06 GMT",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBvRVNjb2NjX0U1UzJMUHFlYk4xdWdYQWRZMWx3cVBGNC02eVA1MkVNZ0RmWl8ySVR1UE90Uk1LaXowRE5sOEItRFhleFpoTEZPQ05oQ21KMDFCV2hCQ2RhTjBsQWZnZw?oc=5",
+        "query": "\"AMD\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+      }
+    ],
+    "aiSummary": {
+      "headline": "HOLD AMD today",
+      "predictedMove": "+0.08% next day toward $493.82, and +0.18% over 5D toward $494.32.",
+      "actionSummary": "Advanced Micro Devices, Inc. screens as a hold today because the model stays neutral, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads bullish.",
+      "whyToday": [
+        "Prediction model: +0.08% next day toward $493.82, and +0.18% over 5D toward $494.32.",
+        "Price trend: Short-term tape and medium-term structure are fighting each other.",
+        "News flow: mixed across 4 recent headline(s), with current event risk marked moderate.",
+        "Community tone: mixed from 2 Reddit/X search hit(s). Earnings are 50 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "CLS",
+    "companyName": "Celestica, Inc.",
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 316.08,
+    "entryPriceTarget": 316.03,
+    "stopPrice": 302.09,
+    "targetPrice": 315.93,
+    "bias": "neutral",
+    "basePredictedReturn": -0.00049,
+    "adjustedPredictedReturn": -0.00049,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "low",
+    "confidenceScore": 64,
+    "baseConfidenceScore": 48,
+    "signalDirection": "FLAT",
+    "portfolioAction": "HOLD",
+    "trendBias": "Range",
+    "trendSummary": "Short-term tape and medium-term structure are fighting each other.",
+    "shortTermTrend": 0.011942,
+    "mediumTermTrend": -0.056618,
+    "modelName": "timesfm",
+    "setupLabel": "Watchlist only",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 64,
+    "newsBias": "mixed",
+    "newsImpactScore": 8,
+    "communitySentimentScore": 0,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": 8,
+    "overallSentimentLabel": "bullish",
+    "confidenceAdjustment": 16,
+    "eventRisk": "low",
+    "riskRewardRatio": 0.01,
+    "expectedMoveLow": -0.045257,
+    "expectedMoveHigh": 0.044277,
+    "marketCap": 39861200167.97,
+    "averageVolume": 2358310,
+    "yearHigh": 474.03,
+    "yearLow": 227.0,
+    "analystTarget": 477.22,
+    "earningsDate": "2026-10-26",
+    "daysToEarnings": 42,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.00049,
+        "targetClose": 315.93,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.000809,
+        "targetClose": 315.82,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.001078,
+        "targetClose": 315.74,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 18,
+        "targetPrice": 300.73,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 64,
+        "targetPrice": 315.82,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 18,
+        "targetPrice": 330.39,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 315.93, 3D points toward 315.82, and 5D stretches toward 315.74.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is +1.19% over 5D and -5.66% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 8.95% top to bottom. Earnings are roughly 42 day(s) out, so event risk stays on the board. Current event-risk state is low.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "1522a32b-4d01-3ab8-88af-9d8a41f5ba01",
+        "ticker": "CLS",
+        "title": "Can Celestica's Next-Generation HealthTech Portfolio Lift Its Shares?",
+        "summary": "CLS supports growing HealthTech demand with advanced manufacturing, supply chain and engineering solutions for medical devices.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T15:17:00Z",
+        "url": "https://finance.yahoo.com/healthcare/articles/celesticas-next-generation-healthtech-portfolio-151700369.html"
+      },
+      {
+        "id": "2da7c5ec-5ec4-3e8a-970f-e9fda0a98837",
+        "ticker": "CLS",
+        "title": "Arista's Cash Flow Momentum Builds: How Sustainable is it?",
+        "summary": "ANET's cash flow is surging on strong growth and upfront customer payments, but deferred revenue and inventory swings could add volatility.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T12:40:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/aristas-cash-flow-momentum-builds-124000207.html"
+      },
+      {
+        "id": "3b48afed-ccb4-312e-a851-c13e99c39b33",
+        "ticker": "CLS",
+        "title": "Celestica vs. Corning: Which AI Infrastructure Stock is a Better Buy?",
+        "summary": "CLS and GLW are tapping the AI infrastructure boom from different parts of the data-center ecosystem.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-10T15:43:00Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/celestica-vs-corning-ai-infrastructure-154300675.html"
+      },
+      {
+        "id": "906c833a-28ad-3f3c-8c8e-31fcd995bdd2",
+        "ticker": "CLS",
+        "title": "Can Jabil's Supply Chain Strength Sustain Its Growth Momentum?",
+        "summary": "JBL's global manufacturing network, supply chain flexibility and capacity expansion are fueling growth as geopolitical risks raise demand for resilient suppliers.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-10T15:34:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jabils-supply-chain-strength-sustain-153400530.html"
+      }
+    ],
+    "communityItems": [],
+    "aiSummary": {
+      "headline": "HOLD CLS today",
+      "predictedMove": "-0.05% next day toward $315.93, and -0.11% over 5D toward $315.74.",
+      "actionSummary": "Celestica, Inc. screens as a hold today because the model stays neutral, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads bullish.",
+      "whyToday": [
+        "Prediction model: -0.05% next day toward $315.93, and -0.11% over 5D toward $315.74.",
+        "Price trend: Short-term tape and medium-term structure are fighting each other.",
+        "News flow: mixed across 4 recent headline(s), with current event risk marked low.",
+        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 42 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "MRVL",
+    "companyName": "Marvell Technology, Inc.",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 218.82,
+    "entryPriceTarget": 218.64,
+    "stopPrice": 205.81,
+    "targetPrice": 218.29,
+    "bias": "bearish",
+    "basePredictedReturn": -0.002414,
+    "adjustedPredictedReturn": -0.002414,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "medium",
+    "confidenceScore": 58,
+    "baseConfidenceScore": 58,
+    "signalDirection": "SHORT",
+    "portfolioAction": "HOLD",
+    "trendBias": "Range",
+    "trendSummary": "Price trend is fragile and still leaning lower.",
+    "shortTermTrend": -0.021159,
+    "mediumTermTrend": -0.014413,
+    "modelName": "timesfm",
+    "setupLabel": "Watchlist only",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 58,
+    "newsBias": "conflicting",
+    "newsImpactScore": 3,
+    "communitySentimentScore": 0,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": 0,
+    "overallSentimentLabel": "mixed",
+    "confidenceAdjustment": 0,
+    "eventRisk": "high",
+    "riskRewardRatio": 0.03,
+    "expectedMoveLow": -0.061273,
+    "expectedMoveHigh": 0.056445,
+    "marketCap": 196654549998.97,
+    "averageVolume": 22496350,
+    "yearHigh": 329.88,
+    "yearLow": 66.33,
+    "analystTarget": 285.3,
+    "earningsDate": "2026-12-01",
+    "daysToEarnings": 78,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.002414,
+        "targetClose": 218.29,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.003983,
+        "targetClose": 217.95,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.00531,
+        "targetClose": 217.66,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 24,
+        "targetPrice": 204.56,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 60,
+        "targetPrice": 217.95,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 16,
+        "targetPrice": 231.53,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 218.29, 3D points toward 217.95, and 5D stretches toward 217.66.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is -2.12% over 5D and -1.44% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
         "tone": "trend"
       },
       {
@@ -1097,7 +1497,373 @@
       },
       {
         "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 8.45% top to bottom. Earnings are roughly 66 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "body": "The modeled move envelope spans about 11.77% top to bottom. Earnings are roughly 78 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "aeedc027-5655-301d-946c-7f586d8357ff",
+        "ticker": "MRVL",
+        "title": "Stocks to Watch Monday Recap: Nvidia, Oracle, SoftBank",
+        "summary": "\u2198\ufe0f Nvidia (NVDA), Intel (INTC), Marvell Technology (MRVL): Chip stocks slid after leaders of the biggest AI companies called to slow development of the technology, raising questions over chip demand. Overseas chip stocks sold off, including SK Hynix (KR:000660) and Samsung Electronics (KR: 005930) in South Korea and AS",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T21:37:24Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/stocks-to-watch-monday-nvidia-oracle-softbank-z8oHxWLCC1rwQAwr0oUs?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "id": "b4ef8b18-9650-3d18-8f87-584b47727065",
+        "ticker": "MRVL",
+        "title": "Which Tech Stocks Are Getting Hit Hardest Today",
+        "summary": "The technology sector was the S&P 500's worst performer today, down 1.7%. Here are some of the tech names getting hit hardest: Corning, down 14% (worst performer in the S&P 500) Teradyne, down 13% Coherent, down 13%.",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T20:49:25Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/which-tech-stocks-are-getting-hit-hardest-today-NXMZGdwdwqjvnj32Ghbc?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "id": "bc210ef9-85c0-3967-9c05-a582a3653b08",
+        "ticker": "MRVL",
+        "title": "Oracle, Corning, Alphabet, GE Vernova, CrowdStrike, SpaceX, and More Stocks That Explain Today\u2019s Market",
+        "summary": "Corning stock was the worst performer in the S&P 500 while CrowdStrike stock was the best-performer in the index.",
+        "source": "Barrons.com",
+        "publishedAt": "2026-09-14T20:25:00Z",
+        "url": "https://www.barrons.com/articles/stock-movers-259d1f80?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "id": "1a06f57f-3770-31b0-8490-6258acc26ba9",
+        "ticker": "MRVL",
+        "title": "Marvell stock plunges as a new threat hits the AI trade",
+        "summary": "Investors are questioning the AI spending cycle just as Marvell prepares to showcase its data-center portfolio.",
+        "source": "GuruFocus.com",
+        "publishedAt": "2026-09-14T19:09:20Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/marvell-stock-plunges-threat-hits-190920265.html"
+      }
+    ],
+    "communityItems": [],
+    "aiSummary": {
+      "headline": "HOLD MRVL today",
+      "predictedMove": "-0.24% next day toward $218.29, and -0.53% over 5D toward $217.66.",
+      "actionSummary": "Marvell Technology, Inc. screens as a hold today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is mixed. Overall sentiment reads mixed.",
+      "whyToday": [
+        "Prediction model: -0.24% next day toward $218.29, and -0.53% over 5D toward $217.66.",
+        "Price trend: Price trend is fragile and still leaning lower.",
+        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
+        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 78 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "SMCI",
+    "companyName": "Super Micro Computer, Inc.",
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 36.74,
+    "entryPriceTarget": 36.68,
+    "stopPrice": 34.01,
+    "targetPrice": 36.57,
+    "bias": "bearish",
+    "basePredictedReturn": -0.004708,
+    "adjustedPredictedReturn": -0.004708,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "medium",
+    "confidenceScore": 66,
+    "baseConfidenceScore": 58,
+    "signalDirection": "SHORT",
+    "portfolioAction": "HOLD",
+    "trendBias": "Downtrend",
+    "trendSummary": "Price trend is weakening across both short and medium windows.",
+    "shortTermTrend": -0.071988,
+    "mediumTermTrend": -0.077811,
+    "modelName": "timesfm",
+    "setupLabel": "Watchlist only",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 66,
+    "newsBias": "conflicting",
+    "newsImpactScore": 6,
+    "communitySentimentScore": 1,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": 3,
+    "overallSentimentLabel": "bullish",
+    "confidenceAdjustment": 8,
+    "eventRisk": "high",
+    "riskRewardRatio": 0.04,
+    "expectedMoveLow": -0.077321,
+    "expectedMoveHigh": 0.067905,
+    "marketCap": 24136909310.85,
+    "averageVolume": 34701120,
+    "yearHigh": 58.78,
+    "yearLow": 19.48,
+    "analystTarget": 42.38,
+    "earningsDate": "2026-11-03",
+    "daysToEarnings": 50,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.004708,
+        "targetClose": 36.57,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.007769,
+        "targetClose": 36.46,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.010359,
+        "targetClose": 36.36,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 32,
+        "targetPrice": 33.74,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 58,
+        "targetPrice": 36.46,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 10,
+        "targetPrice": 39.32,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 36.57, 3D points toward 36.46, and 5D stretches toward 36.36.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is -7.20% over 5D and -7.78% over 20D. Current structural read is downtrend, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is conflicting, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 14.52% top to bottom. Earnings are roughly 50 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "tone": "event"
+      }
+    ],
+    "newsItems": [
+      {
+        "id": "b4ef8b18-9650-3d18-8f87-584b47727065",
+        "ticker": "SMCI",
+        "title": "Which Tech Stocks Are Getting Hit Hardest Today",
+        "summary": "The technology sector was the S&P 500's worst performer today, down 1.7%. Here are some of the tech names getting hit hardest: Corning, down 14% (worst performer in the S&P 500) Teradyne, down 13% Coherent, down 13%.",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T20:49:25Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/which-tech-stocks-are-getting-hit-hardest-today-NXMZGdwdwqjvnj32Ghbc?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "id": "6edc78ee-b274-348e-a177-10e10fc62070",
+        "ticker": "SMCI",
+        "title": "Is HPE Stock Now A Bet On Memory Prices?",
+        "summary": "Hewlett Packard Enterprise (HPE) trades near $62, at the top of its 52-week range and up about 160% over the past year. The company just reported record revenue of $12.2 billion for fiscal Q3 2026 and a raised outlook for fiscal 2027. The easy read is that you are early in an AI cycle. The harder question is what paid ",
+        "source": "Trefis",
+        "publishedAt": "2026-09-14T17:49:16Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/hpe-stock-now-bet-memory-174916864.html"
+      },
+      {
+        "id": "c74b0d2e-ab96-3863-a4ca-013a00daac84",
+        "ticker": "SMCI",
+        "title": "Was The HPE Stock Surge Visible In Its Orders?",
+        "summary": "Hewlett Packard Enterprise (HPE) stock has run from about $24 to roughly $62 over the past year, a gain of about 159% against close to 19% for the S&P 500. That move was legible in advance, but only one place told you which way. The order book moved long before the profit line did.",
+        "source": "Trefis",
+        "publishedAt": "2026-09-14T15:24:18Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/hpe-stock-surge-visible-orders-152418396.html"
+      },
+      {
+        "id": "518c1f35-ea9d-33e4-8b1e-f887fd4f110f",
+        "ticker": "SMCI",
+        "title": "Can SMCI Expand Its Market Opportunity With DCBBS and DLC?",
+        "summary": "Super Micro Computer's DCBBS integrates AI servers, networking, power, cooling and software to streamline data center deployment and expand its market reach.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T14:19:00Z",
+        "url": "https://finance.yahoo.com/technology/articles/smci-expand-market-opportunity-dcbbs-141900631.html"
+      }
+    ],
+    "communityItems": [
+      {
+        "id": "community:3:twitter",
+        "ticker": "SMCI",
+        "title": "Super Micro Stock Falls Again. Why SMCI Investors Have More to Fear Than Most. https://t.co/cOKDOeEtVM",
+        "summary": "Super Micro Stock Falls Again. Why SMCI Investors Have More to Fear Than Most. https://t.co/cOKDOeEtVM x.com",
+        "source": "x.com",
+        "sourceType": "twitter",
+        "publishedAt": "Thu, 02 Apr 2026 07:00:00 GMT",
+        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9TNU02MFNxN0Jfa1A2NHhiUmZDYkQ5TlBTT0pMRlJyOUM4ZWZycWY2WVE0Rjc4UHVCTzZubi1leTVudldnaEw5TktWSzJqQnlqUWhBeXRVdmoyQjRNWHJpNllNaENkeXJGMS1XQW9fWQ?oc=5",
+        "query": "SMCI stock site:reddit.com OR site:x.com OR site:twitter.com"
+      }
+    ],
+    "aiSummary": {
+      "headline": "HOLD SMCI today",
+      "predictedMove": "-0.47% next day toward $36.57, and -1.04% over 5D toward $36.36.",
+      "actionSummary": "Super Micro Computer, Inc. screens as a hold today because the model stays bearish, the price trend reads downtrend, news is conflicting, and community chatter is mixed. Overall sentiment reads bullish.",
+      "whyToday": [
+        "Prediction model: -0.47% next day toward $36.57, and -1.04% over 5D toward $36.36.",
+        "Price trend: Price trend is weakening across both short and medium windows.",
+        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
+        "Community tone: mixed from 1 Reddit/X search hit(s). Earnings are 50 day(s) away."
+      ]
+    }
+  },
+  {
+    "ticker": "SYM",
+    "companyName": "Symbotic Inc.",
+    "sector": "Industrials",
+    "industry": "Specialty Industrial Machinery",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 41.6,
+    "entryPriceTarget": 41.59,
+    "stopPrice": 40.17,
+    "targetPrice": 41.58,
+    "bias": "neutral",
+    "basePredictedReturn": -0.000374,
+    "adjustedPredictedReturn": -0.000374,
+    "calibrationEnabled": false,
+    "calibrationModelVersion": null,
+    "calibrationStatus": "disabled",
+    "calibrationReasons": [],
+    "confidenceLabel": "low",
+    "confidenceScore": 48,
+    "baseConfidenceScore": 48,
+    "signalDirection": "FLAT",
+    "portfolioAction": "HOLD",
+    "trendBias": "Range",
+    "trendSummary": "Price trend is fragile and still leaning lower.",
+    "shortTermTrend": -0.031206,
+    "mediumTermTrend": -0.025761,
+    "modelName": "timesfm",
+    "setupLabel": "Existing position management",
+    "convictionScore": 35,
+    "adjustedConvictionScore": 48,
+    "newsBias": "mixed",
+    "newsImpactScore": 0,
+    "communitySentimentScore": 0,
+    "communitySentimentLabel": "mixed",
+    "overallSentimentScore": -1,
+    "overallSentimentLabel": "mixed",
+    "confidenceAdjustment": 0,
+    "eventRisk": "low",
+    "riskRewardRatio": 0.0,
+    "expectedMoveLow": -0.034958,
+    "expectedMoveHigh": 0.03421,
+    "marketCap": 5402732451.43,
+    "averageVolume": 1563830,
+    "yearHigh": 87.88,
+    "yearLow": 37.68,
+    "analystTarget": 63.92,
+    "earningsDate": "2026-11-16",
+    "daysToEarnings": 63,
+    "timeframes": [
+      {
+        "label": "1D",
+        "horizonDays": 1,
+        "predictedReturn": -0.000374,
+        "targetClose": 41.58,
+        "confidenceBand": "highest",
+        "hitRate": 0.64,
+        "mae": 0.011
+      },
+      {
+        "label": "3D",
+        "horizonDays": 3,
+        "predictedReturn": -0.000617,
+        "targetClose": 41.57,
+        "confidenceBand": "moderate",
+        "hitRate": 0.57,
+        "mae": 0.018
+      },
+      {
+        "label": "5D",
+        "horizonDays": 5,
+        "predictedReturn": -0.000823,
+        "targetClose": 41.57,
+        "confidenceBand": "lower",
+        "hitRate": 0.52,
+        "mae": 0.024
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "bear",
+        "label": "Bear case",
+        "probability": 18,
+        "targetPrice": 40.03,
+        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
+        "tone": "bear"
+      },
+      {
+        "id": "base",
+        "label": "Base case",
+        "probability": 64,
+        "targetPrice": 41.57,
+        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
+        "tone": "base"
+      },
+      {
+        "id": "bull",
+        "label": "Bull case",
+        "probability": 18,
+        "targetPrice": 43.05,
+        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
+        "tone": "bull"
+      }
+    ],
+    "reasons": [
+      {
+        "title": "Forecast median",
+        "body": "1D projects 41.58, 3D points toward 41.57, and 5D stretches toward 41.57.",
+        "tone": "forecast"
+      },
+      {
+        "title": "Price trend",
+        "body": "Price is -3.12% over 5D and -2.58% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "tone": "trend"
+      },
+      {
+        "title": "Headline and chatter",
+        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
+        "tone": "news"
+      },
+      {
+        "title": "Uncertainty and event risk",
+        "body": "The modeled move envelope spans about 6.92% top to bottom. Earnings are roughly 63 day(s) out, so event risk stays on the board. Current event-risk state is low.",
         "tone": "event"
       }
     ],
@@ -1119,637 +1885,76 @@
         "source": "Zacks",
         "publishedAt": "2026-09-11T12:48:00Z",
         "url": "https://finance.yahoo.com/markets/stocks/articles/servs-revenue-diversification-offset-weaker-124800545.html"
-      },
-      {
-        "id": "a8f03d7d-e79e-32ca-91be-63b6d984e9f0",
-        "ticker": "SYM",
-        "title": "Why Is SYMBOTIC INC (SYM) Up 5.1% Since Last Earnings Report?",
-        "summary": "SYMBOTIC INC (SYM) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-04T15:30:34Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/why-symbotic-inc-sym-5-153034328.html"
-      },
-      {
-        "id": "b6035ce9-9a9b-3e81-a1bb-6d201bcf160d",
-        "ticker": "SYM",
-        "title": "Can Serve Robotics' $240M Liquidity Cushion Fund Its Robot Ambitions?",
-        "summary": "SERV has $240.4 million in liquidity, but heavy cash burn and lower revenue guidance raise questions about funding scalable growth.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-02T14:10:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/serve-robotics-240m-liquidity-cushion-141000253.html"
       }
     ],
     "communityItems": [],
     "aiSummary": {
-      "headline": "SELL SYM today",
-      "predictedMove": "-0.23% next day toward $42.03, and -0.50% over 5D toward $41.92.",
-      "actionSummary": "Symbotic Inc. screens as a sell today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is mixed. Overall sentiment reads mixed.",
+      "headline": "HOLD SYM today",
+      "predictedMove": "-0.04% next day toward $41.58, and -0.08% over 5D toward $41.57.",
+      "actionSummary": "Symbotic Inc. screens as a hold today because the model stays neutral, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads mixed.",
       "whyToday": [
-        "Prediction model: -0.23% next day toward $42.03, and -0.50% over 5D toward $41.92.",
-        "Price trend: Price trend is constructive, but not euphoric.",
-        "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
-        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 66 day(s) away."
+        "Prediction model: -0.04% next day toward $41.58, and -0.08% over 5D toward $41.57.",
+        "Price trend: Price trend is fragile and still leaning lower.",
+        "News flow: mixed across 2 recent headline(s), with current event risk marked low.",
+        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 63 day(s) away."
       ]
     }
   },
   {
-    "ticker": "AVGO",
-    "companyName": "Broadcom Inc.",
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 361.99,
-    "entryPriceTarget": 361.93,
-    "stopPrice": 353.01,
-    "targetPrice": 362.15,
-    "bias": "neutral",
-    "basePredictedReturn": 0.000456,
-    "adjustedPredictedReturn": 0.000456,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "low",
-    "confidenceScore": 60,
-    "baseConfidenceScore": 48,
-    "signalDirection": "FLAT",
-    "portfolioAction": "HOLD",
-    "trendBias": "Range",
-    "trendSummary": "Short-term tape and medium-term structure are fighting each other.",
-    "shortTermTrend": 0.013523,
-    "mediumTermTrend": -0.133622,
-    "modelName": "timesfm",
-    "setupLabel": "Existing position management",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 60,
-    "newsBias": "mixed",
-    "newsImpactScore": 6,
-    "communitySentimentScore": 0,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 6,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 12,
-    "eventRisk": "low",
-    "riskRewardRatio": 0.03,
-    "expectedMoveLow": -0.02511,
-    "expectedMoveHigh": 0.026021,
-    "marketCap": 1728006228213.87,
-    "averageVolume": 29152090,
-    "yearHigh": 495.0,
-    "yearLow": 289.96,
-    "analystTarget": 531.85,
-    "earningsDate": "2026-12-09",
-    "daysToEarnings": 89,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.000456,
-        "targetClose": 362.15,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.000752,
-        "targetClose": 362.26,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.001003,
-        "targetClose": 362.35,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 18,
-        "targetPrice": 352.13,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 64,
-        "targetPrice": 362.26,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 18,
-        "targetPrice": 371.53,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 362.15, 3D points toward 362.26, and 5D stretches toward 362.35.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +1.35% over 5D and -13.36% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 5.11% top to bottom. Earnings are roughly 89 day(s) out, so event risk stays on the board. Current event-risk state is low.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "385ba468-0403-3057-960b-026d6e02984c",
-        "ticker": "AVGO",
-        "title": "Marvell CEO reveals decade-long gem behind its explosive 239% surge",
-        "summary": "Marvell has outperformed every major chip stock, from NVDA and AMD to Broadcom, over the past year.",
-        "source": "TheStreet",
-        "publishedAt": "2026-09-11T22:07:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/marvell-ceo-reveals-decade-long-220700564.html"
-      },
-      {
-        "id": "d1e737a4-67e5-32a6-afb0-bc3a76073511",
-        "ticker": "AVGO",
-        "title": "Sell the Nvidia Shares That Made Your Retirement or Ride Them Into It? These 3 ETFs Are the Middle Path",
-        "summary": "A position that started as a small allocation now controls your retirement, and selling everything creates its own disaster. Three ETFs offer a way to stay in the trade without betting the nest egg on a single design team.",
-        "source": "24/7 Wall St.",
-        "publishedAt": "2026-09-11T21:55:31Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/sell-nvidia-shares-made-retirement-215531809.html"
-      },
-      {
-        "id": "b6395cfc-8336-32b3-8e13-3bccfa678760",
-        "ticker": "AVGO",
-        "title": "Sector Update: Tech Stocks Gain Late Afternoon",
-        "summary": "Tech stocks climbed late Friday afternoon with the State Street Technology Select Sector SPDR ETF (X",
-        "source": "MT Newswires",
-        "publishedAt": "2026-09-11T19:58:56Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-gain-afternoon-195856760.html"
-      },
-      {
-        "id": "ca185139-4e99-3644-a43b-15e6d5c1410b",
-        "ticker": "AVGO",
-        "title": "Should Qualcomm Stockholders Worry About Its Shrinking Revenue?",
-        "summary": "Qualcomm (QCOM) grew revenue just 1.9% over the last twelve months, against a compound pace of about 6.2% a year over five years and 4.5% over three. The quarterly path is worse. Across the last four quarters, year-over-year growth slid from 10.0% to 5.0%, then to declines of 3.5% and 4.0%. That turn to shrinking quart",
-        "source": "Trefis",
-        "publishedAt": "2026-09-11T17:52:26Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-stockholders-worry-shrinking-revenue-175226563.html"
-      }
-    ],
-    "communityItems": [],
-    "aiSummary": {
-      "headline": "HOLD AVGO today",
-      "predictedMove": "+0.05% next day toward $362.15, and +0.10% over 5D toward $362.35.",
-      "actionSummary": "Broadcom Inc. screens as a hold today because the model stays neutral, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.05% next day toward $362.15, and +0.10% over 5D toward $362.35.",
-        "Price trend: Short-term tape and medium-term structure are fighting each other.",
-        "News flow: mixed across 4 recent headline(s), with current event risk marked low.",
-        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 89 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "CLS",
-    "companyName": "Celestica, Inc.",
-    "sector": "Technology",
-    "industry": "Electronic Components",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 346.55,
-    "entryPriceTarget": 346.5,
-    "stopPrice": 331.65,
-    "targetPrice": 346.69,
-    "bias": "neutral",
-    "basePredictedReturn": 0.000404,
-    "adjustedPredictedReturn": 0.000404,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "low",
-    "confidenceScore": 64,
-    "baseConfidenceScore": 48,
-    "signalDirection": "FLAT",
-    "portfolioAction": "HOLD",
-    "trendBias": "Range",
-    "trendSummary": "Short-term tape and medium-term structure are fighting each other.",
-    "shortTermTrend": 0.11848,
-    "mediumTermTrend": -0.003107,
-    "modelName": "timesfm",
-    "setupLabel": "Watchlist only",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 64,
-    "newsBias": "mixed",
-    "newsImpactScore": 8,
-    "communitySentimentScore": 0,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 9,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 16,
-    "eventRisk": "low",
-    "riskRewardRatio": 0.01,
-    "expectedMoveLow": -0.043943,
-    "expectedMoveHigh": 0.04475,
-    "marketCap": 43703806056.91,
-    "averageVolume": 2292360,
-    "yearHigh": 474.03,
-    "yearLow": 227.0,
-    "analystTarget": 477.22,
-    "earningsDate": "2026-10-26",
-    "daysToEarnings": 45,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.000404,
-        "targetClose": 346.69,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.000666,
-        "targetClose": 346.78,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.000888,
-        "targetClose": 346.86,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 18,
-        "targetPrice": 330.2,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 64,
-        "targetPrice": 346.78,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 18,
-        "targetPrice": 362.41,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 346.69, 3D points toward 346.78, and 5D stretches toward 346.86.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +11.85% over 5D and -0.31% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is mixed, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 8.87% top to bottom. Earnings are roughly 45 day(s) out, so event risk stays on the board. Current event-risk state is low.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "3b48afed-ccb4-312e-a851-c13e99c39b33",
-        "ticker": "CLS",
-        "title": "Celestica vs. Corning: Which AI Infrastructure Stock is a Better Buy?",
-        "summary": "CLS and GLW are tapping the AI infrastructure boom from different parts of the data-center ecosystem.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-10T15:43:00Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/celestica-vs-corning-ai-infrastructure-154300675.html"
-      },
-      {
-        "id": "906c833a-28ad-3f3c-8c8e-31fcd995bdd2",
-        "ticker": "CLS",
-        "title": "Can Jabil's Supply Chain Strength Sustain Its Growth Momentum?",
-        "summary": "JBL's global manufacturing network, supply chain flexibility and capacity expansion are fueling growth as geopolitical risks raise demand for resilient suppliers.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-10T15:34:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/jabils-supply-chain-strength-sustain-153400530.html"
-      },
-      {
-        "id": "a31c4229-788f-3279-9616-f1e7ac536423",
-        "ticker": "CLS",
-        "title": "How Far Can Fabrinet Stock Fall While Its Business Accelerates?",
-        "summary": "Fabrinet (FN) trades near $416, about 44% below the high it set in the past year. Its own results point the other way: fiscal 2026 ended in June with revenue up 36%, and management has guided the fiscal first quarter of 2027 to 43% growth at the midpoint. So how far can it fall once a real shock arrives.",
-        "source": "Trefis",
-        "publishedAt": "2026-09-09T22:52:30Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/far-fabrinet-stock-fall-while-225230131.html"
-      },
-      {
-        "id": "9c29d77d-7644-3d16-967c-cbcbb918d55d",
-        "ticker": "CLS",
-        "title": "Sanmina's Cash Flow Gains Momentum: Can the Trend Continue?",
-        "summary": "SANM's cash flow surged in fiscal 2026, fueled by AI infrastructure demand, but rising investments could test free cash flow growth.",
-        "source": "Zacks",
-        "publishedAt": "2026-09-09T15:54:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/sanminas-cash-flow-gains-momentum-155400621.html"
-      }
-    ],
-    "communityItems": [],
-    "aiSummary": {
-      "headline": "HOLD CLS today",
-      "predictedMove": "+0.04% next day toward $346.69, and +0.09% over 5D toward $346.86.",
-      "actionSummary": "Celestica, Inc. screens as a hold today because the model stays neutral, the price trend reads range, news is mixed, and community chatter is mixed. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.04% next day toward $346.69, and +0.09% over 5D toward $346.86.",
-        "Price trend: Short-term tape and medium-term structure are fighting each other.",
-        "News flow: mixed across 4 recent headline(s), with current event risk marked low.",
-        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 45 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "DELL",
-    "companyName": "Dell Technologies Inc.",
-    "sector": "Technology",
-    "industry": "Computer Hardware",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 567.29,
-    "entryPriceTarget": 565.49,
-    "stopPrice": 542.08,
-    "targetPrice": 572.45,
-    "bias": "bullish",
-    "basePredictedReturn": 0.009062,
-    "adjustedPredictedReturn": 0.009062,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "medium",
-    "confidenceScore": 66,
-    "baseConfidenceScore": 58,
-    "signalDirection": "LONG",
-    "portfolioAction": "HOLD",
-    "trendBias": "Uptrend",
-    "trendSummary": "Price trend is rising cleanly across both short and medium windows.",
-    "shortTermTrend": 0.098569,
-    "mediumTermTrend": 0.147176,
-    "modelName": "timesfm",
-    "setupLabel": "Existing position management",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 66,
-    "newsBias": "supportive",
-    "newsImpactScore": 6,
-    "communitySentimentScore": -1,
-    "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 9,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 8,
-    "eventRisk": "moderate",
-    "riskRewardRatio": 0.3,
-    "expectedMoveLow": -0.045464,
-    "expectedMoveHigh": 0.063587,
-    "marketCap": 360690200977.01,
-    "averageVolume": 12026090,
-    "yearHigh": 562.99,
-    "yearLow": 110.22,
-    "analystTarget": 570.48,
-    "earningsDate": "2026-11-27",
-    "daysToEarnings": 77,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.009062,
-        "targetClose": 572.45,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.014952,
-        "targetClose": 575.84,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.019936,
-        "targetClose": 578.71,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 12,
-        "targetPrice": 539.62,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 60,
-        "targetPrice": 575.84,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 28,
-        "targetPrice": 604.53,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 572.45, 3D points toward 575.84, and 5D stretches toward 578.71.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +9.86% over 5D and +14.72% over 20D. Current structural read is uptrend, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is supportive, while community chatter reads mixed. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 10.91% top to bottom. Earnings are roughly 77 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "2fcf0e5e-e1b2-3412-9cab-ce5994a3af54",
-        "ticker": "DELL",
-        "title": "Stock Market Today, Sept. 11: HPE Surges on AI Infrastructure Demand and Recently Raised Guidance",
-        "summary": "Today, Sept. 11, 2026, enterprise server demand from AI spending drove the stock up over 12%, with record quarterly revenue and networking strength fueling investor confidence.",
-        "source": "Motley Fool",
-        "publishedAt": "2026-09-11T21:05:43Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-11-210543572.html"
-      },
-      {
-        "id": "5bf1f532-36c9-337d-860e-8b83ef7255b4",
-        "ticker": "DELL",
-        "title": "Update: Wall Street Rises at End of Losing Week Amid Inflation Worries",
-        "summary": "(Updates with market moves at the end of the day, and other changes, if any.) US stocks rose Frid",
-        "source": "MT Newswires",
-        "publishedAt": "2026-09-11T20:53:14Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-rises-end-losing-205314084.html"
-      },
-      {
-        "id": "fbdbea9e-9898-333e-aa41-49bb22794e75",
-        "ticker": "DELL",
-        "title": "How Far Could Cisco Stock Swing On You As AI Networking Orders Grow?",
-        "summary": "Cisco Systems (CSCO) stock trades at $107.44, and its options price a range over the next twelve months from near $74 to near $156. The market gives the shares about a two-in-three chance of finishing inside that band, and the band carries no view on direction. It measures size, and for Cisco that is about as much move",
-        "source": "Trefis",
-        "publishedAt": "2026-09-11T20:49:23Z",
-        "url": "https://finance.yahoo.com/markets/options/articles/far-could-cisco-stock-swing-204923429.html"
-      },
-      {
-        "id": "6b537fd4-b531-3bba-8703-cf8f39f6efba",
-        "ticker": "DELL",
-        "title": "What Did Dell Technologies Say Before Its Stock Quadrupled?",
-        "summary": "Dell Technologies (DELL) stock more than quadrupled over the past year, a 323% gain, against about 18% for the S&P 500, and even Hewlett Packard Enterprise (HPE), up 130.6%, finished far behind. Management had described most of the drivers before the run began: customers sitting on old servers, AI orders that had outru",
-        "source": "Trefis",
-        "publishedAt": "2026-09-11T20:40:38Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/did-dell-technologies-stock-quadrupled-204038090.html"
-      }
-    ],
-    "communityItems": [
-      {
-        "id": "community:0:twitter",
-        "ticker": "DELL",
-        "title": "Dell Foundation has filed to sell $1,200,000,000 in DELL shares. Last time they did this, $DELL crashed 24% in just 6 days.",
-        "summary": "Dell Foundation has filed to sell $1,200,000,000 in DELL shares. Last time they did this, $DELL crashed 24% in just 6 days. x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Sat, 05 Sep 2026 14:07:55 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5MSTFnblhfWnUyaF9YSFo2eFNMYXF6MFpLdWpJQnlhYVJrSFZFNF8yUjd5SExuNVVQR18xNUhwZ0otTzJLajVsbWZzYzQydE9NMlRwajV0MHNEeGt5NGNNdw?oc=5",
-        "query": "DELL stock site:reddit.com OR site:x.com OR site:twitter.com"
-      }
-    ],
-    "aiSummary": {
-      "headline": "HOLD DELL today",
-      "predictedMove": "+0.91% next day toward $572.45, and +1.99% over 5D toward $578.71.",
-      "actionSummary": "Dell Technologies Inc. screens as a hold today because the model stays bullish, the price trend reads uptrend, news is supportive, and community chatter is mixed. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.91% next day toward $572.45, and +1.99% over 5D toward $578.71.",
-        "Price trend: Price trend is rising cleanly across both short and medium windows.",
-        "News flow: supportive across 4 recent headline(s), with current event risk marked moderate.",
-        "Community tone: mixed from 1 Reddit/X search hit(s). Earnings are 77 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "SMCI",
-    "companyName": "Super Micro Computer, Inc.",
-    "sector": "Technology",
-    "industry": "Computer Hardware",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 40.1,
-    "entryPriceTarget": 40.04,
-    "stopPrice": 37.14,
-    "targetPrice": 39.92,
+    "ticker": "VRT",
+    "companyName": "Vertiv Holdings, LLC",
+    "sector": "Industrials",
+    "industry": "Electrical Equipment & Parts",
+    "asOfDate": "2026-09-14",
+    "targetDate": "2026-09-15",
+    "currentPrice": 237.39,
+    "entryPriceTarget": 237.09,
+    "stopPrice": 225.38,
+    "targetPrice": 236.54,
     "bias": "bearish",
-    "basePredictedReturn": -0.004449,
-    "adjustedPredictedReturn": -0.004449,
+    "basePredictedReturn": -0.003576,
+    "adjustedPredictedReturn": -0.003576,
     "calibrationEnabled": false,
     "calibrationModelVersion": null,
     "calibrationStatus": "disabled",
     "calibrationReasons": [],
     "confidenceLabel": "medium",
-    "confidenceScore": 62,
+    "confidenceScore": 56,
     "baseConfidenceScore": 58,
     "signalDirection": "SHORT",
     "portfolioAction": "HOLD",
     "trendBias": "Range",
-    "trendSummary": "Price trend is constructive, but not euphoric.",
-    "shortTermTrend": 0.058886,
-    "mediumTermTrend": 0.024004,
+    "trendSummary": "Price trend is weakening across both short and medium windows.",
+    "shortTermTrend": -0.15378,
+    "mediumTermTrend": -0.192111,
     "modelName": "timesfm",
     "setupLabel": "Watchlist only",
     "convictionScore": 35,
-    "adjustedConvictionScore": 62,
+    "adjustedConvictionScore": 56,
     "newsBias": "conflicting",
-    "newsImpactScore": 5,
+    "newsImpactScore": 2,
     "communitySentimentScore": 0,
     "communitySentimentLabel": "mixed",
-    "overallSentimentScore": 4,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 4,
+    "overallSentimentScore": -2,
+    "overallSentimentLabel": "mixed",
+    "confidenceAdjustment": -2,
     "eventRisk": "high",
-    "riskRewardRatio": 0.04,
-    "expectedMoveLow": -0.076698,
-    "expectedMoveHigh": 0.067799,
-    "marketCap": 26344310895.95,
-    "averageVolume": 34227040,
-    "yearHigh": 58.78,
-    "yearLow": 19.48,
-    "analystTarget": 42.38,
-    "earningsDate": "2026-11-03",
-    "daysToEarnings": 53,
+    "riskRewardRatio": 0.05,
+    "expectedMoveLow": -0.051932,
+    "expectedMoveHigh": 0.044779,
+    "marketCap": 91392342153.49,
+    "averageVolume": 5214570,
+    "yearHigh": 379.93,
+    "yearLow": 132.68,
+    "analystTarget": 338.15,
+    "earningsDate": "2026-10-21",
+    "daysToEarnings": 37,
     "timeframes": [
       {
         "label": "1D",
         "horizonDays": 1,
-        "predictedReturn": -0.004449,
-        "targetClose": 39.92,
+        "predictedReturn": -0.003576,
+        "targetClose": 236.54,
         "confidenceBand": "highest",
         "hitRate": 0.64,
         "mae": 0.011
@@ -1757,8 +1962,8 @@
       {
         "label": "3D",
         "horizonDays": 3,
-        "predictedReturn": -0.007342,
-        "targetClose": 39.81,
+        "predictedReturn": -0.005901,
+        "targetClose": 235.99,
         "confidenceBand": "moderate",
         "hitRate": 0.57,
         "mae": 0.018
@@ -1766,8 +1971,8 @@
       {
         "label": "5D",
         "horizonDays": 5,
-        "predictedReturn": -0.009789,
-        "targetClose": 39.71,
+        "predictedReturn": -0.007868,
+        "targetClose": 235.53,
         "confidenceBand": "lower",
         "hitRate": 0.52,
         "mae": 0.024
@@ -1777,8 +1982,8 @@
       {
         "id": "bear",
         "label": "Bear case",
-        "probability": 28,
-        "targetPrice": 36.86,
+        "probability": 22,
+        "targetPrice": 224.21,
         "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
         "tone": "bear"
       },
@@ -1786,15 +1991,15 @@
         "id": "base",
         "label": "Base case",
         "probability": 60,
-        "targetPrice": 39.81,
+        "targetPrice": 235.99,
         "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
         "tone": "base"
       },
       {
         "id": "bull",
         "label": "Bull case",
-        "probability": 12,
-        "targetPrice": 42.91,
+        "probability": 18,
+        "targetPrice": 248.26,
         "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
         "tone": "bull"
       }
@@ -1802,12 +2007,12 @@
     "reasons": [
       {
         "title": "Forecast median",
-        "body": "1D projects 39.92, 3D points toward 39.81, and 5D stretches toward 39.71.",
+        "body": "1D projects 236.54, 3D points toward 235.99, and 5D stretches toward 235.53.",
         "tone": "forecast"
       },
       {
         "title": "Price trend",
-        "body": "Price is +5.89% over 5D and +2.40% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
+        "body": "Price is -15.38% over 5D and -19.21% over 20D. Current structural read is range, which is why the model is not working in a vacuum.",
         "tone": "trend"
       },
       {
@@ -1817,281 +2022,58 @@
       },
       {
         "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 14.45% top to bottom. Earnings are roughly 53 day(s) out, so event risk stays on the board. Current event-risk state is high.",
+        "body": "The modeled move envelope spans about 9.67% top to bottom. Earnings are roughly 37 day(s) out, so event risk stays on the board. Current event-risk state is high.",
         "tone": "event"
       }
     ],
     "newsItems": [
       {
-        "id": "c8ce5d22-f020-3dc6-9c91-5d90d6928314",
-        "ticker": "SMCI",
-        "title": "Super Micro Has $60B in Orders. What Comes Next?",
-        "summary": "AI demand is not the issue. Cash flow and margins are keeping investors cautious.",
-        "source": "GuruFocus.com",
-        "publishedAt": "2026-09-11T20:13:29Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-60b-orders-comes-201329348.html"
+        "id": "378ccf41-0d2c-3aff-bcba-ddedc5fb3a34",
+        "ticker": "VRT",
+        "title": "Nasdaq Recovers, but Industrial Stocks Are Still Struggling",
+        "summary": "The Nasdaq composite recently traded 0.1% lower on the day, a near-full recovery after being down 1.3% earlier. If the tech-heavy index finishes in positive territory today, it would be the biggest intraday comeback since April 7.",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-09-14T17:41:06Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/nasdaq-recovers-but-industrial-stocks-are-still-struggling-wD171wDdrnMOF98iKMMQ?siteid=yhoof2&yptr=yahoo"
       },
       {
-        "id": "caa9a05e-0ce1-3393-935e-4bcc51b521ee",
-        "ticker": "SMCI",
-        "title": "SMCI or NTAP: Which Is the Better Value Stock Right Now?",
-        "summary": "SMCI vs. NTAP: Which Stock Is the Better Value Option?",
+        "id": "7ce532a5-5410-3c96-ba13-19cbabe7c5b9",
+        "ticker": "VRT",
+        "title": "Vertiv vs. Broadcom: Which AI Infrastructure Stock Has More Upside?",
+        "summary": "VRT appears better positioned for AI demand, earnings surprises and valuation, while AVGO faces margin, concentration and execution risks.",
         "source": "Zacks",
-        "publishedAt": "2026-09-11T15:40:02Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/smci-ntap-better-value-stock-154002078.html"
+        "publishedAt": "2026-09-14T16:47:00Z",
+        "url": "https://finance.yahoo.com/technology/ai/articles/vertiv-vs-broadcom-ai-infrastructure-164700745.html"
       },
       {
-        "id": "048c9d94-04f9-3e54-a94f-1ccff053a617",
-        "ticker": "SMCI",
-        "title": "Hewlett Packard Enterprise and Dell Surge 11% as Oracle\u2019s Capex Guidance Lifts AI Server Demand; Super Micro Climbs 7%",
-        "summary": "Oracle just revealed a staggering capital spending plan, and the shockwaves landed hardest not on Oracle itself but on three server makers that had no news of their own to justify their sudden surge.",
-        "source": "24/7 Wall St.",
-        "publishedAt": "2026-09-11T14:51:18Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/hewlett-packard-enterprise-dell-surge-145118783.html"
+        "id": "824e70a3-f05d-3888-bf87-248f04e06eed",
+        "ticker": "VRT",
+        "title": "Is Vertiv (VRT) a Solid Growth Stock? 3 Reasons to Think \"Yes\"",
+        "summary": "Vertiv (VRT) possesses solid growth attributes, which could help it handily outperform the market.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T16:45:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/vertiv-vrt-solid-growth-stock-164502413.html"
       },
       {
-        "id": "1331a359-99f9-3a79-8111-73bf651a071e",
-        "ticker": "SMCI",
-        "title": "Super Micro Computer Sees $60B AI Order Book Powering Fiscal 2027 Outlook",
-        "summary": "Super Micro Computer (NASDAQ:SMCI) said demand for artificial intelligence infrastructure remains strong and that its growing order book, broader customer base and expanding portfolio of integrated data-center products support its fiscal 2027 outlook. Speaking at the Goldman Sachs Communacopia and",
-        "source": "MarketBeat",
-        "publishedAt": "2026-09-10T21:02:15Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/super-micro-computer-sees-60b-210215702.html"
+        "id": "16d84779-287c-35a9-9047-1fcd21e8240e",
+        "ticker": "VRT",
+        "title": "The Zacks Analyst Blog Highlights Alphabet, Microsoft, NVIDIA, Arista Networks and Vertiv",
+        "summary": "NVIDIA, Arista Networks and Vertiv offer exposure to AI infrastructure as surging capex drives demand for computing, networking and power systems.",
+        "source": "Zacks",
+        "publishedAt": "2026-09-14T09:55:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-alphabet-095500062.html"
       }
     ],
-    "communityItems": [
-      {
-        "id": "community:2:twitter",
-        "ticker": "SMCI",
-        "title": "BREAKING: Super Micro Computer stock, $SMCI, surges nearly +20% after reporting that it received nearly $60 billion in new orders last quarter. The company now expected to nearly 5x year-over-year revenue for the quarter.",
-        "summary": "BREAKING: Super Micro Computer stock, $SMCI, surges nearly +20% after reporting that it received nearly $60 billion in new orders last quarter. The company now expected to nearly 5x year-over-year revenue for the quarter. x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Tue, 21 Jul 2026 07:00:00 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9kbkRtaU00eWl0TkgtcC1Pck53ZHIxSkhrVnVmYlhxdjJUdlE2ZHhIa2JzX0FWWlZWUG51UVJkR3VPQzFTVFpqV25acFdhdUZDYTFwSC1tUVdnVUtCclNXOGxDcE11dw?oc=5",
-        "query": "\"SMCI\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-      },
-      {
-        "id": "community:3:twitter",
-        "ticker": "SMCI",
-        "title": "BREAKING: Super Micro Computer stock, $SMCI, falls over -9% on the day on news that the company's office has been raided as Taiwan expands its \"chip smuggling\" probe.",
-        "summary": "BREAKING: Super Micro Computer stock, $SMCI, falls over -9% on the day on news that the company's office has been raided as Taiwan expands its \"chip smuggling\" probe. x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Mon, 29 Jun 2026 07:00:00 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAzZll6eDY5NkZSNl8xVUtFRGcybFFidThNeTNhd2NUOXY0ZkNzbDhrbEc4OS1VWHNBV3pDM0h3Q2xGakxiRURlbV81OWlPQmJTdDU4V0FOcXVMYmxnSm94Y01EN3NjQQ?oc=5",
-        "query": "\"SMCI\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-      }
-    ],
+    "communityItems": [],
     "aiSummary": {
-      "headline": "HOLD SMCI today",
-      "predictedMove": "-0.44% next day toward $39.92, and -0.98% over 5D toward $39.71.",
-      "actionSummary": "Super Micro Computer, Inc. screens as a hold today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is mixed. Overall sentiment reads bullish.",
+      "headline": "HOLD VRT today",
+      "predictedMove": "-0.36% next day toward $236.54, and -0.79% over 5D toward $235.53.",
+      "actionSummary": "Vertiv Holdings, LLC screens as a hold today because the model stays bearish, the price trend reads range, news is conflicting, and community chatter is mixed. Overall sentiment reads mixed.",
       "whyToday": [
-        "Prediction model: -0.44% next day toward $39.92, and -0.98% over 5D toward $39.71.",
-        "Price trend: Price trend is constructive, but not euphoric.",
+        "Prediction model: -0.36% next day toward $236.54, and -0.79% over 5D toward $235.53.",
+        "Price trend: Price trend is weakening across both short and medium windows.",
         "News flow: conflicting across 4 recent headline(s), with current event risk marked high.",
-        "Community tone: mixed from 2 Reddit/X search hit(s). Earnings are 53 day(s) away."
-      ]
-    }
-  },
-  {
-    "ticker": "SPCX",
-    "companyName": "Space Exploration Technologies ",
-    "sector": "Industrials",
-    "industry": "Aerospace & Defense",
-    "asOfDate": "2026-09-11",
-    "targetDate": "2026-09-12",
-    "currentPrice": 151.21,
-    "entryPriceTarget": 150.91,
-    "stopPrice": 142.69,
-    "targetPrice": 152.08,
-    "bias": "bullish",
-    "basePredictedReturn": 0.005744,
-    "adjustedPredictedReturn": 0.005744,
-    "calibrationEnabled": false,
-    "calibrationModelVersion": null,
-    "calibrationStatus": "disabled",
-    "calibrationReasons": [],
-    "confidenceLabel": "medium",
-    "confidenceScore": 68,
-    "baseConfidenceScore": 58,
-    "signalDirection": "LONG",
-    "portfolioAction": "HOLD",
-    "trendBias": "Uptrend",
-    "trendSummary": "Price trend is constructive, but not euphoric.",
-    "shortTermTrend": 0.009817,
-    "mediumTermTrend": 0.07021,
-    "modelName": "timesfm",
-    "setupLabel": "Existing position management",
-    "convictionScore": 35,
-    "adjustedConvictionScore": 68,
-    "newsBias": "supportive",
-    "newsImpactScore": 4,
-    "communitySentimentScore": 2,
-    "communitySentimentLabel": "positive",
-    "overallSentimentScore": 9,
-    "overallSentimentLabel": "bullish",
-    "confidenceAdjustment": 10,
-    "eventRisk": "moderate",
-    "riskRewardRatio": 0.14,
-    "expectedMoveLow": -0.058011,
-    "expectedMoveHigh": 0.0695,
-    "marketCap": 1993217033984.17,
-    "averageVolume": 77272590,
-    "yearHigh": 225.64,
-    "yearLow": 104.83,
-    "analystTarget": 220.68,
-    "earningsDate": "2026-11-03",
-    "daysToEarnings": 53,
-    "timeframes": [
-      {
-        "label": "1D",
-        "horizonDays": 1,
-        "predictedReturn": 0.005744,
-        "targetClose": 152.08,
-        "confidenceBand": "highest",
-        "hitRate": 0.64,
-        "mae": 0.011
-      },
-      {
-        "label": "3D",
-        "horizonDays": 3,
-        "predictedReturn": 0.009478,
-        "targetClose": 152.65,
-        "confidenceBand": "moderate",
-        "hitRate": 0.57,
-        "mae": 0.018
-      },
-      {
-        "label": "5D",
-        "horizonDays": 5,
-        "predictedReturn": 0.012638,
-        "targetClose": 153.13,
-        "confidenceBand": "lower",
-        "hitRate": 0.52,
-        "mae": 0.024
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "bear",
-        "label": "Bear case",
-        "probability": 10,
-        "targetPrice": 141.86,
-        "summary": "Headline pressure or weak tape drags price toward the lower end of the modeled range.",
-        "tone": "bear"
-      },
-      {
-        "id": "base",
-        "label": "Base case",
-        "probability": 60,
-        "targetPrice": 152.65,
-        "summary": "The core forecast path holds, with price tracking the model without needing hero-level momentum.",
-        "tone": "base"
-      },
-      {
-        "id": "bull",
-        "label": "Bull case",
-        "probability": 30,
-        "targetPrice": 162.09,
-        "summary": "Supportive tape plus clean news follow-through lets the setup stretch toward the upper band.",
-        "tone": "bull"
-      }
-    ],
-    "reasons": [
-      {
-        "title": "Forecast median",
-        "body": "1D projects 152.08, 3D points toward 152.65, and 5D stretches toward 153.13.",
-        "tone": "forecast"
-      },
-      {
-        "title": "Price trend",
-        "body": "Price is +0.98% over 5D and +7.02% over 20D. Current structural read is uptrend, which is why the model is not working in a vacuum.",
-        "tone": "trend"
-      },
-      {
-        "title": "Headline and chatter",
-        "body": "Current headline read is supportive, while community chatter reads positive. That overlay does not retrain the model, but it absolutely changes how much trust to give the setup today.",
-        "tone": "news"
-      },
-      {
-        "title": "Uncertainty and event risk",
-        "body": "The modeled move envelope spans about 12.75% top to bottom. Earnings are roughly 53 day(s) out, so event risk stays on the board. Current event-risk state is moderate.",
-        "tone": "event"
-      }
-    ],
-    "newsItems": [
-      {
-        "id": "348e9150-33dc-489d-8633-5dd3efd6b40c",
-        "ticker": "SPCX",
-        "title": "Elon Musk\u2019s Boring Company raises $3B at $23B valuation",
-        "summary": "Yahoo Finance Senior Autos Reporter Pras Subramanian joins Market Domination to discuss Elon Musk's tunnel-digging startup, The Boring Company, which announced it raised $3 billion in a Series D funding round, valuing the company at $23 billion",
-        "source": "Yahoo Finance Video",
-        "publishedAt": "2026-09-11T19:53:00Z",
-        "url": "https://finance.yahoo.com/video/elon-musk-boring-company-raises-195300108.html"
-      },
-      {
-        "id": "88ce6609-4d64-3072-869a-8af355431e47",
-        "ticker": "SPCX",
-        "title": "Goldman, BofA vie to manage Anthropic employee wealth post-IPO - report",
-        "summary": "Investing.com -- Major Wall Street banks are competing to manage the wealth of Anthropic PBC employees following the artificial intelligence company's planned initial public offering, Bloomberg reported Friday.",
-        "source": "Investing.com",
-        "publishedAt": "2026-09-11T21:36:08Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/goldman-bofa-vie-manage-anthropic-213608799.html"
-      },
-      {
-        "id": "b726f837-97f2-3fef-a31d-ec04f07fa62c",
-        "ticker": "SPCX",
-        "title": "SpaceX Just Added a $13 Billion AI Revenue Engine",
-        "summary": "A massive hosting deal is giving investors a new reason to rethink what SpaceX could become.",
-        "source": "GuruFocus.com",
-        "publishedAt": "2026-09-11T21:11:12Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/spacex-just-added-13-billion-211112988.html"
-      },
-      {
-        "id": "84345083-dcf1-301e-b4a1-2010bfe66e59",
-        "ticker": "SPCX",
-        "title": "SpaceX Makes Blockbuster Move in AI Race",
-        "summary": "One enormous contract could accelerate SpaceX's next growth engine",
-        "source": "GuruFocus.com",
-        "publishedAt": "2026-09-11T21:10:49Z",
-        "url": "https://finance.yahoo.com/technology/ai/articles/spacex-makes-blockbuster-move-ai-211049393.html"
-      }
-    ],
-    "communityItems": [
-      {
-        "id": "community:2:twitter",
-        "ticker": "SPCX",
-        "title": "Yep, I'm personally high conviction on the AI trade (especially photonics/memory) despite macro. - $NVDA gave forecasts for $1.3T hyperscaler capex ($100B+ above BofA analyst expectations) - $SPCX Wells Fargo forecasts are ~$263B for 2027. - $127B spe",
-        "summary": "Yep, I'm personally high conviction on the AI trade (especially photonics/memory) despite macro. - $NVDA gave forecasts for $1.3T hyperscaler capex ($100B+ above BofA analyst expectations) - $SPCX Wells Fargo forecasts are ~$263B for 2027. - $127B spe x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Fri, 11 Sep 2026 07:03:16 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CS2pJOUVJQ0Nfei02al9FTUhCanBTSmItRFpma3FYdGYtVV9qdWJMNUstNE9wVWhTc01nZG5LZjg0UHYtQ2hTeDhIZEkxRnlHS1FpZFBvVHJqdTVhWV9SWm43c0lqQQ?oc=5",
-        "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
-      },
-      {
-        "id": "community:3:twitter",
-        "ticker": "SPCX",
-        "title": "SPACEX $SPCX JUST SAID ITS NEXT STARSHIP FLIGHT WILL BE REVENUE GENERATING",
-        "summary": "SPACEX $SPCX JUST SAID ITS NEXT STARSHIP FLIGHT WILL BE REVENUE GENERATING x.com",
-        "source": "x.com",
-        "sourceType": "twitter",
-        "publishedAt": "Thu, 10 Sep 2026 19:42:48 GMT",
-        "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1RSldWb0JqQV93SDNNM0ZEZUtMa2wybkV1cUMwQU91RXJTaGc1dW4tMjZVeTRZRXlodkFaWmhtOWNCbHBjcENmY0stS0pZYkNtT2ViVUh4REJUQ0JWT19TMWl2Yw?oc=5",
-        "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
-      }
-    ],
-    "aiSummary": {
-      "headline": "HOLD SPCX today",
-      "predictedMove": "+0.57% next day toward $152.08, and +1.26% over 5D toward $153.13.",
-      "actionSummary": "Space Exploration Technologies  screens as a hold today because the model stays bullish, the price trend reads uptrend, news is supportive, and community chatter is positive. Overall sentiment reads bullish.",
-      "whyToday": [
-        "Prediction model: +0.57% next day toward $152.08, and +1.26% over 5D toward $153.13.",
-        "Price trend: Price trend is constructive, but not euphoric.",
-        "News flow: supportive across 4 recent headline(s), with current event risk marked moderate.",
-        "Community tone: positive from 2 Reddit/X search hit(s). Earnings are 53 day(s) away."
+        "Community tone: mixed from 0 Reddit/X search hit(s). Earnings are 37 day(s) away."
       ]
     }
   }
