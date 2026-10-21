@@ -1,40 +1,39 @@
-# Stokz Daily Review - 2026-10-20
+# Stokz Daily Review - 2026-10-21
 
-Generated at: 2026-10-20T22:35:59.772225+00:00
+Generated at: 2026-10-21T22:35:57.695527+00:00
 Model: timesfm
-Market regime: cautious downside bias
+Market regime: selective upside bias
 
 ## Summary
 
-- Analyst decision: Trim weak exposure and keep new adds on a leash.
-- Risk posture: Risk is not gone. Respect the trim list and do not turn watchlist names into forced trades.
-- Operator summary: The board reads cautious downside bias, with 2 buy setups and 3 risk-reduction names. Current evaluation history shows 100.0% 1D hit rate, so the edge looks real but still young.
-- Next session plan: Open with MRVL, ANET on the main board, keep SPCX, SYM marked for risk control, and let weaker holds prove themselves before touching them.
+- Analyst decision: Press the best longs, but keep entries disciplined.
+- Risk posture: Keep size honest, let the best setups earn more risk, and leave soft HOLD names alone.
+- Operator summary: The board reads selective upside bias, with 3 buy setups and 1 risk-reduction names. Current evaluation history shows 100.0% 1D hit rate, so the edge looks real but still young.
+- Next session plan: Open with ANET, MRVL, SMCI on the main board, keep SYM marked for risk control, and let weaker holds prove themselves before touching them.
 
 ## Board stats
 
 - Forecasts: 11
-- BUY / HOLD / SELL: 2 / 6 / 3
-- Bullish vs bearish: 3 / 7
-- Average forecast: -0.20%
+- BUY / HOLD / SELL: 3 / 7 / 1
+- Bullish vs bearish: 5 / 3
+- Average forecast: +0.01%
 - Average 1D hit rate: 100.0%
 
 ## Top longs
 
-- BUY MRVL | Fresh long setup | forecast +0.26% | target $241.06 | conviction 35
-- BUY ANET | Fresh long setup | forecast +0.19% | target $181.53 | conviction 35
+- BUY ANET | Fresh long setup | forecast +0.27% | target $184.83 | conviction 35
+- BUY MRVL | Fresh long setup | forecast +0.27% | target $245.41 | conviction 35
+- BUY SMCI | Fresh long setup | forecast +0.24% | target $35.65 | conviction 35
 
 ## Risk reductions
 
-- SELL SPCX | Risk reduction | forecast -0.33% | target $147.31 | conviction 35
-- SELL SYM | Risk reduction | forecast -0.24% | target $39.60 | conviction 35
-- SELL AVGO | Risk reduction | forecast -0.11% | target $334.01 | conviction 35
+- SELL SYM | Risk reduction | forecast -0.30% | target $41.60 | conviction 35
 
 ## Watchlist holds
 
-- HOLD VRT | Watchlist only | forecast -0.67% | target $202.20 | conviction 35
-- HOLD SMCI | Watchlist only | forecast -0.63% | target $32.27 | conviction 35
-- HOLD AMD | Watchlist only | forecast -0.61% | target $531.50 | conviction 35
+- HOLD AMD | Watchlist only | forecast -0.61% | target $549.34 | conviction 35
+- HOLD SPCX | Existing position management | forecast +0.40% | target $159.95 | conviction 35
+- HOLD DELL | Existing position management | forecast +0.20% | target $486.87 | conviction 35
 
 ## Research news feed
 
