@@ -1,289 +1,24 @@
 [
   {
-    "ticker": "AMD",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 488.78,
-    "current_price": 488.78,
-    "target_close": 490.7164,
-    "predicted_return": 0.003954,
-    "baseline_return": -0.033684,
-    "predicted_direction": "bullish",
-    "confidence_label": "medium",
-    "signal_direction": "LONG",
-    "portfolio_action": "BUY",
-    "setup_label": "Fresh long setup",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.045097,
-      0.053005
-    ],
-    "trend_bias": "Range",
-    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
-    "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": true,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.003954,
-        "target_close": 490.7164,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.006524,
-        "target_close": 491.9792,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.008699,
-        "target_close": 493.0503,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
-      }
-    ],
-    "base_predicted_return": 0.003954,
-    "adjusted_predicted_return": 0.003954,
-    "adjusted_confidence_score": 0.44503,
-    "event_risk": "low",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "AMD",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": 0.003954,
-      "baseline_return": -0.033684,
-      "realized_volatility": 0.044592,
-      "short_trend": -0.155003,
-      "medium_trend": -0.243211,
-      "days_to_earnings": 90,
-      "news_score": 0,
-      "community_score": 6,
-      "news_count": 0,
-      "community_count": 3,
-      "event_risk": "low",
-      "event_risk_score": 0,
-      "predicted_direction": "bullish",
-      "direction_score": 1,
-      "news_bias": "mixed",
-      "community_label": "positive"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 488.7799987792969,
-      "research_context": {
-        "news_items": [],
-        "community_items": [
-          {
-            "id": "community:1:reddit",
-            "ticker": "AMD",
-            "title": "AMD stock jumps 7% on earnings as data center revenue nearly doubles",
-            "summary": "AMD stock jumps 7% on earnings as data center revenue nearly doubles Reddit",
-            "source": "Reddit",
-            "sourceType": "reddit",
-            "publishedAt": "Tue, 03 Nov 2026 21:26:35 GMT",
-            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS1ZfM1M3STYtZjhJNmlYWXU2ZmVZRE54SG0wNjR4eE9CTUJFTGJVWnhuMlZ6dEE3eDlQM09xeUJMT3dreVFfcFBScm1sOWtwNll1OFlKbkZhVzFqYy02YjM3T0tidVMxbWVtenA2VEFUb1pKTU1DUzF3SVVfTG5naUlFUzJVa0lITnFNUTFieERMNDZub2xwQ3ItbDFQS3BMMzM4TA?oc=5",
-            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:2:twitter",
-            "ticker": "AMD",
-            "title": "BREAKING: AMD stock, $AMD, surges over +6% after posting stronger than expected earnings due to AI demand. The stock has now added +$50 billion in market cap in after hours trade.",
-            "summary": "BREAKING: AMD stock, $AMD, surges over +6% after posting stronger than expected earnings due to AI demand. The stock has now added +$50 billion in market cap in after hours trade. X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Tue, 03 Nov 2026 21:17:57 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE8zdlQ5TkpZSW56YURJd0JLbERWMnYtLU13Q1A1RV85OXJwYVNzQlZhVi13ZmEwQzNXRWtBMnBPNE13NFExemhtZXJoZGIwNlBzV1Jxb2VUdEFGcTQ1bi1lZGdjNzNUdw?oc=5",
-            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:3:twitter",
-            "ticker": "AMD",
-            "title": "$AMD RECORDED A $1.1B NON-CASH CHARGE TIED TO ITS OPENAI & META WARRANTS DEALS IN Q3 Buried in AMD's Q3 earnings reconciliation is a $1.097B change in the fair value of customer warrants, reducing GAAP EPS by $0.66. Here's how it w",
-            "summary": "$AMD RECORDED A $1.1B NON-CASH CHARGE TIED TO ITS OPENAI & META WARRANTS DEALS IN Q3 Buried in AMD's Q3 earnings reconciliation is a $1.097B change in the fair value of customer warrants, reducing GAAP EPS by $0.66. Here's how it w X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Tue, 03 Nov 2026 21:33:11 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1LUzBKd24zRmkwbjUwemR1Rng5c0xpVnVNMFl6bC0xa1k4V2x1bGtiZHluNWNFQUNsclJBTUNZd2JDMGNVakh1ZndlNW9QUGR1VTI4d1BITTU4dnZQSnlORjZSSQ?oc=5",
-            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
-          }
-        ],
-        "news_score": 0,
-        "community_score": 6,
-        "news_bias": "mixed",
-        "community_label": "positive",
-        "earnings_date": "2027-02-02",
-        "days_to_earnings": 90,
-        "event_risk": "low"
-      },
-      "owns_position": false,
-      "realized_volatility": 0.044592
-    }
-  },
-  {
-    "ticker": "ANET",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 178.48,
-    "current_price": 178.48,
-    "target_close": 179.0332,
-    "predicted_return": 0.003095,
-    "baseline_return": -0.009027,
-    "predicted_direction": "bullish",
-    "confidence_label": "medium",
-    "signal_direction": "LONG",
-    "portfolio_action": "BUY",
-    "setup_label": "Fresh long setup",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.036626,
-      0.042815
-    ],
-    "trend_bias": "Range",
-    "notes": "Bullish forecast with no current position. Plan an entry only if the next session confirms the move and keeps risk tight.",
-    "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": true,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": 0.003095,
-        "target_close": 179.0332,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": 0.005106,
-        "target_close": 179.3937,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": 0.006809,
-        "target_close": 179.6994,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
-      }
-    ],
-    "base_predicted_return": 0.003095,
-    "adjusted_predicted_return": 0.003095,
-    "adjusted_confidence_score": 0.414483,
-    "event_risk": "high",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "ANET",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": 0.003095,
-      "baseline_return": -0.009027,
-      "realized_volatility": 0.03611,
-      "short_trend": -0.04413,
-      "medium_trend": -0.173053,
-      "days_to_earnings": -1,
-      "news_score": 0,
-      "community_score": 0,
-      "news_count": 0,
-      "community_count": 2,
-      "event_risk": "high",
-      "event_risk_score": 2,
-      "predicted_direction": "bullish",
-      "direction_score": 1,
-      "news_bias": "mixed",
-      "community_label": "mixed"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 178.47999572753906,
-      "research_context": {
-        "news_items": [],
-        "community_items": [
-          {
-            "id": "community:1:twitter",
-            "ticker": "ANET",
-            "title": "ARISTA NETWORKS $ANET Q3\u201926 EARNINGS HIGHLIGHTS \ud83d\udd39 Revenue: $3.66B (Est. $3.33B) \ud83d\udfe2; +58.5% YoY \ud83d\udd39 Adj. EPS: $1.20 (Est. $1.08) \ud83d\udfe2; +56% YoY Q4 Guide: \ud83d\udd39 Revenue: ~$3.9B-$4.0B (Est. $3.6B) \ud83d\udfe2 \ud83d\udd39 Adj. EPS: $1.26-$1.30 (Est. $1.15) \ud83d\udfe2 \ud83d\udd39 Non-GA",
-            "summary": "ARISTA NETWORKS $ANET Q3\u201926 EARNINGS HIGHLIGHTS \ud83d\udd39 Revenue: $3.66B (Est. $3.33B) \ud83d\udfe2; +58.5% YoY \ud83d\udd39 Adj. EPS: $1.20 (Est. $1.08) \ud83d\udfe2; +56% YoY Q4 Guide: \ud83d\udd39 Revenue: ~$3.9B-$4.0B (Est. $3.6B) \ud83d\udfe2 \ud83d\udd39 Adj. EPS: $1.26-$1.30 (Est. $1.15) \ud83d\udfe2 \ud83d\udd39 Non-GA X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Tue, 03 Nov 2026 21:11:38 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5INWZQaFVXU1dwSUdTOGdyWF9wOG43X0JGUDBxN2M3Zk5HT2JmbDdaUXZNdU03V2tneHRCcE5lYUxoS2xjRzJaVnpPek9uSmpUSHMyVVdYd0pKVUpMWjl0b3Z4Yw?oc=5",
-            "query": "ANET stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:2:twitter",
-            "ticker": "ANET",
-            "title": "\ud83d\udea8 Pre-market buzz! $DUOL $OUST $NVTS $XYZ $ANET $SN $SMCI $PODD $KHC $AMGN $AMD $MCD $UBER $CVS $CPNG $NBIS $CAR $QURE $TOST $WULF $TSLA $W $ALAB $SPCX $IREN $APLD $EMR $RARE $CRWV $GLXY $CLSK $NICE $S",
-            "summary": "\ud83d\udea8 Pre-market buzz! $DUOL $OUST $NVTS $XYZ $ANET $SN $SMCI $PODD $KHC $AMGN $AMD $MCD $UBER $CVS $CPNG $NBIS $CAR $QURE $TOST $WULF $TSLA $W $ALAB $SPCX $IREN $APLD $EMR $RARE $CRWV $GLXY $CLSK $NICE $S X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Wed, 04 Nov 2026 12:28:11 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5WVHduVVk2cmFoN2ctajFzZEFDaU5XQ1h1WHhFVzQ5V1Rya3NiNlBGNHhRNWNIeHdOaVFUVnBNRWpieGpTR21la0ExLWNZV2tUSENsQjQ3aVVyMWZieXY1NmYxbw?oc=5",
-            "query": "\"ANET\" stock site:reddit.com OR site:x.com OR site:twitter.com"
-          }
-        ],
-        "news_score": 0,
-        "community_score": 0,
-        "news_bias": "mixed",
-        "community_label": "mixed",
-        "earnings_date": "2026-11-03",
-        "days_to_earnings": -1,
-        "event_risk": "high"
-      },
-      "owns_position": false,
-      "realized_volatility": 0.03611
-    }
-  },
-  {
     "ticker": "AVGO",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 325.48,
-    "current_price": 325.48,
-    "target_close": 324.845,
-    "predicted_return": -0.001953,
-    "baseline_return": -0.015558,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 291.53,
+    "current_price": 291.53,
+    "target_close": 287.7139,
+    "predicted_return": -0.013176,
+    "baseline_return": -0.03368,
     "predicted_direction": "bearish",
-    "confidence_label": "medium",
+    "confidence_label": "high",
     "signal_direction": "SHORT",
     "portfolio_action": "SELL",
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.033594,
-      0.029687
+      -0.053554,
+      0.027202
     ],
-    "trend_bias": "Range",
+    "trend_bias": "Downtrend",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
     "model_name": "timesfm",
     "current_position_shares": 12,
@@ -291,35 +26,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.001953,
-        "target_close": 324.845,
+        "predicted_return": -0.013176,
+        "target_close": 287.7139,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.003223,
-        "target_close": 324.4328,
+        "predicted_return": -0.021741,
+        "target_close": 285.2603,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.004297,
-        "target_close": 324.0845,
+        "predicted_return": -0.028988,
+        "target_close": 283.2005,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.001953,
-    "adjusted_predicted_return": -0.001953,
-    "adjusted_confidence_score": 0.373886,
+    "base_predicted_return": -0.013176,
+    "adjusted_predicted_return": -0.013176,
+    "adjusted_confidence_score": 0.774815,
     "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -327,14 +62,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "AVGO",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.001953,
-      "baseline_return": -0.015558,
-      "realized_volatility": 0.028764,
-      "short_trend": -0.074841,
-      "medium_trend": -0.135534,
-      "days_to_earnings": 35,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.013176,
+      "baseline_return": -0.03368,
+      "realized_volatility": 0.02991,
+      "short_trend": -0.154986,
+      "medium_trend": -0.190509,
+      "days_to_earnings": 34,
       "news_score": 0,
       "community_score": 0,
       "news_count": 0,
@@ -352,7 +87,7 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 325.4800109863281,
+      "current_price": 291.5299987792969,
       "research_context": {
         "news_items": [],
         "community_items": [],
@@ -361,22 +96,22 @@
         "news_bias": "mixed",
         "community_label": "mixed",
         "earnings_date": "2026-12-09",
-        "days_to_earnings": 35,
+        "days_to_earnings": 34,
         "event_risk": "low"
       },
       "owns_position": true,
-      "realized_volatility": 0.028764
+      "realized_volatility": 0.02991
     }
   },
   {
     "ticker": "DELL",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 372.36,
-    "current_price": 372.36,
-    "target_close": 368.0404,
-    "predicted_return": -0.011668,
-    "baseline_return": -0.05645,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 316.91,
+    "current_price": 316.91,
+    "target_close": 306.2828,
+    "predicted_return": -0.034109,
+    "baseline_return": -0.081154,
     "predicted_direction": "bearish",
     "confidence_label": "high",
     "signal_direction": "SHORT",
@@ -384,8 +119,8 @@
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.082626,
-      0.05929
+      -0.107013,
+      0.038795
     ],
     "trend_bias": "Downtrend",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
@@ -395,35 +130,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.011668,
-        "target_close": 368.0404,
+        "predicted_return": -0.034109,
+        "target_close": 306.2828,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.019253,
-        "target_close": 365.2596,
+        "predicted_return": -0.05628,
+        "target_close": 299.5669,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.02567,
-        "target_close": 362.923,
+        "predicted_return": -0.07504,
+        "target_close": 293.9995,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.011668,
-    "adjusted_predicted_return": -0.011668,
-    "adjusted_confidence_score": 0.725054,
+    "base_predicted_return": -0.034109,
+    "adjusted_predicted_return": -0.034109,
+    "adjusted_confidence_score": 1.0,
     "event_risk": "moderate",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -431,14 +166,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "DELL",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.011668,
-      "baseline_return": -0.05645,
-      "realized_volatility": 0.052561,
-      "short_trend": -0.245914,
-      "medium_trend": -0.355956,
-      "days_to_earnings": 20,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.034109,
+      "baseline_return": -0.081154,
+      "realized_volatility": 0.054003,
+      "short_trend": -0.333537,
+      "medium_trend": -0.447656,
+      "days_to_earnings": 19,
       "news_score": 0,
       "community_score": 0,
       "news_count": 0,
@@ -456,12 +191,12 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 372.3599853515625,
+      "current_price": 316.9100036621094,
       "research_context": {
         "news_items": [],
         "community_items": [
           {
-            "id": "community:1:twitter",
+            "id": "community:0:twitter",
             "ticker": "DELL",
             "title": "JUST IN: SpaceX, Tesla, Amazon, & Netflix now oppose having their stocks tokenized through OKX and ICE markets, bringing the total to 56 companies. \u2022 Dell \u2022 IBM \u2022 Intel \u2022 Nike \u2022 IREN \u2022 IonQ \u2022 AMD \u2022 Intuit \u2022 Tesla \u2022 Nvidia \u2022 Netflix \u2022 Adobe \u2022 Oracle \u2022 Reddit \u2022 Eli",
             "summary": "JUST IN: SpaceX, Tesla, Amazon, & Netflix now oppose having their stocks tokenized through OKX and ICE markets, bringing the total to 56 companies. \u2022 Dell \u2022 IBM \u2022 Intel \u2022 Nike \u2022 IREN \u2022 IonQ \u2022 AMD \u2022 Intuit \u2022 Tesla \u2022 Nvidia \u2022 Netflix \u2022 Adobe \u2022 Oracle \u2022 Reddit \u2022 Eli X",
@@ -477,31 +212,31 @@
         "news_bias": "mixed",
         "community_label": "mixed",
         "earnings_date": "2026-11-24",
-        "days_to_earnings": 20,
+        "days_to_earnings": 19,
         "event_risk": "moderate"
       },
       "owns_position": true,
-      "realized_volatility": 0.052561
+      "realized_volatility": 0.054003
     }
   },
   {
     "ticker": "ORCL",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 123.73,
-    "current_price": 123.73,
-    "target_close": 122.9476,
-    "predicted_return": -0.006344,
-    "baseline_return": -0.031091,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 115.16,
+    "current_price": 115.16,
+    "target_close": 113.8379,
+    "predicted_return": -0.011547,
+    "baseline_return": -0.038434,
     "predicted_direction": "bearish",
-    "confidence_label": "medium",
+    "confidence_label": "high",
     "signal_direction": "SHORT",
     "portfolio_action": "SELL",
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.048348,
-      0.035661
+      -0.063297,
+      0.040203
     ],
     "trend_bias": "Downtrend",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
@@ -511,35 +246,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.006344,
-        "target_close": 122.9476,
+        "predicted_return": -0.011547,
+        "target_close": 113.8379,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.010467,
-        "target_close": 122.4416,
+        "predicted_return": -0.019053,
+        "target_close": 112.9867,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.013956,
-        "target_close": 122.0152,
+        "predicted_return": -0.025404,
+        "target_close": 112.2714,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.006344,
-    "adjusted_predicted_return": -0.006344,
-    "adjusted_confidence_score": 0.530002,
+    "base_predicted_return": -0.011547,
+    "adjusted_predicted_return": -0.011547,
+    "adjusted_confidence_score": 0.721054,
     "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -547,14 +282,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "ORCL",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.006344,
-      "baseline_return": -0.031091,
-      "realized_volatility": 0.038186,
-      "short_trend": -0.143974,
-      "medium_trend": -0.134943,
-      "days_to_earnings": 40,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.011547,
+      "baseline_return": -0.038434,
+      "realized_volatility": 0.038334,
+      "short_trend": -0.174835,
+      "medium_trend": -0.148162,
+      "days_to_earnings": 39,
       "news_score": 0,
       "community_score": 0,
       "news_count": 0,
@@ -572,12 +307,23 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 123.7300033569336,
+      "current_price": 115.16000366210938,
       "research_context": {
         "news_items": [],
         "community_items": [
           {
-            "id": "community:1:twitter",
+            "id": "community:0:twitter",
+            "ticker": "ORCL",
+            "title": "The era of massive Big Tech stock buybacks is over. Combined buybacks by Alphabet, $GOOGL, Amazon, $AMZN, Microsoft, $MSFT, Meta, $META, and Oracle, $ORCL, fell to $4.4 billion in Q3 2026, the lowest since Q3 2017. Share repurchases have droppe",
+            "summary": "The era of massive Big Tech stock buybacks is over. Combined buybacks by Alphabet, $GOOGL, Amazon, $AMZN, Microsoft, $MSFT, Meta, $META, and Oracle, $ORCL, fell to $4.4 billion in Q3 2026, the lowest since Q3 2017. Share repurchases have droppe X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Wed, 04 Nov 2026 19:54:19 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9NQ0ZKZE42U091bDZpNklHYlpGMDdiS1YtM0F1WWRmRWFQdlFfTDVPdDJhVXRWWXpMRUpESFk1czhmY0swMG1tZEg4b3RGRERtVG1FRmVqM3JvcXlzVllyTzRsSDRRZw?oc=5",
+            "query": "ORCL stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:2:twitter",
             "ticker": "ORCL",
             "title": "BREAKING: Oracle stock, $ORCL, falls over -5% after announcing plans to raise $20 billion through equity and debt issuances to fund its AI buildout. The stock is now down -54% from this year's high.",
             "summary": "BREAKING: Oracle stock, $ORCL, falls over -5% after announcing plans to raise $20 billion through equity and debt issuances to fund its AI buildout. The stock is now down -54% from this year's high. X",
@@ -597,17 +343,6 @@
             "publishedAt": "Tue, 03 Nov 2026 03:28:11 GMT",
             "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4tN2JzTzRiOEppOWszbTNZNzdfMWl2Um56elZSczZvdDJobTlia2JnS0ZiRTNMcDJlOWIwSmdyLW81d1oyaTNfSXpYeXVuTTkxNTljRGpDSTJCY3RDMWNF?oc=5",
             "query": "ORCL stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:3:twitter",
-            "ticker": "ORCL",
-            "title": "ORACLE $ORCL REPORTEDLY PLANS NEARLY $10B SHARE SALE AT AN 11% DISCOUNT",
-            "summary": "ORACLE $ORCL REPORTEDLY PLANS NEARLY $10B SHARE SALE AT AN 11% DISCOUNT X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Tue, 03 Nov 2026 00:20:08 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5wY1hkdnB6ZjhuaHowOEdRZHFQbktVdTc1WS1hUE93U0U4N3FNS1RXRGNRQ3NVbFdleTRRcHpqTUJKOHYxeGkzV25MbWYzZF8xczdOdzB2aWQ0bEpuMkJpRkVJbw?oc=5",
-            "query": "\"ORCL\" stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
         "news_score": 0,
@@ -615,22 +350,22 @@
         "news_bias": "mixed",
         "community_label": "mixed",
         "earnings_date": "2026-12-14",
-        "days_to_earnings": 40,
+        "days_to_earnings": 39,
         "event_risk": "low"
       },
       "owns_position": true,
-      "realized_volatility": 0.038186
+      "realized_volatility": 0.038334
     }
   },
   {
     "ticker": "SPCX",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 135.92,
-    "current_price": 135.92,
-    "target_close": 135.5494,
-    "predicted_return": -0.00273,
-    "baseline_return": -0.01325,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 123.62,
+    "current_price": 123.62,
+    "target_close": 122.4606,
+    "predicted_return": -0.009423,
+    "baseline_return": -0.030367,
     "predicted_direction": "bearish",
     "confidence_label": "medium",
     "signal_direction": "SHORT",
@@ -638,10 +373,10 @@
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.058456,
-      0.052995
+      -0.065793,
+      0.046946
     ],
-    "trend_bias": "Range",
+    "trend_bias": "Downtrend",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
     "model_name": "timesfm",
     "current_position_shares": 10,
@@ -649,35 +384,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.00273,
-        "target_close": 135.5494,
+        "predicted_return": -0.009423,
+        "target_close": 122.4606,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.004505,
-        "target_close": 135.3091,
+        "predicted_return": -0.015548,
+        "target_close": 121.7128,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.006007,
-        "target_close": 135.106,
+        "predicted_return": -0.020731,
+        "target_close": 121.0836,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.00273,
-    "adjusted_predicted_return": -0.00273,
-    "adjusted_confidence_score": 0.401521,
+    "base_predicted_return": -0.009423,
+    "adjusted_predicted_return": -0.009423,
+    "adjusted_confidence_score": 0.639496,
     "event_risk": "high",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -685,18 +420,18 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "SPCX",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.00273,
-      "baseline_return": -0.01325,
-      "realized_volatility": 0.050659,
-      "short_trend": -0.064105,
-      "medium_trend": -0.189022,
-      "days_to_earnings": -15,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.009423,
+      "baseline_return": -0.030367,
+      "realized_volatility": 0.051245,
+      "short_trend": -0.140871,
+      "medium_trend": -0.230118,
+      "days_to_earnings": -16,
       "news_score": 0,
-      "community_score": 3,
+      "community_score": 4,
       "news_count": 0,
-      "community_count": 2,
+      "community_count": 3,
       "event_risk": "high",
       "event_risk_score": 2,
       "predicted_direction": "bearish",
@@ -705,28 +440,17 @@
       "community_label": "positive"
     },
     "metadata_json": {
-      "history_points": 100,
+      "history_points": 101,
       "backend": "timesfm",
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 135.9199981689453,
+      "current_price": 123.62000274658203,
       "research_context": {
         "news_items": [],
         "community_items": [
           {
             "id": "community:1:twitter",
-            "ticker": "SPCX",
-            "title": "$TSLA bulls excited by a $SPCX - $TSLA merger should look at what happened to Lumentum Holdings stock ($LITE) this morning after $MRVL offered a 24% premium to $LITE\u2019s 10/28/2026 closing price of $914, or $1,132 per $LITE share. The stock is is curr",
-            "summary": "$TSLA bulls excited by a $SPCX - $TSLA merger should look at what happened to Lumentum Holdings stock ($LITE) this morning after $MRVL offered a 24% premium to $LITE\u2019s 10/28/2026 closing price of $914, or $1,132 per $LITE share. The stock is is curr X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Mon, 02 Nov 2026 15:22:02 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBETGdUVVBhQnhRMTNaN0ZSR0Nna1NpT0FFSzNGM3NVaVd2aV90MVB3cTIwT1ByWEJac2VCbjZWYkhvX0ZJOTJSNFBFSEhGNUltcUdEZ2JNZHQ0VXpzWjBFQTBB?oc=5",
-            "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:2:twitter",
             "ticker": "SPCX",
             "title": "$TSLA bulls still hanging onto the hope that $SPCX will buy $TSLA in an all-stock deal. As we\u2019ve learned (again) from $MRVL - $LITE deal, a +24% premium can quickly go negative as the acquirer\u2019s stock is sold down. Since last Wednesday before the deal w",
             "summary": "$TSLA bulls still hanging onto the hope that $SPCX will buy $TSLA in an all-stock deal. As we\u2019ve learned (again) from $MRVL - $LITE deal, a +24% premium can quickly go negative as the acquirer\u2019s stock is sold down. Since last Wednesday before the deal w X",
@@ -735,29 +459,51 @@
             "publishedAt": "Wed, 04 Nov 2026 14:53:39 GMT",
             "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE10SENOOVBIZmxmY3BDS20xY2FJUWlZbWtmS2E3bGc3bGtsbXdxY1pzLTJycWI1ajJJWU9nWmZPSjdGTEt4T3ZTeWl2SFI4RTVWbHRQaE40ajZyRzhvdzZPRjBR?oc=5",
             "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:2:twitter",
+            "ticker": "SPCX",
+            "title": "Goldman Sachs $GS and Apollo $APO are approaching Wall Street investors to sell portions of SpaceX $SPCX's roughly $40B AI chip financing deal. The two firms have begun marketing the financing to potential buyers, with some investors being offered porti",
+            "summary": "Goldman Sachs $GS and Apollo $APO are approaching Wall Street investors to sell portions of SpaceX $SPCX's roughly $40B AI chip financing deal. The two firms have begun marketing the financing to potential buyers, with some investors being offered porti X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Wed, 04 Nov 2026 21:34:56 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBHWHgwLUU2aDNPRzlpbEpsUk1NVnJZR1dKZ1RyQVY2OGFjaDZWeThKYkt3TEJyWTRZT0NDQW1VaXdiMGRCbDVtUmpFN1I1QWRId2djd0pQMGhIdXQyRktMZGxkVQ?oc=5",
+            "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:3:twitter",
+            "ticker": "SPCX",
+            "title": "@elonmusk @HuaweiMate6 Elon, have a lot of respect for you, but bad time to troll. Please stop. Our SPCX shares (from our $500m investment in your Twitter takeover) are worth more than a billion. Would appreciate if you show a little support. Thanks!",
+            "summary": "@elonmusk @HuaweiMate6 Elon, have a lot of respect for you, but bad time to troll. Please stop. Our SPCX shares (from our $500m investment in your Twitter takeover) are worth more than a billion. Would appreciate if you show a little support. Thanks! X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Fri, 30 Oct 2026 09:19:06 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zYjhtY0NsTG1fMHBUQ2xxMUUzVEZWTWZFbjJEc3hfTzg2RmR0R09TUnZFODhkM2JYU0lMUnZDb1FmOXRnUHdVb3JRTmk1LXo4RHgtQ3paSE02UThlVk9kMg?oc=5",
+            "query": "SPCX stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
         "news_score": 0,
-        "community_score": 3,
+        "community_score": 4,
         "news_bias": "mixed",
         "community_label": "positive",
         "earnings_date": "2026-10-20",
-        "days_to_earnings": -15,
+        "days_to_earnings": -16,
         "event_risk": "high"
       },
       "owns_position": true,
-      "realized_volatility": 0.050659
+      "realized_volatility": 0.051245
     }
   },
   {
     "ticker": "SYM",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 37.51,
-    "current_price": 37.51,
-    "target_close": 37.4185,
-    "predicted_return": -0.002443,
-    "baseline_return": -0.007637,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 35.04,
+    "current_price": 35.04,
+    "target_close": 34.9777,
+    "predicted_return": -0.001779,
+    "baseline_return": -0.013036,
     "predicted_direction": "bearish",
     "confidence_label": "medium",
     "signal_direction": "SHORT",
@@ -765,8 +511,8 @@
     "setup_label": "Risk reduction",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.042694,
-      0.037809
+      -0.042356,
+      0.038797
     ],
     "trend_bias": "Range",
     "notes": "Bearish forecast against an existing position. Trim or exit into strength if the next session lets you.",
@@ -776,35 +522,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.002443,
-        "target_close": 37.4185,
+        "predicted_return": -0.001779,
+        "target_close": 34.9777,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.00403,
-        "target_close": 37.3591,
+        "predicted_return": -0.002936,
+        "target_close": 34.9373,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.005374,
-        "target_close": 37.309,
+        "predicted_return": -0.003914,
+        "target_close": 34.9031,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.002443,
-    "adjusted_predicted_return": -0.002443,
-    "adjusted_confidence_score": 0.391293,
+    "base_predicted_return": -0.001779,
+    "adjusted_predicted_return": -0.001779,
+    "adjusted_confidence_score": 0.367709,
     "event_risk": "moderate",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -812,14 +558,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "SYM",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.002443,
-      "baseline_return": -0.007637,
-      "realized_volatility": 0.036592,
-      "short_trend": -0.037465,
-      "medium_trend": -0.133918,
-      "days_to_earnings": 19,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.001779,
+      "baseline_return": -0.013036,
+      "realized_volatility": 0.036888,
+      "short_trend": -0.063102,
+      "medium_trend": -0.166904,
+      "days_to_earnings": 18,
       "news_score": 0,
       "community_score": 0,
       "news_count": 0,
@@ -837,7 +583,7 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 37.5099983215332,
+      "current_price": 35.040000915527344,
       "research_context": {
         "news_items": [],
         "community_items": [],
@@ -846,31 +592,169 @@
         "news_bias": "mixed",
         "community_label": "mixed",
         "earnings_date": "2026-11-23",
-        "days_to_earnings": 19,
+        "days_to_earnings": 18,
         "event_risk": "moderate"
       },
       "owns_position": true,
-      "realized_volatility": 0.036592
+      "realized_volatility": 0.036888
     }
   },
   {
-    "ticker": "CLS",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 236.41,
-    "current_price": 236.41,
-    "target_close": 235.7935,
-    "predicted_return": -0.002611,
-    "baseline_return": -0.04751,
+    "ticker": "AMD",
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 404.4,
+    "current_price": 404.4,
+    "target_close": 399.8713,
+    "predicted_return": -0.011262,
+    "baseline_return": -0.067386,
     "predicted_direction": "bearish",
-    "confidence_label": "medium",
+    "confidence_label": "high",
     "signal_direction": "SHORT",
     "portfolio_action": "HOLD",
     "setup_label": "Watchlist only",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.057882,
-      0.052659
+      -0.074528,
+      0.052004
+    ],
+    "trend_bias": "Downtrend",
+    "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": false,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": -0.011262,
+        "target_close": 399.8713,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000503
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": -0.018582,
+        "target_close": 396.9549,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001245
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": -0.024776,
+        "target_close": 394.5038,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.002628
+      }
+    ],
+    "base_predicted_return": -0.011262,
+    "adjusted_predicted_return": -0.011262,
+    "adjusted_confidence_score": 0.711636,
+    "event_risk": "low",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "AMD",
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.011262,
+      "baseline_return": -0.067386,
+      "realized_volatility": 0.046864,
+      "short_trend": -0.286042,
+      "medium_trend": -0.348457,
+      "days_to_earnings": 89,
+      "news_score": 0,
+      "community_score": 3,
+      "news_count": 0,
+      "community_count": 3,
+      "event_risk": "low",
+      "event_risk_score": 0,
+      "predicted_direction": "bearish",
+      "direction_score": -1,
+      "news_bias": "mixed",
+      "community_label": "positive"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 404.3999938964844,
+      "research_context": {
+        "news_items": [],
+        "community_items": [
+          {
+            "id": "community:0:reddit",
+            "ticker": "AMD",
+            "title": "AMD expects to outsell Intel in Q4 for the first time in history \u2014 $17B guidance would exceed Intel's projections",
+            "summary": "AMD expects to outsell Intel in Q4 for the first time in history \u2014 $17B guidance would exceed Intel's projections Reddit",
+            "source": "Reddit",
+            "sourceType": "reddit",
+            "publishedAt": "Wed, 04 Nov 2026 18:57:03 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPemdLcnB3TTVBYm5fS2dVZTN5YUNrb21kWnZuR0JJaFZTZVRFU0M0Zzczd1NTOXI1MXpNZDBDcGE2cHZ0T0k4SWhuUlQ2S2tLNFczTXRzblM0cWhNM0pmTDVHV3JSdy1NbVJFQ0ZncVphTU9KNjNkX09ya2p1bkhyLTVKRTBsdHQ5a3N3UklmWjl3OVRJNjYxTU4wRHMxLXA3Wmc?oc=5",
+            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:2:twitter",
+            "ticker": "AMD",
+            "title": "BREAKING: AMD stock, $AMD, surges over +6% after posting stronger than expected earnings due to AI demand. The stock has now added +$50 billion in market cap in after hours trade.",
+            "summary": "BREAKING: AMD stock, $AMD, surges over +6% after posting stronger than expected earnings due to AI demand. The stock has now added +$50 billion in market cap in after hours trade. X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Tue, 03 Nov 2026 21:17:57 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE8zdlQ5TkpZSW56YURJd0JLbERWMnYtLU13Q1A1RV85OXJwYVNzQlZhVi13ZmEwQzNXRWtBMnBPNE13NFExemhtZXJoZGIwNlBzV1Jxb2VUdEFGcTQ1bi1lZGdjNzNUdw?oc=5",
+            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:3:reddit",
+            "ticker": "AMD",
+            "title": "AMD stock jumps 7% on earnings as data center revenue nearly doubles",
+            "summary": "AMD stock jumps 7% on earnings as data center revenue nearly doubles Reddit",
+            "source": "Reddit",
+            "sourceType": "reddit",
+            "publishedAt": "Tue, 03 Nov 2026 21:26:35 GMT",
+            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS1ZfM1M3STYtZjhJNmlYWXU2ZmVZRE54SG0wNjR4eE9CTUJFTGJVWnhuMlZ6dEE3eDlQM09xeUJMT3dreVFfcFBScm1sOWtwNll1OFlKbkZhVzFqYy02YjM3T0tidVMxbWVtenA2VEFUb1pKTU1DUzF3SVVfTG5naUlFUzJVa0lITnFNUTFieERMNDZub2xwQ3ItbDFQS3BMMzM4TA?oc=5",
+            "query": "AMD stock site:reddit.com OR site:x.com OR site:twitter.com"
+          }
+        ],
+        "news_score": 0,
+        "community_score": 3,
+        "news_bias": "mixed",
+        "community_label": "positive",
+        "earnings_date": "2027-02-02",
+        "days_to_earnings": 89,
+        "event_risk": "low"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.046864
+    }
+  },
+  {
+    "ticker": "ANET",
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 159.16,
+    "current_price": 159.16,
+    "target_close": 159.2624,
+    "predicted_return": 0.000643,
+    "baseline_return": -0.029244,
+    "predicted_direction": "neutral",
+    "confidence_label": "low",
+    "signal_direction": "FLAT",
+    "portfolio_action": "HOLD",
+    "setup_label": "Watchlist only",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.032697,
+      0.033984
     ],
     "trend_bias": "Range",
     "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
@@ -880,35 +764,151 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.002611,
-        "target_close": 235.7935,
+        "predicted_return": 0.000643,
+        "target_close": 159.2624,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.004308,
-        "target_close": 235.3936,
+        "predicted_return": 0.001062,
+        "target_close": 159.3291,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.005745,
-        "target_close": 235.0558,
+        "predicted_return": 0.001416,
+        "target_close": 159.3855,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.002611,
-    "adjusted_predicted_return": -0.002611,
-    "adjusted_confidence_score": 0.397287,
+    "base_predicted_return": 0.000643,
+    "adjusted_predicted_return": 0.000643,
+    "adjusted_confidence_score": 0.212327,
+    "event_risk": "high",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "ANET",
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": 0.000643,
+      "baseline_return": -0.029244,
+      "realized_volatility": 0.037045,
+      "short_trend": -0.136033,
+      "medium_trend": -0.24558,
+      "days_to_earnings": -2,
+      "news_score": 0,
+      "community_score": 0,
+      "news_count": 0,
+      "community_count": 1,
+      "event_risk": "high",
+      "event_risk_score": 2,
+      "predicted_direction": "neutral",
+      "direction_score": 0,
+      "news_bias": "mixed",
+      "community_label": "mixed"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 159.16000366210938,
+      "research_context": {
+        "news_items": [],
+        "community_items": [
+          {
+            "id": "community:1:twitter",
+            "ticker": "ANET",
+            "title": "#earnings for the week of November 2, 2026 https://t.co/g9yePkXBvQ $AAPL $PLTR $AMD $DIBS $APP $AEHR $QCOM $AMC $SHOP $MRNA $SMCI $TXG $UBER $LITE $COHR $CHKP $KTOS $NVTS $ANET $FSLY $AAOI $BMRN $VSH $NET $OKLO $",
+            "summary": "#earnings for the week of November 2, 2026 https://t.co/g9yePkXBvQ $AAPL $PLTR $AMD $DIBS $APP $AEHR $QCOM $AMC $SHOP $MRNA $SMCI $TXG $UBER $LITE $COHR $CHKP $KTOS $NVTS $ANET $FSLY $AAOI $BMRN $VSH $NET $OKLO $ X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Fri, 30 Oct 2026 13:03:17 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA1WmdaWUh0T1ZZcTVLZHRfYWx6empGeGI4bWJUQkExczh6cGc4akstZmZsNGVya0lCeWY3YVRmTC1ZaUlhYUtTQ1NBRkt0MUZSRnpxRS1fTWhsMkxoNVV3?oc=5",
+            "query": "\"ANET\" stock site:reddit.com OR site:x.com OR site:twitter.com"
+          }
+        ],
+        "news_score": 0,
+        "community_score": 0,
+        "news_bias": "mixed",
+        "community_label": "mixed",
+        "earnings_date": "2026-11-03",
+        "days_to_earnings": -2,
+        "event_risk": "high"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.037045
+    }
+  },
+  {
+    "ticker": "CLS",
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 205.64,
+    "current_price": 205.64,
+    "target_close": 204.1188,
+    "predicted_return": -0.007425,
+    "baseline_return": -0.063687,
+    "predicted_direction": "bearish",
+    "confidence_label": "medium",
+    "signal_direction": "SHORT",
+    "portfolio_action": "HOLD",
+    "setup_label": "Watchlist only",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.063843,
+      0.048994
+    ],
+    "trend_bias": "Downtrend",
+    "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": false,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": -0.007425,
+        "target_close": 204.1188,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000503
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": -0.012251,
+        "target_close": 203.1361,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001245
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": -0.016335,
+        "target_close": 202.3083,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.002628
+      }
+    ],
+    "base_predicted_return": -0.007425,
+    "adjusted_predicted_return": -0.007425,
+    "adjusted_confidence_score": 0.568437,
     "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -916,14 +916,14 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "CLS",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.002611,
-      "baseline_return": -0.04751,
-      "realized_volatility": 0.050246,
-      "short_trend": -0.211441,
-      "medium_trend": -0.363754,
-      "days_to_earnings": 84,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.007425,
+      "baseline_return": -0.063687,
+      "realized_volatility": 0.05129,
+      "short_trend": -0.272714,
+      "medium_trend": -0.423218,
+      "days_to_earnings": 83,
       "news_score": 0,
       "community_score": 3,
       "news_count": 0,
@@ -941,7 +941,7 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 236.41000366210938,
+      "current_price": 205.63999938964844,
       "research_context": {
         "news_items": [],
         "community_items": [
@@ -973,22 +973,22 @@
         "news_bias": "mixed",
         "community_label": "positive",
         "earnings_date": "2027-01-27",
-        "days_to_earnings": 84,
+        "days_to_earnings": 83,
         "event_risk": "low"
       },
       "owns_position": false,
-      "realized_volatility": 0.050246
+      "realized_volatility": 0.05129
     }
   },
   {
     "ticker": "MRVL",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 159.8,
-    "current_price": 159.8,
-    "target_close": 157.3242,
-    "predicted_return": -0.015614,
-    "baseline_return": -0.090823,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 133.55,
+    "current_price": 133.55,
+    "target_close": 127.3973,
+    "predicted_return": -0.047166,
+    "baseline_return": -0.098316,
     "predicted_direction": "bearish",
     "confidence_label": "high",
     "signal_direction": "SHORT",
@@ -996,8 +996,8 @@
     "setup_label": "Watchlist only",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.093186,
-      0.061958
+      -0.1269,
+      0.032569
     ],
     "trend_bias": "Downtrend",
     "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
@@ -1007,35 +1007,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.015614,
-        "target_close": 157.3242,
+        "predicted_return": -0.047166,
+        "target_close": 127.3973,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.025763,
-        "target_close": 155.7356,
+        "predicted_return": -0.077823,
+        "target_close": 123.5508,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.034351,
-        "target_close": 154.4039,
+        "predicted_return": -0.103764,
+        "target_close": 120.387,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.015614,
-    "adjusted_predicted_return": -0.015614,
-    "adjusted_confidence_score": 0.855265,
+    "base_predicted_return": -0.047166,
+    "adjusted_predicted_return": -0.047166,
+    "adjusted_confidence_score": 1.0,
     "event_risk": "low",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -1043,156 +1043,18 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "MRVL",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.015614,
-      "baseline_return": -0.090823,
-      "realized_volatility": 0.057461,
-      "short_trend": -0.364991,
-      "medium_trend": -0.438545,
-      "days_to_earnings": 27,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.047166,
+      "baseline_return": -0.098316,
+      "realized_volatility": 0.059062,
+      "short_trend": -0.388339,
+      "medium_trend": -0.513656,
+      "days_to_earnings": 26,
       "news_score": 0,
-      "community_score": 1,
+      "community_score": 5,
       "news_count": 0,
-      "community_count": 3,
-      "event_risk": "low",
-      "event_risk_score": 0,
-      "predicted_direction": "bearish",
-      "direction_score": -1,
-      "news_bias": "mixed",
-      "community_label": "mixed"
-    },
-    "metadata_json": {
-      "history_points": 179,
-      "backend": "timesfm",
-      "runtime_mode": "timesfm",
-      "runtime_reason": "ok",
-      "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 159.8000030517578,
-      "research_context": {
-        "news_items": [],
-        "community_items": [
-          {
-            "id": "community:0:twitter",
-            "ticker": "MRVL",
-            "title": "$TSLA bulls excited by a $SPCX - $TSLA merger should look at what happened to Lumentum Holdings stock ($LITE) this morning after $MRVL offered a 24% premium to $LITE\u2019s 10/28/2026 closing price of $914, or $1,132 per $LITE share. The stock is is curr",
-            "summary": "$TSLA bulls excited by a $SPCX - $TSLA merger should look at what happened to Lumentum Holdings stock ($LITE) this morning after $MRVL offered a 24% premium to $LITE\u2019s 10/28/2026 closing price of $914, or $1,132 per $LITE share. The stock is is curr X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Mon, 02 Nov 2026 15:22:02 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBETGdUVVBhQnhRMTNaN0ZSR0Nna1NpT0FFSzNGM3NVaVd2aV90MVB3cTIwT1ByWEJac2VCbjZWYkhvX0ZJOTJSNFBFSEhGNUltcUdEZ2JNZHQ0VXpzWjBFQTBB?oc=5",
-            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:1:twitter",
-            "ticker": "MRVL",
-            "title": "$LITE $MRVL Win take by Itachidata. Why would Lumentum take 100% stock if they thought the AI cycle was peaking? You'd take the cash and walk away. Instead, they're going all in. A company sold out into 2029 that still asks for stock is telling you where it t",
-            "summary": "$LITE $MRVL Win take by Itachidata. Why would Lumentum take 100% stock if they thought the AI cycle was peaking? You'd take the cash and walk away. Instead, they're going all in. A company sold out into 2029 that still asks for stock is telling you where it t X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Mon, 02 Nov 2026 20:15:25 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iTFQxeUtpTmtwa3RQaGx6Z284U1d5VlRYbl9vYVpQbi1QSm9GU2VzbW51OE9vOEZIREVES0RuSGFaQUQxNkR2TG5YcEwzcU9Zd2xwREtqWUV3d3RRTFlYWA?oc=5",
-            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:3:twitter",
-            "ticker": "MRVL",
-            "title": "$LITE shareholders should be annoyed... The 23.9% premium in the $MRVL deal is real on paper, but in dollars it's gone. 1. 4.5 $MRVL per $LITE = $1,132/share on 28 Oct = 23.9% above Lumentum's undisturbed $914. This is the 23.9% premium reported to",
-            "summary": "$LITE shareholders should be annoyed... The 23.9% premium in the $MRVL deal is real on paper, but in dollars it's gone. 1. 4.5 $MRVL per $LITE = $1,132/share on 28 Oct = 23.9% above Lumentum's undisturbed $914. This is the 23.9% premium reported to X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Mon, 02 Nov 2026 14:06:05 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBEbTRESXN3Smx0aXZQY2szYUphVWZONDJHSTRYU3d5WExGQkpHMVVVVU9ZcnRqMkdaeFY0RVNCZFZ0Tmp1emVsYnVrX1lVVGRqb3U2cFBmSGhFSERjenRwUjh3?oc=5",
-            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
-          }
-        ],
-        "news_score": 0,
-        "community_score": 1,
-        "news_bias": "mixed",
-        "community_label": "mixed",
-        "earnings_date": "2026-12-01",
-        "days_to_earnings": 27,
-        "event_risk": "low"
-      },
-      "owns_position": false,
-      "realized_volatility": 0.057461
-    }
-  },
-  {
-    "ticker": "SMCI",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 29.6,
-    "current_price": 29.6,
-    "target_close": 29.1684,
-    "predicted_return": -0.014689,
-    "baseline_return": -0.038091,
-    "predicted_direction": "bearish",
-    "confidence_label": "high",
-    "signal_direction": "SHORT",
-    "portfolio_action": "HOLD",
-    "setup_label": "Watchlist only",
-    "conviction_score": 35,
-    "expected_move_range": [
-      -0.103912,
-      0.074533
-    ],
-    "trend_bias": "Downtrend",
-    "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
-    "model_name": "timesfm",
-    "current_position_shares": 0.0,
-    "is_actionable": false,
-    "horizon_forecasts": [
-      {
-        "horizon_days": 1,
-        "predicted_return": -0.014689,
-        "target_close": 29.1684,
-        "confidence_band": "highest",
-        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
-      },
-      {
-        "horizon_days": 3,
-        "predicted_return": -0.024237,
-        "target_close": 28.8912,
-        "confidence_band": "moderate",
-        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
-      },
-      {
-        "horizon_days": 5,
-        "predicted_return": -0.032317,
-        "target_close": 28.6587,
-        "confidence_band": "lower",
-        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
-        "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
-      }
-    ],
-    "base_predicted_return": -0.014689,
-    "adjusted_predicted_return": -0.014689,
-    "adjusted_confidence_score": 0.824748,
-    "event_risk": "low",
-    "calibration_reason_codes": [],
-    "calibration_enabled": false,
-    "calibration_status": "disabled",
-    "calibration_features": {
-      "feature_version": 1,
-      "ticker": "SMCI",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.014689,
-      "baseline_return": -0.038091,
-      "realized_volatility": 0.066091,
-      "short_trend": -0.173415,
-      "medium_trend": -0.341344,
-      "days_to_earnings": 90,
-      "news_score": 0,
-      "community_score": 4,
-      "news_count": 0,
-      "community_count": 1,
+      "community_count": 4,
       "event_risk": "low",
       "event_risk_score": 0,
       "predicted_direction": "bearish",
@@ -1206,7 +1068,156 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 29.600000381469727,
+      "current_price": 133.5500030517578,
+      "research_context": {
+        "news_items": [],
+        "community_items": [
+          {
+            "id": "community:0:twitter",
+            "ticker": "MRVL",
+            "title": "$MRVL TO ACQUIRE $LITE IN $115B ALL-STOCK DEAL Marvell has agreed to acquire Lumentum in an all-stock transaction valued at approximately $115B in enterprise value, combining two major suppliers of AI infrastructure and optical networking technol",
+            "summary": "$MRVL TO ACQUIRE $LITE IN $115B ALL-STOCK DEAL Marvell has agreed to acquire Lumentum in an all-stock transaction valued at approximately $115B in enterprise value, combining two major suppliers of AI infrastructure and optical networking technol X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Mon, 02 Nov 2026 12:10:46 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5fMUpEcmFtbnE3NV9tVWF0VnVGbVBmVUtDSnhPUEhTYTI2YlpJdTJDZmJvRm04Xy1uV09qVGJKRWItVWVKWkYwd0FPekpYV3kzbHd4X2NfblhHbHlGU1BtTlpjMA?oc=5",
+            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:1:twitter",
+            "ticker": "MRVL",
+            "title": "$TSLA bulls still hanging onto the hope that $SPCX will buy $TSLA in an all-stock deal. As we\u2019ve learned (again) from $MRVL - $LITE deal, a +24% premium can quickly go negative as the acquirer\u2019s stock is sold down. Since last Wednesday before the deal w",
+            "summary": "$TSLA bulls still hanging onto the hope that $SPCX will buy $TSLA in an all-stock deal. As we\u2019ve learned (again) from $MRVL - $LITE deal, a +24% premium can quickly go negative as the acquirer\u2019s stock is sold down. Since last Wednesday before the deal w X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Wed, 04 Nov 2026 14:53:39 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE10SENOOVBIZmxmY3BDS20xY2FJUWlZbWtmS2E3bGc3bGtsbXdxY1pzLTJycWI1ajJJWU9nWmZPSjdGTEt4T3ZTeWl2SFI4RTVWbHRQaE40ajZyRzhvdzZPRjBR?oc=5",
+            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:2:twitter",
+            "ticker": "MRVL",
+            "title": "$LITE shareholders should be annoyed... The 23.9% premium in the $MRVL deal is real on paper, but in dollars it's gone. 1. 4.5 $MRVL per $LITE = $1,132/share on 28 Oct = 23.9% above Lumentum's undisturbed $914. This is the 23.9% premium reported to",
+            "summary": "$LITE shareholders should be annoyed... The 23.9% premium in the $MRVL deal is real on paper, but in dollars it's gone. 1. 4.5 $MRVL per $LITE = $1,132/share on 28 Oct = 23.9% above Lumentum's undisturbed $914. This is the 23.9% premium reported to X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Mon, 02 Nov 2026 14:06:05 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBEbTRESXN3Smx0aXZQY2szYUphVWZONDJHSTRYU3d5WExGQkpHMVVVVU9ZcnRqMkdaeFY0RVNCZFZ0Tmp1emVsYnVrX1lVVGRqb3U2cFBmSGhFSERjenRwUjh3?oc=5",
+            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:3:twitter",
+            "ticker": "MRVL",
+            "title": "Details on Marvell's $115B acquisition of Lumentum: \u2022 $MRVL shareholders to own 67% of the combined co. \u2022 $LITE holders to receive 4.5 MRVL shares per share \u2022 Combined TAM to reach $550B \u2022 Over $1B in annual cost synergies \u2022 Expected to boost adj E",
+            "summary": "Details on Marvell's $115B acquisition of Lumentum: \u2022 $MRVL shareholders to own 67% of the combined co. \u2022 $LITE holders to receive 4.5 MRVL shares per share \u2022 Combined TAM to reach $550B \u2022 Over $1B in annual cost synergies \u2022 Expected to boost adj E X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Mon, 02 Nov 2026 12:18:13 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA2U2s1alJtU2ExZmlPcS1OY0hmbGJwNm45T3h5VFVBTjI1US0yRmN5RVp0ejRXc1J0b0c1VXpSelRoY3VmY21CV09vZXlyVndudW1BLVdaOUdJM1IwdHdPYnBXQQ?oc=5",
+            "query": "MRVL stock site:reddit.com OR site:x.com OR site:twitter.com"
+          }
+        ],
+        "news_score": 0,
+        "community_score": 5,
+        "news_bias": "mixed",
+        "community_label": "positive",
+        "earnings_date": "2026-12-01",
+        "days_to_earnings": 26,
+        "event_risk": "low"
+      },
+      "owns_position": false,
+      "realized_volatility": 0.059062
+    }
+  },
+  {
+    "ticker": "SMCI",
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 27.08,
+    "current_price": 27.08,
+    "target_close": 26.3812,
+    "predicted_return": -0.026144,
+    "baseline_return": -0.048027,
+    "predicted_direction": "bearish",
+    "confidence_label": "high",
+    "signal_direction": "SHORT",
+    "portfolio_action": "HOLD",
+    "setup_label": "Watchlist only",
+    "conviction_score": 35,
+    "expected_move_range": [
+      -0.115805,
+      0.063517
+    ],
+    "trend_bias": "Downtrend",
+    "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
+    "model_name": "timesfm",
+    "current_position_shares": 0.0,
+    "is_actionable": false,
+    "horizon_forecasts": [
+      {
+        "horizon_days": 1,
+        "predicted_return": -0.026144,
+        "target_close": 26.3812,
+        "confidence_band": "highest",
+        "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.000503
+      },
+      {
+        "horizon_days": 3,
+        "predicted_return": -0.043138,
+        "target_close": 25.9367,
+        "confidence_band": "moderate",
+        "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.001245
+      },
+      {
+        "horizon_days": 5,
+        "predicted_return": -0.057517,
+        "target_close": 25.5664,
+        "confidence_band": "lower",
+        "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
+        "measured_hit_rate": 1.0,
+        "measured_mae": 0.002628
+      }
+    ],
+    "base_predicted_return": -0.026144,
+    "adjusted_predicted_return": -0.026144,
+    "adjusted_confidence_score": 1.0,
+    "event_risk": "low",
+    "calibration_reason_codes": [],
+    "calibration_enabled": false,
+    "calibration_status": "disabled",
+    "calibration_features": {
+      "feature_version": 1,
+      "ticker": "SMCI",
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.026144,
+      "baseline_return": -0.048027,
+      "realized_volatility": 0.066416,
+      "short_trend": -0.213477,
+      "medium_trend": -0.366846,
+      "days_to_earnings": 89,
+      "news_score": 0,
+      "community_score": 4,
+      "news_count": 0,
+      "community_count": 2,
+      "event_risk": "low",
+      "event_risk_score": 0,
+      "predicted_direction": "bearish",
+      "direction_score": -1,
+      "news_bias": "mixed",
+      "community_label": "positive"
+    },
+    "metadata_json": {
+      "history_points": 179,
+      "backend": "timesfm",
+      "runtime_mode": "timesfm",
+      "runtime_reason": "ok",
+      "runtime_class": "TimesFM_2p5_200M_torch",
+      "current_price": 27.079999923706055,
       "research_context": {
         "news_items": [],
         "community_items": [
@@ -1220,6 +1231,17 @@
             "publishedAt": "Tue, 03 Nov 2026 21:20:03 GMT",
             "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5UZ2RhMmJqTmhGUk5LbW9KbWlpbk5JZl9Vc3FqcW1TT0NiY3VmZXJuMzg0SnZQbnFwLW91SmlMNEI3NWlEVElzZ3R5bi00SExkUnVzenR3QktSMUIzT0x6SlpVaDhodw?oc=5",
             "query": "SMCI stock site:reddit.com OR site:x.com OR site:twitter.com"
+          },
+          {
+            "id": "community:1:twitter",
+            "ticker": "SMCI",
+            "title": "$SMCI CRUSHED THEIR Q1 EARNINGS \u2022 Revenue $19.9B vs Est. $16.3B \u2022 EPS $1.81 vs. Est. $1.62 \u2022 EBITDA $2.2B vs Est. $1.6B \u2022 Gross Margin 13% vs. Est. 11% Q2 Guidance \u2022 Revenue $20.5B vs Est. $17.5B \u2022 EPS $1.78 vs. Est. $1.14 FY27 Guidance \u2022 R",
+            "summary": "$SMCI CRUSHED THEIR Q1 EARNINGS \u2022 Revenue $19.9B vs Est. $16.3B \u2022 EPS $1.81 vs. Est. $1.62 \u2022 EBITDA $2.2B vs Est. $1.6B \u2022 Gross Margin 13% vs. Est. 11% Q2 Guidance \u2022 Revenue $20.5B vs Est. $17.5B \u2022 EPS $1.78 vs. Est. $1.14 FY27 Guidance \u2022 R X",
+            "source": "X",
+            "sourceType": "twitter",
+            "publishedAt": "Tue, 03 Nov 2026 21:14:19 GMT",
+            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9Za2p6V0RjTzVNQUMwS0JjXzg1T1lyaXh1eXZXQ1VSYVVBdS1qV0ZtSG11V0dBRDdUWTQzRGZLRm9STEhzeXloV2JUazFlNXNuUmJvRTVYWk1XVy05RWxWeFFXTzAyUQ?oc=5",
+            "query": "SMCI stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
         "news_score": 0,
@@ -1227,31 +1249,31 @@
         "news_bias": "mixed",
         "community_label": "positive",
         "earnings_date": "2027-02-02",
-        "days_to_earnings": 90,
+        "days_to_earnings": 89,
         "event_risk": "low"
       },
       "owns_position": false,
-      "realized_volatility": 0.066091
+      "realized_volatility": 0.066416
     }
   },
   {
     "ticker": "VRT",
-    "as_of_date": "2026-11-04",
-    "target_date": "2026-11-05",
-    "current_close": 205.55,
-    "current_price": 205.55,
-    "target_close": 204.0525,
-    "predicted_return": -0.007312,
-    "baseline_return": -0.033425,
+    "as_of_date": "2026-11-05",
+    "target_date": "2026-11-06",
+    "current_close": 176.73,
+    "current_price": 176.73,
+    "target_close": 171.4145,
+    "predicted_return": -0.030538,
+    "baseline_return": -0.066077,
     "predicted_direction": "bearish",
-    "confidence_label": "medium",
+    "confidence_label": "high",
     "signal_direction": "SHORT",
     "portfolio_action": "HOLD",
     "setup_label": "Watchlist only",
     "conviction_score": 35,
     "expected_move_range": [
-      -0.054993,
-      0.040369
+      -0.090973,
+      0.029896
     ],
     "trend_bias": "Downtrend",
     "notes": "No position yet and the edge is still soft. Keep it on the board, but stay patient for a cleaner trigger.",
@@ -1261,35 +1283,35 @@
     "horizon_forecasts": [
       {
         "horizon_days": 1,
-        "predicted_return": -0.007312,
-        "target_close": 204.0525,
+        "predicted_return": -0.030538,
+        "target_close": 171.4145,
         "confidence_band": "highest",
         "expected_accuracy_note": "Closest horizon tends to be the most reliable.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.000495
+        "measured_mae": 0.000503
       },
       {
         "horizon_days": 3,
-        "predicted_return": -0.012065,
-        "target_close": 203.085,
+        "predicted_return": -0.050388,
+        "target_close": 168.0455,
         "confidence_band": "moderate",
         "expected_accuracy_note": "Medium-range forecast is useful, but less reliable than 1D.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.001226
+        "measured_mae": 0.001245
       },
       {
         "horizon_days": 5,
-        "predicted_return": -0.016087,
-        "target_close": 202.2699,
+        "predicted_return": -0.067184,
+        "target_close": 165.2466,
         "confidence_band": "lower",
         "expected_accuracy_note": "Farther-out forecast is directional context, not precision.",
         "measured_hit_rate": 1.0,
-        "measured_mae": 0.002587
+        "measured_mae": 0.002628
       }
     ],
-    "base_predicted_return": -0.007312,
-    "adjusted_predicted_return": -0.007312,
-    "adjusted_confidence_score": 0.564428,
+    "base_predicted_return": -0.030538,
+    "adjusted_predicted_return": -0.030538,
+    "adjusted_confidence_score": 1.0,
     "event_risk": "high",
     "calibration_reason_codes": [],
     "calibration_enabled": false,
@@ -1297,18 +1319,18 @@
     "calibration_features": {
       "feature_version": 1,
       "ticker": "VRT",
-      "as_of_date": "2026-11-04",
-      "target_date": "2026-11-05",
-      "predicted_return": -0.007312,
-      "baseline_return": -0.033425,
-      "realized_volatility": 0.043346,
-      "short_trend": -0.153906,
-      "medium_trend": -0.166092,
-      "days_to_earnings": -7,
+      "as_of_date": "2026-11-05",
+      "target_date": "2026-11-06",
+      "predicted_return": -0.030538,
+      "baseline_return": -0.066077,
+      "realized_volatility": 0.044766,
+      "short_trend": -0.281352,
+      "medium_trend": -0.274894,
+      "days_to_earnings": -8,
       "news_score": 0,
       "community_score": 0,
       "news_count": 0,
-      "community_count": 2,
+      "community_count": 1,
       "event_risk": "high",
       "event_risk_score": 2,
       "predicted_direction": "bearish",
@@ -1322,12 +1344,12 @@
       "runtime_mode": "timesfm",
       "runtime_reason": "ok",
       "runtime_class": "TimesFM_2p5_200M_torch",
-      "current_price": 205.5500030517578,
+      "current_price": 176.72999572753906,
       "research_context": {
         "news_items": [],
         "community_items": [
           {
-            "id": "community:3:twitter",
+            "id": "community:2:twitter",
             "ticker": "VRT",
             "title": "Vertiv $VRT stock is up by 15% in pre market trading following its earnings",
             "summary": "Vertiv $VRT stock is up by 15% in pre market trading following its earnings X",
@@ -1336,17 +1358,6 @@
             "publishedAt": "Wed, 28 Oct 2026 10:29:33 GMT",
             "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5jVXVnc1BYS3psMVZwVW12VDFMeF9pYVg0SHlwbmhWQ0haQUhnbGhJUklvRzlCOEZrNk5Xd18waUpSbW0taDFlY0VuM1FraHhvU1lDRVR1UHBIdWdYYzE1S3FnUQ?oc=5",
             "query": "VRT stock site:reddit.com OR site:x.com OR site:twitter.com"
-          },
-          {
-            "id": "community:2:twitter",
-            "ticker": "VRT",
-            "title": "I share information about the $SMCI $DELL $VRT investment research plan on WhatsApp every week, featuring market trends, stock analysis, and potential investment opportunities. \ud83d\ude80 \u2705https://t.co/PhHSUphkSs If you haven't added me yet, you can add me he",
-            "summary": "I share information about the $SMCI $DELL $VRT investment research plan on WhatsApp every week, featuring market trends, stock analysis, and potential investment opportunities. \ud83d\ude80 \u2705https://t.co/PhHSUphkSs If you haven't added me yet, you can add me he X",
-            "source": "X",
-            "sourceType": "twitter",
-            "publishedAt": "Mon, 26 Oct 2026 03:16:49 GMT",
-            "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA1UVZ2VkNRZktKTHI0WXlmR01peU5vSHl1Q2JxU2FYWDJEZVpwOEFBRzN2V2lmOWktXzFYM04zSXA4S0NXX05IemU4WUg2dFhnZmYtbHQ5bHlCZjlMNnJhclBR?oc=5",
-            "query": "\"VRT\" stock site:reddit.com OR site:x.com OR site:twitter.com"
           }
         ],
         "news_score": 0,
@@ -1354,11 +1365,11 @@
         "news_bias": "mixed",
         "community_label": "mixed",
         "earnings_date": "2026-10-28",
-        "days_to_earnings": -7,
+        "days_to_earnings": -8,
         "event_risk": "high"
       },
       "owns_position": false,
-      "realized_volatility": 0.043346
+      "realized_volatility": 0.044766
     }
   }
 ]
