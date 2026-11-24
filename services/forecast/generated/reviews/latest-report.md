@@ -1,38 +1,39 @@
-# Stokz Daily Review - 2026-11-23
+# Stokz Daily Review - 2026-11-24
 
-Generated at: 2026-11-23T23:35:56.916136+00:00
+Generated at: 2026-11-24T23:35:53.856844+00:00
 Model: timesfm
-Market regime: cautious downside bias
+Market regime: defensive tape
 
 ## Summary
 
-- Analyst decision: Stay selective, the board is mixed rather than clean.
-- Risk posture: Keep size honest, let the best setups earn more risk, and leave soft HOLD names alone.
-- Operator summary: The board reads cautious downside bias, with 2 buy setups and 1 risk-reduction names. Current evaluation history shows 100.0% 1D hit rate, so the edge looks real but still young.
-- Next session plan: Open with AMD, ANET on the main board, keep ORCL marked for risk control, and let weaker holds prove themselves before touching them.
+- Analyst decision: Trim weak exposure and keep new adds on a leash.
+- Risk posture: Risk is not gone. Respect the trim list and do not turn watchlist names into forced trades.
+- Operator summary: The board reads defensive tape, with 0 buy setups and 5 risk-reduction names. Current evaluation history shows 100.0% 1D hit rate, so the edge looks real but still young.
+- Next session plan: Open with no standout longs on the main board, keep DELL, SPCX marked for risk control, and let weaker holds prove themselves before touching them.
 
 ## Board stats
 
 - Forecasts: 11
-- BUY / HOLD / SELL: 2 / 8 / 1
-- Bullish vs bearish: 4 / 4
-- Average forecast: -0.02%
+- BUY / HOLD / SELL: 0 / 6 / 5
+- Bullish vs bearish: 0 / 11
+- Average forecast: -1.22%
 - Average 1D hit rate: 100.0%
 
 ## Top longs
 
-- BUY AMD | Fresh long setup | forecast +0.33% | target $454.98 | conviction 35
-- BUY ANET | Fresh long setup | forecast +0.18% | target $178.64 | conviction 35
+- None today
 
 ## Risk reductions
 
-- SELL ORCL | Risk reduction | forecast -0.30% | target $113.33 | conviction 35
+- SELL DELL | Risk reduction | forecast -3.22% | target $285.91 | conviction 35
+- SELL SPCX | Risk reduction | forecast -1.04% | target $124.51 | conviction 35
+- SELL ORCL | Risk reduction | forecast -0.66% | target $108.78 | conviction 35
 
 ## Watchlist holds
 
-- HOLD SMCI | Watchlist only | forecast -1.16% | target $24.25 | conviction 35
-- HOLD DELL | Existing position management | forecast +0.71% | target $337.30 | conviction 35
-- HOLD AVGO | Existing position management | forecast +0.51% | target $315.14 | conviction 35
+- HOLD SMCI | Watchlist only | forecast -2.28% | target $22.11 | conviction 35
+- HOLD MRVL | Watchlist only | forecast -1.87% | target $129.13 | conviction 35
+- HOLD AMD | Watchlist only | forecast -1.64% | target $406.55 | conviction 35
 
 ## Research news feed
 
